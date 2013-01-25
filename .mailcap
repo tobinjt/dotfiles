@@ -1,0 +1,6 @@
+# vim: set textwidth=200 :
+#text/html; w3m -dump -T text/html %s; copiousoutput
+text/html; w3m -v -F -T text/html %s; nametemplate=%s.html; needsterminal
+#image/*; xv %s ; copiousoutput ;
+application/msword; antiword %s; copiousoutput; description="MS Word Text";
+application/pdf; xpdf %s

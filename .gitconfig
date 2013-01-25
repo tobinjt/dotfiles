@@ -1,0 +1,17 @@
+[user]
+  name = John Tobin
+  email = johntobin@johntobin.ie
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[core]
+  excludesfile = ~/.gitignore
+[alias]
+  wdiff = diff --color-words
+  wshow = show --color-words
+  gdiff = difftool --tool tkdiff --no-prompt
+  merge-conflicts = commit -m 'Fix merge conflicts.'
+  review-comments = commit -m 'Review comments.'
+[push]
+	default = current

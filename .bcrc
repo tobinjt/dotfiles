@@ -1,0 +1,7 @@
+scale = 10
+k = 1024
+m = k * k
+g = k * m
+t = k * g
+p = k * t
+e = k * p

@@ -1,0 +1,298 @@
+"Give a man a job and he'll feed his kids and wife. Give a man three
+jobs, one of which is sysadmining, and he'll fail to achieve anything
+substantial and retire early to play in a struggling band rather than
+face another day of relentless task switching and unreliability due to
+exhaustion"
+                                         -- Gareth Kirwan, in london.pm
+%
+"That's one of those irregular verbs, isn't it? I give confidential
+security briefings. You leak. He has been charged under section 2a of
+the Official Secrets Act."
+                                       -- Bernard Woolley, Yes Minister
+%
+"After the allied victory of 1918, at the end of my father's war, the
+victors divided up the lands of their former enemies. In the space of
+just seventeen months, they created the borders of Northern Ireland,
+Yugoslavia and most of the Middle East. And I have spent my entire
+career - in Belfast and Sarajevo, in Beirut and Baghdad - watching the
+people within those borders burn."
+                                                         -- Robert Fisk
+%
+"to the level of death, organ failure, or the permanent impairment of a
+significant body function."
+ -- The definition the American Military would like to use for torture.
+%
+"The first problem Jerry was having was that the SME wasn't working on
+their target UNIX platform. Brian thought it was a bit odd and asked
+Jerry how he had developed it.
+Jerry responded, "using VC++6 and the MFC libraries.""
+                     -- http://thedailywtf.com/forums/thread/85510.aspx
+%
+As seen on vim-dev@vim.org:
+                    "I did modify xhost because I wanted a 
+                    php script be able to launch vim."
+Wibble.
+%
+"you could overload the system() call and place some logic for
+monitoring it, maybe place a hart beat system so if it doesn't proclaim
+its alive status a Ninja daemon could assassinate the zombie processes."
+                                            -- Alex Sayle, in london.pm
+%
+"Newsweek excluded these high performers from the list of Best High
+Schools because so many of their students score well above average on
+the SAT and ACT."
+                            -- http://www.freedom-to-tinker.com/?p=1011
+%
+"The database design will be fully extensible. All tables will have only
+a few columns (such as ID's and created dates), and the rest of the data
+will be stored in an XML-formatted TEXT column"
+                   -- http://thedailywtf.com/forums/60879/ShowPost.aspx
+%
+"Interestingly enough - rendering dozenss of plasticine bunnies floating
+in a giant vacumn cleaner complete with fake finger prints is actually
+easier than doing websites. Good job Microsoft and Netscape! May you
+rot in hell. IN HELL!"
+                                          -- Simon Wistow, in london.pm
+%
+> > I shall upgrade Storable in any case, what harm can it do? ;-)
+> It may cause the universe to implode
+I'll log a documentation bug for it, neither BUGS nor WARNING refer to
+this possibility.
+-- http://london.pm.org/pipermail/london.pm/Week-of-Mon-20060130/001067.html
+%
+> > I shall upgrade Storable in any case, what harm can it do? ;-)
+> It may cause the universe to implode
+Block eval ought to catch that though. And don't forget the unit test..
+-- http://london.pm.org/pipermail/london.pm/Week-of-Mon-20060130/001066.html
+%
+"Oh, please Dad . . . the President already has black sites, renditions,
+illegal domestic wiretapping, and an unprovoked war to his credit.  Do
+you really think John McCain could write a bill Bush won't feel totally
+free to ignore?  Get real!"
+-- http://www.doonesbury.com/strip/dailydose/index.html?uc_full_date=20060113
+%
+"I have dispatched the attack voles. Your death will be swift and
+furry."
+                                          -- Simon Wistow, in london.pm
+%
+"But sitting here in my Rodent-Warrior[TM] full body armour and backed
+up by an angry looking Badger tooled up a flick-knife and a crowbar,"
+                                          -- Andy Wardley, in london.pm
+%
+"at which point I would beat you around the head using a handy
+chinchilla until you were unconcious and the chinchilla was probably
+only slightly better off. Chinchillas make surprisingly effective
+weapons."
+                                          -- Simon Wistow, in london.pm
+%
+"I like screaming diatribes when I'm flagellating someone with a rodent
+- it takes the edge of a man's day."
+                                          -- Simon Wistow, in london.pm
+%
+"It is hard when you are 24 years of age, and your one ambition in life
+is to reduce your handicap at golf, to be forced to give time and
+attention to the problem of earning your living."
+                              -- The Hound of Death, by Agatha Christie
+%
+"For a while, I've had a few "undeletable Outlook folders". Even after
+deleting all the messages from them, Outlook just complains when I try
+to delete them."
+    -- http://blogs.msdn.com/oldnewthing/archive/2005/10/17/481810.aspx
+       Raymond Chen, Microsoft developer, has Outlook problems too.
+%
+"The day I come in front of the Gartner audience and say we have a
+better Unix than Linux, that'll be a good day."
+-- Steve Ballmer, Microsoft CEO, during his keynote Q&A session at the
+   Gartner Symposium in Orlando, Florida, 2005/10/19
+%
+"Thirteen high-school students in the Kutztown Area School District
+(Pennsylvania) face felony charges of tampering with computers after
+defeating security measures on laptops issued to them by the school
+district.  They used administrator passwords (taped to the backs of the
+computers) . . ."
+              http://www.wired.com/news/technology/0,1282,68480,00.html
+%
+"Just recently, Mr. Cleever, the Government's new peer advisor?"
+"Slipped on an icy patch."
+"He was decapitated!"
+"It was a *very* icy patch."
+                    -- New Doctor Who Series One, Episode 11: Boom Town
+%
+Doctor Constantine: "Mrs Harcourt, how much better you're looking."
+Mrs Harcourt:       "My leg's grown back!"
+Mrs Harcourt:       "When I come to the 'ospital, I 'ad one leg."
+Doctor Constantine: "Well, there is a war on.  Is it possible you
+                     miscounted?"
+            -- New Doctor Who Series One, Episode 10: The Doctor Dances
+%
+The stupidest lawsuit ever:
+". . . a transit company is suing a group of ten cleaning women in
+France, because they are car pooling instead of continuing to use their
+service." -- http://www.groklaw.net/article.php?story=20050712045953910
+%
+"I don't like installing software on my computer. The more programs you
+install, the more likely there's going to be a conflict somewhere."
+    -- http://blogs.msdn.com/oldnewthing/archive/2005/05/02/414020.aspx
+Written by a Microsoft OS developer named Raymond Chen.  It doesn't do
+much for your faith in Windows, does it?
+%
+"Back when I was in the DOS group, the apps guys didn't have access to
+our source code (the sources were on the 68K Xenix boxes (Snuffy and Hal
+in particular, if I recall) in the machine room and the apps guys didn't
+have accounts on the boxes)."
+     -- http://blogs.msdn.com/oldnewthing/archive/2003/10/15/55296.aspx
+MS-DOS for x86 was developed on Motorola 68Ks running Xenix.
+%
+"Deciding where (and where not) to put the speed bumps is a pretty good
+description of my job. It's impossible to have a language without bumps,
+so I reserve the right to put the necessary bumps where I think they'll
+do the most good and/or least harm."                      -- Larry Wall
+%
+"I have to tell you though, if you have users that don't understand,
+"message too large", I don't envy you."
+                                  -- Robin Lynn Frank, in postfix-users
+%
+"One way I've found that really focuses your mind really, really well is
+to hack on your production mail/mailing list server and being forced to
+fix the thing under heavy time pressure, while having your sensitive
+areas menaced with a red hot poker."
+                                      -- Brad Knowles, in Mailman-users
+%
+"OpenBSD comes with vi, another hell-spawned weapon of evil which causes
+mayhem and kills kittens every time a user attempts to do something
+productive with it.  Using vi is about as pleasant as a trip to the
+dentist for back-to-back root canals, without anesthetics. It should
+come as no surprise that vi is part of OpenBSD's Dumb Sysadmin
+Prevention System, making it nearly impossible for mortals to cause
+damage by recklessly editing system configuration files."
+                                 -- mr [dot] eedok [at] gmail [dot] com
+%
+"In short, OpenBSD's install is so hard that you need to be genius to
+complete it, thus eliminating the cause of the majority of security
+issues -- dumb sysadmins."
+                                 -- mr [dot] eedok [at] gmail [dot] com
+%
+"Hardly.  The ugly truth is that fdisk is a hell-spawned minion that
+will ravage your brain, cause general mayhem, and make you want to
+replace the word "fuck" with "fdisk" as the F-word of choice in your
+cursing vocabulary."
+                                 -- mr [dot] eedok [at] gmail [dot] com
+%
+**  WARNING: USE OF THIS ALPHA RELEASE MAY INFEST YOUR HOUSE WITH  **
+**  TERMITES, ROT YOUR TEETH,  GROW HAIR ON YOUR PALMS, AND PASTE  **
+**  INNUENDO  INTO  YOUR  C.V.  RIGHT  BEFORE  A  JOB  INTERVIEW!  **
+**  DON'T SAY WE DIDN'T WARN YOU, MAN. WE TOTALLY DID RIGHT HERE.  **
+%
+"I allocated a week each to the operating system, the shell, the editor
+and the assembler . . ."              -- Ken Thompson, Unix co-creator.
+             http://www.groklaw.net/article.php?story=20050414215646742
+%
+" . . . called em -- Editor for Mortals -- since only immortals could
+use ed to do anything. By the way, before that summer, we could only
+type in uppercase.  That summer we got lowercase ROMs for our terminals.
+It was really exciting to finally use lowercase."
+              -- Bill Joy, http://www.linux-mag.com/1999-11/joy_04.html
+%
+Interviewer:    Real programmers use cat as their editor. 
+Bill Joy:       That's right! There you go! It is too much trouble to
+say ed, because cat's smaller and only needs two pages of memory - plus
+you're not likely to get swapped out.
+                          -- http://www.cs.pdx.edu/~kirkenda/joy84.html
+%
+"<odd>.x.x: Linus went crazy, broke absolutely _everything_, and rewrote
+the kernel to be a microkernel using a special message-passing version
+of Visual Basic. (timeframe: "we expect that he will be released from
+the mental institution in a decade or two")."
+                  -- Linus Torvalds, on Linux kernel version numbering.
+%
+"It used to be said [...] that AIX looks like one space alien discovered
+Unix, and described it to another different space alien who then
+implemented AIX. But their universal translators were broken and they'd
+had to gesture a lot."                                  -- Paul Tomblin
+%
+"OS/370 is a truly remarkable operating system. It's possible to destroy
+days of work with a single misplaced space, so alertness in the
+programming staff is encouraged."
+                   -- http://www.pbm.com/~lindahl/real.programmers.html
+%
+"The users that I support would double-click on a landmine to find out
+what happens."                                -- A system administrator
+%
+"Windows seems to take the position that since things in the kernel
+are defined as secure, you should put everything in the kernel.  When
+they can't figure out how to secure something, they just put it in the
+kernel and define it as secure."    -- Bruce Schneier, Secrets and Lies
+%
+"That's right," shouted Vroomfondel, "we demand rigidly defined areas of
+doubt and uncertainty!"          -- The Hitchhikers Guide to the Galaxy
+%
+"It's not that I disagree with Bush's economic policy, or his foreign
+policy, it's that I believe he's a child of Satan here to destroy the
+planet earth."                                            -- Bill Hicks
+%
+"George Bush . . . presided over an administration whose policies
+towards South America included genocide.  See, the reason I didn't vote
+for him is coz he's a mass murderer."                    --  Bill Hicks
+%
+"Lisp has all the visual appeal of oatmeal with fingernail clippings
+mixed in."                                                -- Larry Wall
+%
+"IBM even has a patent, #5,247,661, on a software application to permit
+employees to automatically document ideas for later patenting."
+           -- http://www.groklaw.net/article.php?story=2004031219075674
+%
+"Everyone knows that debugging is twice as hard as writing a program in
+the first place. So if you're as clever as you can be when you write it,
+how will you ever debug it?"
+                                                     -- Brian Kernighan
+%
+"No no no. You're supposed to test with -march=... -fomit-frame-pointer
+-ffancy-math -fuse-lots-of-resources-go-very-fast -fsacrifice-more-goats
+-fsummon-cthulu-if-that-helps as root at nice -20, preferably in single
+user mode and jumps should be aligned on pentagrams, not 8 byte
+boundaries.
+Definitely not use debugging :-)"
+                                  -- Nicholas Clark, in perl6-internals
+%
+"The annual National Geographic Survey has thrown up the sad fact that
+only 23 out of 56 young Americans know the whereabouts of the Pacific
+Ocean." -- http://www.guardian.co.uk/online/news/0,12597,1286066,00.html
+%
+"The solution to your problem isn't found in the firewall. It's found in
+establishing policies about Internet use and then enforcing them, by
+firing people if necessary."
+               -- Jefferson Ogata, NOAA Computer Incident Response Team
+%
+"If you wish to justify a policy that will plainly increase the harms
+associated with each individual act of drug use, by creating violent
+criminal gangs as distributors, driving the sale of contaminated black
+market drugs, blighting the careers of users caught by the police,
+criminalising 3 million people, and so on, then people will reasonably
+expect, as a trade-off, that you will also provide good quality evidence
+showing that your policy achieves its stated aim of reducing the overall
+numbers of people using drugs."
+     -- http://www.badscience.net/2009/11/the-nutt-sack-affair-part-493/
+%
+"I was waiting to cross the road with my four year old cousin and my
+Aunt, who was trying to teach him how to cross properly, looked down and
+asked him what the first rule was, he thought for a minute before
+confidently stateing [sic]: "You don't talk about Fight Club." I laughed
+so hard I almost got hit by a bus. 
+                                   -- Someone on http://itmademyday.com/
+%
+"If you give me six lines written by the hand of the most honest of
+men, I will find something in them which will hang him."
+                                                   -- Cardinal Richelieu
+%
+"To use the rather colourful imagery that internet piracy conjures up in
+a highly imperfect analogy, the file being shared in the swarm is the
+treasure, the BitTorrent client is the ship, the .torrent file is the
+treasure map, The Pirate Bay provides treasure maps free of charge and
+the tracker is the wise old man that needs to be consulted to understand
+the treasure map."
+                                                     -- Judge J. Cowdroy
+%
+"An employee of the Uzbek general prosecutor’s press office said that
+only his manager was authorized to comment and that the manager’s
+position was at present unfilled."
+       -- http://www.nytimes.com/2010/02/11/world/asia/11uzbekistan.html

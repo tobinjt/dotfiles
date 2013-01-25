@@ -1,0 +1,6 @@
+; Load my clisprc.  This took far too long to figure out - why does sbcl reject
+; filenames with dots in them?
+(load
+  (native-namestring
+    (make-pathname :directory (directory-namestring (user-homedir-pathname))
+                   :name "/.clisprc.lisp")))

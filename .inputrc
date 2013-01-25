@@ -1,0 +1,118 @@
+# vim: set filetype=readline :
+# inputrc for libreadline
+# See readline(3readline) and `info rluserman' for more information.
+
+$include /etc/inputrc
+
+## Start with options.
+
+# Use vi keymap.
+#set editing-mode vi
+
+# The bell must die!
+set bell-style none
+# Add a / to symlinks to directories on tab completion.
+set mark-symlinked-directories on
+# Display completions in columns, sorted down the column rather than across
+# the row.
+set print-completions-horizontally off
+# Append a character to possible completion indicating file type.
+set visible-stats on
+# Be 8 bit clean.
+set input-meta on
+set output-meta on
+
+# To allow the use of 8bit-characters like the german umlauts, comment out
+# the line below. However this makes the meta key not work as a meta key,
+# which is annoying to those which don't need to type in 8-bit characters.
+
+# set convert-meta off
+
+# try to enable the application keypad when it is called.  Some systems
+# need this to enable the arrow keys.
+# set enable-keypad on
+
+# see /usr/share/doc/bash/inputrc.arrows for other codes of arrow keys
+
+# do not bell on tab-completion
+# set bell-style none
+# set bell-style visible
+
+## Common keybindings
+
+# This is one of the most annoying things I have ever encountered.  By
+# default shift-3 inserts a comment at the start of the line and hits
+# return, basically cancelling the command you were just typing.
+"\M-#": redraw-current-line
+
+### Home and End keys
+
+# allow the use of the Home/End keys - Linux VT?
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+# for screen, non RH/Debian xterm, possibly VT220 also.
+"\eOH": beginning-of-line
+"\eOF": end-of-line
+# for freebsd console, kvt??
+"\e[H": beginning-of-line
+"\e[F": end-of-line
+# for PuTTY
+"\e[[1~": beginning-of-line
+"\e[[4~": end-of-line
+$if term=rxvt
+    "\e[7~": beginning-of-line
+    "\e[8~": end-of-line
+$endif
+
+# allow the use of the Delete/Insert keys
+"\e[3~": delete-char
+"\e[2~": quoted-insert
+
+### mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
+# xterm
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+# Dunno - taken from Debian /etc/inputrc
+"\e[5C": forward-word
+"\e[5D": backward-word
+# Dunno - taken from Debian /etc/inputrc
+"\e\e[C": forward-word
+"\e\e[D": backward-word
+# rxvt, Eterm
+"\eOc": forward-word
+"\eOd": backward-word
+# PuTTY
+"\eOD": backward-word
+"\eOC": forward-word
+
+# Emacs mode key bindings.
+$if mode=emacs
+$endif
+
+# Vi mode key bindings.
+$if mode=vi
+    set keymap vi-command
+    # these are for vi-command mode
+
+    set keymap vi-insert
+    # these are for vi-insert mode
+    "\C-k": kill-line
+    "\C-a": beginning-of-line
+    "\C-l": clear-screen
+    "\C-d": delete-char
+    "\C-b": backward-char
+    "\C-f": forward-char
+    "\C-x!": possible-command-completions
+
+    # Investigate these.
+    #shell-backward-word shell-expand-line shell-forward-word shell-kill-word
+
+    # Clash with default vi key bindings
+    #"\C-n": next-history
+    #"\C-p": previous-history
+$endif
+
+# This makes space expand stuff so you can see what !$, !:0 etc. are.
+$if Bash
+    Space: magic-space
+$endif

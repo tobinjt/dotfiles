@@ -1,0 +1,62 @@
+# Set $TERM to xterm; fixes keymapping problems in vim.  Oddly, screen seems to
+# send xterm key sequences, but have different key sequences defined in the
+# screen termcap.
+term xterm
+
+# Tell screen to use the normal screen buffer rather than the alternate buffer,
+# so I can use terminal scrollback.
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+
+# The escape character is ^@, or '^ ' on some terminals.
+escape ^@^@
+
+# no annoying audible bell, please
+vbell on
+
+# Detatch on hangup, rather than killing everything.
+autodetach on
+
+# don't display the copyright page
+startup_message off
+
+# How many lines of history to retain
+defscrollback 5000
+
+# Enable alternate screen.  I guess vim and less use this?
+altscreen on
+
+# mode for new PTYs
+defmode 0620
+
+# Enable utf8
+defutf8 on
+
+# This requires <esc>k<esc>\ to be in the last line of my prompt.
+shelltitle 'bidding? |bash'
+
+backtick 1 60 60 screen-backtick
+
+# Caption to display; there doesn't seem much point in using both caption and
+# hardstatus.
+caption always
+caption string "%h  %1`  |%<  %-Lw %{+b}%n %t%{-b} %+Lw"
+
+# Used with read-buffer (^A-<) and write-buffer (^A->) commands.
+bufferfile $HOME/tmp/screen-exchange
+
+# Rebind destructive keys
+bind k      # kill window
+bind ^k     # kill window
+bind .      # write a .termcap file
+bind ^\     # kill all windows and terminate screen
+bind \\     # kill all windows and terminate screen
+bind ^h     # hardcopy
+bind h      # hardcopy
+bind Q      # 'only' remove split windows?
+bind X      # 'remove' Kill current region
+
+# bindings for moving between split windows.
+#bind j focus down
+#bind k focus up
+#bind t focus top
+#bind b focus bottom

@@ -1,0 +1,71 @@
+# vim: set filetype=sh :
+# Programmable completion:
+# Bash supports programmable completion, i.e. different behaviour on hitting TAB
+# depending on the command.
+
+# Deal with old versions of Bash gracefully.
+plusdirs=""
+bashdefault=""
+default=""
+if [ "${BASH_VERSINFO[0]}" -gt 2 ]; then
+    plusdirs="-o plusdirs"
+    bashdefault="-o bashdefault"
+    default="-o default"
+fi
+
+# Make tab completion only show directories when completing cd and rmdir
+complete -A directory ${bashdefault} rmdir pushd
+# Additionally ignore CVS and .svn directories.
+complete -A directory ${bashdefault} -X '*@(.svn|CVS)' cd
+# unset complete on variable names
+complete -A variable unset
+# set completes on shell options
+complete -A setopt set
+# shopt completes with shopt options
+complete -A shopt shopt
+# help only knows about helptopics
+# BUT this doesn't give the full list :(
+# complete -A helptopic help
+# unalias completes with aliases
+complete -A alias unalias
+# command, type and which complete on commands
+complete -A command type which command
+# builtin completes on builtins
+complete -A builtin builtin
+# then, else and do are followed by commands
+#complete -A command do then else
+function __expand () {
+    local file="${COMP_WORDS[$COMP_CWORD]}"
+    COMPREPLY=( $( compgen -G "$file*" ) )
+}
+#complete $plusdirs -F __expand -X '!*.pdf' xpdf
+#complete $plusdirs -F __expand -X '!*.gz'  gunzip
+#complete $plusdirs -F __expand -X '!*.bz2' bunzip2
+
+# TODO: /etc/init.d/* completion
+# TODO: simple apt-get completion.
+# TODO: mount completion
+
+# Yoinked from Ian Murdoch's bash completion stuff, and cut down somewhat.
+# kill(1) completion
+#
+_kill()
+{
+    local cur
+
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+
+    if [ $COMP_CWORD -eq 1 ] && [[ "$cur" == -* ]]; then
+        # return list of available signals
+        # standard signal completion is rather braindead, so we need
+        # to hack around to get what we want here, which is to
+        # complete on a dash, followed by the signal name minus
+        # the SIG prefix
+        COMPREPLY=( $( compgen -A signal SIG${cur#-} ))
+        for (( i=0; i < ${#COMPREPLY[@]}; i++ )); do
+            COMPREPLY[i]=-${COMPREPLY[i]#SIG}
+        done
+    fi
+}
+complete -F _kill kill
