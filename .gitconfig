@@ -13,5 +13,6 @@
   gdiff = difftool --tool tkdiff --no-prompt
   merge-conflicts = commit -m 'Fix merge conflicts.'
   review-comments = commit -m 'Review comments.'
+  upstream = commit -a -m 'Upstream changes.'
 [push]
 	default = current
