@@ -3,7 +3,7 @@
 # the --login option.
 
 # If $HOME/gbin is not part of $PATH, add to $PATH.
-if [ "${PATH/${HOME}\gbin/}" == "${PATH}" ]; then
+if [ "${PATH/${HOME}\/gbin/}" == "${PATH}" ]; then
     PATH="${HOME}/gbin:${HOME}/bin:${PATH}:/sbin:/usr/sbin"
     PERL5LIB="${HOME}/lib/perl:${HOME}/lib/perl/lib${PERL5LIB:+:}${PERL5LIB:-}"
 
