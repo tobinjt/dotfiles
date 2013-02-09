@@ -6,12 +6,6 @@
 " Enable for debugging.
 "set verbose=2
 
-" This needs to be done before loading plugins.
-if has("eval")
-    " Disable VCSCommand mappings; they conflict with NERDCommenter mappings.
-    let VCSCommandDisableMappings = 1
-endif
-
 " This needs to be done before loading plugins, so that runtimepath can be
 " extended first.
 if has("eval")
