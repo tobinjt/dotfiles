@@ -4,6 +4,11 @@
 
 # If $HOME/gbin is not part of $PATH, add to $PATH.
 if [ "${PATH/${HOME}\/gbin/}" == "${PATH}" ]; then
+    # If homebrew is in use, put it first so I can replace system binaries like
+    # vim.
+    if [ -d "/usr/local/Cellar" ]; then
+        PATH="/usr/local/bin:${PATH}"
+    fi
     PATH="${HOME}/gbin:${HOME}/bin:${PATH}:/sbin:/usr/sbin"
     PERL5LIB="${HOME}/lib/perl:${HOME}/lib/perl/lib${PERL5LIB:+:}${PERL5LIB:-}"
 
