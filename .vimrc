@@ -6,6 +6,17 @@
 " Enable for debugging.
 "set verbose=2
 
+" Set up Vundle.
+set nocompatible
+filetype off
+set runtimepath+=~/.vim/bundle/gmarik/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+" Add bundles here.
+" TODO(johntobin): Why do I disable and reenable syntax highlighting in
+" CS_vimrc?  What breaks without it?
+filetype plugin indent on
+
 " This needs to be done before loading plugins, so that runtimepath can be
 " extended first.
 if has("eval")
