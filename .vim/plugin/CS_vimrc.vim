@@ -270,8 +270,6 @@ if has("eval")
     " Various settings above will have affected the syntax highlighting, so turn
     " it back on now.
     syntax on
-    " Enable FileType specific plugins and indentation.
-    filetype plugin indent on
 endif
 
 " Now make changes to syntax highlighting. {{{1
