@@ -13,6 +13,14 @@ set runtimepath+=~/.vim/bundle/gmarik/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 " Add bundles here.
+Bundle 'godlygeek/tabular'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-scripts/LargeFile'
+Bundle 'vim-scripts/file-line'
+Bundle 'vim-scripts/quickfixsigns'
 " TODO(johntobin): Why do I disable and reenable syntax highlighting in
 " CS_vimrc?  What breaks without it?
 filetype plugin indent on
