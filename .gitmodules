@@ -25,3 +25,9 @@
 [submodule ".vim/bundle/vim-scripts/LargeFile"]
 	path = .vim/bundle/vim-scripts/LargeFile
 	url = git://github.com/vim-scripts/LargeFile.git
+[submodule ".vim/bundle/tpope/vim-unimpaired"]
+	path = .vim/bundle/tpope/vim-unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
+[submodule ".vim/bundle/scrooloose/syntastic"]
+	path = .vim/bundle/scrooloose/syntastic
+	url = git://github.com/scrooloose/syntastic.git
