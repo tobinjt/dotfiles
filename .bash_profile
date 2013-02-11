@@ -19,6 +19,9 @@ if [ "${PATH/${HOME}\/gbin/}" == "${PATH}" ]; then
     export PATH PERL5LIB MANPATH
 fi
 
+# Load cached ssh-agent environment variables.
+. "${HOME}/.bash_ssh_agent"
+
 # Replace xterm* with the best available.
 case "${TERM}" in
     xterm*)
