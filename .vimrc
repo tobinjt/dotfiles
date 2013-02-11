@@ -9,7 +9,7 @@
 " Set up Vundle.
 set nocompatible
 filetype off
-set runtimepath+=~/.vim/bundle/gmarik/vundle/
+set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 " Add bundles here.
