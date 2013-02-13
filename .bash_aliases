@@ -163,6 +163,10 @@ godocl() {
   godoc "$@" | less
 }
 
+godocf() {
+  godoc "$@" | grep ^func
+}
+
 godocserver() {
   godoc --http=:23579
 }
