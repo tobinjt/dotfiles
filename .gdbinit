@@ -6,3 +6,10 @@ set confirm off
 define gobreakpoints
   break main.breakpoint
 end
+define gosupport
+  source ~/src/go-gdb-support.py
+end
+define gomacosx
+  gosupport
+  gobreakpoints
+end
