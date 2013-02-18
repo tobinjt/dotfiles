@@ -7,6 +7,7 @@ define gobreakpoints
   break main.breakpoint
 end
 define gosupport
+  # This must link to runtime-gdb.py from Go.
   source ~/src/go-gdb-support.py
 end
 define gomacosx
