@@ -16,7 +16,10 @@ if [ "${PATH/${HOME}\/gbin/}" == "${PATH}" ]; then
     # search path to ${MANPATH}.
     MANPATH="${HOME}/man:${HOME}/lib/perl/man${MANPATH:+:}${MANPATH:-}:"
 
-    export PATH PERL5LIB MANPATH
+    # Trick Go into finding things in ~/src
+    GOPATH="${HOME}${GOPATH:+:}${GOPATH:-}"
+
+    export PATH PERL5LIB MANPATH GOPATH
 fi
 
 # Load cached ssh-agent environment variables.
