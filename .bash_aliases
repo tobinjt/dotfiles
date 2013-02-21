@@ -168,5 +168,6 @@ godocf() {
 }
 
 godocserver() {
+  echo "http://localhost:23579/"
   godoc --http=:23579
 }
