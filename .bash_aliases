@@ -172,6 +172,9 @@ godocserver() {
 gocovr() {
   gocov test "$@" | gocov report
 }
+gocovrx() {
+  gocovr "$@" | grep -v -F 100.00
+}
 gocova() {
   gocov test "$@" | gocov annotate /dev/stdin "$@"
 }
