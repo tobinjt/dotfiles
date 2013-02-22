@@ -162,12 +162,16 @@ delete-ipad-app-backups() {
 godocl() {
   godoc "$@" | less
 }
-
 godocf() {
   godoc "$@" | grep ^func
 }
-
 godocserver() {
   echo "http://localhost:23579/"
   godoc --http=:23579
+}
+gocovr() {
+  gocov test "$@" | gocov report
+}
+gocova() {
+  gocov test "$@" | gocov annotate /dev/stdin "$@"
 }
