@@ -177,5 +177,5 @@ gocovrx() {
   gocovr "$@" | grep -v -F 100.00
 }
 gocova() {
-  gocov test "$@" | gocov annotate /dev/stdin "$@" | less
+  gocov test "$@" | gocov annotate /dev/stdin "$@" | less +/MISS
 }
