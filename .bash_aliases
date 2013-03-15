@@ -113,6 +113,7 @@ vimsplain () {
 
 dotfiles() {
     linkdirs "$@" "${HOME}/src/dotfiles" "${HOME}"
+    chmod 600 "${HOME}/.ssh/id_rsa"
 }
 
 # Adapted from http://www.chiark.greenend.org.uk/~sgtatham/aliases.html
