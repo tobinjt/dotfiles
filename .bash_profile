@@ -65,7 +65,7 @@ function prompt_command() {
       _tmux_env=$( tmux show-environment )
       if [ "${_tmux_env}" != "${_expected_tmux_env}" ]; then
         eval $( echo "${_tmux_env}" | \
-                  sed -e '/^[^-]/{ s/=/="/; s/$/"/; s/^/export /; }' \
+                  sed -e '/^-/!{ s/=/="/; s/$/"/; s/^/export /; }' \
                       -e 's/^-/unset /' \
                       -e '/^./s/$/;/' )
         _expected_tmux_env="${_tmux_env}"
