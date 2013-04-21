@@ -3,10 +3,6 @@
 alias ls="ls -F" # --color=auto"
 alias mv="mv -i"
 alias cp="cp -i"
-prompt_cleanup () {
-	unset __PROMPT_PL __PROMPT_PL_WRITE __PROMPT_PL_READ __PROMPT_PL_TRIED 
-	source $HOME/.bashrc
-}
 
 strip-quotes() {
   sed -e 's/"//g' -e "s/'//g"
@@ -37,47 +33,10 @@ rdesktop () {
 cdpwd () {
     cd "$( /bin/pwd )"
 }
-titlebar () {
-    export TITLEBAR="$@"
-}
-
-svnsummary () {
-    if [ "$#" = 0 ]; then
-        svnsummary .
-    else
-        (   svn status "$@";
-            svn diff "$@" | diffstat;
-            svn diff "$@" | colordiff;
-        ) | ${PAGER:-less}
-    fi
-}
-
-reprepro () {
-    if [ -d "/software/apt/debian" ]; then
-        basedir="--base /software/apt/debian"
-    fi
-    ( umask 002; command reprepro $basedir --verbose "$@" )
-}
-
-lintian () {
-    command lintian $DEBUILD_LINTIAN_OPTS "$@"
-}
-
-clean () {
-    fakeroot debian/rules clean "$@"
-}
 
 git () {
     # MacOS unset doesn't have --unset.
     ( unset LESS; exec git "$@" )
-}
-
-reprepro-ubuntu () {
-    ( umask 002; command reprepro --base /software/apt/ubuntu --verbose "$@" )
-}
-
-remove-package-build-files () {
-    rm *.deb *.dsc *.build *.changes *.diff.gz
 }
 
 ikiwiki-johntobin.ie () {
@@ -90,17 +49,6 @@ ikiwiki-johntobin.ie-preview () {
 
 clisp () {
     (ulimit -v 1048576 && command clisp -ansi -m 128MB "$@")
-}
-
-dtach () {
-    if [ "$#" -lt 2 ]; then
-        command dtach --help
-    else
-        switch="$1"
-        socket="$2"
-        shift 2
-        command dtach "$switch" "$socket" -r winch -z "$@"
-    fi
 }
 
 bc() {
