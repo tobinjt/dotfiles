@@ -8,6 +8,10 @@ prompt_cleanup () {
 	source $HOME/.bashrc
 }
 
+strip-quotes() {
+  sed -e 's/"//g' -e "s/'//g"
+}
+
 top () {
 	[ -z "$LINES" ] && LINES=24
 	[ "$LINES" -lt 7 ] && LINES=24
