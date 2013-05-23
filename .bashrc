@@ -21,8 +21,10 @@ if [ "$-" != "${-//i/}" ]; then
     else
         _user="\u"
     fi
-    PS1="\nI'm ${_user} on \h's pts/\l @ \t, \d, in \W/\nWhat is thy bidding? "
-    export PS1
+    PS1="\nI'm ${_user} on \h's pts/\l @ \t, \d, in \w/\nWhat is thy bidding? "
+    # Trim \w in PS1 to 4 subdirectories.
+    PROMPT_DIRTRIM=4
+    export PS1 PROMPT_DIRTRIM
 
     shopt -s checkhash
     shopt -s checkwinsize
