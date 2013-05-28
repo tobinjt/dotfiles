@@ -58,6 +58,8 @@ if has("eval")
 
     " Enable folding of heredocs and functions.
     let sh_fold_enabled = 3
+
+    let javaScript_fold = 1
 endif
 
 if has("user_commands")
