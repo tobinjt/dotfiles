@@ -85,6 +85,10 @@ $endif
 "\eOD": backward-word
 "\eOC": forward-word
 
+# Convert smart quotes to real quotes.
+"\xE2\x80\x9C": "\""
+"\xE2\x80\x9D": "\""
+
 # Emacs mode key bindings.
 $if mode=emacs
 $endif
