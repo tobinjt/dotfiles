@@ -6,6 +6,9 @@
 " Enable for debugging.
 "set verbose=2
 
+" Remove 'vcsdiff' because it overwrites Syntastic error markers.
+let g:quickfixsigns_classes = ['qfl', 'loc', 'marks', 'breakpoints']
+
 " Set up Vundle.
 set nocompatible
 filetype off
