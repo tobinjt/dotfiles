@@ -188,33 +188,12 @@ if has("eval")
             \ if line("'\"") > 0 && line("'\"") <= line("$") |
             \ 	exe "normal g`\"" |
             \ endif
-        " current filetype.
-        " Assume foo.rev is a Bind zone file.
-        autocmd BufEnter *.rev setlocal filetype=bindzone
-        " Turn on cindent for PHP and Jave, so we get smart indenting of code.
-        " This mightn't be necessary now that we're using filetype indent on, but I
-        " dunno.
-        autocmd FileType php,java setlocal cindent
-        " I don't know if this does anything, now that there's specific indentation
-        " for Perl (:help indent-expression).  Leave it for now, in case we're using
-        " old Perl syntax highlighting somewhere.
-        " Turn on cindent for Perl, but with a simple change: lines starting with a #
-        " are preprocessor directives in C and should start in column 1, but in Perl
-        " they're comments.  Stop Vim moving Perl comments to column 1:
-        autocmd FileType perl setlocal cindent cinkeys-=#
         " Assume foo.t is Perl; Perl Modules come with tests in t/*.t
         autocmd BufEnter *.t setlocal ft=perl
-        " Set the format options to do something groovy:
         " Auto-wrap text, autowrap comments, allow fomment formatting, don't break
         " lines that are longer than textwidth when insertion starts.
         " :help fo-table for more details.
         autocmd FileType pod setlocal formatoptions+=tcql
-        " When editing mail, set the textwidth to 72 and wrap lines.  Allow formatting
-        " of comments with gq (but don't autowrap), and try to recognise numbered lists.
-        autocmd FileType mail setlocal textwidth=72 formatoptions+=nq formatoptions-=c
-        if has("spell")
-            autocmd FileType mail setlocal spell
-        endif
         " Add <> to the list of characters Vim will honour the showmatch setting for,
         " when editing HTML.
         autocmd FileType html setlocal matchpairs+=<:>
