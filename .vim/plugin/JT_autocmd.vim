@@ -2,7 +2,6 @@
 if !has("autocmd")
   finish
 endif
-autocmd BufEnter .mutt-signatures setlocal textwidth=72
 " On BSD systems, the original file provided by crontab(1) must be written to,
 " rather than writing a new file and renaming it.
 autocmd FileType crontab setlocal backupcopy=yes
@@ -44,10 +43,6 @@ if has("spell")
     autocmd FileType help,p4-spec setlocal nospell
 endif
 
-" Highlight long lines in mails, unless they're quoted.
-autocmd FileType mail syn match mailLongLine "\%73v.*$"
-autocmd FileType mail highlight def link mailLongLine Error
-
 autocmd FileType lisp syn keyword lispTodo contained XXX
 
 " Try to highlight XXX in Latex source
@@ -63,15 +58,8 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 if has("eval")
-    " I finally figured out how to call a function on editing a file.
     autocmd BufNewFile,BufReadPre * call JT_install_maps()
-    autocmd FileType mail call JT_install_maps()
-    " Recognise numbered lists when editing text files.
-    autocmd FileType mail setlocal formatoptions+=n
 endif
-
-" Stop folding packages
-"autocmd FileType perl syntax clear perlPackageFold
 
 " *.t: Perl test scripts.
 if has("eval")
