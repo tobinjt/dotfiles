@@ -88,11 +88,8 @@ if has("+viminfo")
     set viminfo='100,<50,s10,h
 endif
 " Misc stuff, bugfixes. {{{1
-" Enable the mouse.  The _appears_ to break cut'n'paste - you need to use
-" Shift-Click instead of Click, so I'll leave it disabled.
-"set mouse=a
 " Prevent vim connecting to the X server so that using PuTTY works without
-" exceed.  This prevents cut and paste between Vim and the X server, but
+" Exceed.  This prevents cut and paste between Vim and the X server, but
 " doesn't prevent cut and paste between the terminal and the X server.
 " Selecting text within Vim won't copy it to the X server's clipboard, but
 " selecting text from the terminal will.  You won't notice the difference
@@ -111,12 +108,6 @@ if has("eval")
     " Assume shell scripts are really using bash, so that we get bash-enhanced
     " syntax.
     let is_bash = 1
-    " Ditto.
-    let bash_is_sh = 1
-    " Shell scripts: highlight quotes within quotes.
-    let highlight_balanced_quotes = 1
-    " Shell scripts: highlight function names in declarations.
-    let highlight_function_name = 1
 
     " C source/headers: highlight strings and numbers withing comments. {{{1
     " Does this cause problems with PHP?  The highlighting can be a bit broken
@@ -125,24 +116,13 @@ if has("eval")
     " C source/headers: highlight gcc specific things.
     let c_gnu = 1
 
-    " Assembly language: we only use MC68k, so switch highlighting to that.
-    let asmsyntax = "asm68k"
-
     " Perl settings: {{{1
     " Highlight POD within Perl source.  see perldoc perlpod
     let perl_include_pod = 1
-    " Parse Perl's more complicated variables (needed for 6.x)
-    let perl_extended_vars = 1
     " Highlight qq etc as statements rather than strings.
     let perl_string_as_statement = 1
     " Increase the number of lines vim looks at when highlighting Perl.
     let perl_sync_dist = 500
-    " Enable folding of Perl subs; collapse subs down to a single line.  I won't
-    " enable this because no one's going to know how to expand the folds.  If
-    " you're interested: zo will open the fold, zc will close it.
-    "let perl_fold = 1
-    "let perl_fold_blocks = 1
-    "let perl_nofold_packages = 1
 
     " PHP settings: {{{1
     " Highlight SQL queries inside strings.
@@ -165,10 +145,10 @@ if has("eval")
     let java_highlight_java_lang_ids = 1
     " If you follow the braindead Java style guidelines, this will identify
     " functions.
-    let java_highlight_functions="style"
+    let java_highlight_functions = "style"
     " Java's printing is apparently only for debugging, so highlight it
     " differently.
-    let java_highlight_debug=1
+    let java_highlight_debug = 1
     " Increase the number of lines used for synchronising.
     let java_minlines = 100
 
@@ -183,12 +163,11 @@ if has("eval")
     let hs_highlight_types = 1
     let hs_highlight_more_types = 1
     let hs_highlight_debug = 1
-    let hs_minlines = 100
 
     " Eiffel {{{1
     " Strict syntax checks
-    let eiffel_strict=1
-    let eiffel_pedantic=1
+    let eiffel_strict = 1
+    let eiffel_pedantic = 1
 
     " Readline {{{1
     " Add bash specific stuff
