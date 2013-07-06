@@ -46,10 +46,8 @@ if has("eval")
     let Tex_SmartKeyQuote = 0
 
     " Settings for syntax/2html.vim
-    let use_xhtml = 1
-    let html_use_css = 1
+    let html_use_xhtml = 1
     let html_ignore_folding = 1
-    let html_number_lines = 1
 
     let Twiki_SourceHTMLSyntax = 1
     let Twiki_Functions = 1
