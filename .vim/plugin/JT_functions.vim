@@ -7,22 +7,9 @@ if has("eval")
     function! AddPeriods()
         g/^-/s/[^.:]\zs$/./
     endfunction
-    function! Project_Euler_template()
-        insert
-[Project Euler
-problem XXX:](http://projecteuler.net/index.php?section=problems&id=XXX)
-
-
-
-Here's my LISP solution:
-
-[[!tag LISP Project_Euler programming]]
-.
-        call cursor(0, 0)
-    endfunction
     " Return the name of the syntax highlighting group under the cursor.
     function! SyntaxUnderCursor()
-        echomsg synIDattr(synID(line("."), col("."), 1), "name")
+        echomsg synIDattr(synID(line('.'), col('.'), 1), 'name')
     endfunction
 
     " Initialise now so it always exists.
