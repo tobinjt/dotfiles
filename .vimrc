@@ -16,6 +16,7 @@ set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 " Add bundles here.
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'kien/ctrlp.vim'
