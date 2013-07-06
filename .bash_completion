@@ -42,10 +42,6 @@ function __expand () {
 #complete $plusdirs -F __expand -X '!*.gz'  gunzip
 #complete $plusdirs -F __expand -X '!*.bz2' bunzip2
 
-# TODO: /etc/init.d/* completion
-# TODO: simple apt-get completion.
-# TODO: mount completion
-
 # Yoinked from Ian Murdoch's bash completion stuff, and cut down somewhat.
 # kill(1) completion
 #

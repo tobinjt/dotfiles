@@ -250,7 +250,6 @@ if has("eval")
             autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
             autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
             autocmd FileType xml        setlocal omnifunc=xmlcomplete#CompleteTags
-            " TODO: syntax completion using generic syntax completion thing.
         endif
 
         if has("eval")

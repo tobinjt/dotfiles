@@ -48,10 +48,6 @@ endif
 autocmd FileType mail syn match mailLongLine "\%73v.*$"
 autocmd FileType mail highlight def link mailLongLine Error
 
-" Extend the list of things to be highlighted for SCS
-autocmd FileType perl syn keyword perlTodo contained IMPROVE IMPLEMENT
-"autocmd FileType perl syn clear perlPackageFold
-
 autocmd FileType lisp syn keyword lispTodo contained XXX
 
 " Try to highlight XXX in Latex source
