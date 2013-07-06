@@ -3,6 +3,9 @@ if !has("autocmd")
   finish
 endif
 autocmd BufEnter .mutt-signatures setlocal textwidth=72
+" On BSD systems, the original file provided by crontab(1) must be written to,
+" rather than writing a new file and renaming it.
+autocmd FileType crontab setlocal backupcopy=yes
 autocmd FileType pod setlocal textwidth=72
 autocmd FileType make setlocal shiftwidth=8 tabstop=8
 autocmd FileType tex setlocal textwidth=75 makeprg=make\ -s foldmethod=syntax formatoptions+=2
