@@ -232,16 +232,6 @@ if has("eval")
     syntax on
 endif
 
-" Now make changes to syntax highlighting. {{{1
-
-" Change the colour of comments; DarkBlue is too dark on a dark background.
-" This may not be necessary with Vim 6.3, where the default seems to be
-" DarkGreen on dark backgrounds.  Which is nicer, DarkCyan or DarkGreen?
-if has("syntax")
-    highlight Comment ctermfg=DarkGreen
-endif
-
-
 if has("eval")
     " Functions to do magic things when you start editing a new file.
     " Populate a C header file.
