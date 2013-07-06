@@ -245,7 +245,6 @@ if has("eval")
         " Replace out all non-word characters with _, to keep cpp happy.
         let b:CS_define = substitute ( b:CS_define, "\\W", "_", "g" )
         insert
-/* $CVSId$ */
 #ifndef GUARD
 #define GUARD
 
@@ -253,8 +252,6 @@ if has("eval")
 
 #endif /* GUARD */
 .
-        " Substitute CVSId with Id, so that cvs doesn't mangle THIS file.
-        silent %s/CVSId/Id/
         " Substitute GUARD with our individualised guard.
         exe "silent %s/GUARD/" . b:CS_define . "/"
         " Delete the empty trailing line.
@@ -271,7 +268,6 @@ if has("eval")
         endif
         " Can't use normal with insert, wonder why.
         insert
-/* $CVSId$ */
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -279,15 +275,13 @@ if has("eval")
 
 
 .
-        " Substitute CVSId with Id, so that cvs doesn't mangle THIS file.
-        silent %s/CVSId/Id/
-        call cursor( 7, 0 )
+        call cursor( 6, 0 )
         " Figure out the filename to include, and include it if it exists.
         let b:CS_header = expand ( "%:t:r" ) . ".h"
         if filereadable( b:CS_header )
-            call append ( 5, "#include \"" . b:CS_header . "\"" )
-            call append ( 6, "" )
-            call append ( 7, "\/* XXX " . b:CS_header . " included below for prototypes XXX */" )
+            call append ( 4, "#include \"" . b:CS_header . "\"" )
+            call append ( 5, "" )
+            call append ( 6, "\/* XXX " . b:CS_header . " included below for prototypes XXX */" )
             " How this works:
             " Use normal to make sure we don't use a mapping: this doesn't
             " work though???
@@ -302,7 +296,7 @@ if has("eval")
             " to add the function body.
             execute "silent read! sed -e '/^\\#include/d' " . b:CS_header
                 \ . " | cpp -P -C -"
-            call cursor ( 11, 0 )
+            call cursor ( 10, 0 )
         endif
     endfunction
 
