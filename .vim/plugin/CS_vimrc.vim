@@ -371,12 +371,3 @@ class CLASSNAME {
         call cursor ( 3, 2 )
     endfunction
 endif
-
-
-" Mapping keys to commands: {{{1
-" Make F2 be justify, in various modes.  This is a global mapping, and will
-" affect every open buffer.
- noremap <F2> gqap
-" Use gwap in insert mode, it should leave the cursor where it started.
-inoremap <F2> <C-O>gwap
-vnoremap <F2> gq
