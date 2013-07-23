@@ -3,7 +3,9 @@ banner=no
 # available colours are: white, yellow, green, blue,
 #                        cyan, red, magenta, black
 #
-plain=white
-newtext=cyan
-oldtext=red
-diffstuff=magenta
+# Use Solarized colours.
+plain=off
+newtext=darkgreen
+oldtext=darkred
+diffstuff=darkblue
+cvsstuff=darkblue
