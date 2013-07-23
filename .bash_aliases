@@ -131,3 +131,12 @@ gocovrx() {
 gocova() {
   gocov test "$@" | gocov annotate /dev/stdin "$@" | less +/MISS
 }
+gocdpkg() {
+  local pdir
+  pdir="$(go list -f '{{ .Dir }}' "$1")"
+  if [[ -z "${pdir}" ]]; then
+    echo "no directory found for pkg $1"
+    return 1
+  fi
+  cd "${pdir}"
+}

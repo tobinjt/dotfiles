@@ -7,7 +7,7 @@ if [ "${PATH/${HOME}\/src\/gopath\/bin/}" == "${PATH}" ]; then
     # If homebrew is in use, put it first so I can replace system binaries like
     # vim.
     if [ -d "/usr/local/Cellar" ]; then
-        PATH="/usr/local/bin:${PATH}"
+        PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
     fi
     PATH="${HOME}/gbin:${HOME}/bin:${HOME}/src/gopath/bin:${PATH}"
     PATH="${PATH}:/sbin:/usr/sbin"
