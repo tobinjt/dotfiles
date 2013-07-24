@@ -10,6 +10,11 @@
 let g:quickfixsigns_classes = ['qfl', 'loc', 'marks', 'breakpoints']
 
 " Set up Vundle.
+" To update all the git submodules, run this:
+" git submodule foreach \
+"   'git fetch origin --tags && git checkout master && git pull'
+" To update a single submodule, run the second line in the submodule's
+" directory.
 set nocompatible
 filetype off
 set runtimepath+=~/.vim/bundle/vundle/
