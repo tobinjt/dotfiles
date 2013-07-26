@@ -37,3 +37,12 @@ function! ReGrep()
   execute 'lvimgrep ' . l:pattern . ' ' . l:path
   lwindow
 endfunction
+
+" This layer of indirection seems to be necessary for map().
+function! s:Run(command)
+  execute a:command
+endfunction
+function! UpdateBundleHelptags()
+  call map(split(glob('~/.vim/bundle/*/doc'), '\n'),
+         \ 's:Run("helptags " . v:val)')
+endfunction
