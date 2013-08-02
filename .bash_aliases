@@ -63,9 +63,15 @@ vimsplain () {
   (cd "${HOME}/src/Vimsplain" && python vimsplain.py "$@")
 }
 
+# Provide a hook for local actions in dotfiles().
+dotfiles_local() {
+  true
+}
 dotfiles() {
     linkdirs "$@" "${HOME}/src/dotfiles" "${HOME}"
     chmod 600 "${HOME}/.ssh/id_rsa"
+    vim -c 'call UpdateBundleHelptags() | :quit'
+    dotfiles_local
 }
 
 # Adapted from http://www.chiark.greenend.org.uk/~sgtatham/aliases.html

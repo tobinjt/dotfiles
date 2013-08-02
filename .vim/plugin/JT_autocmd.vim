@@ -1,6 +1,6 @@
 " vim: set filetype=vim :
 if !has("autocmd")
-  finish
+ finish
 endif
 " On BSD systems, the original file provided by crontab(1) must be written to,
 " rather than writing a new file and renaming it.
@@ -16,9 +16,9 @@ autocmd BufRead,BufNewFile /tmp/bash-fc-* setlocal filetype=sh
 autocmd BufNewFile,BufRead *.json setlocal filetype=javascript
 autocmd FileType python setlocal foldminlines=5 foldnestmax=3 foldmethod=indent
 function! JT_install_maps()
-     noremap <buffer> <F2> gqap
-    inoremap <buffer> <F2> <C-O>gwap
-    vnoremap <buffer> <F2> gq
+   noremap <buffer> <F2> gqap
+  inoremap <buffer> <F2> <C-O>gwap
+  vnoremap <buffer> <F2> gq
 endfunction
 
 autocmd BufRead,BufNewFile *.mkd,*.mdwn setlocal filetype=markdown
@@ -36,13 +36,13 @@ autocmd FileType go setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8 fo
 
 " Turn on spelling, if the vim we're using supports it, for specific file types.
 if has("spell")
-    autocmd FileType html,tex,text,mail,perl,pod,c,gitcommit,markdown,debchangelog setlocal spell
-    " This turns on spell checking properly.
-    autocmd FileType html,text,mail,gitcommit,markdown syntax spell toplevel
-    autocmd BufReadPre,BufNewFile *.txt,svn-commit.* setlocal spell
-    autocmd FileType text setlocal formatoptions+=nq
-    autocmd BufReadPre,BufNewFile w3mtmp* setlocal spell tw=72
-    autocmd FileType help,p4-spec setlocal nospell
+  autocmd FileType html,tex,text,mail,perl,pod,c,gitcommit,markdown,debchangelog setlocal spell
+  " This turns on spell checking properly.
+  autocmd FileType html,text,mail,gitcommit,markdown syntax spell toplevel
+  autocmd BufReadPre,BufNewFile *.txt,svn-commit.* setlocal spell
+  autocmd FileType text setlocal formatoptions+=nq
+  autocmd BufReadPre,BufNewFile w3mtmp* setlocal spell tw=72
+  autocmd FileType help,p4-spec setlocal nospell
 endif
 
 autocmd FileType lisp syn keyword lispTodo contained XXX
@@ -60,10 +60,10 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 if has("eval")
-    autocmd BufNewFile,BufReadPre * call JT_install_maps()
+  autocmd BufNewFile,BufReadPre * call JT_install_maps()
 endif
 
 " *.t: Perl test scripts.
 if has("eval")
-    autocmd BufNewFile *.t call CS_populate_perl()
+  autocmd BufNewFile *.t call CS_populate_perl()
 endif

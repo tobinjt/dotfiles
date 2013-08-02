@@ -9,7 +9,7 @@ set smarttab
 
 " Change the xterm title, but not under tmux.
 if has('title') && ! exists("$TMUX")
-    set title
+  set title
 endif
 
 " Don't sync the swap file
@@ -23,47 +23,47 @@ let &formatlistpat='^\s*\(\d\+\|\a\+\.\|\*\)[.:)]\s*'
 
 " Settings required for LaTeX-suite:
 if has('+shellslash')
-    set shellslash
+  set shellslash
 endif
 set grepprg=grep\ -nH\ $*
 
 if has("eval")
-    " Folding in various languages
-    let perl_fold = 1
-    let perl_fold_blocks = 1
-    let perl_nofold_packages = 1
-    let perl_no_scope_in_variables = 1
-    let php_folding = 1
+  " Folding in various languages
+  let perl_fold = 1
+  let perl_fold_blocks = 1
+  let perl_nofold_packages = 1
+  let perl_no_scope_in_variables = 1
+  let php_folding = 1
 
-    " Stop the goddamn MatchParen plugin from loading.
-    let loaded_matchparen = 1
+  " Stop the goddamn MatchParen plugin from loading.
+  let loaded_matchparen = 1
 
-    " Enable folding in TeX.
-    let tex_fold_enabled=1
+  " Enable folding in TeX.
+  let tex_fold_enabled=1
 
-    " Stop the keymaps being fucked with by LatexSuite
-    let b:doneSetTeXOptions = 1
-    let Tex_SmartKeyQuote = 0
+  " Stop the keymaps being fucked with by LatexSuite
+  let b:doneSetTeXOptions = 1
+  let Tex_SmartKeyQuote = 0
 
-    " Settings for syntax/2html.vim
-    let html_use_xhtml = 1
-    let html_ignore_folding = 1
+  " Settings for syntax/2html.vim
+  let html_use_xhtml = 1
+  let html_ignore_folding = 1
 
-    let Twiki_SourceHTMLSyntax = 1
-    let Twiki_Functions = 1
+  let Twiki_SourceHTMLSyntax = 1
+  let Twiki_Functions = 1
 
-    let vimsyn_folding = "f"
+  let vimsyn_folding = "f"
 
-    " Enable folding of heredocs and functions.
-    let sh_fold_enabled = 3
+  " Enable folding of heredocs and functions.
+  let sh_fold_enabled = 3
 
-    let javaScript_fold = 1
+  let javaScript_fold = 1
 endif
 
 if has("user_commands")
-    " Taken from :help :DiffOrig - this should diff the current buffer against
-    " the file on disk.
-    command DiffOrig vert new "| set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+  " Taken from :help :DiffOrig - this should diff the current buffer against
+  " the file on disk.
+  command DiffOrig vert new "| set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 endif
 
 " Move swapfiles to a local directory.
