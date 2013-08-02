@@ -194,9 +194,6 @@ if has("eval")
         " lines that are longer than textwidth when insertion starts.
         " :help fo-table for more details.
         autocmd FileType pod setlocal formatoptions+=tcql
-        " Add <> to the list of characters Vim will honour the showmatch setting for,
-        " when editing HTML.
-        autocmd FileType html setlocal matchpairs+=<:>
         " Load omnicompletion 
         if exists("+omnifunc")
             autocmd FileType c          setlocal omnifunc=ccomplete#Complete
