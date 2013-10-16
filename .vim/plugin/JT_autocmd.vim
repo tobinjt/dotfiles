@@ -40,7 +40,7 @@ if has("spell")
   autocmd BufReadPre,BufNewFile *.txt,svn-commit.* setlocal spell
   autocmd FileType text setlocal formatoptions+=nq
   autocmd BufReadPre,BufNewFile w3mtmp* setlocal spell tw=72
-  autocmd FileType help,p4-spec setlocal nospell
+  autocmd FileType help setlocal nospell
 endif
 
 autocmd FileType lisp syn keyword lispTodo contained XXX
