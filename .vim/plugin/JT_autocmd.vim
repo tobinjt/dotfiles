@@ -9,6 +9,8 @@ autocmd FileType pod setlocal textwidth=72
 autocmd FileType make setlocal shiftwidth=8 tabstop=8
 autocmd FileType tex setlocal textwidth=75 makeprg=make\ -s foldmethod=syntax formatoptions+=2
 autocmd FileType c,cpp setlocal foldmethod=syntax
+autocmd FileType cpp,html setlocal matchpairs+=<:>
+
 " Editing bash command lines.
 autocmd BufRead,BufNewFile /tmp/bash-fc-* setlocal filetype=sh
 autocmd BufNewFile,BufRead *.json setlocal filetype=javascript
