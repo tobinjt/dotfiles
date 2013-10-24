@@ -2,27 +2,24 @@
 # Bash reads this when it's either an interactive login shell (-bash) or given
 # the --login option.
 
-# If $HOME/src/gopath/bin is not part of $PATH, add to $PATH.
-if [ "${PATH/${HOME}\/src\/gopath\/bin/}" == "${PATH}" ]; then
-    # If homebrew is in use, put it first so I can replace system binaries like
-    # vim.
-    if [ -d "/usr/local/Cellar" ]; then
-        PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
-    fi
-    PATH="${HOME}/gbin:${HOME}/bin:${HOME}/src/gopath/bin:${PATH}"
-    PATH="${PATH}:/sbin:/usr/sbin"
-    PERL5LIB="${HOME}/lib/perl:${HOME}/lib/perl/lib${PERL5LIB:+:}${PERL5LIB:-}"
-
-    # The trailing : is important on Linux; it means to append the standard
-    # search path to ${MANPATH}.
-    MANPATH="${HOME}/man:${HOME}/lib/perl/man${MANPATH:+:}${MANPATH:-}:"
-
-    # Where Go should install stuff.
-    # Also trick Go into finding things in ~/src.
-    GOPATH="${HOME}/src/gopath:${HOME}${GOPATH:+:}${GOPATH:-}"
-
-    export PATH PERL5LIB MANPATH GOPATH
+# If homebrew is in use, put it first so I can replace system binaries like
+# vim.
+if [ -d "/usr/local/Cellar" ]; then
+    PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
 fi
+PATH="${HOME}/gbin:${HOME}/bin:${HOME}/src/gopath/bin:${PATH}"
+PATH="${PATH}:/sbin:/usr/sbin"
+PERL5LIB="${HOME}/lib/perl:${HOME}/lib/perl/lib${PERL5LIB:+:}${PERL5LIB:-}"
+
+# The trailing : is important on Linux; it means to append the standard
+# search path to ${MANPATH}.
+MANPATH="${HOME}/man:${HOME}/lib/perl/man${MANPATH:+:}${MANPATH:-}:"
+
+# Where Go should install stuff.
+# Also trick Go into finding things in ~/src.
+GOPATH="${HOME}/src/gopath:${HOME}${GOPATH:+:}${GOPATH:-}"
+
+export PATH PERL5LIB MANPATH GOPATH
 
 # Load cached ssh-agent environment variables.
 . "${HOME}/.bash_ssh_agent"
