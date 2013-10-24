@@ -9,6 +9,20 @@ if [ -d "/usr/local/Cellar" ]; then
 fi
 PATH="${HOME}/gbin:${HOME}/bin:${HOME}/src/gopath/bin:${PATH}"
 PATH="${PATH}:/sbin:/usr/sbin"
+# Remove duplicate elements from $PATH while preserving order.
+# This cannot use gawk features because it needs to be portable to Mac OS X.
+PATH="$(echo "${PATH}" \
+          | awk -F : \
+              'BEGIN { output = ""; };
+               { for (i = 1; i <= NF; i++) {
+                   if (!($i in seen)) {
+                     seen[$i] = 1;
+                     output = output ":" $i;
+                   }
+                 }
+               }
+               END { sub("^:", "", output);
+                     print output; }')"
 export PATH
 
 # The trailing : is important on Linux; it means to append the standard
