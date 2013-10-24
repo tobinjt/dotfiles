@@ -9,17 +9,15 @@ if [ -d "/usr/local/Cellar" ]; then
 fi
 PATH="${HOME}/gbin:${HOME}/bin:${HOME}/src/gopath/bin:${PATH}"
 PATH="${PATH}:/sbin:/usr/sbin"
-PERL5LIB="${HOME}/lib/perl:${HOME}/lib/perl/lib${PERL5LIB:+:}${PERL5LIB:-}"
+export PATH
 
 # The trailing : is important on Linux; it means to append the standard
 # search path to ${MANPATH}.
-MANPATH="${HOME}/man:${HOME}/lib/perl/man${MANPATH:+:}${MANPATH:-}:"
-
+MANPATH="${HOME}/man${MANPATH:+:}${MANPATH:-}:"
 # Where Go should install stuff.
 # Also trick Go into finding things in ~/src.
 GOPATH="${HOME}/src/gopath:${HOME}${GOPATH:+:}${GOPATH:-}"
-
-export PATH PERL5LIB MANPATH GOPATH
+export MANPATH GOPATH
 
 # Load cached ssh-agent environment variables.
 . "${HOME}/.bash_ssh_agent"
