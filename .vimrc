@@ -14,11 +14,12 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_auto_loc_list = 0
 
 " Set up Vundle.
-" To update all the git submodules, run this:
-" git submodule foreach \
-"   'git fetch origin --tags && git checkout master && git pull'
-" To update a single submodule, run the second line in the submodule's
-" directory.
+" To update all the git submodules, run these commands:
+" $ git submodule init
+" $ git submodule update
+" $ git submodule foreach \
+"     'git fetch origin --tags && git checkout master && git pull'
+" To update a single submodule, run the last line in the submodule's directory.
 set nocompatible
 filetype off
 set runtimepath+=~/.vim/bundle/vundle/
