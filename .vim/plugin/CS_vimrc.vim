@@ -337,9 +337,9 @@ use warnings;
       return
     endif
     insert
-#!/bin/sh
+#!/bin/bash
 
-set -e
+set -e -f -u -o pipefail
 
 .
     call cursor ( line ( "$" ), 0 )
