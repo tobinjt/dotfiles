@@ -9,9 +9,9 @@ strip-quotes() {
 }
 
 top () {
-	[ -z "$LINES" ] && LINES=24
-	[ "$LINES" -lt 7 ] && LINES=24
-	export TOP=$(( $LINES - 7 ))
+	[ -z "${LINES}" ] && LINES=24
+	[ "${LINES}" -lt 7 ] && LINES=24
+	export TOP="$(( LINES - 7 ))"
 	command top "$@"
 }
 sortdu () {
@@ -27,15 +27,12 @@ hsdu () {
 strictperl () {
     perl -Mstrict -w -MData::Dumper "$@"
 }
-rdesktop () {
-    command rdesktop -g 90% "$@"
-}
 cdpwd () {
     cd "$( /bin/pwd )"
 }
 
 git () {
-    # MacOS unset doesn't have --unset.
+    # MacOS env doesn't have --unset.
     ( unset LESS; exec git "$@" )
 }
 
@@ -57,10 +54,6 @@ bc() {
   else
     command bc "$@"
   fi
-}
-
-vimsplain () {
-  (cd "${HOME}/src/Vimsplain" && python vimsplain.py "$@")
 }
 
 # Provide a hook for local actions in dotfiles().
@@ -99,19 +92,6 @@ only_duplicates() {
     | sort \
     | uniq -d \
     | xargs echo
-}
-
-notifyme () {
-  local answer=$?;
-  local cmd="$(HISTTIMEFORMAT='!(Started at %T) ' history 2 \
-                | head -n 1 \
-                | cut -d '!' -f 2-)"
-  if [[ "${answer}" == 0 ]]; then
-    # notify-send is not available; need a replacement.
-    notify-send -i info "$(date +%T) Success: $cmd" -t 240000;
-  else
-    notify-send -i error "$(date +%T) Failed: $cmd" -t 240000;
-  fi
 }
 
 delete-ipad-app-backups() {
