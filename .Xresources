@@ -1,13 +1,3 @@
-Aterm*reverseVideo:	True
-Aterm*transparent:	True
-Aterm*shading:		40
-Aterm*loginShell:	True
-Aterm*scrollBar:	False
-Aterm*saveLines:	10000
-Aterm*scrollKey:	False
-Aterm*foreground:	Black
-Aterm*background:	White
-
 *VT100.Translations: #override \
 <Key>Home: string("\033[7~")
 xterm*background: black
