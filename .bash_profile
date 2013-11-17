@@ -136,20 +136,6 @@ EF_ALIGNMENT="0"
 #LD_PRELOAD=libefence.so.0.0
 export EF_PROTECT_FREE EF_ALIGNMENT
 
-# Make sure various programs use the correct address.
-DEBEMAIL="tobinjt@cs.tcd.ie"
-DEBUILD_LINTIAN_OPTS='--verbose --info --display-info --display-experimental --color=auto --show-overrides --md5sums'
-DH_ALWAYS_EXCLUDE="CVS:.svn"
-# Taken from http://chistera.yi.org/~adeodato/blog/104_quilt_options
-# Put patches in debian/patches; if I ever use quilt for anything else, I'll
-# make this more intelligent.
-QUILT_PATCHES="debian/patches"
-QUILT_DIFF_ARGS="-p ab --no-timestamps --no-index --color=auto"
-QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index"
-export DEBEMAIL DEBUILD_LINTIAN_OPTS DH_ALWAYS_EXCLUDE QUILT_PATCHES
-export QUILT_DIFF_ARGS QUILT_REFRESH_ARGS
-
-
 # Source aliases, per-shell or per-tty stuff.
 . "${HOME}/.bashrc"
 
