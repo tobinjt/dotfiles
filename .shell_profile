@@ -36,8 +36,35 @@ MANPATH="${HOME}/man${MANPATH:+:}${MANPATH:-}:"
 GOPATH="${HOME}/src/gopath:${HOME}${GOPATH:+:}${GOPATH:-}"
 export MANPATH GOPATH
 
-# Load cached ssh-agent environment variables.
-. "${HOME}/.bash_ssh_agent"
+# Maintain a cache of ssh-agent environment variables.
+# Update the cached ssh-agent settings when starting a shell during my X
+# session, so that I'll use the same ssh-agent when I log in via ssh.
+ssh_agent_cache="${HOME}/.ssh/agent.${HOSTNAME}"
+if [ -n "${SSH_AUTH_SOCK}" \
+     -a -z "${SSH_CLIENT}" \
+     -a -z "${TMUX}" ]; then
+  tmpfile="$(mktemp "${ssh_agent_cache}.XXXXXXXXXXXX")"
+  cat > "${tmpfile}" <<END_OF_AGENT
+SSH_AUTH_SOCK=${SSH_AUTH_SOCK}; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=${SSH_AGENT_PID}; export SSH_AGENT_PID;
+END_OF_AGENT
+  if [ "$?" -eq 0 ]; then
+    mv -f "${tmpfile}" "${ssh_agent_cache}"
+  else
+    # There'll have been an error message from cat.
+    rm "${tmpfile}"
+  fi
+fi
+
+# Load ssh-agent environment variables if available, after updating them to
+# ensure we don't load obsolete values.
+if [ -f "${ssh_agent_cache}" ]; then
+  (. "${ssh_agent_cache}" && ssh-add -l > /dev/null 2>&1)
+  # Only load from the cache if ssh-add can contact the ssh-agent.
+  if [ "$?" -eq 0 ]; then
+    . "${ssh_agent_cache}"
+  fi
+fi
 
 # Replace xterm* with the best available.
 case "${TERM}" in
