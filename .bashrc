@@ -17,7 +17,7 @@ if [ "$-" != "${-//i/}" ]; then
 
     # PS1 is overwritten by /etc/bash.bashrc.
     if [ "${UID}" -eq 0 ]; then
-        _user="$( echo -ne "\033[01;31m\\u\033[0m" )"
+        _user="$(echo -ne "\033[01;31m\\u\033[0m")"
     else
         _user="\u"
     fi
@@ -42,7 +42,7 @@ if [ "$-" != "${-//i/}" ]; then
     # cronjobs.
     . "${HOME}/.bash_completion"
     # Likewise, only set up aliases when running interactively.
-    . "${HOME}/.bash_aliases"
+    . "${HOME}/.shell_aliases"
     if [ -n "${TMUX}" ]; then
       # Clear the title tmux sets - 'bash' is not informative.
       echo -ne "\033k\033\\"
