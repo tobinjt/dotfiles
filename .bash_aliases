@@ -9,10 +9,7 @@ strip-quotes() {
 }
 
 top () {
-	[ -z "${LINES}" ] && LINES=24
-	[ "${LINES}" -lt 7 ] && LINES=24
-	export TOP="$(( LINES - 7 ))"
-	command top "$@"
+  TOP="$((${LINES:-24} - 7))" command top "$@"
 }
 sortdu () {
 	if [ "$#" = 0 ]; then
