@@ -78,10 +78,3 @@ LANG="en_IE.UTF-8"
 LC_ALL="${LANG}"
 LANGUAGE="${LANG}"
 export LC_COLLATE LANG LC_ALL LANGUAGE
-
-# make electric fence not return memory.
-EF_PROTECT_FREE="1"
-EF_ALIGNMENT="0"
-#LD_PRELOAD=libefence.so.0.0
-export EF_PROTECT_FREE EF_ALIGNMENT
-
