@@ -32,20 +32,17 @@ if [ "$-" != "${-//i/}" ]; then
     shopt -s histappend
     shopt -s histreedit
     shopt -s no_empty_cmd_completion
-    if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+    if [ "${BASH_VERSINFO[0]}" -ge 4 ]; then
+        # ** matches recursively.
         shopt -s globstar
     fi
 
     # Only do completion stuff if the shell is interactive, errors are generated
     # otherwise - sh doesn't have completion, and this file is sourced by
     # cronjobs.
-    if [ -f "${HOME}/.bash_completion" ]; then
-        . "${HOME}/.bash_completion"
-    fi
+    . "${HOME}/.bash_completion"
     # Likewise, only set up aliases when running interactively.
-    if [ -f "${HOME}/.bash_aliases" ]; then
-        . "${HOME}/.bash_aliases"
-    fi
+    . "${HOME}/.bash_aliases"
     if [ -n "${TMUX}" ]; then
       # Clear the title tmux sets - 'bash' is not informative.
       echo -ne "\033k\033\\"
