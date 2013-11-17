@@ -41,13 +41,13 @@ export MANPATH GOPATH
 
 # Replace xterm* with the best available.
 case "${TERM}" in
-    xterm*)
-        for term in xterm xterm-color xterm-256color; do
-            if tput -T"${term}" longname > /dev/null 2>&1; then
-                TERM="${term}"
-            fi
-        done
-    ;;
+  xterm*)
+    for term in xterm xterm-color xterm-256color; do
+      if tput -T"${term}" longname > /dev/null 2>&1; then
+        TERM="${term}"
+      fi
+    done
+  ;;
 esac
 export TERM
 
@@ -59,7 +59,7 @@ EDITOR="vim"
 PAGER="less"
 # make less more friendly for non-text input files, see lesspipe(1)
 if type lesspipe > /dev/null 2>&1; then
-    eval "$(lesspipe)"
+  eval "$(lesspipe)"
 fi
 # smart case matching; long prompt; suppress dumb terminal error messages;
 # allow ANSI colour escape sequences; highlight the first new line when
@@ -70,9 +70,9 @@ export BROWSER EDITOR LESS PAGER
 # If grep is happy with these options then export them for automatic use
 GREP_OPTIONS='--color=auto'
 if (echo foo | GREP_OPTIONS="${GREP_OPTIONS}" grep -q foo 2> /dev/null); then
-    export GREP_OPTIONS
+  export GREP_OPTIONS
 else
-    unset GREP_OPTIONS
+  unset GREP_OPTIONS
 fi
 
 LC_COLLATE="C"
@@ -84,33 +84,33 @@ export LC_COLLATE LANG LC_ALL LANGUAGE
 
 # Set the title in xterms etc.
 function prompt_command() {
-    exit_status="$?"
-    # Exit status 148 happens when you suspend something.
-    if [ "${exit_status}" != 0 -a "${exit_status}" != 148 ]; then
-      echo -e "\033[01;31mExit status: ${exit_status}\033[0m"
-    fi
-    case "${TERM}" in
-        xterm*|rxvt*|screen*)
-            if [ -z "${TMUX}" ]; then
-              echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD/${HOME}/~}\007"
-            fi
-            ;;
-        *)
-            ;;
-    esac
-    if [ -n "${TMUX}" ]; then
-      local _tmux_env
-      _tmux_env=$( tmux show-environment )
-      if [ "${_tmux_env}" != "${_expected_tmux_env}" ]; then
-        eval $( echo "${_tmux_env}" | \
-                  sed -e '/^-/!{ s/=/="/; s/$/"/; s/^/export /; }' \
-                      -e 's/^-/unset /' \
-                      -e '/^./s/$/;/' )
-        _expected_tmux_env="${_tmux_env}"
+  exit_status="$?"
+  # Exit status 148 happens when you suspend something.
+  if [ "${exit_status}" != 0 -a "${exit_status}" != 148 ]; then
+    echo -e "\033[01;31mExit status: ${exit_status}\033[0m"
+  fi
+  case "${TERM}" in
+    xterm*|rxvt*|screen*)
+      if [ -z "${TMUX}" ]; then
+        echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD/${HOME}/~}\007"
       fi
+      ;;
+    *)
+      ;;
+  esac
+  if [ -n "${TMUX}" ]; then
+    local _tmux_env
+    _tmux_env=$( tmux show-environment )
+    if [ "${_tmux_env}" != "${_expected_tmux_env}" ]; then
+      eval $(echo "${_tmux_env}" \
+               | sed -e '/^-/!{ s/=/="/; s/$/"/; s/^/export /; }' \
+                     -e 's/^-/unset /' \
+                     -e '/^./s/$/;/')
+      _expected_tmux_env="${_tmux_env}"
     fi
-    prompt_command_shell_specific
-    prompt_command_extras
+  fi
+  prompt_command_shell_specific
+  prompt_command_extras
 }
 prompt_command_shell_specific() {
   true
