@@ -25,7 +25,7 @@ strictperl () {
     perl -Mstrict -w -MData::Dumper "$@"
 }
 cdpwd () {
-    cd "$( /bin/pwd )"
+    cd "$(/bin/pwd)"
 }
 
 git () {
@@ -74,7 +74,7 @@ irssi() {
   TERM=xterm-color command irssi "$@"
 }
 
-functions() {
+shell_functions() {
   set | grep '() $'
 }
 
@@ -85,10 +85,7 @@ countsort() {
 alias python-functions='sed -n -e '\''s/^[[:space:]]\+def \([^(]\+\).*/\1/p'\'
 
 only_duplicates() {
-  fmt -1 "$@" \
-    | sort \
-    | uniq -d \
-    | xargs echo
+  fmt -1 "$@" | sort | uniq -d | xargs echo
 }
 
 delete-ipad-app-backups() {
@@ -117,7 +114,7 @@ gocova() {
 gocdpkg() {
   local pdir
   pdir="$(go list -f '{{ .Dir }}' "$1")"
-  if [[ -z "${pdir}" ]]; then
+  if [ -z "${pdir}" ]; then
     echo "no directory found for pkg $1"
     return 1
   fi
