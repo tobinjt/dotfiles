@@ -8,7 +8,7 @@ ssh_agent_cache="${HOME}/.ssh/agent.${HOSTNAME}"
 if [ -n "${SSH_AUTH_SOCK}" \
      -a -z "${SSH_CLIENT}" \
      -a -z "${TMUX}" ]; then
-  tmpfile=$( mktemp "${ssh_agent_cache}.XXXXXXXXXXXX" )
+  tmpfile="$(mktemp "${ssh_agent_cache}.XXXXXXXXXXXX")"
   cat > "${tmpfile}" <<END_OF_AGENT
 SSH_AUTH_SOCK=${SSH_AUTH_SOCK}; export SSH_AUTH_SOCK;
 SSH_AGENT_PID=${SSH_AGENT_PID}; export SSH_AGENT_PID;
