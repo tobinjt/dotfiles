@@ -78,9 +78,6 @@ case "${TERM}" in
 esac
 export TERM
 
-USERNAME="${USER}"
-export USERNAME
-
 BROWSER="google-chrome"
 EDITOR="vim"
 PAGER="less"
