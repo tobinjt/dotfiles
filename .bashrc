@@ -47,10 +47,10 @@ if [ "$-" != "${-//i/}" ]; then
       # Clear the title tmux sets - 'bash' is not informative.
       echo -ne "\033k\033\\"
     fi
-fi
 
-# Local stuff
-local_bash_rc="${HOME}/.bashrc-local"
-if [ -f "${local_bash_rc}" ]; then
-  . "${local_bash_rc}"
+    # Local stuff
+    local_bash_rc="${HOME}/.bashrc-local"
+    if [ -f "${local_bash_rc}" ]; then
+      . "${local_bash_rc}"
+    fi
 fi
