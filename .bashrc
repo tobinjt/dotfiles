@@ -9,48 +9,48 @@
 umask 022
 
 if [ "$-" != "${-//i/}" ]; then
-    # Disable Posix mode: it's set when Bash is invoked as /bin/sh, and root's
-    # shell is /bin/sh on Mac OS X.
-    if [ -n "${BASH_VERSINFO}" ]; then
-      set +o posix
-    fi
+  # Disable Posix mode: it's set when Bash is invoked as /bin/sh, and root's
+  # shell is /bin/sh on Mac OS X.
+  if [ -n "${BASH_VERSINFO}" ]; then
+    set +o posix
+  fi
 
-    # PS1 is overwritten by /etc/bash.bashrc.
-    if [ "${UID}" -eq 0 ]; then
-        _user="$(echo -ne "\033[01;31m\\u\033[0m")"
-    else
-        _user="\u"
-    fi
-    PS1="\nI'm ${_user} on \h's pts/\l @ \t, \d, in \w/\nWhat is thy bidding? "
-    # Trim \w in PS1 to 4 subdirectories.
-    PROMPT_DIRTRIM=4
-    export PS1 PROMPT_DIRTRIM
+  # PS1 is overwritten by /etc/bash.bashrc.
+  if [ "${UID}" -eq 0 ]; then
+    _user="$(echo -ne "\033[01;31m\\u\033[0m")"
+  else
+    _user="\u"
+  fi
+  PS1="\nI'm ${_user} on \h's pts/\l @ \t, \d, in \w/\nWhat is thy bidding? "
+  # Trim \w in PS1 to 4 subdirectories.
+  PROMPT_DIRTRIM=4
+  export PS1 PROMPT_DIRTRIM
 
-    shopt -s checkhash
-    shopt -s checkwinsize
-    shopt -s extglob
-    shopt -s histappend
-    shopt -s histreedit
-    shopt -s no_empty_cmd_completion
-    if [ "${BASH_VERSINFO[0]}" -ge 4 ]; then
-        # ** matches recursively.
-        shopt -s globstar
-    fi
+  shopt -s checkhash
+  shopt -s checkwinsize
+  shopt -s extglob
+  shopt -s histappend
+  shopt -s histreedit
+  shopt -s no_empty_cmd_completion
+  if [ "${BASH_VERSINFO[0]}" -ge 4 ]; then
+    # ** matches recursively.
+    shopt -s globstar
+  fi
 
-    # Only do completion stuff if the shell is interactive, errors are generated
-    # otherwise - sh doesn't have completion, and this file is sourced by
-    # cronjobs.
-    . "${HOME}/.bash_completion"
-    # Likewise, only set up aliases when running interactively.
-    . "${HOME}/.shell_aliases"
-    if [ -n "${TMUX}" ]; then
-      # Clear the title tmux sets - 'bash' is not informative.
-      echo -ne "\033k\033\\"
-    fi
+  # Only do completion stuff if the shell is interactive, errors are generated
+  # otherwise - sh doesn't have completion, and this file is sourced by
+  # cronjobs.
+  . "${HOME}/.bash_completion"
+  # Likewise, only set up aliases when running interactively.
+  . "${HOME}/.shell_aliases"
+  if [ -n "${TMUX}" ]; then
+    # Clear the title tmux sets - 'bash' is not informative.
+    echo -ne "\033k\033\\"
+  fi
 
-    # Local stuff
-    local_bash_rc="${HOME}/.bashrc-local"
-    if [ -f "${local_bash_rc}" ]; then
-      . "${local_bash_rc}"
-    fi
+  # Local stuff
+  local_bash_rc="${HOME}/.bashrc-local"
+  if [ -f "${local_bash_rc}" ]; then
+    . "${local_bash_rc}"
+  fi
 fi
