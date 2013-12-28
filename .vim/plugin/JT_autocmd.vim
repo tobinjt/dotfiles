@@ -14,7 +14,7 @@ autocmd FileType cpp,html setlocal matchpairs+=<:>
 " Editing bash command lines.
 autocmd BufRead,BufNewFile /tmp/bash-fc-* setlocal filetype=sh
 autocmd BufNewFile,BufRead *.json setlocal filetype=javascript
-autocmd FileType python setlocal foldminlines=5 foldnestmax=3 foldmethod=indent
+autocmd FileType python setlocal foldminlines=5 foldnestmax=3 foldmethod=indent shiftwidth=2 tabstop=2 softtabstop=2
 function! JT_install_maps()
    noremap <buffer> <F2> gqap
   inoremap <buffer> <F2> <C-O>gwap
