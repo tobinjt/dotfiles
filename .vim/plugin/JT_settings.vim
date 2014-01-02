@@ -1,3 +1,6 @@
+if has('multi_lang')
+  language en_IE.UTF-8
+endif
 " This effectively maps F1 to :set paste!
 set pastetoggle=<F1>
 

@@ -100,11 +100,7 @@ else
 fi
 
 LC_COLLATE="C"
-# vim depends on $LC_ALL to set the language and encoding it uses.
-LANG="en_IE.UTF-8"
-LC_ALL="${LANG}"
-LANGUAGE="${LANG}"
-export LC_COLLATE LANG LC_ALL LANGUAGE
+export LC_COLLATE
 
 # Set the title in xterms etc.
 function prompt_command() {
