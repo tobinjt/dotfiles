@@ -9,7 +9,12 @@ strip-quotes() {
 }
 
 top () {
-  TOP="$((${LINES:-24} - 7))" command top "$@"
+  local top_args=""
+  # top on Mac OS X does not sort by CPU by default; fix that.
+  if [ "${OSTYPE#darwin}" != "${OSTYPE}" ]; then
+    top_args="-o cpu"
+  fi
+  TOP="$((${LINES:-24} - 7))" command top ${top_args} "$@"
 }
 sortdu () {
 	if [ "$#" = 0 ]; then
