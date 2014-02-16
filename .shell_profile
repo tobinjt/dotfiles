@@ -138,3 +138,4 @@ prompt_command_shell_specific() {
 prompt_command_extras() {
   true
 }
+export -f prompt_command prompt_command_extras prompt_command_shell_specific

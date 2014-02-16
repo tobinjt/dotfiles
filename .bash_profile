@@ -10,7 +10,6 @@ prompt_command_shell_specific() {
 }
 PROMPT_COMMAND=prompt_command
 export PROMPT_COMMAND
-export -f prompt_command prompt_command_extras prompt_command_shell_specific
 
 # Why am I setting this?
 USERNAME="${USER}"
