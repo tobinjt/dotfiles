@@ -22,6 +22,9 @@ deduplicate_path() {
 if [ -d "/usr/local/Cellar" ]; then
     PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
 fi
+if [ -d "/usr/local/go/bin" ]; then
+    PATH="/usr/local/go/bin:${PATH}"
+fi
 PATH="${HOME}/gbin:${HOME}/bin:${HOME}/src/gopath/bin:${PATH}"
 PATH="${PATH}:/sbin:/usr/sbin"
 PATH="$(deduplicate_path "${PATH}")"
