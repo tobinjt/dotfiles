@@ -2,6 +2,21 @@
 
 # Shell-neutral profile settings.
 
+# Remove duplicate elements from a $PATH-like variable while preserving order.
+# This cannot use gawk features because it needs to be portable to Mac OS X.
+deduplicate_path() {
+  echo "$@" | awk -F : \
+      'BEGIN { output = ""; };
+       { for (i = 1; i <= NF; i++) {
+           if (!($i in seen)) {
+             seen[$i] = 1;
+             output = output ":" $i;
+           }
+         }
+       }
+       END { sub("^:", "", output); print output; }'
+}
+
 # If homebrew is in use, put it first so I can replace system binaries like
 # vim.
 if [ -d "/usr/local/Cellar" ]; then
@@ -9,31 +24,15 @@ if [ -d "/usr/local/Cellar" ]; then
 fi
 PATH="${HOME}/gbin:${HOME}/bin:${HOME}/src/gopath/bin:${PATH}"
 PATH="${PATH}:/sbin:/usr/sbin"
-# Remove duplicate elements from $PATH while preserving order.
-# This cannot use gawk features because it needs to be portable to Mac OS X.
-remove_duplicate_path_elements() {
-  PATH="$(echo "${PATH}" \
-            | awk -F : \
-                'BEGIN { output = ""; };
-                 { for (i = 1; i <= NF; i++) {
-                     if (!($i in seen)) {
-                       seen[$i] = 1;
-                       output = output ":" $i;
-                     }
-                   }
-                 }
-                 END { sub("^:", "", output);
-                       print output; }')"
-}
-remove_duplicate_path_elements
+PATH="$(deduplicate_path "${PATH}")"
 export PATH
 
 # The trailing : is important on Linux; it means to append the standard
 # search path to ${MANPATH}.
-MANPATH="${HOME}/man${MANPATH:+:}${MANPATH:-}:"
+MANPATH="$(deduplicate_path "${HOME}/man${MANPATH:+:}${MANPATH:-}:")"
 # Where Go should install stuff.
 # Also trick Go into finding things in ~/src.
-GOPATH="${HOME}/src/gopath:${HOME}${GOPATH:+:}${GOPATH:-}"
+GOPATH="$(deduplicate_path "${HOME}/src/gopath:${HOME}${GOPATH:+:}${GOPATH:-}")"
 export MANPATH GOPATH
 
 # Maintain a cache of ssh-agent environment variables.
