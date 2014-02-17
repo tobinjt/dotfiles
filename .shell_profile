@@ -39,9 +39,9 @@ export MANPATH GOPATH
 # Update the cached ssh-agent settings when starting a shell during my X
 # session, so that I'll use the same ssh-agent when I log in via ssh.
 ssh_agent_cache="${HOME}/.ssh/agent.${HOSTNAME}"
-if [ -n "${SSH_AUTH_SOCK}" \
-     -a -z "${SSH_CLIENT}" \
-     -a -z "${TMUX}" ]; then
+if [ -n "${SSH_AUTH_SOCK:-}" \
+     -a -z "${SSH_CLIENT:-}" \
+     -a -z "${TMUX:-}" ]; then
   tmpfile="$(mktemp "${ssh_agent_cache}.XXXXXXXXXXXX")"
   cat > "${tmpfile}" <<END_OF_AGENT
 SSH_AUTH_SOCK=${SSH_AUTH_SOCK}; export SSH_AUTH_SOCK;
@@ -117,14 +117,14 @@ function prompt_command() {
     *)
       ;;
   esac
-  if [ -n "${TMUX}" ]; then
+  if [ -n "${TMUX:-}" ]; then
     local _tmux_env
-    _tmux_env=$( tmux show-environment )
-    if [ "${_tmux_env}" != "${_expected_tmux_env}" ]; then
-      eval $(echo "${_tmux_env}" \
-               | sed -e '/^-/!{ s/=/="/; s/$/"/; s/^/export /; }' \
-                     -e 's/^-/unset /' \
-                     -e '/^./s/$/;/')
+    _tmux_env="$(tmux show-environment)"
+    if [ "${_tmux_env}" != "${_expected_tmux_env:-}" ]; then
+      eval "$(echo "${_tmux_env}" \
+                | sed -e '/^-/!{ s/=/="/; s/$/"/; s/^/export /; }' \
+                      -e 's/^-/unset /' \
+                      -e '/^./s/$/;/')"
       _expected_tmux_env="${_tmux_env}"
     fi
   fi
