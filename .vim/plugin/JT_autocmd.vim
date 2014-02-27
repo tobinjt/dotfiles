@@ -27,7 +27,7 @@ autocmd BufRead,BufNewFile *.mkd,*.mdwn setlocal filetype=markdown
 " XXX formatoptions and formatlistpat don't do what I want; I want lines
 " starting with * to be recognised as numbered lists; formatlistpat correctly
 " matches them, but reformatting doesn't do the right thing.
-autocmd FileType markdown setlocal formatoptions+=n formatlistpat=^\\*\\s* comments=n:> foldmethod=expr foldexpr=MarkdownFolding(v:lnum)
+autocmd FileType markdown setlocal formatoptions+=nt formatoptions-=l formatlistpat=^\\*\\s* comments=n:> foldmethod=expr foldexpr=MarkdownFolding(v:lnum)
 autocmd BufRead,BufNewFile *.twiki setlocal filetype=twiki
 autocmd FileType twiki setlocal textwidth=1000
 " tmux(1)
