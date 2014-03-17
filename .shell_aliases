@@ -104,8 +104,8 @@ godocf() {
   godoc "$@" | grep ^func
 }
 godocserver() {
-  echo "http://localhost:23579/"
-  godoc --http=:23579
+  echo "http://localhost:12345/"
+  godoc --http=:12345
 }
 gocov() {
   local filename
