@@ -112,8 +112,8 @@ gocov() {
   filename="$(mktemp -t gocov.XXXXXXXXXXXX)"
   go test --coverprofile="${filename}" --covermode=count "$@" \
     && (go tool cover --func="${filename}" \
-          | grep -v '100.0%$') \
-    && go tool cover --html="${filename}"
+          | grep -v '100.0%$'; \
+        go tool cover --html="${filename}")
   rm -f "${filename}"
 }
 gocdpkg() {
