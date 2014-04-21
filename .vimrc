@@ -12,6 +12,8 @@ let g:quickfixsigns_classes = ['qfl', 'loc', 'marks', 'breakpoints']
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_auto_loc_list = 0
+" Don't auto-install tools.
+let g:go_disable_autoinstall = 1
 
 " Set up Vundle.
 " To update all the git submodules, run these commands:
@@ -32,6 +34,8 @@ Bundle 'godlygeek/tabular'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+Bundle 'fatih/vim-go'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
