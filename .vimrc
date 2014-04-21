@@ -26,23 +26,23 @@ set nocompatible
 filetype off
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 " Add bundles here.
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'ervandew/supertab'
-Bundle 'godlygeek/tabular'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'fatih/vim-go'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'vim-scripts/LargeFile'
-Bundle 'vim-scripts/file-line'
-Bundle 'vim-scripts/quickfixsigns'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'ervandew/supertab'
+Plugin 'godlygeek/tabular'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-scripts/LargeFile'
+Plugin 'vim-scripts/file-line'
+Plugin 'vim-scripts/quickfixsigns'
 " TODO(johntobin): Why do I disable and reenable syntax highlighting in
 " CS_vimrc?  What breaks without it?
 filetype plugin indent on
