@@ -43,9 +43,6 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/LargeFile'
 Plugin 'vim-scripts/file-line'
 Plugin 'vim-scripts/quickfixsigns'
-" TODO(johntobin): Why do I disable and reenable syntax highlighting in
-" CS_vimrc?  What breaks without it?
-filetype plugin indent on
 
 " This needs to be done before loading plugins, so that runtimepath can be
 " extended first.
@@ -55,3 +52,6 @@ if has("eval")
     exec 'source ' . b:local_filename
   endif
 endif
+
+filetype plugin indent on
+syntax on

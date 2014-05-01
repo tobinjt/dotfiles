@@ -102,8 +102,6 @@ set nrformats+=alpha
 
 " Syntax highlighting related settings. {{{1
 if has("eval")
-  " We turn off syntax highlighting here so our modifications below affect it.
-  syntax off
   " Shell scripts {{{1
   " Assume shell scripts are really using bash, so that we get bash-enhanced
   " syntax.
@@ -223,10 +221,6 @@ if has("eval")
     endif
   endif
 
-  " Syntax on! {{{1
-  " Various settings above will have affected the syntax highlighting, so turn
-  " it back on now.
-  syntax on
 endif
 
 if has("eval")
