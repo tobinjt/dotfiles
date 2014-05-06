@@ -9,6 +9,7 @@
 umask 022
 
 if [ "$-" != "${-//i/}" ]; then
+  # This is an interactive shell.
   # Disable Posix mode: it's set when Bash is invoked as /bin/sh, and root's
   # shell is /bin/sh on Mac OS X.
   if [ -n "${BASH_VERSINFO}" ]; then
@@ -17,6 +18,7 @@ if [ "$-" != "${-//i/}" ]; then
 
   # PS1 is overwritten by /etc/bash.bashrc.
   if [ "${UID}" -eq 0 ]; then
+    # Highlight root in my prompt as a warning.
     _user="$(echo -ne "\033[01;31m\\u\033[0m")"
   else
     _user="\u"
