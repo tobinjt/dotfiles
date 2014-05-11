@@ -4,10 +4,6 @@ alias ls="ls -F" # --color=auto"
 alias mv="mv -i"
 alias cp="cp -i"
 
-strip-quotes() {
-  sed -e 's/"//g' -e "s/'//g"
-}
-
 top () {
   local top_args=""
   # top on Mac OS X does not sort by CPU by default; fix that.
@@ -65,8 +61,8 @@ dotfiles_local() {
 dotfiles() {
     linkdirs --skip tags --skip '*.pyc' "$@" "${HOME}/src/dotfiles" "${HOME}"
     chmod 600 "${HOME}/.ssh/id_rsa"
-    vim -c 'call UpdateBundleHelptags() | :quit'
     dotfiles_local "$@"
+    vim -c 'call UpdateBundleHelptags() | :quit'
 }
 
 # Adapted from http://www.chiark.greenend.org.uk/~sgtatham/aliases.html
@@ -86,8 +82,6 @@ shell_functions() {
 countsort() {
   sort "$@" | uniq -c | sort -n
 }
-
-alias python-functions='sed -n -e '\''s/^[[:space:]]\+def \([^(]\+\).*/\1/p'\'
 
 only_duplicates() {
   fmt -1 "$@" | sort | uniq -d | xargs echo
