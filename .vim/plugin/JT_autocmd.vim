@@ -8,7 +8,8 @@ autocmd FileType crontab setlocal backupcopy=yes
 autocmd FileType pod setlocal textwidth=72
 autocmd FileType make setlocal shiftwidth=8 tabstop=8
 autocmd FileType tex setlocal textwidth=75 makeprg=make\ -s foldmethod=syntax formatoptions+=2
-autocmd FileType c,cpp setlocal foldmethod=syntax
+" Don't scan included files when completing, it's too slow.
+autocmd FileType c,cpp setlocal foldmethod=syntax complete-=i
 autocmd FileType cpp,html setlocal matchpairs+=<:>
 
 " Editing bash command lines.
