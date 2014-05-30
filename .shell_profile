@@ -105,6 +105,20 @@ fi
 LC_COLLATE="C"
 export LC_COLLATE
 
+update_tmux_environment() {
+  if [ -n "${TMUX:-}" ]; then
+    local _tmux_env
+    _tmux_env="$(tmux show-environment)"
+    if [ "${_tmux_env}" != "${_expected_tmux_env:-}" ]; then
+      eval "$(echo "${_tmux_env}" \
+                | sed -e '/^-/!{ s/=/="/; s/$/"/; s/^/export /; }' \
+                      -e 's/^-/unset /' \
+                      -e '/^./s/$/;/')"
+      _expected_tmux_env="${_tmux_env}"
+    fi
+  fi
+}
+export -f update_tmux_environment
 # Set the title in xterms etc.
 function prompt_command() {
   exit_status="$?"
@@ -121,17 +135,7 @@ function prompt_command() {
     *)
       ;;
   esac
-  if [ -n "${TMUX:-}" ]; then
-    local _tmux_env
-    _tmux_env="$(tmux show-environment)"
-    if [ "${_tmux_env}" != "${_expected_tmux_env:-}" ]; then
-      eval "$(echo "${_tmux_env}" \
-                | sed -e '/^-/!{ s/=/="/; s/$/"/; s/^/export /; }' \
-                      -e 's/^-/unset /' \
-                      -e '/^./s/$/;/')"
-      _expected_tmux_env="${_tmux_env}"
-    fi
-  fi
+  update_tmux_environment
   prompt_command_shell_specific
   prompt_command_extras
 }
