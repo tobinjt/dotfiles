@@ -119,22 +119,12 @@ update_tmux_environment() {
   fi
 }
 export -f update_tmux_environment
-# Set the title in xterms etc.
 function prompt_command() {
   exit_status="$?"
   # Exit status 148 happens when you suspend something.
   if [ "${exit_status}" != 0 -a "${exit_status}" != 148 ]; then
     echo -e "\033[01;31mExit status: ${exit_status}\033[0m"
   fi
-  case "${TERM}" in
-    xterm*|rxvt*|screen*)
-      if [ -z "${TMUX}" ]; then
-        echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD/${HOME}/~}\007"
-      fi
-      ;;
-    *)
-      ;;
-  esac
   update_tmux_environment
   prompt_command_shell_specific
   prompt_command_extras
