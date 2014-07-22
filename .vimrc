@@ -27,7 +27,7 @@ let g:UltiSnipsExpandTrigger = "<F3>"
 " To update a single submodule, run the last line in the submodule's directory.
 set nocompatible
 filetype off
-set runtimepath+=~/.vim/bundle/vundle/
+set runtimepath+=~/.vim/bundle/vundle
 call vundle#rc()
 Plugin 'gmarik/vundle'
 " Add bundles here.
@@ -56,5 +56,9 @@ if has("eval")
   endif
 endif
 
+" Explicitly put ~/.vim first, because vim will put spelling additions in the
+" first directory in runtimepath.
+set runtimepath-=~/.vim
+exec 'set runtimepath=~/.vim,' . &runtimepath
 filetype plugin indent on
 syntax on
