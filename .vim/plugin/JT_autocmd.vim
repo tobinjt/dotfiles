@@ -23,7 +23,7 @@ function! JT_install_maps()
 endfunction
 
 autocmd BufRead,BufNewFile *.mkd,*.mdwn setlocal filetype=markdown
-autocmd FileType markdown setlocal formatoptions+=nt formatoptions-=l formatlistpat=^\\(\\*\\\|[0-9]\\.\\)\\s\\+ comments=n:> foldmethod=expr foldexpr=MarkdownFolding(v:lnum)
+autocmd FileType markdown setlocal formatoptions+=nt formatoptions-=l formatlistpat=^\\s*\\(\\*\\\|[0-9]\\.\\)\\s\\+ comments=n:> foldmethod=expr foldexpr=MarkdownFolding(v:lnum)
 autocmd BufRead,BufNewFile *.twiki setlocal filetype=twiki
 autocmd FileType twiki setlocal textwidth=1000
 " tmux(1)
