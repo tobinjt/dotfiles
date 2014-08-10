@@ -18,6 +18,8 @@ set mark-symlinked-directories on
 set print-completions-horizontally off
 # Append a character to possible completion indicating file type.
 set visible-stats on
+# Case-insensetive tab completion.
+set completion-ignore-case on
 # Be 8 bit clean.
 set input-meta on
 set output-meta on
