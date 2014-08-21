@@ -16,11 +16,6 @@ autocmd FileType cpp,html setlocal matchpairs+=<:>
 autocmd BufRead,BufNewFile /tmp/bash-fc-* setlocal filetype=sh
 autocmd BufNewFile,BufRead *.json setlocal filetype=javascript
 autocmd FileType python setlocal foldminlines=5 foldnestmax=3 foldmethod=indent shiftwidth=2 tabstop=2 softtabstop=2
-function! JT_install_maps()
-   noremap <buffer> <F2> gqap
-  inoremap <buffer> <F2> <C-O>gwap
-  vnoremap <buffer> <F2> gq
-endfunction
 
 autocmd BufRead,BufNewFile *.mkd,*.mdwn setlocal filetype=markdown
 autocmd FileType markdown setlocal formatoptions+=nt formatoptions-=l formatlistpat=^\\s*\\(\\*\\\|[0-9]\\.\\)\\s\\+ comments=n:> foldmethod=expr foldexpr=MarkdownFolding(v:lnum)
@@ -67,10 +62,6 @@ augroup color_tweak
   autocmd ColorScheme * highlight clear ColorColumn
   autocmd ColorScheme * highlight ColorColumn guifg=red ctermfg=red gui=bold
 augroup END
-
-if has("eval")
-  autocmd BufNewFile,BufReadPre * call JT_install_maps()
-endif
 
 " *.t: Perl test scripts.
 if has("eval")
