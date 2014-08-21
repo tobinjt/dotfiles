@@ -54,6 +54,19 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+" Highlight the first three characters over the line length limit.  Clearing the
+" highlight group first makes the background the same colour, so we only see
+" this once we actually exceed the limit.
+"
+" (Note: we have to use autocommands for the highlighting since :colorscheme can
+" overwrite this highlighting, and :colorscheme apparently gets applied after
+" the .vimrc is done sourcing.)
+set colorcolumn=+1,+2,+3
+augroup color_tweak
+  autocmd!
+  autocmd ColorScheme * highlight clear ColorColumn
+  autocmd ColorScheme * highlight ColorColumn guifg=red ctermfg=red gui=bold
+augroup END
 
 if has("eval")
   autocmd BufNewFile,BufReadPre * call JT_install_maps()
