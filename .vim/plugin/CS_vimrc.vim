@@ -45,7 +45,8 @@ set splitbelow splitright
 
 " File related stuff. {{{1
 " Ignore files with these suffixes when doing tab completion.
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set suffixes+=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx
+set suffixes+=,.ilg,.inx,.out,.toc
 " When tab-completing filenames, expand to the longest common substring on the
 " first tab, then show a list on the second tab; basically behave the same as
 " bash does.
@@ -197,7 +198,8 @@ if has("eval")
       autocmd FileType c          setlocal omnifunc=ccomplete#Complete
       autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
       autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
-      autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+      autocmd FileType javascript
+        \ setlocal omnifunc=javascriptcomplete#CompleteJS
       autocmd FileType php        setlocal omnifunc=phpcomplete#CompletePHP
       autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
       autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
@@ -209,8 +211,8 @@ if has("eval")
     endif
 
     if has("eval")
-      " More autocommands: call functions to do magic things when editing various
-      " new files.
+      " More autocommands: call functions to do magic things when editing
+      " various new files.
       autocmd BufNewFile *.h call CS_populate_header()
       autocmd BufNewFile *.c call CS_populate_c()
       autocmd BufNewFile *.java call CS_populate_java()
