@@ -62,8 +62,3 @@ augroup color_tweak
   autocmd ColorScheme * highlight clear ColorColumn
   autocmd ColorScheme * highlight ColorColumn guifg=red ctermfg=red gui=bold
 augroup END
-
-" *.t: Perl test scripts.
-if has("eval")
-  autocmd BufNewFile *.t call CS_populate_perl()
-endif
