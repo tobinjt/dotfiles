@@ -62,7 +62,7 @@ autocmd BufWinLeave * call clearmatches()
 " (Note: we have to use autocommands for the highlighting since :colorscheme can
 " overwrite this highlighting, and :colorscheme apparently gets applied after
 " the .vimrc is done sourcing.)
-if has('+colorcolumn')
+if exists('+colorcolumn')
   set colorcolumn=+1,+2,+3
   augroup color_tweak
     autocmd!
