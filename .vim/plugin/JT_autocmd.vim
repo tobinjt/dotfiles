@@ -11,7 +11,6 @@ autocmd FileType tex setlocal textwidth=75 makeprg=make\ -s foldmethod=syntax
   \ formatoptions+=2
 " Don't scan included files when completing, it's too slow.
 autocmd FileType c,cpp setlocal foldmethod=syntax complete-=i
-autocmd FileType cpp,html setlocal matchpairs+=<:>
 
 " Editing bash command lines.
 autocmd BufRead,BufNewFile /tmp/bash-fc-* setlocal filetype=sh

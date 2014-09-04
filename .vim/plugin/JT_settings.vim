@@ -24,6 +24,9 @@ set laststatus=2
 " Recognise extra list headers.  Use let instead of set, to avoid backslashitis.
 let &formatlistpat='^\s*\(\d\+\|\a\+\.\|\*\)[.:)]\s*'
 
+" Make % work with <>.
+set matchpairs+=<:>
+
 " Settings required for LaTeX-suite:
 if has('+shellslash')
   set shellslash
