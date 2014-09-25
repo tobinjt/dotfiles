@@ -99,6 +99,10 @@ $endif
 "\xE2\x80\x94": "--"
 # Ellipsis...
 "\xE2\x80\xA6": "..."
+# Bracketed paste escape characters; discard them if they're pasted into the
+# shell.
+"\e[200~": ""
+"\e[201~": ""
 
 # Emacs mode key bindings.
 $if mode=emacs

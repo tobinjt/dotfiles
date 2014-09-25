@@ -33,6 +33,7 @@ set runtimepath+=~/.vim/bundle/vundle
 call vundle#rc()
 Plugin 'gmarik/vundle'
 " Add bundles here.
+Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ervandew/supertab'
 Plugin 'godlygeek/tabular'
