@@ -25,6 +25,8 @@ let g:UltiSnipsExpandTrigger = "<F3>"
 " $ git submodule foreach \
 "     'git fetch origin --tags && git checkout master && git pull'
 " To update a single submodule, run the last line in the submodule's directory.
+" To add a new submodule run:
+" $ git submodule add URL DESTINATION
 set nocompatible
 filetype off
 set runtimepath+=~/.vim/bundle/vundle
