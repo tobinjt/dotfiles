@@ -14,9 +14,6 @@ let g:syntastic_check_on_wq = 0
 "let g:syntastic_auto_loc_list = 0
 " Don't auto-install tools.
 let g:go_disable_autoinstall = 1
-" Stop messing with tab.
-let g:UltiSnipsExpandTrigger = "<F3>"
-" let g:SuperTabDefaultCompletionType = ""
 
 " Set up Vundle.
 " To update all the git submodules, run these commands:
