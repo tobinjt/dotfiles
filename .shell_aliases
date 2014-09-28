@@ -63,7 +63,8 @@ dotfiles_sources() {
   echo "${HOME}/src/dotfiles"
 }
 dotfiles() {
-    linkdirs --skip tags --skip '*.pyc' "$@" $(dotfiles_sources) "${HOME}"
+    linkdirs --skip tags --skip '*.pyc' --skip '*.spl' "$@" \
+      $(dotfiles_sources) "${HOME}"
     chmod 600 "${HOME}/.ssh/id_rsa"
     dotfiles_local "$@"
     vim -c 'call UpdateBundleHelptags() | :quit'
