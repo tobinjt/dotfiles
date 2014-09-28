@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Shell-neutral functions.
+
+# Remove duplicate elements from a $PATH-like variable while preserving order.
+# This cannot use gawk features because it needs to be portable to Mac OS X.
+deduplicate_path() {
+  echo "$@" | awk -F : \
+      'BEGIN { output = ""; };
+       { for (i = 1; i <= NF; i++) {
+           if (!($i in seen)) {
+             seen[$i] = 1;
+             output = output ":" $i;
+           }
+         }
+       }
+       END { sub("^:", "", output); print output; }'
+}
+
+# Update the shell's environment from tmux's environment.
+update_tmux_environment() {
+  if [ -n "${TMUX:-}" ]; then
+    local _tmux_env
+    _tmux_env="$(tmux show-environment)"
+    if [ "${_tmux_env}" != "${_expected_tmux_env:-}" ]; then
+      eval "$(echo "${_tmux_env}" \
+                | sed -e '/^-/!{ s/=/="/; s/$/"/; s/^/export /; }' \
+                      -e 's/^-/unset /' \
+                      -e '/^./s/$/;/')"
+      _expected_tmux_env="${_tmux_env}"
+    fi
+  fi
+}
+
+function prompt_command() {
+  exit_status="$?"
+  # Exit status 148 happens when you suspend something.
+  if [ "${exit_status}" != 0 -a "${exit_status}" != 148 ]; then
+    echo -e "\033[01;31mExit status: ${exit_status}\033[0m"
+  fi
+  update_tmux_environment
+  prompt_command_shell_specific
+  prompt_command_extras
+}
+prompt_command_shell_specific() {
+  true
+}
+prompt_command_extras() {
+  true
+}

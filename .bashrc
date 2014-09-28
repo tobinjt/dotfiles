@@ -10,6 +10,8 @@ umask 022
 
 if [ "$-" != "${-//i/}" ]; then
   # This is an interactive shell.
+  # Source prompt_command et al.
+  . "${HOME}/.shell_functions"
   # Disable Posix mode: it's set when Bash is invoked as /bin/sh, and root's
   # shell is /bin/sh on Mac OS X.
   if [ -n "${BASH_VERSINFO}" ]; then
