@@ -62,10 +62,15 @@ dotfiles_local() {
 dotfiles_sources() {
   echo "${HOME}/src/dotfiles"
 }
+dotfiles_update_ssh_config() {
+  cat "${HOME}"/.ssh/config-??-* > /dev/null \
+    && cat "${HOME}"/.ssh/config-??-* > "${HOME}/.ssh/config"
+}
 dotfiles() {
     linkdirs --skip tags --skip '*.pyc' --skip '*.spl' "$@" \
       $(dotfiles_sources) "${HOME}"
     chmod 600 "${HOME}/.ssh/id_rsa"
+    dotfiles_update_ssh_config
     dotfiles_local "$@"
     vim -c 'call UpdateBundleHelptags() | :quit'
     vim -c ':mkspell! ~/.vim/spell/en.utf-8.add | :quit'
