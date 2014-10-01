@@ -49,12 +49,19 @@ myMouseBindingsToRemove =
         (mod1Mask, button3)
     ]
 
+myStartupHook = do
+    startupHook gnomeConfig
+    -- Chrome flickers onto different desktops without a compositing yokie, so
+    -- run one.
+    spawn "/usr/bin/xcompmgr -n"
+
 main =
     xmonad $ gnomeConfig
     {
       focusFollowsMouse = True,
       layoutHook = myLayout,
-      workspaces = myWorkspaces
+      workspaces = myWorkspaces,
+      startupHook = myStartupHook
       -- Make chrome go fully fullscreen: https://wiki.archlinux.org/index.php/Xmonad#Chromium.2FChrome_will_not_go_fullscreen
       -- Sadly Lucid doesn't have a recent enough version :(
       -- handleEventHook = fullscreenEventHook
