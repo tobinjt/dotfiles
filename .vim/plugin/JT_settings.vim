@@ -27,6 +27,9 @@ let &formatlistpat='^\s*\(\d\+\|\a\+\.\|\*\)[.:)]\s*'
 " Make % work with <>.
 set matchpairs+=<:>
 
+" Case-insensitive completion for filenames.
+set wildignorecase
+
 " Settings required for LaTeX-suite:
 if has('+shellslash')
   set shellslash
