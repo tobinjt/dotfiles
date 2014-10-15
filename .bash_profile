@@ -21,8 +21,11 @@ export HISTIGNORE HISTCONTROL HISTTIMEFORMAT HISTSIZE HISTFILESIZE
 FIGNORE=".lib:.fas:.fasl"
 export FIGNORE
 
-# Source aliases, per-shell or per-tty stuff.
-. "${HOME}/.bashrc"
+if [ "$-" != "${-//i/}" ]; then
+  # This is an interactive shell.
+  # Source aliases, per-shell or per-tty stuff.
+  . "${HOME}/.bashrc"
+fi
 
 # Local stuff
 local_bash_profile="${HOME}/.bash_profile-local"
