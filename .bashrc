@@ -48,7 +48,7 @@ if [ "$-" != "${-//i/}" ]; then
   # Likewise, only set up aliases when running interactively.
   . "${HOME}/.shell_aliases"
   if [ -n "${TMUX}" ]; then
-    # Clear the title tmux sets - 'bash' is not informative.
+    # Clear the pane title tmux sets - 'bash' is not informative.
     echo -ne "\033k\033\\"
   fi
 
