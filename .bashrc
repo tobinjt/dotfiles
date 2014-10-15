@@ -47,6 +47,10 @@ if [ "$-" != "${-//i/}" ]; then
   . "${HOME}/.bash_completion"
   # Likewise, only set up aliases when running interactively.
   . "${HOME}/.shell_aliases"
+  if [ -n "${TMUX}" ]; then
+    # Clear the title tmux sets - 'bash' is not informative.
+    echo -ne "\033k\033\\"
+  fi
 
   # Local stuff
   local_bash_rc="${HOME}/.bashrc-local"
