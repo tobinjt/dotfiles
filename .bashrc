@@ -10,11 +10,12 @@ umask 022
 
 # Source prompt_command et al.
 . "${HOME}/.shell_functions"
-# Disable Posix mode: it's set when Bash is invoked as /bin/sh, and root's
-# shell is /bin/sh on Mac OS X.
-if [ -n "${BASH_VERSINFO}" ]; then
-  set +o posix
-fi
+prompt_command_shell_specific() {
+  # Write new history lines.
+  history -a
+}
+PROMPT_COMMAND=prompt_command
+export PROMPT_COMMAND
 
 # PS1 is overwritten by /etc/bash.bashrc.
 if [ "${UID}" -eq 0 ]; then
@@ -28,6 +29,17 @@ PS1="\nI'm ${_user} on \h's pts/\l @ \t, \d, in \w/\nWhat is thy bidding? "
 PROMPT_DIRTRIM=4
 export PS1 PROMPT_DIRTRIM
 
+HISTIGNORE='&:fg:bg'
+HISTCONTROL="ignoredups"
+HISTTIMEFORMAT='%F %T '
+HISTSIZE='1000000'
+HISTFILESIZE='1000000000'
+export HISTIGNORE HISTCONTROL HISTTIMEFORMAT HISTSIZE HISTFILESIZE
+
+# Ignore files created by compiling Lisp.
+FIGNORE=".lib:.fas:.fasl"
+export FIGNORE
+
 shopt -s checkhash
 shopt -s checkwinsize
 shopt -s extglob
@@ -37,6 +49,11 @@ shopt -s no_empty_cmd_completion
 if [ "${BASH_VERSINFO[0]}" -ge 4 ]; then
   # ** matches recursively.
   shopt -s globstar
+fi
+# Disable Posix mode: it's set when Bash is invoked as /bin/sh, and root's
+# shell is /bin/sh on Mac OS X.
+if [ -n "${BASH_VERSINFO}" ]; then
+  set +o posix
 fi
 
 # Only do completion stuff if the shell is interactive, errors are generated

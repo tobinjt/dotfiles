@@ -4,23 +4,6 @@
 
 . "${HOME}/.shell_profile"
 
-prompt_command_shell_specific() {
-  # Write new history lines.
-  history -a
-}
-PROMPT_COMMAND=prompt_command
-export PROMPT_COMMAND
-
-HISTIGNORE='&:fg:bg'
-HISTCONTROL="ignoredups"
-HISTTIMEFORMAT='%F %T '
-HISTSIZE='1000000'
-HISTFILESIZE='1000000000'
-export HISTIGNORE HISTCONTROL HISTTIMEFORMAT HISTSIZE HISTFILESIZE
-# Ignore files created by compiling Lisp.
-FIGNORE=".lib:.fas:.fasl"
-export FIGNORE
-
 if [ "$-" != "${-//i/}" ]; then
   # This is an interactive shell.
   # Source aliases, per-shell or per-tty stuff.
