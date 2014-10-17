@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# Shell-neutral environment variables and other settings needed for interactive
-# shells.
+# Shell-neutral environment variables needed for interactive shells.
 
 . "${HOME}/.shell_functions"
 
