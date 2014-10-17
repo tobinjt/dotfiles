@@ -35,7 +35,7 @@ update_tmux_environment() {
 function prompt_command() {
   if [ -z "${TMUX}" ]; then
     # Set the xterm title.  Tmux does this if it's running.
-    echo -ne "\033]0;${HOSTNAME}\007"
+    echo -ne "\033]0;${SHELL##*/} on ${HOSTNAME}\007"
   fi
   exit_status="$?"
   # Exit status 148 happens when you suspend something.
