@@ -10,6 +10,7 @@ umask 022
 
 # Source prompt_command et al.
 . "${HOME}/.shell_functions"
+. "${HOME}/.shell_rc"
 prompt_command_shell_specific() {
   # Write new history lines.
   history -a
