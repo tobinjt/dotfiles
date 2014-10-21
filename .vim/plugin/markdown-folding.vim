@@ -7,7 +7,7 @@ if has("eval")
       return '='
     endif
     let l:length = strlen(l:matches[1])
-    if l:length <= 2
+    if l:length <= 1
       return '='
     endif
     return '>' . (l:length - 2)
