@@ -9,6 +9,10 @@
 if [ -d "/usr/local/Cellar" ]; then
     PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
 fi
+# Sometimes I can't install homebrew in /usr/local.
+if [ -d "${HOME}/homebrew" ]; then
+    PATH="${HOME}/homebrew/bin:${HOME}/homebrew/sbin:${PATH}"
+fi
 if [ -d "/usr/local/go/bin" ]; then
     PATH="/usr/local/go/bin:${PATH}"
 fi
