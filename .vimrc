@@ -11,6 +11,8 @@ let g:quickfixsigns_classes = ['qfl', 'loc', 'marks', 'breakpoints']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" Don't use the go binary, it complains about packages.
+let g:syntastic_go_checkers = ['gofmt', 'golint', 'gotype', 'govet']
 "let g:syntastic_auto_loc_list = 0
 " Don't auto-install tools.
 let g:go_disable_autoinstall = 1
