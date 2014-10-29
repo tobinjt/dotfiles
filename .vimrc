@@ -16,6 +16,9 @@ let g:syntastic_go_checkers = ['gofmt', 'golint', 'gotype', 'govet']
 "let g:syntastic_auto_loc_list = 0
 " Don't auto-install tools.
 let g:go_disable_autoinstall = 1
+" Change the trigger so it doesn't clash with SuperTab; this means I have to
+" explicitly trigger snippet expansion and it doesn't happen accidentally.
+let g:UltiSnipsExpandTrigger = "<C-N>"
 
 " Set up Vundle.
 " To update all the git submodules, run these commands:
