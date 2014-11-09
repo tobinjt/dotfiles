@@ -4,6 +4,7 @@ alias ls="ls -F" # --color=auto"
 alias mv="mv -i"
 alias cp="cp -i"
 
+alias ta="tmux attach -d"
 top () {
   local top_args=""
   # top on Mac OS X does not sort by CPU by default; fix that.
