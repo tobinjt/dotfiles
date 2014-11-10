@@ -27,7 +27,7 @@ autocmd FileType twiki setlocal textwidth=1000
 " tmux(1)
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
 autocmd FileType go setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
-  \ foldmethod=syntax spell textwidth=1000
+  \ foldmethod=syntax spell textwidth=1000 number
 
 " Turn on spelling, if the vim we're using supports it, for specific file types.
 if has("spell")
