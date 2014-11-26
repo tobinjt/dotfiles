@@ -32,6 +32,10 @@ if exists('+wildignorecase')
   set wildignorecase
 endif
 
+if exists('+spellfile')
+  set spellfile+=~/.vim/spell/en.utf-8.add
+endif
+
 " Settings required for LaTeX-suite:
 if has('+shellslash')
   set shellslash
