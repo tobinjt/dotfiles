@@ -19,8 +19,8 @@ PROMPT_COMMAND=prompt_command
 export PROMPT_COMMAND
 
 # PS1 is overwritten by /etc/bash.bashrc.
-if [ "${UID}" -eq 0 ]; then
-  # Highlight root in my prompt as a warning.
+if [ "${USER}" != "johntobin" ]; then
+  # Highlight other users in my prompt as a warning.
   _user="$(echo -ne "\033[01;31m\\u\033[0m")"
 else
   _user="\u"
