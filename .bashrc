@@ -64,8 +64,13 @@ fi
 # Likewise, only set up aliases when running interactively.
 . "${HOME}/.shell_aliases"
 if [ -n "${TMUX}" ]; then
-  # Clear the pane title tmux sets - 'bash' is not informative.
-  echo -ne "\033k\033\\"
+  if [ "${USER}" != "johntobin" ]; then
+    # Put the user in the pane.
+    echo -ne "\033k${USER}\033\\"
+  else
+    # Clear the pane title tmux sets - 'bash' is not informative.
+    echo -ne "\033k\033\\"
+  fi
 fi
 
 # Local stuff
