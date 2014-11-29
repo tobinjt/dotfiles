@@ -34,7 +34,7 @@ update_tmux_environment() {
 }
 
 function prompt_command() {
-  if [ -z "${TMUX}" ]; then
+  if [ -z "${TMUX:-}" ]; then
     # Set the xterm title.  Tmux does this if it's running.
     echo -ne "\033]0;${SHELL##*/} on ${HOSTNAME}\007"
   fi
