@@ -27,6 +27,8 @@ export TERM
 BROWSER="google-chrome"
 EDITOR="vim"
 PAGER="less"
+# Don't create or use a shared connection for rsync.
+RSYNC_RSH="ssh -o ControlPath=none"
 # make less more friendly for non-text input files, see lesspipe(1)
 if type lesspipe > /dev/null 2>&1; then
   eval "$(lesspipe)"
@@ -35,7 +37,7 @@ fi
 # allow ANSI colour escape sequences; highlight the first new line when
 # moving through the file
 LESS="iMdRW${LESS}"
-export BROWSER EDITOR LESS PAGER
+export BROWSER EDITOR LESS PAGER RSYNC_RSH
 
 # If grep is happy with these options then export them for automatic use
 GREP_OPTIONS='--color=auto'
