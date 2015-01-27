@@ -10,6 +10,9 @@ set expandtab tabstop=2 shiftwidth=2
 " Enable smart tabs, to see what they do.
 set smarttab
 
+" Line numbers to make jumping easier.
+set number
+
 " Change the xterm title, but not under tmux.
 if has('title') && ! exists("$TMUX")
   set title
