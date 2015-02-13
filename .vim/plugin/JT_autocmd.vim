@@ -48,14 +48,6 @@ autocmd FileType lisp syn keyword lispTodo contained XXX
 " Try to highlight XXX in Latex source
 autocmd FileType tex syn match texError "XXX"
 
-" Highlight trailing whitespace, but not when typing.
-" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-highlight link ExtraWhitespace Error
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
 " Highlight the first three characters over the line length limit.  Clearing the
 " highlight group first makes the background the same colour, so we only see
 " this once we actually exceed the limit.
