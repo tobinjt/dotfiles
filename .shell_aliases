@@ -73,8 +73,7 @@ dotfiles() {
     chmod 600 "${HOME}/.ssh/id_rsa"
     dotfiles_update_ssh_config
     dotfiles_local "$@"
-    vim -c 'call UpdateBundleHelptags() | :quit'
-    vim -c 'call UpdateSpellFiles() | :quit'
+    vim -c 'call UpdateBundleHelptags() | call UpdateSpellFiles() | :quit'
 }
 
 # Adapted from http://www.chiark.greenend.org.uk/~sgtatham/aliases.html
