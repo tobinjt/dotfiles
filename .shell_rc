@@ -25,6 +25,11 @@ esac
 export TERM
 
 BROWSER="google-chrome"
+if which colordiff >& /dev/null; then
+  DIFF="colordiff -u"
+else
+  DIFF="diff -u"
+fi
 EDITOR="vim"
 PAGER="less"
 # Don't create or use a shared connection for rsync.
@@ -33,7 +38,7 @@ RSYNC_RSH="ssh -o ControlPath=none"
 # allow ANSI colour escape sequences; highlight the first new line when
 # moving through the file
 LESS="iMdRW${LESS}"
-export BROWSER EDITOR LESS PAGER RSYNC_RSH
+export BROWSER DIFF EDITOR LESS PAGER RSYNC_RSH
 
 # If grep is happy with these options then export them for automatic use
 GREP_OPTIONS='--color=auto'
