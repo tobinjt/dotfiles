@@ -51,6 +51,7 @@ Plugin 'tpope/vim-scriptease.git'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/LargeFile'
+Plugin 'vim-scripts/argtextobj'
 Plugin 'vim-scripts/file-line'
 Plugin 'vim-scripts/quickfixsigns'
 
