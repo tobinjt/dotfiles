@@ -81,6 +81,10 @@ delete-ipad-app-backups() {
     rm "${HOME}/Music/iTunes/iTunes Media/Mobile Applications"/*
 }
 
+timestamp-to-human-localtime() {
+  strictperl -n -e 'print scalar localtime $_, qq{\n}'
+}
+
 godocl() {
   godoc "$@" | less
 }
