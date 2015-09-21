@@ -91,4 +91,15 @@ if has("eval")
     call mkdir(_temp_dir, "p", 0700)
   endif
   let &directory=_temp_dir . "//," . &directory
+
+  " Save undo history per file.
+  if has("persistent_undo")
+    let _undo_dir=_temp_dir . '/undo'
+    if !isdirectory(_undo_dir)
+      call mkdir(_undo_dir, "p", 0700)
+    endif
+    let &undodir=_undo_dir . "," . &undodir
+    set undodir-=.
+    set undofile
+  endif
 endif
