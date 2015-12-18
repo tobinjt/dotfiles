@@ -20,7 +20,7 @@ autocmd BufNewFile,BufRead *.json setlocal filetype=javascript
 autocmd FileType python setlocal foldminlines=5 foldnestmax=3 foldmethod=indent
   \ shiftwidth=2 tabstop=2 softtabstop=2
 
-autocmd BufRead,BufNewFile *.mkd,*.mdwn setlocal filetype=markdown
+autocmd BufRead,BufNewFile *.md,*.mkd,*.mdwn setlocal filetype=markdown
 autocmd FileType markdown setlocal formatoptions+=nt formatoptions-=l
   \ formatlistpat=^\\s*\\(\\*\\\|[0-9]\\.\\)\\s\\+ comments=n:> foldmethod=expr
   \ foldexpr=MarkdownFolding(v:lnum)

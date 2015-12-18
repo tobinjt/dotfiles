@@ -10,6 +10,6 @@ if has("eval")
     if l:length <= 1
       return '='
     endif
-    return '>' . (l:length - 2)
+    return '>' . (l:length - 1)
   endfunction
 endif
