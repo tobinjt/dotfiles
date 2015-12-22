@@ -1,5 +1,8 @@
 " vim: set filetype=vim :
 if has("eval")
+  if ! exists("g:MarkdownMinimumHeaderFoldingLevel")
+    let g:MarkdownMinimumHeaderFoldingLevel = 2
+  endif
   function! MarkdownFolding(lnum)
     let l:line = getline(a:lnum)
     let l:matches = matchlist(l:line, '^\(#\+\)')
@@ -10,6 +13,6 @@ if has("eval")
     if l:length <= 1
       return '='
     endif
-    return '>' . (l:length - 1)
+    return '>' . (l:length - (g:MarkdownMinimumHeaderFoldingLevel - 1))
   endfunction
 endif
