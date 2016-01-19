@@ -34,7 +34,7 @@ cdpwd () {
 
 git () {
     # MacOS env doesn't have --unset.
-    ( unset LESS; exec git "$@" )
+    ( unset LESS; command git "$@" )
 }
 
 ikiwiki-johntobin.ie () {
