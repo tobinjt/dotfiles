@@ -8,14 +8,28 @@
 
 " Remove 'vcsdiff' because it overwrites Syntastic error markers.
 let g:quickfixsigns_classes = ['qfl', 'loc', 'marks', 'breakpoints']
+
+" Syntastic.
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " Don't use the go binary, it complains about packages.
 let g:syntastic_go_checkers = ['gofmt', 'golint', 'gotype', 'govet']
 "let g:syntastic_auto_loc_list = 0
+
+" vim-go.
 " Don't auto-install tools.
 let g:go_disable_autoinstall = 1
+" Use goimports, it should fix up import lines automatically.
+let g:go_fmt_command = "goimports"
+" More highlighting.
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
 " Change the trigger so it doesn't clash with SuperTab; this means I have to
 " explicitly trigger snippet expansion and it doesn't happen accidentally.
 let g:UltiSnipsExpandTrigger = "<C-N>"
