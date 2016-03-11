@@ -9,10 +9,7 @@ autocmd FileType pod setlocal textwidth=72
 autocmd FileType make setlocal shiftwidth=8 tabstop=8
 autocmd FileType tex setlocal textwidth=75 makeprg=make\ -s foldmethod=syntax
   \ formatoptions+=2
-" Don't scan included files when completing, it's too slow.
-autocmd FileType c,cpp setlocal foldmethod=syntax complete-=i
-" Don't scan included files when completing, it's too slow.
-autocmd FileType php setlocal complete-=i
+autocmd FileType c,cpp setlocal foldmethod=syntax
 
 " Editing bash command lines.
 autocmd BufRead,BufNewFile /tmp/bash-fc-* setlocal filetype=sh

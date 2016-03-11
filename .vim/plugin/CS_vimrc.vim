@@ -42,6 +42,10 @@ set showmatch
 set showcmd
 " Open new windows below the current window (to the right with vsplit).
 set splitbelow splitright
+" Don't redraw the screen while executing macros etc.
+set lazyredraw
+" Show as much of the last line on screen as possible.
+set display+=lastline
 
 " File related stuff. {{{1
 " Ignore files with these suffixes when doing tab completion.
@@ -55,11 +59,16 @@ set wildmode=longest,list
 set nobackup
 " Ask the user if they want to save or abandon changes rather than failing.
 set confirm
+" Don't scan included files when doing completion.
+set complete-=i
+" Automatically reread a file when it's changed outside vim and not changed
+" inside vim.
+set autoread
 
 " Formatting options. {{{1
 " Automatically insert comment leaders after hitting return in Insert mode or
-" O/o in Normal mode.
-set formatoptions+=ro
+" O/o in Normal mode.  Remove comment characters when joining lines.
+set formatoptions+=roj
 set textwidth=80
 " Turn on automatic indenting.
 set autoindent
