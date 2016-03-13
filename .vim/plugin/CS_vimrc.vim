@@ -67,8 +67,12 @@ set autoread
 
 " Formatting options. {{{1
 " Automatically insert comment leaders after hitting return in Insert mode or
-" O/o in Normal mode.  Remove comment characters when joining lines.
-set formatoptions+=roj
+" O/o in Normal mode.
+set formatoptions+=ro
+if v:version > 703
+  " Remove comment characters when joining lines.
+  set formatoptions+=j
+endif
 set textwidth=80
 " Turn on automatic indenting.
 set autoindent

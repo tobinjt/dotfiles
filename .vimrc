@@ -51,7 +51,9 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 " Add bundles here.
 Plugin 'ConradIrwin/vim-bracketed-paste'
-Plugin 'SirVer/ultisnips'
+if v:version >= 704
+  Plugin 'SirVer/ultisnips'
+endif
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
