@@ -14,6 +14,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " Don't use the go binary, it complains about packages.
+" go get -u github.com/golang/lint/golint
+" go get -u golang.org/x/tools/cmd/gotype
+" All of these will be run serially; remove if that gets too slow.
 let g:syntastic_go_checkers = ['gofmt', 'golint', 'gotype', 'govet']
 "let g:syntastic_auto_loc_list = 0
 
