@@ -2,7 +2,7 @@
 
 alias ls="ls -F" # --color=auto"
 alias mv="mv -i"
-alias cp="cp -i"
+alias cp="cp -i -p"
 
 ta() {
   tmux attach -d || tmux new
