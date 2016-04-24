@@ -51,3 +51,36 @@ endfunction
 function! UpdateSpellFiles()
   call map(split(&spellfile, ','), 's:Run("mkspell! " . v:val)')
 endfunction
+
+" Functions to do magic things when you start editing a new file.
+function! CS_populate_perl() " {{{1
+  " Don't execute this function a second time.
+  if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
+    return
+  endif
+  insert
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+
+.
+  call cursor ( line ( "$" ), 0 )
+  set filetype=perl
+endfunction
+
+function! CS_populate_sh() " {{{1
+  " Don't execute this function a second time.
+  if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
+    return
+  endif
+  insert
+#!/bin/bash
+
+set -e -f -u -o pipefail
+
+.
+  call cursor ( line ( "$" ), 0 )
+  set filetype=sh
+endfunction
