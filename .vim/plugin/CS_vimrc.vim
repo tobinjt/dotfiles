@@ -152,34 +152,9 @@ if has("eval")
   " PHP folding - see Perl folding for details.
   "let php_folding = 1
 
-  " Java settings. {{{1
-  " Highlight basic Java identifiers.
-  let java_highlight_java_lang_ids = 1
-  " If you follow the braindead Java style guidelines, this will identify
-  " functions.
-  let java_highlight_functions = "style"
-  " Java's printing is apparently only for debugging, so highlight it
-  " differently.
-  let java_highlight_debug = 1
-  " Increase the number of lines used for synchronising.
-  let java_minlines = 100
-
   " Python settings. {{{1
   " Turn on the maximum amount of highlighting.
   let python_highlight_all = 1
-
-  " Haskell {{{1
-  " Highlight True and False 
-  let hs_highlight_boolean = 1
-  " Highlight types
-  let hs_highlight_types = 1
-  let hs_highlight_more_types = 1
-  let hs_highlight_debug = 1
-
-  " Eiffel {{{1
-  " Strict syntax checks
-  let eiffel_strict = 1
-  let eiffel_pedantic = 1
 
   " Readline {{{1
   " Add bash specific stuff
@@ -226,13 +201,8 @@ if has("eval")
     if has("eval")
       " More autocommands: call functions to do magic things when editing
       " various new files.
-      autocmd BufNewFile *.h call CS_populate_header()
-      autocmd BufNewFile *.c call CS_populate_c()
-      autocmd BufNewFile *.java call CS_populate_java()
       autocmd BufNewFile *.pl,*.pm,*.cgi,*.t call CS_populate_perl()
-      "autocmd BufNewFile *.py call CS_populate_python()
       autocmd FileType perl call CS_populate_perl()
-      "autocmd FileType python call CS_populate_python()
     endif
   endif
 
@@ -241,72 +211,6 @@ endif
 if has("eval")
   " Functions to do magic things when you start editing a new file.
   " Populate a C header file.
-  function! CS_populate_header() " {{{1
-    " Don't execute this function a second time.
-    if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
-      return
-    endif
-    " Figure out the uppercased filename.
-    let b:CS_define = toupper ( expand ( "%:t" ) )
-    " Replace out all non-word characters with _, to keep cpp happy.
-    let b:CS_define = substitute ( b:CS_define, "\\W", "_", "g" )
-    insert
-#ifndef GUARD
-#define GUARD
-
-
-
-#endif /* GUARD */
-.
-    " Substitute GUARD with our individualised guard.
-    exe "silent %s/GUARD/" . b:CS_define . "/"
-    " Delete the empty trailing line.
-    $delete
-    " Go to line 5.
-    call cursor ( 5, 0 )
-  endfunction
-
-  " Populate a c source file.
-  function! CS_populate_c() " {{{1
-    " Don't execute this function a second time.
-    if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
-      return
-    endif
-    " Can't use normal with insert, wonder why.
-    insert
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-
-
-.
-    call cursor( 6, 0 )
-    " Figure out the filename to include, and include it if it exists.
-    let b:CS_header = expand ( "%:t:r" ) . ".h"
-    if filereadable( b:CS_header )
-      call append ( 4, "#include \"" . b:CS_header . "\"" )
-      call append ( 5, "" )
-      call append ( 6, "\/* XXX " . b:CS_header . " included below for prototypes XXX */" )
-      " How this works:
-      " Use normal to make sure we don't use a mapping: this doesn't
-      " work though???
-      " Execute the contents of the string - like Perl's eval. 
-      " The string breaks down to:
-      " Read the output of the command into the current file.
-      " Use sed to delete all #include lines in the header file,
-      " then pipe the output into cpp.
-      " cpp preprocesses it, leaves the comments in (-C) and doesn't
-      " produce #line directives (-P);  basically we get the
-      " function prototypes out of the header file, making it easier
-      " to add the function body.
-      execute "silent read! sed -e '/^\\#include/d' " . b:CS_header
-        \ . " | cpp -P -C -"
-      call cursor ( 10, 0 )
-    endif
-  endfunction
-
-  " Populate Perl source.
   function! CS_populate_perl() " {{{1
     " Don't execute this function a second time.
     if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
@@ -325,21 +229,6 @@ use warnings;
   endfunction
 
   " Populate sh source.
-  function! CS_populate_python() " {{{1
-    " Don't execute this function a second time.
-    if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
-      return
-    endif
-    insert
-#!/usr/bin/env python
-
-
-.
-    call cursor ( line ( "$" ), 0 )
-    set filetype=python
-  endfunction
-
-  " Populate sh source.
   function! CS_populate_sh() " {{{1
     " Don't execute this function a second time.
     if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
@@ -353,27 +242,5 @@ set -e -f -u -o pipefail
 .
     call cursor ( line ( "$" ), 0 )
     set filetype=sh
-  endfunction
-
-  " Populate Java source.
-  function! CS_populate_java() " {{{1
-    " Don't execute this function a second time.
-    if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
-      return
-    endif
-    " Figure out the class name.
-    let b:CS_class_name = expand ( "%:t:r" )
-    insert
-class CLASSNAME {
-  public CLASSNAME () {
-      
-  }
-}
-.
-    exe "silent %s/CLASSNAME/" . b:CS_class_name . "/"
-    " Delete the trailing line.
-    $delete
-    " Go to line 3, ready to edit.
-    call cursor ( 3, 2 )
   endfunction
 endif
