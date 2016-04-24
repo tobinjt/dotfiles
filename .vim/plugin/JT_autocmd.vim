@@ -2,10 +2,21 @@
 if !has("autocmd")
  finish
 endif
+" Taken from Bram Moolenar's example vimrc:
+" Jump to the previous position in the file.
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ 	exe "normal g`\"" |
+  \ endif
 " On BSD systems, the original file provided by crontab(1) must be written to,
 " rather than writing a new file and renaming it.
 autocmd FileType crontab setlocal backupcopy=yes
-autocmd FileType pod setlocal textwidth=72
+" Auto-wrap text, autowrap comments, allow fomment formatting, don't break lines
+" that are longer than textwidth when insertion starts.
+autocmd FileType pod setlocal textwidth=72 formatoptions+=tcql
+" Assume foo.t is Perl; Perl Modules come with tests in t/*.t
+autocmd BufEnter *.t setlocal ft=perl
+autocmd FileType perl call CS_populate_perl()
 autocmd FileType make setlocal shiftwidth=8 tabstop=8
 autocmd FileType tex setlocal textwidth=75 makeprg=make\ -s foldmethod=syntax
   \ formatoptions+=2
