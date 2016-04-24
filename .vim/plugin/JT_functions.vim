@@ -53,7 +53,7 @@ function! UpdateSpellFiles()
 endfunction
 
 " Functions to do magic things when you start editing a new file.
-function! CS_populate_perl() " {{{1
+function! CS_populate_perl() "
   " Don't execute this function a second time.
   if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
     return
@@ -70,7 +70,7 @@ use warnings;
   set filetype=perl
 endfunction
 
-function! CS_populate_sh() " {{{1
+function! CS_populate_sh() "
   " Don't execute this function a second time.
   if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
     return
