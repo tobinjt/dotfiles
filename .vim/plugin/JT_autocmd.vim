@@ -16,7 +16,7 @@ autocmd FileType crontab setlocal backupcopy=yes
 autocmd FileType pod setlocal textwidth=72 formatoptions+=tcql
 " Assume foo.t is Perl; Perl Modules come with tests in t/*.t
 autocmd BufEnter *.t setlocal ft=perl
-autocmd FileType perl call CS_populate_perl()
+autocmd FileType perl call JT_populate_perl()
 autocmd FileType make setlocal shiftwidth=8 tabstop=8
 autocmd FileType tex setlocal textwidth=75 makeprg=make\ -s foldmethod=syntax
   \ formatoptions+=2
