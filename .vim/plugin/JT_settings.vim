@@ -123,7 +123,7 @@ set dictionary+=/usr/share/dict/words,/usr/share/lib/dict/words
 " Keep a history of commands type in command mode (after typing ':'), and
 " searches.
 set history=100
-if has("+viminfo")
+if has("viminfo")
   " Default:
   "set viminfo='20,<50,s10,h
   set viminfo='100,<50,s10,h
