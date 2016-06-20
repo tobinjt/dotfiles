@@ -149,14 +149,8 @@ if exists('+spellfile')
   set spellfile+=~/.vim/spell/en.utf-8.add
 endif
 
-" Required for LaTeX-suite.
-if has('+shellslash')
-  set shellslash
-endif
-
 if has("user_commands")
   " Taken from :help :DiffOrig - this should diff the current buffer against
   " the file on disk.
   command DiffOrig vert new "| set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 endif
-
