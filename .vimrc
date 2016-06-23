@@ -54,7 +54,7 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 " Add bundles here.
 Plugin 'ConradIrwin/vim-bracketed-paste'
-if v:version >= 704
+if v:version >= 704 && has("python")
   Plugin 'SirVer/ultisnips'
 endif
 Plugin 'altercation/vim-colors-solarized'

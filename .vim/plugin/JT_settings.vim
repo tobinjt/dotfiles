@@ -123,7 +123,7 @@ set dictionary+=/usr/share/dict/words,/usr/share/lib/dict/words
 " Keep a history of commands type in command mode (after typing ':'), and
 " searches.
 set history=100
-if has("+viminfo")
+if has("viminfo")
   " Default:
   "set viminfo='20,<50,s10,h
   set viminfo='100,<50,s10,h
@@ -149,14 +149,8 @@ if exists('+spellfile')
   set spellfile+=~/.vim/spell/en.utf-8.add
 endif
 
-" Required for LaTeX-suite.
-if has('+shellslash')
-  set shellslash
-endif
-
 if has("user_commands")
   " Taken from :help :DiffOrig - this should diff the current buffer against
   " the file on disk.
   command DiffOrig vert new "| set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 endif
-
