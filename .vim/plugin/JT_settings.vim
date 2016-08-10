@@ -15,7 +15,7 @@ set ruler
 " Always display a status line.
 set laststatus=2
 " Line numbers to make jumping easier.
-set number
+set number relativenumber
 " Don't highlight search results afterwards.
 set nohlsearch
 " Search as you type the search string.  Remember to hit return!
