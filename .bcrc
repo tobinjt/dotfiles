@@ -11,3 +11,8 @@ define factorial(x) {
   }
   return x * factorial(x-1);
 }
+define ncr(n, r) {
+  auto denominator;
+  denominator = factorial(r) * factorial(n-r);
+  return factorial(n) / denominator;
+}
