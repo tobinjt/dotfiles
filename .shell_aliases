@@ -113,15 +113,6 @@ godocserver() {
   echo "http://localhost:12345/"
   godoc --http=:12345
 }
-gocov() {
-  local filename
-  filename="$(mktemp -t gocov.XXXXXXXXXXXX)"
-  go test --coverprofile="${filename}" --covermode=count "$@" \
-    && (go tool cover --func="${filename}" \
-          | grep -v '100.0%$'; \
-        go tool cover --html="${filename}")
-  rm -f "${filename}"
-}
 gocdpkg() {
   local pdir
   pdir="$(go list -f '{{ .Dir }}' "$1")"
