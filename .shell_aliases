@@ -104,10 +104,10 @@ timestamp-to-human-localtime() {
 }
 
 godocl() {
-  godoc "$@" | less
+  go doc "$@" | less
 }
 godocf() {
-  godoc "$@" | grep ^func
+  go doc "$@" | grep ^func
 }
 godocserver() {
   echo "http://localhost:12345/"
