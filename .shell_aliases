@@ -5,17 +5,19 @@ alias mv="mv -i"
 alias cp="cp -i -p"
 
 cd() {
-  if [ "$#" -ne 1 ]; then
-    echo "cd: Expecting exactly one argument" >&2
+  if [ "$#" -gt 1 ]; then
+    echo "cd: Expecting exactly zero or one argument" >&2
     return 1
   fi
+  if [ "$#" -eq 0 ]; then
+    builtin cd
+    return
+  fi
+
   local dest="$1"
   if [ -f "${dest}" ]; then
+    # dirname will output . if there isn't a directory in $dest.
     dest="$(dirname "${dest}")"
-  fi
-  if [ -z "${dest}" ]; then
-    echo "cd: no destiantion" >&2
-    return 1
   fi
   builtin cd "${dest}"
 }
