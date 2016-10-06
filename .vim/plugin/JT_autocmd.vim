@@ -32,8 +32,6 @@ autocmd BufRead,BufNewFile *.md,*.mkd,*.mdwn setlocal filetype=markdown
 autocmd FileType markdown setlocal formatoptions+=nt formatoptions-=l
   \ formatlistpat=^\\s*\\(\\*\\\|[0-9]\\.\\)\\s\\+ comments=n:> foldmethod=expr
   \ foldexpr=MarkdownFolding(v:lnum)
-autocmd BufRead,BufNewFile *.twiki setlocal filetype=twiki
-autocmd FileType twiki setlocal textwidth=1000
 " tmux(1)
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
 autocmd FileType go setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
