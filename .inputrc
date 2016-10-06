@@ -38,6 +38,8 @@ set enable-bracketed-paste on
 # default shift-3 inserts a comment at the start of the line and hits
 # return, basically cancelling the command you were just typing.
 "\M-#": redraw-current-line
+# On some Apple keyboards shift-3 sends a weird pound sign, remap it to hash.
+"£": "#"
 
 ### Home and End keys
 
