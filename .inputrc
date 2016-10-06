@@ -24,22 +24,6 @@ set completion-ignore-case on
 set input-meta on
 set output-meta on
 
-# To allow the use of 8bit-characters like the german umlauts, comment out
-# the line below. However this makes the meta key not work as a meta key,
-# which is annoying to those which don't need to type in 8-bit characters.
-
-# set convert-meta off
-
-# try to enable the application keypad when it is called.  Some systems
-# need this to enable the arrow keys.
-# set enable-keypad on
-
-# see /usr/share/doc/bash/inputrc.arrows for other codes of arrow keys
-
-# do not bell on tab-completion
-# set bell-style none
-# set bell-style visible
-
 ## Common keybindings
 
 # This is one of the most annoying things I have ever encountered.  By
