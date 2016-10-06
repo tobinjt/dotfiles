@@ -1,5 +1,9 @@
+.CFUserTextEncoding
+.DS_Store
 .Xauthority
 .bash_history
+.dotfiles.ignore
+.gdb_history
 .lesshst
 .mysql_history
 .ssh/authorized_keys
