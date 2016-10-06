@@ -1,0 +1,9 @@
+.Xauthority
+.bash_history
+.lesshst
+.mysql_history
+.ssh/authorized_keys
+.ssh/config
+.ssh/known_hosts
+.viminfo
+www-passwords
