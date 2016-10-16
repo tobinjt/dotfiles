@@ -2,12 +2,17 @@
 .DS_Store
 .Xauthority
 .bash_history
+.bashrc-local
 .dotfiles.ignore
 .gdb_history
 .lesshst
 .mysql_history
+.sqlite_history
+.ssh/ariane-laptop-key
 .ssh/authorized_keys
 .ssh/config
+.ssh/id_autossh
+.ssh/id_autossh.pub
 .ssh/known_hosts
 .viminfo
 www-passwords
