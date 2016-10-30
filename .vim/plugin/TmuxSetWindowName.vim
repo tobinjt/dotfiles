@@ -2,7 +2,7 @@
 "                    name of the file being edited.
 " Author:            John Tobin <johntobin@johntobin.ie>
 " Date:              2016/10/30
-" Version:           1
+" Version:           2
 
 if ! has('eval')
   finish
