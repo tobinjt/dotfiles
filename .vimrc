@@ -48,11 +48,14 @@ let g:UltiSnipsListSnippets = "<F3>"
 " To update a single submodule, run the last line in the submodule's directory.
 " To add a new submodule run:
 " $ git submodule add URL DESTINATION
+" $ git submodule add \
+"     https://github.com/junegunn/vim-plug.git .vim/bundle/vim-plug
 set nocompatible
 filetype off
 set runtimepath+=~/.vim/bundle/vundle
 call vundle#rc()
 Plugin 'gmarik/vundle'
+Plugin 'junegunn/vim-plug'
 " Add bundles here.
 Plugin 'ConradIrwin/vim-bracketed-paste'
 if v:version >= 704 && has("python")
