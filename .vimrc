@@ -39,7 +39,7 @@ let g:go_highlight_build_constraints = 1
 let g:UltiSnipsExpandTrigger = "<C-N>"
 let g:UltiSnipsListSnippets = "<F3>"
 
-" Set up Vundle.
+" Set up plugins.
 " To update all the git submodules, run these commands:
 " $ git submodule init
 " $ git submodule update
@@ -50,34 +50,31 @@ let g:UltiSnipsListSnippets = "<F3>"
 " $ git submodule add URL DESTINATION
 " $ git submodule add \
 "     https://github.com/junegunn/vim-plug.git .vim/bundle/vim-plug
-set nocompatible
-filetype off
-set runtimepath+=~/.vim/bundle/vundle
-call vundle#rc()
-Plugin 'gmarik/vundle'
-Plugin 'junegunn/vim-plug'
+" Initialise vim-plug.
+call plug#begin('~/.vim/bundle')
 " Add bundles here.
-Plugin 'ConradIrwin/vim-bracketed-paste'
+Plug 'ConradIrwin/vim-bracketed-paste'
 if v:version >= 704 && has("python")
-  Plugin 'SirVer/ultisnips'
+  Plug 'SirVer/ultisnips'
 endif
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'ervandew/supertab'
-Plugin 'fatih/vim-go'
-Plugin 'godlygeek/tabular'
-Plugin 'honza/vim-snippets'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-scriptease.git'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'vim-scripts/LargeFile'
-Plugin 'vim-scripts/argtextobj'
-Plugin 'vim-scripts/file-line'
-Plugin 'vim-scripts/quickfixsigns'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ervandew/supertab'
+Plug 'fatih/vim-go'
+Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
+Plug 'junegunn/vim-plug'
+Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-scriptease.git'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/LargeFile'
+Plug 'vim-scripts/argtextobj'
+Plug 'vim-scripts/file-line'
+Plug 'vim-scripts/quickfixsigns'
 
 " This needs to be done before loading plugins, so that runtimepath can be
 " extended first.
@@ -88,9 +85,11 @@ if has("eval")
   endif
 endif
 
+" Finish vim-plug setup.
+call plug#end()
+
 " Explicitly put ~/.vim first, because vim will put spelling additions in the
-" first directory in runtimepath.
+" first directory in runtimepath.  Overwrite runtimepath rather than adding to
+" it because additions are placed at the end.
 set runtimepath-=~/.vim
 exec 'set runtimepath=~/.vim,' . &runtimepath
-filetype plugin indent on
-syntax on
