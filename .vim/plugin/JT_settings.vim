@@ -1,12 +1,7 @@
 " vim: set foldmethod=marker :
-" Don't be Vi compatible; things have moved on since 1980.  Users with ~/.vimrc
-" won't be compatible anyway, but they shouldn't need one for Vim to work
-" nicely.
-set nocompatible
 
 " Visual stuff. {{{1
-" Use a visual flash rather than ringing the bell - should make life in LG8
-" much more pleasant.
+" Use a visual flash rather than ringing the bell.
 set visualbell
 " Display 5 lines of context while moving through the file.
 set scrolloff=5
@@ -40,6 +35,11 @@ if has('title') && ! exists("$TMUX")
 endif
 
 " File related stuff. {{{1
+" Disable modelines because of security vulnerability.
+" http://seclists.org/oss-sec/2016/q4/506
+if v:version < 801
+  set nomodeline
+endif
 " Ignore files with these suffixes when doing tab completion.
 set suffixes+=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx
 set suffixes+=,.ilg,.inx,.out,.toc
