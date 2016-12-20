@@ -2,7 +2,6 @@
 .DS_Store
 .Xauthority
 .bash_history
-.bashrc-local
 .dotfiles.ignore
 .forward
 .gdb_history
