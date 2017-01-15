@@ -7,6 +7,7 @@
 .lesshst
 .mysql_history
 .profile
+# Next two files are used by XQuartz.
 .rnd
 .serverauth.*
 .sh_history
@@ -19,7 +20,7 @@
 .ssh/hosting.pub
 .ssh/id_autossh
 .ssh/id_autossh.pub
+.ssh/id_rsa.ariane@hosting
+.ssh/id_rsa.pub.ariane@hosting
 .ssh/known_hosts
 .viminfo
-id_rsa.ariane@hosting
-id_rsa.pub.ariane@hosting
