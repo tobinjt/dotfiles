@@ -20,3 +20,5 @@
 .ssh/id_autossh.pub
 .ssh/known_hosts
 .viminfo
+id_rsa.ariane@hosting
+id_rsa.pub.ariane@hosting
