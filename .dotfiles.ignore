@@ -3,6 +3,8 @@
 .Xauthority
 .bash_history
 .dotfiles.ignore
+# Used by root.
+.forward
 .gdb_history
 .lesshst
 .mysql_history
