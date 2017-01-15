@@ -7,6 +7,8 @@
 .lesshst
 .mysql_history
 .profile
+.rnd
+.serverauth.*
 .sh_history
 .sqlite_history
 .ssh/ariane-laptop-key
