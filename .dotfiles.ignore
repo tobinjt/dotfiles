@@ -3,7 +3,6 @@
 .Xauthority
 .bash_history
 .dotfiles.ignore
-.forward
 .gdb_history
 .lesshst
 .mysql_history
