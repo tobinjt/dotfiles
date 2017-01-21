@@ -37,7 +37,7 @@ pushd() {
 ta() {
   tmux attach -d || tmux new
 }
-top () {
+top() {
   local top_args=""
   # top on Mac OS X does not sort by CPU by default; fix that.
   if [ "${OSTYPE#darwin}" != "${OSTYPE}" ]; then
@@ -45,42 +45,39 @@ top () {
   fi
   TOP="$((${LINES:-24} - 7))" command top ${top_args} "$@"
 }
-sortdu () {
+sortdu() {
 	if [ "$#" = 0 ]; then
 		du -sxk * .??* | sort -n
 	else
 		du -sxk "$@" | sort -n
 	fi
 }
-sortduh () {
-    sortdu "$@" | awk '{ $1 = $1 * 1024; print; }' | human
+sortduh() {
+  sortdu "$@" | awk '{ $1 = $1 * 1024; print; }' | human
 }
-strictperl () {
-    perl -Mstrict -w -MData::Dumper "$@"
-}
-cdpwd () {
-    cd "$(/bin/pwd)"
+strictperl() {
+  perl -Mstrict -w -MData::Dumper "$@"
 }
 
-git () {
+git() {
     # MacOS env doesn't have --unset.
-    ( unset LESS; command git "$@" )
+    (unset LESS; command git "$@")
 }
 
-ikiwiki-johntobin.ie () {
-    if ! type tidy > /dev/null; then
-        echo "apt-get install tidy" >&2
-        return 1
-    fi
-    ikiwiki --setup ~/.ikiwiki/johntobin.ie "$@"
+ikiwiki-johntobin.ie() {
+  if ! type tidy > /dev/null; then
+    echo "apt-get install tidy" >&2
+    return 1
+  fi
+  ikiwiki --setup ~/.ikiwiki/johntobin.ie "$@"
 }
 
-ikiwiki-johntobin.ie-preview () {
-    ikiwiki-johntobin.ie --render "$@" | w3m -T text/html
+ikiwiki-johntobin.ie-preview() {
+  ikiwiki-johntobin.ie --render "$@" | w3m -T text/html
 }
 
-clisp () {
-    (ulimit -v 1048576 && command clisp -ansi -m 128MB "$@")
+clisp() {
+  (ulimit -v 1048576 && command clisp -ansi -m 128MB "$@")
 }
 
 bc() {
@@ -93,7 +90,7 @@ bc() {
 
 # Adapted from http://www.chiark.greenend.org.uk/~sgtatham/aliases.html
 _echo-literally-helper() {
-    history 1 | perl -pe 's/^ *[0-9]+ +[^ ]+ //'
+  history 1 | perl -pe 's/^ *[0-9]+ +[^ ]+ //'
 }
 alias echo-literally='_echo-literally-helper #'
 
@@ -114,7 +111,7 @@ only_duplicates() {
 }
 
 delete-ipad-app-backups() {
-    rm "${HOME}/Music/iTunes/iTunes Media/Mobile Applications"/*
+  rm "${HOME}/Music/iTunes/iTunes Media/Mobile Applications"/*
 }
 
 timestamp-to-human-localtime() {
