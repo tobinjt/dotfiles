@@ -1,4 +1,3 @@
-" vim: set filetype=vim :
 if !has("autocmd")
  finish
 endif

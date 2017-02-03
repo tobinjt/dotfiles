@@ -1,4 +1,3 @@
-" vim: set foldmethod=marker :
 " My .vimrc - an attempt to customise vim and save most of my settings so that
 " I'm independant of the global vimrc wherever I go.
 " $Id: .vimrc,v 1.62 2007/03/23 14:20:00 tobinjt Exp $
