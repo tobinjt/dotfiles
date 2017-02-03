@@ -37,6 +37,9 @@ let g:go_highlight_build_constraints = 1
 " Change the trigger so it doesn't clash with SuperTab; this means I have to
 " explicitly trigger snippet expansion and it doesn't happen accidentally.
 let g:UltiSnipsExpandTrigger = "<C-N>"
+" AFAIK there isn't a way to list the snippets for a filetype - I have to read
+" the definitions.  This should list the possible snippets for the word I have
+" just typed, I think.
 let g:UltiSnipsListSnippets = "<F3>"
 
 " Set up plugins.
