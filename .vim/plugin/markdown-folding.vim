@@ -1,4 +1,3 @@
-" vim: set filetype=vim :
 if has("eval")
   if ! exists("g:MarkdownMinimumHeaderFoldingLevel")
     let g:MarkdownMinimumHeaderFoldingLevel = 2

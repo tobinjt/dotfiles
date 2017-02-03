@@ -1,4 +1,3 @@
-" vim: set filetype=vim :
 if !has("autocmd")
  finish
 endif
@@ -69,3 +68,6 @@ if exists('+colorcolumn')
     autocmd ColorScheme * highlight ColorColumn guifg=red ctermfg=red gui=bold
   augroup END
 endif
+
+" Set filetype=sshconfig for all ssh config snippets.
+autocmd BufReadPost,BufNewFile */.ssh/config* set filetype=sshconfig

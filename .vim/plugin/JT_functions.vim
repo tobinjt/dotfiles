@@ -1,4 +1,3 @@
-" vim: set filetype=vim :
 if !has("eval")
  finish
 endif

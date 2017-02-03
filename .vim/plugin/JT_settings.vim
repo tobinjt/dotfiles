@@ -1,6 +1,4 @@
-" vim: set foldmethod=marker :
-
-" Visual stuff. {{{1
+" Visual stuff.
 " Use a visual flash rather than ringing the bell.
 set visualbell
 " Display 5 lines of context while moving through the file.
@@ -34,7 +32,7 @@ if has('title') && ! exists("$TMUX")
   set title
 endif
 
-" File related stuff. {{{1
+" File related stuff.
 " Disable modelines because of security vulnerability.
 " http://seclists.org/oss-sec/2016/q4/506
 if v:version < 801
@@ -82,7 +80,7 @@ if has("eval")
   endif
 endif
 
-" Formatting options. {{{1
+" Formatting options.
 " Automatically insert comment leaders after hitting return in Insert mode or
 " O/o in Normal mode.
 set formatoptions+=ro
@@ -100,7 +98,7 @@ set expandtab tabstop=2 shiftwidth=2
 " Recognise extra list headers.  Use let instead of set, to avoid backslashitis.
 let &formatlistpat='^\s*\(\d\+\|\a\+\.\|\*\)[.:)]\s*'
 
-" Movement through the file. {{{1
+" Movement through the file.
 " Proper backspace, that deletes previously entered text.
 set backspace=indent,eol,start
 " Make the arrow keys wrap - i.e. hitting left arraw at the start of a
@@ -111,7 +109,7 @@ set matchpairs+=<:>
 " Stop the goddamn MatchParen plugin from loading.
 let loaded_matchparen = 1
 
-" Compilation related stuff. {{{1
+" Compilation related stuff.
 " make should run silently from within vim to help with quickfix mode.
 set makeprg+=\ -s
 
@@ -119,7 +117,7 @@ set makeprg+=\ -s
 " Dictionary file to read - Linux/*BSD, Solaris.
 set dictionary+=/usr/share/dict/words,/usr/share/lib/dict/words
 
-" History {{{1
+" History
 " Keep a history of commands type in command mode (after typing ':'), and
 " searches.
 set history=100
@@ -128,7 +126,8 @@ if has("viminfo")
   "set viminfo='20,<50,s10,h
   set viminfo='100,<50,s10,h
 endif
-" Misc stuff, bugfixes. {{{1
+
+" Misc stuff, bugfixes.
 " Prevent vim connecting to the X server so that using PuTTY works without
 " Exceed.  This prevents cut and paste between Vim and the X server, but
 " doesn't prevent cut and paste between the terminal and the X server.

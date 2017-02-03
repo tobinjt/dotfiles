@@ -1,4 +1,4 @@
-# vim: set filetype=sh :
+#!/bin/sh
 
 # flags to pass to gcc
 CFLAGS=""

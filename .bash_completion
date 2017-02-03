@@ -1,4 +1,4 @@
-# vim: set filetype=sh :
+#!/bin/sh
 # Programmable completion:
 # Bash supports programmable completion, i.e. different behaviour on hitting TAB
 # depending on the command.
