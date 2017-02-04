@@ -60,9 +60,17 @@ fi
 # Only do completion stuff if the shell is interactive, errors are generated
 # otherwise - sh doesn't have completion, and this file is sourced by
 # cronjobs.
+# Load Homebrew bash completion if available.  On Linux bash completion is
+# normally loaded automatically.
+if [ -f "${HOME}/homebrew/etc/bash_completion" ]; then
+  . "${HOME}/homebrew/etc/bash_completion"
+fi
+# My own completions.
 . "${HOME}/.bash_completion"
 # Likewise, only set up aliases when running interactively.
 . "${HOME}/.shell_aliases"
+
+# Some xterm title tweaks under tmux.
 if [ -n "${TMUX}" ]; then
   if [ "${USER}" != "johntobin" ]; then
     # Put the user in the pane.
