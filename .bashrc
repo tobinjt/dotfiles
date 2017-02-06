@@ -37,8 +37,8 @@ HISTSIZE='100000000'
 HISTFILESIZE='100000000000'
 export HISTIGNORE HISTCONTROL HISTTIMEFORMAT HISTSIZE HISTFILESIZE
 
-# Ignore files created by compiling Lisp.
-FIGNORE=".lib:.fas:.fasl"
+# Ignore files created by compiling Lisp or Python.
+FIGNORE=".lib:.fas:.fasl:.pyc:.pyo"
 export FIGNORE
 
 shopt -s checkhash
