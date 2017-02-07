@@ -14,3 +14,6 @@ max-line-length=80
 [BASIC]
 # Don't require a docstring for main.
 no-docstring-rgx=^_|^main$
+
+[MESSAGES CONTROL]
+disable=
