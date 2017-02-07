@@ -8,6 +8,8 @@ reports=no
 [FORMAT]
 # Indents are two spaces, not four.
 indent-string='  '
+# Maximum number of characters on a single line.
+max-line-length=80
 
 [BASIC]
 # Don't require a docstring for main.
