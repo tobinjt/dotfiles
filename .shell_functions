@@ -24,6 +24,7 @@ update_tmux_environment() {
   fi
 }
 
+# Function to be run every time my prompt is displayed.
 function prompt_command() {
   exit_status="$?"
   # Exit status 146/148 happens when you suspend something.
