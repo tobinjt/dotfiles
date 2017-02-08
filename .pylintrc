@@ -1,3 +1,4 @@
+# To figure out setting to change run: pylint --generate-rcfile | less
 [REPORTS]
 # Keep the output format parsable, in paricular include filenames and line
 # numbers.
@@ -12,8 +13,10 @@ indent-string='  '
 max-line-length=80
 
 [BASIC]
-# Don't require a docstring for main.
-no-docstring-rgx=^_|^main$
+# Don't require a docstring for certain functions.
+no-docstring-rgx=^_|^main$|^setUp$
+# Require method_names except for setUp.
+method-rgx=^[a-z_][a-z0-9_]{2,30}$|^setUp$
 
 [MESSAGES CONTROL]
 disable=
