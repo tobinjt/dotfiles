@@ -30,6 +30,7 @@ PS1="\nI'm ${_user} on \h's pts/\l @ \t, \d, in \w/\nWhat is thy bidding? "
 PROMPT_DIRTRIM=4
 export PS1 PROMPT_DIRTRIM
 
+# Exclude fg and bg from history.
 HISTIGNORE='&:fg:bg'
 HISTCONTROL="ignoredups"
 HISTTIMEFORMAT='%F %T '
