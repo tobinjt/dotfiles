@@ -21,7 +21,7 @@ cd_helper() {
   fi
 
   local dest="$2"
-  if [ -f "${dest}" ]; then
+  if [ ! -d "${dest}" ]; then
     # dirname will output . if there isn't a directory in $dest.
     dest="$(dirname "${dest}")"
   fi

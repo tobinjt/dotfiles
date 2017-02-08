@@ -9,7 +9,7 @@
 if [ -d "/usr/local/Cellar" ]; then
     PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
 fi
-# Sometimes I can't install homebrew in /usr/local.
+# More recently homebrew is in my home directory.
 if [ -d "${HOME}/homebrew" ]; then
     PATH="${HOME}/homebrew/bin:${HOME}/homebrew/sbin:${PATH}"
 fi

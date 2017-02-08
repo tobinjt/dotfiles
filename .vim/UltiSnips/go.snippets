@@ -17,3 +17,22 @@ func projectEuler$1() int64 {
 	return projectEuler$1actual()
 }
 endsnippet
+
+snippet errreturn "Return on error"
+if err != nil {
+	return nil, err
+}
+endsnippet
+
+snippet errlog "Log and return on error"
+if err != nil {
+	log.Println(err)
+	return nil, err
+}
+endsnippet
+
+snippet errfatal "Fatal on error"
+if err != nil {
+	log.Fatalln(err)
+}
+endsnippet

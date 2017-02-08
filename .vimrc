@@ -1,4 +1,3 @@
-" vim: set foldmethod=marker :
 " My .vimrc - an attempt to customise vim and save most of my settings so that
 " I'm independant of the global vimrc wherever I go.
 " $Id: .vimrc,v 1.62 2007/03/23 14:20:00 tobinjt Exp $
@@ -37,6 +36,9 @@ let g:go_highlight_build_constraints = 1
 " Change the trigger so it doesn't clash with SuperTab; this means I have to
 " explicitly trigger snippet expansion and it doesn't happen accidentally.
 let g:UltiSnipsExpandTrigger = "<C-N>"
+" AFAIK there isn't a way to list the snippets for a filetype - I have to read
+" the definitions.  This should list the possible snippets for the word I have
+" just typed, I think.
 let g:UltiSnipsListSnippets = "<F3>"
 
 " Set up plugins.
@@ -63,6 +65,7 @@ Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
+Plug 'keith/tmux'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'

@@ -58,3 +58,6 @@
 [submodule ".vim/bundle/vim-plug"]
 	path = .vim/bundle/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
+[submodule ".vim/bundle/tmux"]
+	path = .vim/bundle/tmux
+	url = https://github.com/keith/tmux.vim.git
