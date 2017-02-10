@@ -4,6 +4,23 @@
 
 . "${HOME}/.shell_functions"
 
+# If homebrew is in use, put it first so I can replace system binaries like
+# vim.
+if [ -d "/usr/local/Cellar" ]; then
+    PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
+fi
+# More recently homebrew is in my home directory.
+if [ -d "${HOME}/homebrew" ]; then
+    PATH="${HOME}/homebrew/bin:${HOME}/homebrew/sbin:${PATH}"
+fi
+if [ -d "/usr/local/go/bin" ]; then
+    PATH="/usr/local/go/bin:${PATH}"
+fi
+PATH="${HOME}/gbin:${HOME}/bin:${HOME}/src/gopath/bin:${PATH}"
+PATH="${PATH}:/sbin:/usr/sbin"
+PATH="$(deduplicate_path "${PATH}")"
+export PATH
+
 # The trailing : is important on Linux; it means to append the standard
 # search path to ${MANPATH}.
 MANPATH="$(deduplicate_path "${HOME}/man${MANPATH:+:}${MANPATH:-}:")"

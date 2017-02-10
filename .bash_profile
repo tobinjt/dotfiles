@@ -2,8 +2,6 @@
 # Bash reads this when it's either an interactive login shell (-bash) or given
 # the --login option.
 
-. "${HOME}/.shell_profile"
-
 if [ "$-" != "${-//i/}" ]; then
   # This is an interactive shell.
   # Source aliases, per-shell or per-tty stuff.
