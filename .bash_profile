@@ -2,11 +2,8 @@
 # Bash reads this when it's either an interactive login shell (-bash) or given
 # the --login option.
 
-if [ "$-" != "${-//i/}" ]; then
-  # This is an interactive shell.
-  # Source aliases, per-shell or per-tty stuff.
-  . "${HOME}/.bashrc"
-fi
+# Source aliases, per-shell or per-tty stuff.
+. "${HOME}/.bashrc"
 
 # Local stuff
 local_bash_profile="${HOME}/.bash_profile-local"

@@ -1,6 +1,8 @@
 #!/bin/sh
 
 # Shell-neutral environment variables needed for interactive shells.
+# We do enough to set $PATH, then check for being an interactive shell: if we're
+#   not interactive we skip everything else.
 
 . "${HOME}/.shell_functions"
 
@@ -20,6 +22,11 @@ PATH="${HOME}/gbin:${HOME}/bin:${HOME}/src/gopath/bin:${PATH}"
 PATH="${PATH}:/sbin:/usr/sbin"
 PATH="$(deduplicate_path "${PATH}")"
 export PATH
+
+if [ "$-" == "${-//i/}" ]; then
+  # This is not an interactive shell, skip everything else in this file.
+  return
+fi
 
 # The trailing : is important on Linux; it means to append the standard
 # search path to ${MANPATH}.

@@ -3,6 +3,8 @@
 # This file is sourced (directly) for non-login, interactive shells.
 # This file is sourced (directly) if bash thinks it's being run by rshd, and
 #   presumably sshd too.
+# We do enough to set $PATH, then check for being an interactive shell: if we're
+#   not interactive we skip everything else.
 # aliases should be put here because they aren't passed on to child processes.
 
 # Umask is here so that it's set when scp(1)ing.
@@ -10,7 +12,14 @@ umask 022
 
 # Source prompt_command et al.
 . "${HOME}/.shell_functions"
+# Source shell-neutral environment settings.
 . "${HOME}/.shell_rc"
+
+if [ "$-" == "${-//i/}" ]; then
+  # This is not an interactive shell, skip everything else in this file.
+  return
+fi
+
 prompt_command_shell_specific() {
   # Write new history lines.
   history -a
