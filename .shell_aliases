@@ -15,8 +15,14 @@ cd_helper() {
     echo "${cmd}: Expecting exactly one or two arguments" >&2
     return 1
   fi
+  # Support "cd".
   if [ "$#" -eq 1 ]; then
     builtin "${cmd}"
+    return
+  fi
+  # Support "cd -".
+  if [ "$2" == '-' ]; then
+    builtin "${cmd}" "$2"
     return
   fi
 
