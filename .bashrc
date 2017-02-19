@@ -51,13 +51,33 @@ export HISTIGNORE HISTCONTROL HISTTIMEFORMAT HISTSIZE HISTFILESIZE
 FIGNORE=".lib:.fas:.fasl:.pyc:.pyo"
 export FIGNORE
 
+# Fix minor spelling errors in cd arguments.
+shopt -s cdspell
+# Check that a hashed command exists before execution and search again if not
+# found.
 shopt -s checkhash
+# Check window size after each command.
 shopt -s checkwinsize
+# Save multiline commands as a single history entry for easy editing.
+shopt -s cmdhist
+# Enable extended pattern matching in globs, e.g. !(*.gz).
 shopt -s extglob
+# Append to the history file rather than overwriting.
 shopt -s histappend
+# Failed command substitutions can be reedited.
 shopt -s histreedit
+# Don't do tab completion on empty lines
 shopt -s no_empty_cmd_completion
+# Output an error message when trying to shift more args than exist.
+shopt -s shift_verbose
+
 if [ "${BASH_VERSINFO[0]}" -ge 4 ]; then
+  # Check for running background jobs and warn before exiting.
+  shopt -s checkjobs
+  # Correct spelling of directories durign filename completion.
+  shopt -s dirspell
+  # [a-z] doesn't include B, i.e. do what I expect.
+  shopt -s globasciiranges
   # ** matches recursively.
   shopt -s globstar
 fi
