@@ -21,7 +21,11 @@ fi
 PATH="${HOME}/gbin:${HOME}/bin:${HOME}/src/gopath/bin:${PATH}"
 PATH="${PATH}:/sbin:/usr/sbin"
 PATH="$(deduplicate_path "${PATH}")"
-export PATH
+# EDITOR is set here so that it's correct when running non-interactively, e.g.
+# when sshing in to run update-dotfiles-and-bin, whch runs git pull, which needs
+# a commit message for merges.
+EDITOR="vim"
+export EDITOR PATH
 
 if [ "$-" == "${-//i/}" ]; then
   # This is not an interactive shell, skip everything else in this file.
@@ -54,7 +58,6 @@ if which colordiff >& /dev/null; then
 else
   DIFF="diff -u"
 fi
-EDITOR="vim"
 PAGER="less"
 # Don't create or use a shared connection for rsync.
 RSYNC_RSH="ssh -o ControlPath=none"
@@ -62,7 +65,7 @@ RSYNC_RSH="ssh -o ControlPath=none"
 # allow ANSI colour escape sequences; highlight the first new line when
 # moving through the file
 LESS="iMdRW${LESS}"
-export BROWSER DIFF EDITOR LESS PAGER RSYNC_RSH
+export BROWSER DIFF LESS PAGER RSYNC_RSH
 
 # If grep is happy with these options then export them for automatic use
 GREP_OPTIONS='--color=auto'
