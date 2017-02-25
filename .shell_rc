@@ -65,7 +65,8 @@ RSYNC_RSH="ssh -o ControlPath=none"
 # allow ANSI colour escape sequences; highlight the first new line when
 # moving through the file
 LESS="iMdRW${LESS}"
-export BROWSER DIFF LESS PAGER RSYNC_RSH
+PYTHONDONTWRITEBYTECODE="No .pyc files please"
+export BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE RSYNC_RSH
 
 # If grep is happy with these options then export them for automatic use
 GREP_OPTIONS='--color=auto'
