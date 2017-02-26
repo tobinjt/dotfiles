@@ -20,3 +20,8 @@ method-rgx=^[a-z_][a-z0-9_]{2,30}$|^setUp$
 
 [MESSAGES CONTROL]
 disable=
+
+[DESIGN]
+# It's easy to have more than 15 local variables, and I'm not going to write
+# worse code just to have fewer local variables.
+max-locals=20
