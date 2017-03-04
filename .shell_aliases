@@ -12,7 +12,7 @@ cd_helper() {
   fi
   local cmd="$1"
   if [ "$#" -gt 2 ]; then
-    echo "${cmd}: Expecting exactly one or two arguments" >&2
+    echo "${cmd}: Expecting exactly zero or one arguments" >&2
     return 1
   fi
   # Support "cd".
