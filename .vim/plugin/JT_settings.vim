@@ -60,21 +60,25 @@ set swapsync=
 if exists('+wildignorecase')
   set wildignorecase
 endif
-" Move swapfiles to a local directory.
+" Move swapfiles and tempfiles to ~/tmp/vim.
 if has("eval")
-  let _temp_dir="/var/tmp/" . $USER
+  " Move swapfiles.
+  let _temp_dir = $HOME . "/tmp/vim"
   if !isdirectory(_temp_dir)
     call mkdir(_temp_dir, "p", 0700)
   endif
-  let &directory=_temp_dir . "//," . &directory
+  let &directory = _temp_dir . "//," . &directory
+
+  " Move tempfiles.
+  let $TMPDIR = _temp_dir
 
   " Save undo history per file.
   if has("persistent_undo")
-    let _undo_dir=_temp_dir . '/undo'
+    let _undo_dir = _temp_dir . '/undo'
     if !isdirectory(_undo_dir)
       call mkdir(_undo_dir, "p", 0700)
     endif
-    let &undodir=_undo_dir . "," . &undodir
+    let &undodir = _undo_dir . "," . &undodir
     set undodir-=.
     set undofile
   endif
