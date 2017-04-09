@@ -5,6 +5,12 @@
 " Enable for debugging.
 "set verbose=2
 
+" Load vim defaults if running a recent enough vim.
+if v:version > 800
+  unlet! skip_defaults_vim
+  source $VIMRUNTIME/defaults.vim
+endif
+
 " Remove 'vcsdiff' because it overwrites Syntastic error markers.
 let g:quickfixsigns_classes = ['qfl', 'loc', 'marks', 'breakpoints']
 
