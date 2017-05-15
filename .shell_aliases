@@ -27,10 +27,16 @@ cd_helper() {
   fi
 
   local dest="$2"
-  if [ ! -d "${dest}" ]; then
-    # dirname will output . if there isn't a directory in $dest.
-    dest="$(dirname "${dest}")"
+  if [ -d "${dest}" ]; then
+    builtin "${cmd}" "${dest}"
+    return
   fi
+  if [ ! -e "${dest}" ]; then
+    echo "${cmd}: ${dest}: does not exist" >&2
+    return 1
+  fi
+  # dirname will output . if there isn't a directory in $dest.
+  dest="$(dirname "${dest}")"
   builtin "${cmd}" "${dest}"
 }
 
