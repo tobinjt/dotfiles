@@ -156,3 +156,8 @@ gocdpkg() {
   fi
   cd "${pdir}"
 }
+
+# Load errors from $1.
+vim-cfile() {
+  vim -c ':cfile '"$1"' | :cwindow'
+}
