@@ -161,3 +161,11 @@ gocdpkg() {
 vim-cfile() {
   vim -c ':cfile '"$1"' | :cwindow'
 }
+
+# Handy link to airport utility.
+airport() {
+  # shellcheck disable=SC2039
+  local file="/System/Library/PrivateFrameworks/Apple80211.framework/Versions"
+  file="${file}/A/Resources/airport"
+  "${file}" "$@"
+}
