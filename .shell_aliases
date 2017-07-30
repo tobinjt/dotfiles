@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 alias ls="ls -F" # --color=auto"
 alias mv="mv -i"
@@ -57,12 +57,13 @@ top() {
   if [ "${OSTYPE#darwin}" != "${OSTYPE}" ]; then
     top_args="-o cpu"
   fi
+  # shellcheck disable=SC2086
   TOP="$((${LINES:-24} - 7))" command top ${top_args} "$@"
 }
 # Sort du output by size.
 sortdu() {
 	if [ "$#" = 0 ]; then
-		du -sxk * .??* | sort -n
+		du -sxk ./* .??* | sort -n
 	else
 		du -sxk "$@" | sort -n
 	fi
@@ -99,7 +100,7 @@ clisp() {
 
 # Load .bcrc to have some helper stuff, but only when running interactively.
 bc() {
-  if [ -t 0 -a "$#" -eq 0 ]; then
+  if [ -t 0 ] && [ "$#" -eq 0 ]; then
     command bc -q -i "${HOME}/.bcrc"
   else
     command bc "$@"
@@ -133,6 +134,7 @@ delete-ipad-app-backups() {
 }
 
 timestamp-to-human-localtime() {
+  # shellcheck disable=SC2016
   strictperl -n -e 'print scalar localtime $_, qq{\n}'
 }
 
@@ -154,7 +156,7 @@ gocdpkg() {
     echo "no directory found for pkg $1"
     return 1
   fi
-  cd "${pdir}"
+  cd "${pdir}" || return
 }
 
 # Load errors from $1.

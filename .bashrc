@@ -11,8 +11,10 @@
 umask 022
 
 # Source prompt_command et al.
+# shellcheck disable=SC1090
 . "${HOME}/.shell_functions"
 # Source shell-neutral environment settings.
+# shellcheck disable=SC1090
 . "${HOME}/.shell_rc"
 
 if [ "$-" == "${-//i/}" ]; then
@@ -93,11 +95,14 @@ fi
 # Load Homebrew bash completion if available.  On Linux bash completion is
 # normally loaded automatically.
 if [ -f "${HOME}/homebrew/etc/bash_completion" ]; then
+  # shellcheck disable=SC1090
   . "${HOME}/homebrew/etc/bash_completion"
 fi
 # My own completions.
+# shellcheck disable=SC1090
 . "${HOME}/.bash_completion"
 # Likewise, only set up aliases when running interactively.
+# shellcheck disable=SC1090
 . "${HOME}/.shell_aliases"
 
 # Some xterm title tweaks under tmux.
@@ -114,5 +119,6 @@ fi
 # Local stuff
 local_bash_rc="${HOME}/.bashrc-local"
 if [ -f "${local_bash_rc}" ]; then
+  # shellcheck disable=SC1090
   . "${local_bash_rc}"
 fi

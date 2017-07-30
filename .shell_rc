@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 # Shell-neutral environment variables needed for interactive shells.
 # We do enough to set $PATH, then check for being an interactive shell: if we're
 #   not interactive we skip everything else.
 
+# shellcheck disable=SC1090
 . "${HOME}/.shell_functions"
 
 # If homebrew is in use, put it first so I can replace system binaries like
@@ -27,7 +28,7 @@ PATH="$(deduplicate_path "${PATH}")"
 EDITOR="vim"
 export EDITOR PATH
 
-if [ "$-" == "${-//i/}" ]; then
+if [ "$-" = "${-//i/}" ]; then
   # This is not an interactive shell, skip everything else in this file.
   return
 fi
@@ -53,7 +54,7 @@ esac
 export TERM
 
 BROWSER="google-chrome"
-if which colordiff >& /dev/null; then
+if which colordiff > /dev/null 2>&1; then
   DIFF="colordiff -u"
 else
   DIFF="diff -u"

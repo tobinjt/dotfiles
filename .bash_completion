@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Programmable completion:
 # Bash supports programmable completion, i.e. different behaviour on hitting TAB
 # depending on the command.
