@@ -33,15 +33,12 @@ function prompt_command() {
       :
       ;;
     *)
-      echo "\033[01;31mExit status: ${exit_status}\033[0m"
+      echo -e "\033[01;31mExit status: ${exit_status}\033[0m"
       ;;
   esac
   if [ -z "${TMUX:-}" ]; then
     # Set the xterm title.  Tmux does this if it's running.
-    echo "\033]0;${SHELL##*/} on ${HOSTNAME}\007"
-  else
-    # Ensure there's a newline before PS1 is displayed.
-    echo
+    echo -ne "\033]0;${SHELL##*/} on ${HOSTNAME}\007"
   fi
   update_tmux_environment
   prompt_command_shell_specific
