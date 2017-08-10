@@ -32,11 +32,11 @@ export PROMPT_COMMAND
 # PS1 is overwritten by /etc/bash.bashrc.
 if [ "${USER}" != "johntobin" ]; then
   # Highlight other users in my prompt as a warning.
-  _user="$(echo -ne "\033[01;31m\\u\033[0m")"
+  _user="\033[01;31m\\u\033[0m"
 else
   _user="\u"
 fi
-PS1="\nI'm ${_user} on \h's pts/\l @ \t, \d, in \w/\nWhat is thy bidding? "
+PS1="I'm ${_user} on \h's pts/\l @ \t, \d, in \w/\nWhat is thy bidding? "
 # Trim \w in PS1 to 4 subdirectories.
 PROMPT_DIRTRIM=4
 export PS1 PROMPT_DIRTRIM
