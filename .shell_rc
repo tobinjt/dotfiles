@@ -41,6 +41,13 @@ MANPATH="$(deduplicate_path "${HOME}/man${MANPATH:+:}${MANPATH:-}:")"
 GOPATH="$(deduplicate_path "${HOME}/src/gopath:${HOME}${GOPATH:+:}${GOPATH:-}")"
 export MANPATH GOPATH
 
+
+# Set $DISPLAY on MacOS if it is not set.
+if [ "${OSTYPE#darwin}" != "${OSTYPE}" ] && [ -z "${DISPLAY}" ]; then
+  DISPLAY=":0"
+  export DISPLAY
+fi
+
 # Replace xterm* with the best available.
 case "${TERM}" in
   xterm*)
