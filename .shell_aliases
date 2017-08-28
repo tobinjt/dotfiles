@@ -47,6 +47,10 @@ pushd() {
   cd_helper pushd "$@"
 }
 
+vimf() {
+  vim "$(basename "$1")"
+}
+
 # Attach to a tmux session or start a new one.
 ta() {
   tmux attach -d || tmux new
