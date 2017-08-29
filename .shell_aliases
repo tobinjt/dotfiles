@@ -118,7 +118,9 @@ _echo-literally-helper() {
 alias echo-literally='_echo-literally-helper #'
 
 irssi() {
+  tmux set-window-option monitor-activity on
   TERM=xterm-color command irssi "$@"
+  tmux set-window-option monitor-activity off
 }
 
 shell_functions() {
