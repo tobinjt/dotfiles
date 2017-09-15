@@ -46,9 +46,6 @@
 [submodule ".vim/bundle/vim-better-whitespace"]
 	path = .vim/bundle/vim-better-whitespace
 	url = https://github.com/ntpeters/vim-better-whitespace.git
-[submodule ".vim/bundle/vim-scriptease"]
-	path = .vim/bundle/vim-scriptease
-	url = https://github.com/tpope/vim-scriptease.git
 [submodule ".vim/bundle/argtextobj"]
 	path = .vim/bundle/argtextobj
 	url = https://github.com/vim-scripts/argtextobj.vim.git
