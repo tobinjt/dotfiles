@@ -47,10 +47,6 @@ pushd() {
   cd_helper pushd "$@"
 }
 
-vimf() {
-  vim "$(basename "$1")"
-}
-
 # Attach to a tmux session or start a new one.
 ta() {
   tmux attach -d || tmux new
@@ -165,6 +161,11 @@ gocdpkg() {
   cd "${pdir}" || return
 }
 
+# Strip the directory from a file.
+vimf() {
+  vim "$(basename "$1")"
+}
+
 # Load errors from $1.
 vim-cfile() {
   vim -c ':cfile '"$1"' | :cwindow'
@@ -176,4 +177,9 @@ airport() {
   local file="/System/Library/PrivateFrameworks/Apple80211.framework/Versions"
   file="${file}/A/Resources/airport"
   "${file}" "$@"
+}
+
+# Homebrew installs pip as pip2, so wrap it.
+pip() {
+  pip2 "$@"
 }
