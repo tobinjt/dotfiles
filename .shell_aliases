@@ -183,3 +183,8 @@ airport() {
 pip() {
   pip2 "$@"
 }
+
+# What's using an external disk?
+using_external_disk() {
+  sudo lsof -M -n -P | grep /Volumes
+}
