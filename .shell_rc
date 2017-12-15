@@ -69,8 +69,7 @@ LESS="iMdRW${LESS}"
 PYTHONDONTWRITEBYTECODE="No .pyc files please"
 export BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE RSYNC_RSH
 
-# If grep is happy with these options then use them.
-GREP_OPTIONS='--color=auto'
+# If grep supports colour then turn it on.
 if (echo foo | grep -q --color=auto foo 2> /dev/null); then
   alias grep='grep --color=auto'
 fi
