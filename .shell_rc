@@ -69,12 +69,10 @@ LESS="iMdRW${LESS}"
 PYTHONDONTWRITEBYTECODE="No .pyc files please"
 export BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE RSYNC_RSH
 
-# If grep is happy with these options then export them for automatic use
+# If grep is happy with these options then use them.
 GREP_OPTIONS='--color=auto'
-if (echo foo | GREP_OPTIONS="${GREP_OPTIONS}" grep -q foo 2> /dev/null); then
-  export GREP_OPTIONS
-else
-  unset GREP_OPTIONS
+if (echo foo | grep -q --color=auto foo 2> /dev/null); then
+  alias grep='grep --color=auto'
 fi
 
 # Sort filenames as I expect them to be sorted, regardless of locale.
