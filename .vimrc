@@ -71,7 +71,9 @@ if v:version >= 704 && has("python")
 endif
 Plug 'altercation/vim-colors-solarized'
 Plug 'ervandew/supertab'
-Plug 'fatih/vim-go'
+if (v:version > 704 || (v:version == 704 && has('patch1689')))
+  Plug 'fatih/vim-go'
+endif
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
