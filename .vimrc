@@ -47,21 +47,15 @@ let g:UltiSnipsExpandTrigger = "<C-N>"
 " just typed, I think.
 let g:UltiSnipsListSnippets = "<F3>"
 
-" Set up plugins.
-" To update all the git submodules, run these commands:
-" # Check there aren't any diffs.
-" $ update-dotfiles-and-bin
-" $ git submodule init
-" $ git submodule update
-" $ git submodule foreach \
-"     'git fetch origin --tags && git checkout master && git pull'
-" # Force overwriting and deletion of removed files.
-" $ dotfiles -f -X
-" To update a single submodule, run the last line in the submodule's directory.
+" Plugins.
+" To update all the git submodules: update-vim-plugins
+" To update a single submodule:
+" $ git fetch origin --tags && git checkout master && git pull
 " To add a new submodule run:
 " $ git submodule add URL DESTINATION
 " $ git submodule add \
 "     https://github.com/junegunn/vim-plug.git .vim/bundle/vim-plug
+
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
