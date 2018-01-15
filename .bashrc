@@ -62,8 +62,6 @@ shopt -s checkhash
 shopt -s checkwinsize
 # Save multiline commands as a single history entry for easy editing.
 shopt -s cmdhist
-# Expand ${foo} when doing tab completion.
-shopt -s direxpand
 # Enable extended pattern matching in globs, e.g. !(*.gz).
 shopt -s extglob
 # Append to the history file rather than overwriting.
@@ -81,6 +79,8 @@ shopt -s shift_verbose
 if [ "${BASH_VERSINFO[0]}" -ge 4 ]; then
   # Check for running background jobs and warn before exiting.
   shopt -s checkjobs
+  # Expand ${foo} when doing tab completion.
+  shopt -s direxpand
   # Correct spelling of directories during filename completion.
   shopt -s dirspell
   # [a-z] doesn't include B, i.e. do what I expect.
