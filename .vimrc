@@ -47,6 +47,12 @@ let g:UltiSnipsExpandTrigger = "<C-N>"
 " just typed, I think.
 let g:UltiSnipsListSnippets = "<F3>"
 
+" vim-markdown
+" Recognise ```shell as a block with sh syntax.
+let g:vim_markdown_fenced_languages = ['shell=sh']
+" Don't indent new lines in lists.
+let g:vim_markdown_new_list_item_indent = 0
+
 " Plugins.
 " To update all the git submodules: update-vim-plugins
 " To update a single submodule:
