@@ -68,6 +68,9 @@ shopt -s extglob
 shopt -s histappend
 # Failed command substitutions can be reedited.
 shopt -s histreedit
+# History substitutions will be expanded rather than executed so they can be
+# verified.
+shopt -s histverify
 # Don't do tab completion on empty lines
 shopt -s no_empty_cmd_completion
 # Output an error message when trying to shift more args than exist.
@@ -76,7 +79,9 @@ shopt -s shift_verbose
 if [ "${BASH_VERSINFO[0]}" -ge 4 ]; then
   # Check for running background jobs and warn before exiting.
   shopt -s checkjobs
-  # Correct spelling of directories durign filename completion.
+  # Expand ${foo} when doing tab completion.
+  shopt -s direxpand
+  # Correct spelling of directories during filename completion.
   shopt -s dirspell
   # [a-z] doesn't include B, i.e. do what I expect.
   shopt -s globasciiranges
