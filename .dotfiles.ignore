@@ -8,6 +8,7 @@
 .gdb_history
 .lesshst
 .mysql_history
+.netrc
 .profile
 # Next two files are used by XQuartz.
 .rnd
