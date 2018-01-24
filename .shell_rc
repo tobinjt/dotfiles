@@ -23,8 +23,8 @@ PATH="${HOME}/gbin:${HOME}/bin:${HOME}/src/gopath/bin:${PATH}"
 PATH="${PATH}:/sbin:/usr/sbin"
 PATH="$(deduplicate_path "${PATH}")"
 # EDITOR is set here so that it's correct when running non-interactively, e.g.
-# when sshing in to run update-dotfiles-and-bin, whch runs git pull, which needs
-# a commit message for merges.
+# when sshing in to run update-dotfiles-and-bin, which runs git pull, which
+# needs a commit message for merges.
 EDITOR="vim"
 export EDITOR PATH
 
@@ -40,18 +40,6 @@ MANPATH="$(deduplicate_path "${HOME}/man${MANPATH:+:}${MANPATH:-}:")"
 # Also trick Go into finding things in ~/src.
 GOPATH="$(deduplicate_path "${HOME}/src/gopath:${HOME}${GOPATH:+:}${GOPATH:-}")"
 export MANPATH GOPATH
-
-# Replace xterm* with the best available.
-case "${TERM}" in
-  xterm*)
-    for term in xterm xterm-color xterm-256color; do
-      if tput -T"${term}" longname > /dev/null 2>&1; then
-        TERM="${term}"
-      fi
-    done
-  ;;
-esac
-export TERM
 
 BROWSER="google-chrome"
 if which colordiff > /dev/null 2>&1; then
@@ -70,7 +58,7 @@ PYTHONDONTWRITEBYTECODE="No .pyc files please"
 export BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE RSYNC_RSH
 
 # If grep supports colour then turn it on.
-if (echo foo | grep -q --color=auto foo 2> /dev/null); then
+if (echo foo | grep -q --color=auto foo > /dev/null 2> /dev/null); then
   alias grep='grep --color=auto'
 fi
 
