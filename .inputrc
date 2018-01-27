@@ -15,13 +15,15 @@ set mark-symlinked-directories on
 # Display completions in columns, sorted down the column rather than across
 # the row.
 set print-completions-horizontally off
-# When printing completions, display common prefixes in a different color.
-# Needs bash 4.4.
+# When printing completions, display common prefixes in a different color and
+# filetypes in different colours.  Needs bash 4.4.
 set colored-completion-prefix on
+set colored-stats on
 # Append a character to possible completion indicating file type.
 set visible-stats on
-# Case-insensetive tab completion.
+# Case-insensitive tab completion; also treat _ and - as interchangable.
 set completion-ignore-case on
+set completion-map-case on
 # When completing in the middle of a filename, be clever about not inserting
 # characters already present after the cursor.
 set skip-completed-text on
