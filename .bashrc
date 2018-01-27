@@ -32,11 +32,12 @@ export PROMPT_COMMAND
 # PS1 is overwritten by /etc/bash.bashrc.
 if [ "${USER}" != "johntobin" ]; then
   # Highlight other users in my prompt as a warning.
-  _user="$(echo -ne "\033[01;31m\\u\033[0m")"
+  _user="$(echo -ne "\\033[01;31m\\u\\033[0m")"
 else
-  _user="\u"
+  _user="\\u"
 fi
-PS1="\nI'm ${_user} on \h's pts/\l @ \t, \d, in \w/\nWhat is thy bidding? "
+PS1="\\nI'm ${_user} on \\h's pts/\\l @ \\t, \\d, in \\w/"
+PS1="${PS1}\\nWhat is thy bidding? "
 # Trim \w in PS1 to 4 subdirectories.
 PROMPT_DIRTRIM=4
 export PS1 PROMPT_DIRTRIM
@@ -90,7 +91,7 @@ if [ "${BASH_VERSINFO[0]}" -ge 4 ]; then
 fi
 # Disable Posix mode: it's set when Bash is invoked as /bin/sh, and root's
 # shell is /bin/sh on Mac OS X.
-if [ -n "${BASH_VERSINFO}" ]; then
+if [ -n "${BASH_VERSION}" ]; then
   set +o posix
 fi
 
@@ -114,10 +115,10 @@ fi
 if [ -n "${TMUX}" ]; then
   if [ "${USER}" != "johntobin" ]; then
     # Put the user in the pane.
-    echo -ne "\033k${USER}\033\\"
+    echo -ne "\\033k${USER}\\033\\"
   else
     # Clear the pane title tmux sets - 'bash' is not informative.
-    echo -ne "\033k\033\\"
+    echo -ne "\\033k\\033\\"
   fi
 fi
 
