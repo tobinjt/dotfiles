@@ -5,7 +5,7 @@
 # Remove duplicate elements from a $PATH-like variable while preserving order.
 # This cannot use gawk features because it needs to be portable to Mac OS X.
 deduplicate_path() {
-  echo "$@" | awk -F : \
+  awk -F : \
       'BEGIN { output = ""; };
        { for (i = 1; i <= NF; i++) {
            if (!($i in seen)) {
@@ -14,7 +14,7 @@ deduplicate_path() {
            }
          }
        }
-       END { sub("^:", "", output); print output; }'
+       END { sub("^:", "", output); print output; }' <<< "$1"
 }
 
 # Update the shell's environment from tmux's environment.
@@ -33,12 +33,12 @@ function prompt_command() {
       :
       ;;
     *)
-      echo -e "\\033[01;31mExit status: ${exit_status}\\033[0m"
+      printf "\\033[01;31mExit status: %s\\033[0m" "${exit_status}"
       ;;
   esac
   if [ -z "${TMUX:-}" ]; then
     # Set the xterm title.  Tmux does this if it's running.
-    echo -ne "\\033]0;${SHELL##*/} on ${HOSTNAME}\\007"
+    printf "\\033]0;%s on %s\\007" "${SHELL##*/}" "${HOSTNAME}"
   fi
   update_tmux_environment
   prompt_command_shell_specific

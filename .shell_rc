@@ -55,7 +55,7 @@ PYTHONDONTWRITEBYTECODE="No .pyc files please"
 export BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE RSYNC_RSH
 
 # If grep supports colour then turn it on.
-if (echo foo | grep -q --color=auto foo > /dev/null 2> /dev/null); then
+if (printf foo | grep -q --color=auto foo > /dev/null 2> /dev/null); then
   alias grep='grep --color=auto'
 fi
 

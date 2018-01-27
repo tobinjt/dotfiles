@@ -32,7 +32,7 @@ export PROMPT_COMMAND
 # PS1 is overwritten by /etc/bash.bashrc.
 if [ "${USER}" != "johntobin" ]; then
   # Highlight other users in my prompt as a warning.
-  _user="$(echo -ne "\\033[01;31m\\u\\033[0m")"
+  _user="\\033[01;31m\\u\\033[0m"
 else
   _user="\\u"
 fi
@@ -115,10 +115,10 @@ fi
 if [ -n "${TMUX}" ]; then
   if [ "${USER}" != "johntobin" ]; then
     # Put the user in the pane.
-    echo -ne "\\033k${USER}\\033\\"
+    printf "\\033k%s\\033\\" "${USER}"
   else
     # Clear the pane title tmux sets - 'bash' is not informative.
-    echo -ne "\\033k\\033\\"
+    printf "\\033k\\033\\"
   fi
 fi
 
