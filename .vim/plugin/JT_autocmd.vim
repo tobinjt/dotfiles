@@ -9,7 +9,7 @@ autocmd BufReadPost *
   \ endif
 " On BSD systems, the original file provided by crontab(1) must be written to,
 " rather than writing a new file and renaming it.
-autocmd FileType crontab setlocal backupcopy=yes
+autocmd FileType crontab setlocal backupcopy=yes textwidth=1000
 " Auto-wrap text, autowrap comments, allow fomment formatting, don't break lines
 " that are longer than textwidth when insertion starts.
 autocmd FileType pod setlocal textwidth=72 formatoptions+=tcql
