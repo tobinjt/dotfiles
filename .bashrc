@@ -100,9 +100,9 @@ fi
 # cronjobs.
 # Load Homebrew bash completion if available.  On Linux bash completion is
 # normally loaded automatically.
-if [ -f "${HOME}/homebrew/etc/bash_completion" ]; then
-  # shellcheck disable=SC1090
-  . "${HOME}/homebrew/etc/bash_completion"
+if [ -f "/usr/local/etc/bash_completion" ]; then
+  # shellcheck disable=SC1091
+  . "/usr/local/etc/bash_completion"
 fi
 # My own completions.
 # shellcheck disable=SC1090

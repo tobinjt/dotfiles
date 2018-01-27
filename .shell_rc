@@ -11,10 +11,7 @@
 # vim.
 if [ -d "/usr/local/Cellar" ]; then
     PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
-fi
-# More recently homebrew is in my home directory.
-if [ -d "${HOME}/homebrew" ]; then
-    PATH="${HOME}/homebrew/bin:${HOME}/homebrew/sbin:${PATH}"
+    MANPATH="/usr/local/man:${MANPATH}"
 fi
 if [ -d "/usr/local/go/bin" ]; then
     PATH="/usr/local/go/bin:${PATH}"
