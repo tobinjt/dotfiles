@@ -27,3 +27,4 @@
 .ssh/id_rsa.pub.ariane@hosting
 .ssh/known_hosts
 .viminfo
+.wget-hsts
