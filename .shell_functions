@@ -40,6 +40,13 @@ function prompt_command() {
     # Set the xterm title.  Tmux does this if it's running.
     printf "\\033]0;%s on %s\\007" "${SHELL##*/}" "${HOSTNAME}"
   fi
+  if [ "${USER}" != "johntobin" ]; then
+    # Put the user in the tmux pane title to warn me it's a different user.
+    printf "\\033k%s\\033\\" "${USER}"
+  else
+    # Clear the pane title tmux sets - 'bash' is not informative.
+    printf "\\033k\\033\\"
+  fi
   update_tmux_environment
   prompt_command_shell_specific
   prompt_command_extras

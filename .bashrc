@@ -111,15 +111,6 @@ fi
 # shellcheck disable=SC1090
 . "${HOME}/.shell_aliases"
 
-# Some xterm title tweaks under tmux.
-if [ "${USER}" != "johntobin" ]; then
-  # Put the user in the pane.
-  printf "\\033k%s\\033\\" "${USER}"
-else
-  # Clear the pane title tmux sets - 'bash' is not informative.
-  printf "\\033k\\033\\"
-fi
-
 # Local stuff
 local_bash_rc="${HOME}/.bashrc-local"
 if [ -f "${local_bash_rc}" ]; then
