@@ -110,3 +110,6 @@ autocmd VimLeavePre * call TmuxSetWindowName(s:orig_window_name)
 " windows implies moving between buffers), writing a file, or editing a
 " different file.
 autocmd BufReadPost,BufEnter,BufWritePost * call TmuxSetWindowNameToFilename()
+" Possible workarounds for setting the window name after suspending.
+" autocmd TextChanged,TextChangedI * call TmuxSetWindowNameToFilename()
+" :noremap ^Z :suspend<bar>call TmuxSetWindowNameToFilename()<CR>
