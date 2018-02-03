@@ -73,3 +73,5 @@ endif
 autocmd BufReadPost,BufNewFile */.ssh/config* set filetype=sshconfig
 " .coveragerc used by Python coverage is actually an ini file.
 autocmd BufReadPost,BufNewFile .coveragerc set filetype=dosini
+autocmd BufReadPost,BufNewFile *.tt2 set filetype=tt2
+autocmd FileType tt2 set commentstring=#%s
