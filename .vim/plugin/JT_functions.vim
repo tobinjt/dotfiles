@@ -37,6 +37,13 @@ function! ReGrep()
   lwindow
 endfunction
 
+function! TurnOffLineNumbers()
+  set nonumber norelativenumber
+endfunction
+function! TurnOnLineNumbers()
+  set number relativenumber
+endfunction
+
 " This layer of indirection seems to be necessary for map().
 function! s:Run(command)
   execute a:command
