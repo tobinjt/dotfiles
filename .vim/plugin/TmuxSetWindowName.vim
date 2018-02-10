@@ -17,6 +17,9 @@ if exists('g:loaded_TmuxSetWindowName')
   finish
 endif
 let g:loaded_TmuxSetWindowName = 'v2'
+if ! exists('g:TmuxSetWindowName_RefreshIntervalMilliseconds')
+  let g:TmuxSetWindowName_RefreshIntervalMilliseconds = 5000  " 5 seconds.
+endif
 
 function! TmuxGetWindowList()
   " Return a list of tmux wndows in the current session.
@@ -69,9 +72,6 @@ function! TmuxSetWindowName(name)
    \            . ' 2>&1')
 endfunction
 
-" XXX ALLOW DISABLING ADDITIONAL_INFO?
-" XXX readonly and modified statuses don't update when you set noreadonly or
-"     change a file.  I don't know if I should keep them.
 function! TmuxFormatFilenameForDisplay()
   " Format the filename for display, adding extra information.
   let l:display_name = expand('%:t')
@@ -99,7 +99,12 @@ function! TmuxFormatFilenameForDisplay()
 endfunction
 
 function! TmuxSetWindowNameToFilename()
-  " Set the window name to the name of the current file, with some additional
+  " Set the window name to the name of the current file plus additional info.
+  call TmuxSetWindowName(TmuxFormatFilenameForDisplay())
+endfunction
+
+function! TmuxSetWindowNameCalledByTimer(timer)
+  " Set the window name to the name of the current file plus additional info.
   call TmuxSetWindowName(TmuxFormatFilenameForDisplay())
 endfunction
 
@@ -110,6 +115,9 @@ autocmd VimLeavePre * call TmuxSetWindowName(s:orig_window_name)
 " windows implies moving between buffers), writing a file, or editing a
 " different file.
 autocmd BufReadPost,BufEnter,BufWritePost * call TmuxSetWindowNameToFilename()
-" Possible workarounds for setting the window name after suspending.
-" autocmd TextChanged,TextChangedI * call TmuxSetWindowNameToFilename()
-" :noremap ^Z :suspend<bar>call TmuxSetWindowNameToFilename()<CR>
+" Set the window name periodically so it is set correctly after suspending.
+if has('timers')
+  call timer_start(g:TmuxSetWindowName_RefreshIntervalMilliseconds,
+                 \ 'TmuxSetWindowNameCalledByTimer',
+                 \ {'repeat': -1})
+endif
