@@ -65,11 +65,16 @@ endfunction
 
 function! TmuxSetWindowName(name)
   " Set the name of the current window.
+  let s:current_window_name = TmuxGetWindowName()
+  if s:current_window_name == a:name
+    return
+  endif
   call system('tmux rename-window -t '
    \            . shellescape($TMUX_PANE)
    \            . ' '
    \            . shellescape(a:name)
    \            . ' 2>&1')
+  redraw!
 endfunction
 
 function! TmuxFormatFilenameForDisplay()
