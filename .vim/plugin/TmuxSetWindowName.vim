@@ -20,6 +20,9 @@ let g:loaded_TmuxSetWindowName = 'v2'
 if ! exists('g:TmuxSetWindowName_RefreshIntervalMilliseconds')
   let g:TmuxSetWindowName_RefreshIntervalMilliseconds = 5000  " 5 seconds.
 endif
+if ! exists('g:TmuxGetWindowName_Enabled')
+  let g:TmuxGetWindowName_Enabled = 1
+endif
 
 function! TmuxGetWindowList()
   " Return a list of tmux wndows in the current session.
@@ -105,12 +108,24 @@ endfunction
 
 function! TmuxSetWindowNameToFilename()
   " Set the window name to the name of the current file plus additional info.
-  call TmuxSetWindowName(TmuxFormatFilenameForDisplay())
+  if g:TmuxGetWindowName_Enabled == 1
+    call TmuxSetWindowName(TmuxFormatFilenameForDisplay())
+  endif
 endfunction
 
 function! TmuxSetWindowNameCalledByTimer(timer)
   " Set the window name to the name of the current file plus additional info.
-  call TmuxSetWindowName(TmuxFormatFilenameForDisplay())
+  if g:TmuxGetWindowName_Enabled == 1
+    call TmuxSetWindowName(TmuxFormatFilenameForDisplay())
+  endif
+endfunction
+
+function! NoTmuxSetWindowName()
+  let g:TmuxGetWindowName_Enabled = 0
+endfunction
+
+function! YesTmuxSetWindowName()
+  let g:TmuxGetWindowName_Enabled = 1
 endfunction
 
 " Restore the original window name when leaving.
