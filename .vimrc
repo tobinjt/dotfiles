@@ -52,6 +52,9 @@ let g:UltiSnipsListSnippets = "<F3>"
 let g:vim_markdown_fenced_languages = ['shell=sh']
 " Don't indent new lines in lists.
 let g:vim_markdown_new_list_item_indent = 0
+" Disable mappings; I don't use them, and they conflict with diff mappings (e.g.
+" [c, ]c).
+let g:vim_markdown_no_default_key_mappings = 1
 
 " Plugins.
 " To update all the git submodules: update-vim-plugins
