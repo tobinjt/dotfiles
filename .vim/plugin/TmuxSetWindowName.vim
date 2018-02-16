@@ -66,8 +66,11 @@ function! TmuxGetWindowName()
   return 'Unable to find window name'
 endfunction
 
-function! TmuxSetWindowName(name)
-  " Set the name of the current window.
+function! TmuxSetWindowName(name, redraw)
+  " Set the name of the current window if necessary.
+  " Args:
+  "   name: the new name of the window
+  "   redraw: if redraw == 1, :redraw to refresh the screen.
   let s:current_window_name = TmuxGetWindowName()
   if s:current_window_name == a:name
     return
@@ -77,7 +80,9 @@ function! TmuxSetWindowName(name)
    \            . ' '
    \            . shellescape(a:name)
    \            . ' 2>&1')
-  redraw!
+  if a:redraw == 1
+    redraw
+  endif
 endfunction
 
 function! TmuxFormatFilenameForDisplay()
@@ -109,14 +114,14 @@ endfunction
 function! TmuxSetWindowNameToFilename()
   " Set the window name to the name of the current file plus additional info.
   if g:TmuxGetWindowName_Enabled == 1
-    call TmuxSetWindowName(TmuxFormatFilenameForDisplay())
+    call TmuxSetWindowName(TmuxFormatFilenameForDisplay(), 0)
   endif
 endfunction
 
 function! TmuxSetWindowNameCalledByTimer(timer)
   " Set the window name to the name of the current file plus additional info.
   if g:TmuxGetWindowName_Enabled == 1
-    call TmuxSetWindowName(TmuxFormatFilenameForDisplay())
+    call TmuxSetWindowName(TmuxFormatFilenameForDisplay(), 1)
   endif
 endfunction
 
@@ -130,7 +135,7 @@ endfunction
 
 " Restore the original window name when leaving.
 let s:orig_window_name = TmuxGetWindowName()
-autocmd VimLeavePre * call TmuxSetWindowName(s:orig_window_name)
+autocmd VimLeavePre * call TmuxSetWindowName(s:orig_window_name, 0)
 " Set the tmux window name when moving between vim buffers (moving between
 " windows implies moving between buffers), writing a file, or editing a
 " different file.
