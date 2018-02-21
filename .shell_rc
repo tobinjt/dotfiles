@@ -54,11 +54,6 @@ LESS="iMdRW${LESS}"
 PYTHONDONTWRITEBYTECODE="No .pyc files please"
 export BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE RSYNC_RSH
 
-# If grep supports colour then turn it on.
-if (printf foo | grep -q --color=auto foo > /dev/null 2> /dev/null); then
-  alias grep='grep --color=auto'
-fi
-
 # Sort filenames as I expect them to be sorted, regardless of locale.
 LC_COLLATE="C"
 export LC_COLLATE
