@@ -1,8 +1,17 @@
 #!/bin/bash
 
-alias ls="ls -F" # --color=auto"
+# ls needs different options to enable colour :/
+if ls --color=always &> /dev/null; then
+  # Linux.
+  alias ls='ls --color=auto -F'
+else
+  # OS X.
+  alias ls='ls -G -F'
+fi
+
 alias mv="mv -i"
 alias cp="cp -i -p"
+alias grep='grep --color=auto'
 
 # 'cd dirname/filename' will strip filename and cd to dirname.
 cd_helper() {
