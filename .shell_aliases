@@ -16,12 +16,12 @@ alias grep='grep --color=auto'
 # 'cd dirname/filename' will strip filename and cd to dirname.
 cd_helper() {
   if [ "$#" -lt 1 ]; then
-    printf "cd_helper: Expecting exactly one or two arguments" >&2
+    printf "cd_helper: Expecting exactly one or two arguments\\n" >&2
     return 1
   fi
   local cmd="$1"
   if [ "$#" -gt 2 ]; then
-    printf "%s: Expecting exactly zero or one arguments" "${cmd}" >&2
+    printf "%s: Expecting exactly zero or one arguments\\n" "${cmd}" >&2
     return 1
   fi
   # Support "cd".
@@ -41,7 +41,7 @@ cd_helper() {
     return
   fi
   if [ ! -e "${dest}" ]; then
-    printf "%s: %s: does not exist" "${cmd}" "${dest}" >&2
+    printf "%s: %s: does not exist\\n" "${cmd}" "${dest}" >&2
     return 1
   fi
   # dirname will output . if there isn't a directory in $dest.
@@ -93,7 +93,7 @@ git() {
 
 ikiwiki-johntobin.ie() {
   if ! type tidy > /dev/null; then
-    printf "apt-get install tidy" >&2
+    printf "apt-get install tidy\\n" >&2
     return 1
   fi
   ikiwiki --setup ~/.ikiwiki/johntobin.ie "$@"
@@ -157,14 +157,14 @@ godocf() {
   go doc "$@" | grep ^func
 }
 godocserver() {
-  printf "http://localhost:12345/"
+  printf "http://localhost:12345/\\n"
   godoc --http=:12345
 }
 gocdpkg() {
   local pdir
   pdir="$(go list -f '{{ .Dir }}' "$1")"
   if [ -z "${pdir}" ]; then
-    printf "no directory found for pkg %s" "$1"
+    printf "no directory found for pkg %s\\n" "$1"
     return 1
   fi
   cd "${pdir}" || return
