@@ -71,6 +71,8 @@ endif
 
 " Set filetype=sshconfig for all ssh config snippets.
 autocmd BufReadPost,BufNewFile */.ssh/config* set filetype=sshconfig
+" Set a wide textwidth for authorized_keys.
+autocmd BufReadPost,BufNewFile */.ssh/authorized_keys set textwidth=1000
 " .coveragerc used by Python coverage is actually an ini file.
 autocmd BufReadPost,BufNewFile .coveragerc set filetype=dosini
 autocmd BufReadPost,BufNewFile *.tt2 set filetype=tt2
