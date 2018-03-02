@@ -62,19 +62,33 @@ if exists('+wildignorecase')
 endif
 " Move swapfiles and tempfiles to ~/tmp/vim.
 if has("eval")
+  " Base for temp files and state.
+  let _temp_base = $HOME . "/tmp/vim"
+  if !isdirectory(_temp_base)
+    call mkdir(_temp_base, "p", 0700)
+  endif
+
   " Move swapfiles.
-  let _temp_dir = $HOME . "/tmp/vim"
+  let _swap_dir = _temp_base . '/swap'
+  if !isdirectory(_swap_dir)
+    call mkdir(_swap_dir, "p", 0700)
+  endif
+  " Adding '//' means create the filename from the full path to prevent clashes.
+  let &directory = _swap_dir . "//," . &directory
+  " Don't ever put swap files in the file's directory: it's bad on non-local
+  " filesystems.
+  set directory-=.
+
+  " Move tempfiles.
+  let _temp_dir = _temp_base . '/tmp'
   if !isdirectory(_temp_dir)
     call mkdir(_temp_dir, "p", 0700)
   endif
-  let &directory = _temp_dir . "//," . &directory
-
-  " Move tempfiles.
   let $TMPDIR = _temp_dir
 
   " Save undo history per file.
   if has("persistent_undo")
-    let _undo_dir = _temp_dir . '/undo'
+    let _undo_dir = _temp_base . '/undo'
     if !isdirectory(_undo_dir)
       call mkdir(_undo_dir, "p", 0700)
     endif
