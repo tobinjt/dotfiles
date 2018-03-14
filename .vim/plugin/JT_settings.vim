@@ -63,7 +63,7 @@ endif
 " Move swapfiles and tempfiles to ~/tmp/vim.
 if has("eval")
   " Base for temp files and state.
-  let _temp_base = $HOME . "/tmp/vim"
+  let _temp_base = expand("~/tmp/vim")
   if !isdirectory(_temp_base)
     call mkdir(_temp_base, "p", 0700)
   endif
