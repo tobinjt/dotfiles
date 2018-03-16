@@ -14,10 +14,9 @@ if [ -d "/usr/local/Cellar" ]; then
     MANPATH="/usr/local/man:${MANPATH}"
 fi
 if [ -d "/usr/local/go/bin" ]; then
-    PATH="/usr/local/go/bin:${PATH}"
+    PATH="/usr/local/go/bin:${HOME}/src/gopath/bin:${PATH}"
 fi
-PATH="${HOME}/gbin:${HOME}/bin:${HOME}/src/gopath/bin:${PATH}"
-PATH="${PATH}:/sbin:/usr/sbin"
+PATH="${HOME}/gbin:${HOME}/bin:${PATH}:/sbin:/usr/sbin"
 PATH="$(deduplicate_path "${PATH}")"
 # EDITOR is set here so that it's correct when running non-interactively, e.g.
 # when sshing in to run update-dotfiles-and-bin, which runs git pull, which
