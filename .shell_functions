@@ -17,11 +17,22 @@ deduplicate_path() {
        END { sub("^:", "", output); print output; }' <<< "$1"
 }
 
-# Update the shell's environment from tmux's environment.
-update_tmux_environment() {
+update_ssh_auth_sock() {
+  # Any shell running under tmux should already have the right environment.
   if [ -n "${TMUX:-}" ]; then
-    eval "$(tmux show-environment -s)"
+    return
   fi
+  if [ -z "${ORIG_SSH_AUTH_SOCK:-}" ]; then
+    ORIG_SSH_AUTH_SOCK="${SSH_AUTH_SOCK}"
+    readonly ORIG_SSH_AUTH_SOCK
+  fi
+  local dir="${HOME}/tmp/ssh"
+  if [ ! -d "${dir}" ]; then
+    mkdir -p "${dir}"
+    chmod 700 "${dir}"
+  fi
+  SSH_AUTH_SOCK="${dir}/ssh-auth-sock-${HOSTNAME}-${USER}"
+  ln -s -f -n "${ORIG_SSH_AUTH_SOCK}" "${SSH_AUTH_SOCK}"
 }
 
 # Function to be run every time my prompt is displayed.
@@ -47,7 +58,7 @@ function prompt_command() {
     # Clear the pane title tmux sets - 'bash' is not informative.
     printf "\\033k\\033\\"
   fi
-  update_tmux_environment
+  update_ssh_auth_sock
   prompt_command_shell_specific
   prompt_command_extras
 }
