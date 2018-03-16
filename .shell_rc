@@ -29,6 +29,12 @@ if [ "$-" = "${-//i/}" ]; then
   return
 fi
 
+# Make a tmp dir if necessary.
+if [ ! -d "${HOME}/tmp" ]; then
+  mkdir -p "${HOME}/tmp"
+  chmod 700 "${HOME}/tmp"
+fi
+
 # The trailing : is important on Linux; it means to append the standard
 # search path to ${MANPATH}.
 MANPATH="$(deduplicate_path "${HOME}/man${MANPATH:+:}${MANPATH:-}:")"
