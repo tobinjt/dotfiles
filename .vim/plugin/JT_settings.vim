@@ -21,8 +21,9 @@ set smartcase
 set showmatch
 " Show commands as you type.
 set showcmd
-" Open new windows below the current window (to the right with vsplit).
-set splitbelow splitright
+" Open new windows below the current window (to the right with vsplit), and make
+" them equal size.
+set splitbelow splitright equalalways
 " Don't redraw the screen while executing macros etc.
 set lazyredraw
 " Show as much of the last line on screen as possible.
