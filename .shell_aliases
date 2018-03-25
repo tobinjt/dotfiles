@@ -188,9 +188,9 @@ airport() {
   "${file}" "$@"
 }
 
-# Homebrew installs pip as pip2, so wrap it.
+# Homebrew installs pip as pip3, so wrap it.
 pip() {
-  pip2 "$@"
+  pip3 "$@"
 }
 
 # What's using an external disk?
