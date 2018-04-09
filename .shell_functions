@@ -31,7 +31,7 @@ update_ssh_auth_sock() {
     mkdir -p "${dir}"
     chmod 700 "${dir}"
   fi
-  SSH_AUTH_SOCK="${dir}/ssh-auth-sock-${HOSTNAME/local/lan}-${USER}"
+  SSH_AUTH_SOCK="${dir}/ssh-auth-sock-${HOSTNAME/lan/local}-${USER}"
   ln -s -f -n "${ORIG_SSH_AUTH_SOCK}" "${SSH_AUTH_SOCK}"
 }
 
