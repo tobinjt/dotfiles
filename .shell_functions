@@ -18,10 +18,6 @@ deduplicate_path() {
 }
 
 update_ssh_auth_sock() {
-  # Any shell running under tmux should already have the right environment.
-  if [ -n "${TMUX:-}" ]; then
-    return
-  fi
   if [ -z "${SSH_AUTH_SOCK:-}" ]; then
     printf "Empty SSH_AUTH_SOCK!  ssh forwarding broken?\\n" >&2
     return
@@ -62,7 +58,10 @@ function prompt_command() {
     # Clear the pane title tmux sets - 'bash' is not informative.
     printf "\\033k\\033\\"
   fi
-  update_ssh_auth_sock
+  if [ -z "${TMUX:-}" ]; then
+    # Any shell running under tmux should already have the right environment.
+    update_ssh_auth_sock
+  fi
   prompt_command_shell_specific
   prompt_command_extras
 }
