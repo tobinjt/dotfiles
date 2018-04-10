@@ -25,6 +25,7 @@ update_ssh_auth_sock() {
   if [ -z "${ORIG_SSH_AUTH_SOCK:-}" ]; then
     ORIG_SSH_AUTH_SOCK="${SSH_AUTH_SOCK}"
     readonly ORIG_SSH_AUTH_SOCK
+    export ORIG_SSH_AUTH_SOCK
   fi
   local dir="${HOME}/tmp/ssh"
   if [ ! -d "${dir}" ]; then
