@@ -197,3 +197,8 @@ pip() {
 using_external_disk() {
   sudo lsof -M -n -P | grep /Volumes
 }
+
+# I can never remember mdfind.
+spotlight() {
+  mdfind "$@"
+}
