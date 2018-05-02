@@ -19,6 +19,10 @@ deduplicate_path() {
 
 update_ssh_auth_sock() {
   if [ -z "${SSH_AUTH_SOCK:-}" ]; then
+    if [ -n "${SUDO_USER:-}" ]; then
+      # No ssh forwarding when using sudo, so don't complain.
+      return
+    fi
     printf "Empty SSH_AUTH_SOCK!  ssh forwarding broken?\\n" >&2
     return
   fi
