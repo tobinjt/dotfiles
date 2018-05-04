@@ -77,3 +77,6 @@ autocmd BufReadPost,BufNewFile */.ssh/authorized_keys set textwidth=1000
 autocmd BufReadPost,BufNewFile .coveragerc set filetype=dosini
 autocmd BufReadPost,BufNewFile *.tt2 set filetype=tt2
 autocmd FileType tt2 set commentstring=#%s
+
+" UCI/OpenWRT configs on my laptop.
+autocmd BufNewFile,BufReadPost */src/router-config/* setfiletype uci
