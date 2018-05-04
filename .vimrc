@@ -77,6 +77,7 @@ Plug 'ervandew/supertab'
 if (v:version > 704 || (v:version == 704 && has('patch1689')))
   Plug 'fatih/vim-go'
 endif
+Plug 'cmcaine/vim-uci'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
