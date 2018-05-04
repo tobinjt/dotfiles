@@ -61,3 +61,6 @@
 [submodule ".vim/bundle/vim-sensible"]
 	path = .vim/bundle/vim-sensible
 	url = https://github.com/tpope/vim-sensible
+[submodule ".vim/bundle/vim-uci"]
+	path = .vim/bundle/vim-uci
+	url = https://github.com/cmcaine/vim-uci
