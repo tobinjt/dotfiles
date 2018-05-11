@@ -202,3 +202,7 @@ using_external_disk() {
 spotlight() {
   mdfind "$@"
 }
+
+process_on_port() {
+  netstat -n -p tcp -v  | grep -e Proto -e "$1"
+}
