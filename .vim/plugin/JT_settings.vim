@@ -167,8 +167,9 @@ if exists('+spellfile')
   set spellfile+=~/.vim/spell/en.utf-8.add
 endif
 
-if has("user_commands")
+if has("user_commands") && !exists(":DiffOrig")
   " Taken from :help :DiffOrig - this should diff the current buffer against
   " the file on disk.
-  command DiffOrig vert new "| set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
 endif
