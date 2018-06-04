@@ -127,6 +127,8 @@ set whichwrap+=<,>,b,[,]
 set matchpairs+=<:>
 " Stop the goddamn MatchParen plugin from loading.
 let loaded_matchparen = 1
+" Disable the mouse, I don't like it.
+set mouse=""
 
 " Compilation related stuff.
 " make should run silently from within vim to help with quickfix mode.
