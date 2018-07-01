@@ -189,8 +189,9 @@ airport() {
 }
 
 # Homebrew installs pip as pip3, so wrap it.
+# Also let Python write bytecode for future speed.
 pip() {
-  pip3 "$@"
+  (unset PYTHONDONTWRITEBYTECODE; pip3 "$@")
 }
 
 # What's using an external disk?
