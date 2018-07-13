@@ -1,3 +1,7 @@
 --format bestvideo[height<=480]+bestaudio/best[height<=480]
 --limit-rate 300k
---cookies /Users/johntobin/Downloads/warhammer/cookies.txt
+--netrc
+# Debugging options.
+# --write-pages
+# --print-traffic
+# --verbose
