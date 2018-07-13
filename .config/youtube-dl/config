@@ -1,5 +1,6 @@
 --format bestvideo[height<=480]+bestaudio/best[height<=480]
 --limit-rate 300k
+# ---cookies /Users/johntobin/Downloads/warhammer/cookies.txt
 # ~/.netrc format: machine twitch login USER password PASSWORD
 --netrc
 # Debugging options.
