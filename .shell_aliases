@@ -203,3 +203,17 @@ spotlight() {
 process_on_port() {
   netstat -n -p tcp -v  | grep -e Proto -e "$1"
 }
+
+cleanup-fate-world-of-adventure() {
+  (set -e; cleanup-fate-world-of-adventure-real "$@")
+}
+cleanup-fate-world-of-adventure-real() {
+  local filename="$1"
+  local destdir="${HOME}/Documents/games/Fate/World of Adventure/"
+  mv "${filename}" "${destdir}"
+  cd "${destdir}"
+  filename="$(basename "${filename}")"
+  local new_filename="${filename%_o_A_World_of_Adventure_for_Fate_Core.pdf}.pdf"
+  new_filename="${new_filename//_/ }"
+  mv "${filename}" "${new_filename}"
+}
