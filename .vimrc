@@ -11,6 +11,9 @@ if v:version > 800
   source $VIMRUNTIME/defaults.vim
 endif
 
+" Don't save netrw history, I don't use it.
+let g:netrw_dirhistmax = 0
+
 " Remove 'vcsdiff' because it overwrites Syntastic error markers.
 let g:quickfixsigns_classes = ['qfl', 'loc', 'marks', 'breakpoints']
 
