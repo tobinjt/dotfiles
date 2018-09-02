@@ -50,7 +50,7 @@ else
   # Everything else.
   BROWSER="google-chrome"
 fi
-if which colordiff > /dev/null 2>&1; then
+if command -v colordiff > /dev/null 2>&1; then
   DIFF="colordiff -u"
 else
   DIFF="diff -u"
