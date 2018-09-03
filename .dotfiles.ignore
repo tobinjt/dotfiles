@@ -25,7 +25,10 @@
 
 # Created by some program.
 .Xauthority
-.config/Transmission Remote GUI
+# In .config, but we need to strip the whole directory which doesn't work with
+# subdirectories.
+# TODO: make .config/Transmission Remote GUI work.
+Transmission Remote GUI
 # Next two files are used by XQuartz.
 .rnd
 .serverauth.*
@@ -42,4 +45,5 @@
 .ssh/id_rsa.ariane@hosting
 .ssh/id_rsa.pub.ariane@hosting
 .ssh/known_hosts
-.ssh/rsync-net
+# TODO: make .ssh/rsync-net work.
+rsync-net
