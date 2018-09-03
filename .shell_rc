@@ -43,8 +43,14 @@ MANPATH="$(deduplicate_path "${HOME}/man${MANPATH:+:}${MANPATH:-}:")"
 GOPATH="$(deduplicate_path "${HOME}/src/gopath:${HOME}${GOPATH:+:}${GOPATH:-}")"
 export MANPATH GOPATH
 
-BROWSER="google-chrome"
-if which colordiff > /dev/null 2>&1; then
+if [ "${OSTYPE#darwin}" != "${OSTYPE}" ]; then
+  # MacOS
+  BROWSER='open -a "Google Chrome"'
+else
+  # Everything else.
+  BROWSER="google-chrome"
+fi
+if command -v colordiff > /dev/null 2>&1; then
   DIFF="colordiff -u"
 else
   DIFF="diff -u"
