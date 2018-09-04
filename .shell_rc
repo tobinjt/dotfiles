@@ -11,7 +11,7 @@
 # vim.
 if [ -d "/usr/local/Cellar" ]; then
     PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
-    MANPATH="/usr/local/man:${MANPATH}"
+    MANPATH="/usr/local/man:/usr/local/share/man:${MANPATH}"
 fi
 if [ -d "/usr/local/go/bin" ]; then
     PATH="/usr/local/go/bin:${HOME}/src/gopath/bin:${PATH}"
