@@ -17,7 +17,13 @@ deduplicate_path() {
        END { sub("^:", "", output); print output; }' <<< "$1"
 }
 
+# I might manually call this with -f, so disable the check.
+# shellcheck disable=SC2120
 update_ssh_auth_sock() {
+  local force_update=0
+  if [ "$#" -eq 1 ] && [ "$1" == "-f" ]; then
+    force_update=1
+  fi
   if [ -z "${SSH_AUTH_SOCK:-}" ]; then
     if [ -n "${SUDO_USER:-}" ]; then
       # No ssh forwarding when using sudo, so don't complain.
@@ -36,6 +42,15 @@ update_ssh_auth_sock() {
     chmod 700 "${dir}"
   fi
   SSH_AUTH_SOCK="${dir}/ssh-auth-sock-${HOSTNAME/lan/local}-${USER}"
+  # Skip checks if -f was passed.
+  if [ "${force_update}" -eq 0 ] && [ -e "${SSH_AUTH_SOCK}" ]; then
+    # If the link points at a newer file do not update it to point to our file.
+    if [ "${SSH_AUTH_SOCK}" -nt "${ORIG_SSH_AUTH_SOCK}" ]; then
+      printf "%s is newer than %s, not changing; use -f to force\\n" \
+        "${SSH_AUTH_SOCK}" "${ORIG_SSH_AUTH_SOCK}"
+      return
+    fi
+  fi
   ln -s -f -n "${ORIG_SSH_AUTH_SOCK}" "${SSH_AUTH_SOCK}"
 }
 
