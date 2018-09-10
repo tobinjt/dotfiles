@@ -65,10 +65,6 @@ top() {
   # shellcheck disable=SC2086
   TOP="$((${LINES:-24} - 7))" command top ${top_args} "$@"
 }
-# Convert output of du -k to human readable sizes.
-sortduh() {
-  sortdu "$@" | awk '{ $1 = $1 * 1024; print; }' | human
-}
 strictperl() {
   perl -Mstrict -w -MData::Dumper "$@"
 }
