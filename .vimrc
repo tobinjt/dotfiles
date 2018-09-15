@@ -28,6 +28,7 @@ let g:syntastic_check_on_wq = 0
 " All of these will be run serially; remove if that gets too slow.
 let g:syntastic_go_checkers = ['gofmt', 'golint', 'gotype', 'govet']
 "let g:syntastic_auto_loc_list = 0
+let g:syntastic_python_python_exec = 'python3'
 
 " vim-go.
 " Don't auto-install tools.
