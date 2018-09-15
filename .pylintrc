@@ -17,6 +17,8 @@ max-line-length=80
 no-docstring-rgx=^_|^main$|^setUp$
 # Require method_names except for setUp.
 method-rgx=^[a-z_][a-z0-9_]{2,30}$|^setUp$
+# Don't require public methods, e.g. with classes derived from namedtuple.
+min-public-methods=0
 
 [MESSAGES CONTROL]
 disable=
