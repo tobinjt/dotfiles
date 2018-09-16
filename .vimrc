@@ -29,6 +29,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_go_checkers = ['gofmt', 'golint', 'gotype', 'govet']
 "let g:syntastic_auto_loc_list = 0
 let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python_checkers = ['python', 'pylint', 'mypy']
 
 " vim-go.
 " Don't auto-install tools.
