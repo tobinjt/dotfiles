@@ -196,12 +196,12 @@ cleanup-fate-world-of-adventure() {
   (set -e; cleanup-fate-world-of-adventure-real "$@")
 }
 cleanup-fate-world-of-adventure-real() {
-  local filename="$1"
-  local destdir="${HOME}/Documents/games/Fate/World of Adventure/"
-  mv "${filename}" "${destdir}"
-  cd "${destdir}"
-  filename="$(basename "${filename}")"
-  local new_filename="${filename%_o_A_World_of_Adventure_for_Fate_Core.pdf}.pdf"
+  local filename="$1" new_filename
+  new_filename="${filename/_o_A_World_of_Adventure_for_Fate_Core/}"
   new_filename="${new_filename//_/ }"
   mv "${filename}" "${new_filename}"
+  # Spaces need to be escaped so that scp doesn't complain about "ambiguous
+  # target"
+  local destdir="${HOME}/Media/Games/Fate/World\\ of\\ Adventure/"
+  scp "${new_filename}" imac:"${destdir}"
 }
