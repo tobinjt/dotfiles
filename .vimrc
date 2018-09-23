@@ -69,6 +69,7 @@ let g:vim_markdown_no_default_key_mappings = 1
 " $ git submodule add URL DESTINATION
 " $ git submodule add \
 "     https://github.com/junegunn/vim-plug.git .vim/bundle/vim-plug
+" Then add a "Plug 'foo/bar'" line below.
 
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
@@ -94,6 +95,7 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/LargeFile'
 Plug 'vim-scripts/argtextobj'
 Plug 'vim-scripts/file-line'
