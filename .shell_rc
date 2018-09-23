@@ -8,9 +8,10 @@
 . "${HOME}/.shell_functions"
 
 # If homebrew is in use, put it first so I can replace system binaries like
-# vim.
+# vim and python.
 if [ -d "/usr/local/Cellar" ]; then
     PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
+    PATH="/usr/local/opt/python/libexec/bin:${PATH}"
     MANPATH="/usr/local/man:/usr/local/share/man:${MANPATH}"
 fi
 if [ -d "/usr/local/go/bin" ]; then
