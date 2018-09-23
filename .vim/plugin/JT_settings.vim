@@ -28,8 +28,6 @@ set splitbelow splitright equalalways
 set lazyredraw
 " Show as much of the last line on screen as possible.
 set display+=lastline
-" Configure statusline to match the default, so that I can add more in future.
-set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 " Change the xterm title, but not under tmux.
 if has('title') && ! exists("$TMUX")
   set title
