@@ -18,6 +18,7 @@
 .gdb_history
 .lesshst
 .mysql_history
+.python_history
 .sh_history
 .sqlite_history
 .viminfo

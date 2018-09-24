@@ -37,11 +37,11 @@ function! ReGrep()
   lwindow
 endfunction
 
-function! TurnOffLineNumbers()
-  set nonumber norelativenumber
+function! TurnOffLineNumbersAndSigns()
+  set nonumber norelativenumber signcolumn=no
 endfunction
-function! TurnOnLineNumbers()
-  set number relativenumber
+function! TurnOnLineNumbersAndSigns()
+  set number relativenumber signcolumn=auto
 endfunction
 
 " This layer of indirection seems to be necessary for map().
