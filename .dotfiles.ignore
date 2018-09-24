@@ -36,8 +36,8 @@ Transmission Remote GUI
 
 # TODO: audit these.
 # .ssh/ariane-laptop-key
-# .ssh/authorized_keys
-# .ssh/config
+.ssh/authorized_keys
+.ssh/config
 # .ssh/config-10-os-Darwin-disable-keychain
 # .ssh/hosting
 # .ssh/hosting.pub
