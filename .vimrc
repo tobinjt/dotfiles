@@ -32,8 +32,6 @@ let g:syntastic_go_checkers = ['gofmt', 'golint', 'gotype', 'govet']
 let g:syntastic_python_python_exec = 'python3'
 " Add mypy to the list of Python checkers.
 let g:syntastic_python_checkers = ['python', 'pylint', 'mypy']
-" Tell mypy to ignore missing imports, otherwise it will warn about pyfakefs.
-let g:syntastic_python_mypy_args = '--ignore-missing-imports'
 
 " vim-go.
 " Don't auto-install tools.
