@@ -64,3 +64,6 @@
 [submodule ".vim/bundle/vim-uci"]
 	path = .vim/bundle/vim-uci
 	url = https://github.com/cmcaine/vim-uci
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
