@@ -10,8 +10,6 @@
 .forward
 # Username and password for twitch.
 .netrc
-# TODO: Why am I excluding this?
-# .profile
 
 # Various history files.
 .bash_history
@@ -34,17 +32,9 @@ Transmission Remote GUI
 .rnd
 .serverauth.*
 
-# TODO: audit these.
-# .ssh/ariane-laptop-key
+# SSH configs that are generated or distributed separately.
 .ssh/authorized_keys
 .ssh/config
-# .ssh/config-10-os-Darwin-disable-keychain
-# .ssh/hosting
-# .ssh/hosting.pub
-.ssh/id_autossh
-.ssh/id_autossh.pub
-# .ssh/id_rsa.ariane@hosting
-# .ssh/id_rsa.pub.ariane@hosting
 .ssh/known_hosts
 # TODO: make .ssh/rsync-net work.
 rsync-net
