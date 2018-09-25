@@ -18,9 +18,12 @@ let g:netrw_dirhistmax = 0
 let g:quickfixsigns_classes = ['qfl', 'loc', 'marks', 'breakpoints']
 
 " Syntastic.
-let g:syntastic_always_populate_loc_list = 1
+" Always add errors to the location list.
+" let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" Run all the checkers rather than stopping as soon as one produces errors.
+" let g:syntastic_aggregate_errors = 1
 " Don't use the go binary, it complains about packages.
 " go get -u github.com/golang/lint/golint
 " go get -u golang.org/x/tools/cmd/gotype
@@ -31,7 +34,7 @@ let g:syntastic_go_checkers = ['gofmt', 'golint', 'gotype', 'govet']
 " Make sure that python3 is used so it can parse type annotations.
 let g:syntastic_python_python_exec = 'python3'
 " Add mypy to the list of Python checkers.
-let g:syntastic_python_checkers = ['python', 'pylint', 'mypy']
+let g:syntastic_python_checkers = ['python', 'mypy', 'pylint']
 
 " vim-go.
 " Don't auto-install tools.
