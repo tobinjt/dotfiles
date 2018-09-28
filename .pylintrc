@@ -28,4 +28,4 @@ disable=
 # worse code just to have fewer local variables.
 max-locals=20
 # Variable names that can be unused.
-dummy-variables-rgx=unused_.*
+dummy-variables-rgx=^_+$|unused_.*
