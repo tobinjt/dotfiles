@@ -32,6 +32,7 @@ update_ssh_auth_sock() {
     printf "Empty SSH_AUTH_SOCK!  ssh forwarding broken?\\n" >&2
     return
   fi
+
   if [ -z "${ORIG_SSH_AUTH_SOCK:-}" ]; then
     ORIG_SSH_AUTH_SOCK="${SSH_AUTH_SOCK}"
     readonly ORIG_SSH_AUTH_SOCK
@@ -46,9 +47,24 @@ update_ssh_auth_sock() {
   if [ "${force_update}" -eq 0 ] && [ -e "${SSH_AUTH_SOCK}" ]; then
     # If the link points at a newer file do not update it to point to our file.
     if [ "${SSH_AUTH_SOCK}" -nt "${ORIG_SSH_AUTH_SOCK}" ]; then
-      printf "%s is newer than %s, not changing; use -f to force\\n" \
-        "${SSH_AUTH_SOCK}" "${ORIG_SSH_AUTH_SOCK}"
-      return
+      case "${ORIG_SSH_AUTH_SOCK}" in
+        /private/tmp/com.apple.launchd*/Listeners)
+          # The socket was created by launchd, so I must be logged in directly
+          # on the machine, so I should be using that socket even if there is
+          # another socket from sshing in from elsewhere.
+          true
+          ;;
+        /tmp/ssh-*/agent.*)
+          printf "%s is newer than %s, not changing; use -f to force\\n" \
+            "${SSH_AUTH_SOCK}" "${ORIG_SSH_AUTH_SOCK}"
+          return
+          ;;
+        *)
+          printf "Unknown socket, not replacing: %s\\n" \
+            "${ORIG_SSH_AUTH_SOCK}" >&2
+          return
+          ;;
+      esac
     fi
   fi
   ln -s -f -n "${ORIG_SSH_AUTH_SOCK}" "${SSH_AUTH_SOCK}"
