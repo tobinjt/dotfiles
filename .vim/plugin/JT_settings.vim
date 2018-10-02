@@ -173,5 +173,5 @@ if has("user_commands") && !exists(":DiffOrig")
   " Taken from :help :DiffOrig - this should diff the current buffer against
   " the file on disk.
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+    \ | wincmd p | diffthis
 endif
