@@ -65,15 +65,10 @@ endif
 if has("eval")
   " Base for temp files and state.
   let _temp_base = expand("~/tmp/vim")
-  if !isdirectory(_temp_base)
-    call mkdir(_temp_base, "p", 0700)
-  endif
 
   " Move swapfiles.
   let _swap_dir = _temp_base . '/swap'
-  if !isdirectory(_swap_dir)
-    call mkdir(_swap_dir, "p", 0700)
-  endif
+  call JT_safe_mkdir(_swap_dir)
   " Adding '//' means create the filename from the full path to prevent clashes.
   let &directory = _swap_dir . "//," . &directory
   " Don't ever put swap files in the file's directory: it's bad on non-local
@@ -82,17 +77,13 @@ if has("eval")
 
   " Move tempfiles.
   let _temp_dir = _temp_base . '/tmp'
-  if !isdirectory(_temp_dir)
-    call mkdir(_temp_dir, "p", 0700)
-  endif
+  call JT_safe_mkdir(_temp_dir)
   let $TMPDIR = _temp_dir
 
   " Save undo history per file.
   if has("persistent_undo")
     let _undo_dir = _temp_base . '/undo'
-    if !isdirectory(_undo_dir)
-      call mkdir(_undo_dir, "p", 0700)
-    endif
+    call JT_safe_mkdir(_undo_dir)
     let &undodir = _undo_dir . "," . &undodir
     set undodir-=.
     set undofile

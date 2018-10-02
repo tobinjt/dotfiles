@@ -70,3 +70,10 @@ set -e -f -u -o pipefail
   call cursor ( line ( "$" ), 0 )
   set filetype=sh
 endfunction
+
+" Create a directory if it does not exist.
+function! JT_safe_mkdir(dir)
+  if !isdirectory(a:dir)
+    call mkdir(a:dir, "p", 0700)
+  endif
+endfunction
