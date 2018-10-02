@@ -6,9 +6,6 @@ function! Spell_check_comments()
   syntax match    spell_check_comment /^[[:space:]]*#.*/ contains=@Spell
   hi def link     spell_check_comment Comment
 endfunction
-function! AddPeriods()
-  g/^-/s/[^.:]\zs$/./
-endfunction
 " Return the name of the syntax highlighting group under the cursor.
 function! SyntaxUnderCursor()
   echomsg synIDattr(synID(line('.'), col('.'), 1), 'name')
@@ -59,23 +56,6 @@ function! UpdateSpellFiles()
 endfunction
 
 " Functions to do magic things when you start editing a new file.
-function! JT_populate_perl() "
-  " Don't execute this function a second time.
-  if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
-    return
-  endif
-  insert
-#!/usr/bin/env perl
-
-use strict;
-use warnings;
-
-
-.
-  call cursor ( line ( "$" ), 0 )
-  set filetype=perl
-endfunction
-
 function! JT_populate_sh() "
   " Don't execute this function a second time.
   if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
