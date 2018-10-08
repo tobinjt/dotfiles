@@ -75,18 +75,6 @@ git() {
     (unset LESS; command git "$@")
 }
 
-ikiwiki-johntobin.ie() {
-  if ! type tidy > /dev/null; then
-    printf "apt-get install tidy\\n" >&2
-    return 1
-  fi
-  ikiwiki --setup ~/.ikiwiki/johntobin.ie "$@"
-}
-
-ikiwiki-johntobin.ie-preview() {
-  ikiwiki-johntobin.ie --render "$@" | w3m -T text/html
-}
-
 clisp() {
   (ulimit -v 1048576 && command clisp -ansi -m 128MB "$@")
 }
