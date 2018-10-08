@@ -15,5 +15,7 @@
   merge-conflicts = commit -m 'Fix merge conflicts.'
   review-comments = commit -m 'Review comments.'
   upstream = commit -a -m 'Upstream changes.'
+  unpushed-commits = log @{u}..
+  unpushed-commits-diffs = diff @{u}..
 [push]
 	default = current
