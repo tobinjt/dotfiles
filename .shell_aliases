@@ -40,8 +40,13 @@ cd_helper() {
     builtin "${cmd}" "${dest}"
     return
   fi
-  # dirname will output . if there isn't a directory in $dest.
   dest="$(dirname "${dest}")"
+  # dirname will output "." if there isn't a directory in $dest, e.g. when $dest
+  # is ~?bin; that indicated an error.
+  if [ "${dest}" == "." ]; then
+    printf "%s: %s: No such file or directory\\n" "${cmd}" "${2}" >&2
+    return 1
+  fi
   builtin "${cmd}" "${dest}"
 }
 
