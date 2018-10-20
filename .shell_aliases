@@ -202,3 +202,9 @@ bubo() {
 bubc() {
   brew upgrade && brew cleanup
 }
+
+bububc() {
+  brew update
+  brew upgrade
+  brew cleanup
+}
