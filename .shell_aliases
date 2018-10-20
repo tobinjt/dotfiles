@@ -80,10 +80,6 @@ git() {
     (unset LESS; command git "$@")
 }
 
-clisp() {
-  (ulimit -v 1048576 && command clisp -ansi -m 128MB "$@")
-}
-
 # Load .bcrc to have some helper stuff, but only when running interactively.
 bc() {
   if [ -t 0 ] && [ "$#" -eq 0 ]; then
