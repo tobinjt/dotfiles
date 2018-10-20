@@ -194,3 +194,11 @@ cleanup-fate-world-of-adventure-real() {
   local destdir="${HOME}/Media/Games/Fate/World\\ of\\ Adventure/"
   scp "${new_filename}" imac:"${destdir}"
 }
+
+bubo() {
+  brew update && brew outdated
+}
+
+bubc() {
+  brew upgrade && brew cleanup
+}
