@@ -196,15 +196,16 @@ cleanup-fate-world-of-adventure-real() {
 }
 
 bubo() {
-  brew update && brew outdated
+  brew update && brew outdated && brew cask outdated
 }
 
 bubc() {
-  brew upgrade && brew cleanup
+  brew upgrade && brew cask upgrade && brew cleanup
 }
 
 bububc() {
   brew update
   brew upgrade
+  brew cask upgrade
   brew cleanup
 }
