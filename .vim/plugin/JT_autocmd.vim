@@ -15,7 +15,6 @@ autocmd FileType crontab setlocal backupcopy=yes textwidth=1000
 autocmd FileType pod setlocal textwidth=72 formatoptions+=tcql
 " Assume foo.t is Perl; Perl Modules come with tests in t/*.t
 autocmd BufEnter *.t setlocal ft=perl
-autocmd FileType perl call JT_populate_perl()
 autocmd FileType make setlocal shiftwidth=8 tabstop=8
 autocmd FileType tex setlocal textwidth=75 makeprg=make\ -s foldmethod=syntax
   \ formatoptions+=2
@@ -27,7 +26,6 @@ autocmd BufNewFile,BufRead *.json setlocal filetype=javascript
 autocmd FileType python setlocal foldminlines=5 foldnestmax=3 foldmethod=indent
   \ shiftwidth=2 tabstop=2 softtabstop=2
 
-autocmd BufRead,BufNewFile *.md,*.mkd,*.mdwn setlocal filetype=markdown
 autocmd FileType markdown setlocal formatoptions+=nt formatoptions-=l
   \ formatlistpat=^\\s*\\(\\*\\\|[0-9]\\.\\)\\s\\+ comments=n:> foldmethod=expr
   \ foldexpr=MarkdownFolding(v:lnum)
@@ -47,8 +45,6 @@ if has("spell")
   autocmd BufReadPre,BufNewFile w3mtmp* setlocal spell tw=72
   autocmd FileType help setlocal nospell
 endif
-
-autocmd FileType lisp syn keyword lispTodo contained XXX
 
 " Try to highlight XXX in Latex source
 autocmd FileType tex syn match texError "XXX"
@@ -78,6 +74,3 @@ autocmd BufReadPost,BufNewFile authorized_keys* set textwidth=1000
 autocmd BufReadPost,BufNewFile .coveragerc set filetype=dosini
 autocmd BufReadPost,BufNewFile *.tt2 set filetype=tt2
 autocmd FileType tt2 set commentstring=#%s
-
-" UCI/OpenWRT configs on my laptop.
-autocmd BufNewFile,BufReadPost */src/router-config/* setfiletype uci

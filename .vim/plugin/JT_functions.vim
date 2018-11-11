@@ -2,10 +2,6 @@ if !has("eval")
  finish
 endif
 
-function! Spell_check_comments()
-  syntax match    spell_check_comment /^[[:space:]]*#.*/ contains=@Spell
-  hi def link     spell_check_comment Comment
-endfunction
 " Return the name of the syntax highlighting group under the cursor.
 function! SyntaxUnderCursor()
   echomsg synIDattr(synID(line('.'), col('.'), 1), 'name')
