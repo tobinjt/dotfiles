@@ -40,7 +40,7 @@ let php_noShortTags = 1
 " I'm honestly not sure what these do.
 let php_parent_error_close = 1
 let php_parent_error_open = 1
-" PHP folding - see Perl folding for details.
+" PHP folding: fold classes and functions.
 let php_folding = 1
 
 " Python settings.
