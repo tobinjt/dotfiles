@@ -59,7 +59,7 @@ pushd() {
 
 # Attach to a tmux session or start a new one.
 ta() {
-  tmux attach -d || tmux new
+  tmux new-session -D
 }
 top() {
   local top_args=""
