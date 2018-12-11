@@ -59,7 +59,8 @@ pushd() {
 
 # Attach to a tmux session or start a new one.
 ta() {
-  tmux new-session -D
+  # -D -A only works with named sessions.
+  tmux new-session -D -A -s "${USER}"
 }
 top() {
   local top_args=""
