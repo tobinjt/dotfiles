@@ -25,15 +25,15 @@ PATH="$(deduplicate_path "${PATH}")"
 EDITOR="vim"
 export EDITOR PATH
 
+# Make a tmp dir if necessary.
+if [ ! -d "${HOME}/tmp" ]; then
+  # shellcheck disable=SC2174
+  mkdir -p -m 0700 "${HOME}/tmp"
+fi
+
 if [ "$-" = "${-//i/}" ]; then
   # This is not an interactive shell, skip everything else in this file.
   return
-fi
-
-# Make a tmp dir if necessary.
-if [ ! -d "${HOME}/tmp" ]; then
-  mkdir -p "${HOME}/tmp"
-  chmod 700 "${HOME}/tmp"
 fi
 
 # The trailing : is important on Linux; it means to append the standard
