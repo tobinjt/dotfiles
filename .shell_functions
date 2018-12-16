@@ -89,13 +89,11 @@ function prompt_command() {
     if [ "${USER}" != "johntobin" ]; then
       # Put the user in the tmux pane title to warn me it's a different user.
       tmux rename-window -t "${TMUX_PANE}" "${USER}"
-    else
-      # Clear the pane title tmux sets - 'bash' is not informative.
-      tmux rename-window -t "${TMUX_PANE}" ""
     fi
   fi
   if [ -z "${TMUX:-}" ]; then
     # Any shell running under tmux should already have the right environment.
+    # shellcheck disable=SC2119
     update_ssh_auth_sock
   fi
   prompt_command_shell_specific
