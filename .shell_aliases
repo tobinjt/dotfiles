@@ -154,6 +154,14 @@ vim-cfile() {
   vim -c ':cfile '"$1"' | :cwindow'
 }
 
+vim-grep() {
+  local tmpfile
+  tmpfile="$(mktemp -t vim-grep.XXXXXXXXXXXX)"
+  grep -r -n "$1" > "${tmpfile}"
+  vim -c ':cfile '"${tmpfile}"' | :cwindow'
+  rm -f "${tmpfile}"
+}
+
 # Handy link to airport utility.
 airport() {
   # shellcheck disable=SC2039
