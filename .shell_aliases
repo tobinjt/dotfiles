@@ -155,9 +155,14 @@ vim-cfile() {
 }
 
 vim-grep() {
+  if [[ "$#" -eq 1 ]]; then
+    set -- "$1" "."
+  fi
   local tmpfile
   tmpfile="$(mktemp -t vim-grep.XXXXXXXXXXXX)"
-  grep -r -n "$1" > "${tmpfile}"
+  local pattern="$1"
+  shift
+  grep -r -n "${pattern}" "$@" > "${tmpfile}"
   vim -c ':cfile '"${tmpfile}"' | :cwindow'
   rm -f "${tmpfile}"
 }
