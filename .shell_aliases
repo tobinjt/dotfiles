@@ -214,12 +214,8 @@ bubo() {
 }
 
 bubc() {
-  brew upgrade && brew cask upgrade && brew cleanup
-}
-
-bububc() {
-  brew update
-  brew upgrade
-  brew cask upgrade
-  brew cleanup
+  brew update \
+    && brew upgrade --force-bottle \
+    && brew cask upgrade \
+    && brew cleanup
 }
