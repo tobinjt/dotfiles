@@ -59,6 +59,8 @@ pushd() {
 
 # Attach to a tmux session or start a new one.
 ta() {
+  # Update ssh auth socket before reattaching.
+  update_ssh_auth_sock
   # -D -A only works with named sessions.
   tmux new-session -D -A -s "${USER}"
 }
