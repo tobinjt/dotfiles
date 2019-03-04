@@ -30,17 +30,22 @@ update_ssh_auth_sock() {
       return
     fi
     printf "Empty SSH_AUTH_SOCK!  ssh forwarding broken?\\n" >&2
-    return
+    return 1
   fi
 
-  if [ -z "${ORIG_SSH_AUTH_SOCK:-}" ]; then
-    ORIG_SSH_AUTH_SOCK="${SSH_AUTH_SOCK}"
-    readonly ORIG_SSH_AUTH_SOCK
-  fi
   local dir="${HOME}/tmp/ssh"
   if [ ! -d "${dir}" ]; then
     mkdir -p "${dir}"
     chmod 700 "${dir}"
+  fi
+  if [ -z "${ORIG_SSH_AUTH_SOCK:-}" ]; then
+    if grep -q "${dir}" <<<"${SSH_AUTH_SOCK}"; then
+      printf "\$%s is already in %s, but \$%s is not set\\n" \
+        "SSH_AUTH_SOCK" "${dir}" "ORIG_SSH_AUTH_SOCK" >&2
+      return 1
+    fi
+    ORIG_SSH_AUTH_SOCK="${SSH_AUTH_SOCK}"
+    readonly ORIG_SSH_AUTH_SOCK
   fi
   SSH_AUTH_SOCK="${dir}/ssh-auth-sock-${HOSTNAME/lan/local}-${USER}"
   # Skip checks if -f was passed.
