@@ -91,6 +91,13 @@ bc() {
   fi
 }
 
+scp() {
+  # Do not set up the ControlMaster socket because scp does not set up SSH
+  # forwarding, so if I ssh over an scp ControlMaster ssh forwarding doesn't
+  # work.
+  command scp -o ControlMaster=no "$@"
+}
+
 # Adapted from http://www.chiark.greenend.org.uk/~sgtatham/aliases.html
 _echo-literally-helper() {
   history 1 | perl -pe 's/^ *[0-9]+ +[^ ]+ //'
