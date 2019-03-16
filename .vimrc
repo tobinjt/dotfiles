@@ -86,7 +86,6 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 if v:version >= 704 && has("python")
   Plug 'SirVer/ultisnips'
 endif
-Plug 'altercation/vim-colors-solarized'
 Plug 'cespare/vim-toml'
 Plug 'cmcaine/vim-uci'
 Plug 'ervandew/supertab'
