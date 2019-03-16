@@ -5,11 +5,9 @@
 " Enable for debugging.
 "set verbose=2
 
-" Load vim defaults if running a recent enough vim.
-if v:version > 800
-  unlet! skip_defaults_vim
-  source $VIMRUNTIME/defaults.vim
-endif
+" Load vim defaults.
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
 
 " Don't save netrw history, I don't use it.
 let g:netrw_dirhistmax = 0
@@ -83,15 +81,13 @@ let g:vim_markdown_no_default_key_mappings = 1
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
 Plug 'ConradIrwin/vim-bracketed-paste'
-if v:version >= 704 && has("python")
+if has("python")
   Plug 'SirVer/ultisnips'
 endif
 Plug 'cespare/vim-toml'
 Plug 'cmcaine/vim-uci'
 Plug 'ervandew/supertab'
-if (v:version > 704 || (v:version == 704 && has('patch1689')))
-  Plug 'fatih/vim-go'
-endif
+Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
