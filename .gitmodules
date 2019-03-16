@@ -76,3 +76,6 @@
 [submodule ".vim/bundle/vim-projectionist"]
 	path = .vim/bundle/vim-projectionist
 	url = https://github.com/tpope/vim-projectionist
+[submodule ".vim/bundle/vim-solarized8"]
+	path = .vim/bundle/vim-solarized8
+	url = https://github.com/lifepillar/vim-solarized8
