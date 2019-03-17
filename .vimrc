@@ -66,6 +66,12 @@ let g:vim_markdown_new_list_item_indent = 0
 " Disable mappings; I don't use them, and they conflict with diff mappings (e.g.
 " [c, ]c).
 let g:vim_markdown_no_default_key_mappings = 1
+" Highlight various types of front matter as used by Hugo.
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_json_frontmatter = 1
+" Support strikethrough.
+let g:vim_markdown_strikethrough = 1
 
 " Plugins.
 " To update all the git submodules: update-vim-plugins
