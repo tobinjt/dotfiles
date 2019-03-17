@@ -70,12 +70,19 @@ let g:vim_markdown_no_default_key_mappings = 1
 " Plugins.
 " To update all the git submodules: update-vim-plugins
 " To update a single submodule:
-" $ git fetch origin --tags && git checkout master && git pull
-" To add a new submodule run:
-" $ git submodule add URL DESTINATION
-" $ git submodule add \
-"     https://github.com/junegunn/vim-plug.git .vim/bundle/vim-plug
-" Then add a "Plug 'foo/bar'" line below.
+"   $ git fetch origin --tags && git checkout master && git pull
+" To add a new submodule:
+"   $ git submodule add URL DESTINATION
+"   $ git submodule add \
+"       https://github.com/junegunn/vim-plug.git .vim/bundle/vim-plug
+"   Add a "Plug 'foo/bar'" line below and commit the changes.
+"   $ update-dotfiles-and-bin
+" To remove a submodule:
+"   $ git rm DESTINATION
+"   $ git rm .vim/bundle/vim-plug
+"   Remove any config for the plugin.
+"   Remove the "Plug 'foo/bar'" line below and commit the changes.
+"   $ update-dotfiles-and-bin
 
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
