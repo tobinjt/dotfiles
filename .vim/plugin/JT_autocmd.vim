@@ -30,8 +30,7 @@ autocmd FileType python setlocal foldminlines=5 foldnestmax=3 foldmethod=indent
 autocmd FileType javascript,php setlocal foldtext=foldtext()
 
 autocmd FileType markdown setlocal formatoptions+=nt formatoptions-=l
-  \ formatlistpat=^\\s*\\(\\*\\\|[0-9]\\.\\)\\s\\+ comments=n:> foldmethod=expr
-  \ foldexpr=MarkdownFolding(v:lnum)
+  \ formatlistpat=^\\s*\\(\\*\\\|[0-9]\\.\\)\\s\\+ comments=n:>
 " tmux(1)
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
 autocmd FileType go setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
