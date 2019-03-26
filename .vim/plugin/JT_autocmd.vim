@@ -41,7 +41,7 @@ if has("spell")
   autocmd FileType html,tex,text,mail,perl,pod,c,gitcommit,markdown,debchangelog
     \ setlocal spell
   " This turns on spell checking properly.
-  autocmd FileType html,text,mail,gitcommit,markdown syntax spell toplevel
+  autocmd FileType html,text,mail,gitcommit syntax spell toplevel
   autocmd BufReadPre,BufNewFile *.txt,svn-commit.* setlocal spell
   autocmd FileType text setlocal formatoptions+=nq
   autocmd BufReadPre,BufNewFile w3mtmp* setlocal spell tw=72
