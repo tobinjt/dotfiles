@@ -61,7 +61,8 @@ pushd() {
 ta() {
   update_ssh_auth_sock
   # -D -A only works with named sessions.
-  tmux new-session -D -A -s "${USER}"
+  # Set the name of the first window to ''.
+  tmux new-session -D -A -s "${USER}" -n ''
 }
 top() {
   local top_args=""

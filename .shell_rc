@@ -71,8 +71,3 @@ export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK
 # Sort filenames as I expect them to be sorted, regardless of locale.
 LC_COLLATE="C"
 export LC_COLLATE
-
-if [ -n "${TMUX:-}" ]; then
-  # Clear the pane title tmux sets - 'bash' is not informative.
-  tmux rename-window -t "${TMUX_PANE}" ""
-fi
