@@ -1,3 +1,8 @@
+if ! has("termguicolors")
+  " This happens with /usr/bin/vim on MacOS.
+  " Suppress the error message from Solarized.
+  finish
+endif
 " Use TrueColor (24 bit).
 set termguicolors
 set background=dark
