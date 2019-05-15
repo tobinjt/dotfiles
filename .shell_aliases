@@ -215,7 +215,7 @@ cleanup-fate-world-of-adventure-real() {
   # Spaces need to be escaped so that scp doesn't complain about "ambiguous
   # target"
   local destdir="${HOME}/Media/Games/Fate/World\\ of\\ Adventure/"
-  scp "${new_filename}" imac:"${destdir}"
+  scp "${new_filename}" home:"${destdir}"
 }
 
 bubo() {
