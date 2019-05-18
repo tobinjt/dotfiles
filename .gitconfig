@@ -19,3 +19,5 @@
   unpushed-commits-diffs = diff @{u}..
 [push]
 	default = current
+[diff]
+	colorMoved = true
