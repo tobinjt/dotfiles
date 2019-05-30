@@ -123,10 +123,6 @@ only_duplicates() {
   fmt -1 "$@" | sort | uniq -d | xargs echo
 }
 
-delete-ipad-app-backups() {
-  rm "${HOME}/Music/iTunes/iTunes Media/Mobile Applications"/*
-}
-
 timestamp-to-human-localtime() {
   # shellcheck disable=SC2016
   strictperl -n -e 'print scalar localtime $_, qq{\n}'
