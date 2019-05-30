@@ -99,6 +99,10 @@ scp() {
   command scp -o ControlMaster=no "$@"
 }
 
+assh() {
+  autossh -M 0 "$@"
+}
+
 # Adapted from http://www.chiark.greenend.org.uk/~sgtatham/aliases.html
 _echo-literally-helper() {
   history 1 | perl -pe 's/^ *[0-9]+ +[^ ]+ //'
