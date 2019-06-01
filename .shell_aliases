@@ -58,12 +58,14 @@ pushd() {
 }
 
 # Attach to a tmux session or start a new one.
-ta() {
+tmux_attach() {
   update_ssh_auth_sock
   # -D -A only works with named sessions.
   # Set the name of the first window to ''.
   tmux new-session -D -A -s "${USER}" -n ''
 }
+alias ta='tmux_attach'
+
 top() {
   local top_args=""
   # top on Mac OS X does not sort by CPU by default; fix that.
@@ -100,7 +102,13 @@ scp() {
 }
 
 assh() {
-  autossh -M 0 "$@"
+  # Disable autossh monitoring because I have ssh configured to monitor
+  # connectivity.  Allocate a pseudo-tty.
+  # Run bash:
+  # - as a login shell so it sources the correct files
+  # - interactively because my configs only define aliases when interactive
+  # - execute the function 'tmux_attach'
+  autossh -M 0 -t "$@" bash -l -i -c tmux_attach
 }
 
 # Adapted from http://www.chiark.greenend.org.uk/~sgtatham/aliases.html
