@@ -1,8 +1,6 @@
 [filtering]
 ignore=
-  //en.wikipedia.org
   //pool.ntp.org
-  //www.amazon.co.uk
   //www.example.org
   /xmlrpc.php
 
