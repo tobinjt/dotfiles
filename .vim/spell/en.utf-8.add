@@ -11,3 +11,5 @@ rsync
 hostname
 offsite
 onsite
+recursing
+recurse
