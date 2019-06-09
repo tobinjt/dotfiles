@@ -1,7 +1,7 @@
 [filtering]
 ignore=
-  //pool.ntp.org
-  //www.example.org
+  //Xpool.ntp.org
+  //Xwww.example.org
   /xmlrpc.php
 
 [checking]
