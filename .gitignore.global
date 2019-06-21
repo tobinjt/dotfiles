@@ -1,3 +1,10 @@
+*.pyc
 *.swp
+.cache
+.coverage
+.mypy_cache
+.php_cs.cache
+.pytest_cache
 blib
+coverage
 pm_to_blib
