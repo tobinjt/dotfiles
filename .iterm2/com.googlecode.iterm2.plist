@@ -75,7 +75,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>269 148 796 486 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 2 1438 875 0 0 1440 877 </string>
+	<string>0 0 1440 877 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 0 1438 875 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
@@ -1442,10 +1442,8 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-07-12T01:30:29Z</date>
+	<date>2019-07-15T20:51:03Z</date>
 	<key>SUSendProfileInfo</key>
-	<false/>
-	<key>Secure Input</key>
 	<false/>
 	<key>Selection Respects Soft Boundaries</key>
 	<true/>
