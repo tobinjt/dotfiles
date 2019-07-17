@@ -84,6 +84,12 @@ git() {
     # MacOS env doesn't have --unset.
     (unset LESS; command git "$@")
 }
+# hg sets better options if $LESS is unset.
+hg() {
+    # MacOS env doesn't have --unset.
+    (unset LESS; command hg "$@")
+}
+
 
 # Load .bcrc to have some helper stuff, but only when running interactively.
 bc() {
