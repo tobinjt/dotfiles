@@ -75,9 +75,11 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>269 148 796 486 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 2 1438 875 0 0 1440 877 </string>
+	<string>0 0 1440 877 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 0 1438 875 0 0 1440 877 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>1225 7 1333 1410 0 0 2560 1417 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1304,6 +1306,8 @@
 			<string>/Users/johntobin</string>
 		</dict>
 	</array>
+	<key>NoSyncHaveRequestedFullDiskAccess</key>
+	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
@@ -1317,7 +1321,9 @@
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>490592433.60995501</real>
+	<real>540776938.53581202</real>
+	<key>NoSyncTipsDisabled</key>
+	<true/>
 	<key>NoSyncTipsToNotShow</key>
 	<array>
 		<string>000</string>
@@ -1408,6 +1414,11 @@
 			<key>Action</key>
 			<string>kPasteFromSelectionPointerAction</string>
 		</dict>
+		<key>Gesture,ForceTouchSingleClick,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kPasteFromClipboardPointerAction</string>
+		</dict>
 		<key>Gesture,ThreeFingerSwipeDown,,</key>
 		<dict>
 			<key>Action</key>
@@ -1442,20 +1453,24 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-10-05T20:24:32Z</date>
+	<date>2019-07-15T20:51:03Z</date>
 	<key>SUSendProfileInfo</key>
-	<false/>
-	<key>Secure Input</key>
 	<false/>
 	<key>Selection Respects Soft Boundaries</key>
 	<true/>
 	<key>UseLionStyleFullscreen</key>
 	<false/>
+	<key>ThreeFingerEmulates</key>
+	<false/>
+	<key>ToolbeltTools</key>
+	<array>
+		<string>Profiles</string>
+	</array>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.2.3</string>
+	<string>3.2.9</string>
 </dict>
 </plist>
