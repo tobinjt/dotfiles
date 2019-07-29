@@ -59,8 +59,6 @@ update_ssh_auth_sock() {
   # - ssh in, update ssh socket link, and reconnect tmux to the ssh session.
   # - bash on the local machine displays the prompt, updating the link
   #   incorrectly.
-  # TODO: should I stop running update_ssh_auth_sock from prompt_command and
-  # only run it from tmux_attach instead?
   if [ "${force_update}" -eq 0 ] \
       && [ -n "${SSH_CLIENT:-}" ] \
       && [ -e "${SSH_AUTH_SOCK}" ] \
@@ -92,11 +90,6 @@ function prompt_command() {
       # Put the user in the tmux pane title to warn me it's a different user.
       tmux rename-window -t "${TMUX_PANE}" "${USER}"
     fi
-  fi
-  if [ -z "${TMUX:-}" ]; then
-    # Any shell running under tmux should already have the right environment.
-    # shellcheck disable=SC2119
-    update_ssh_auth_sock
   fi
   prompt_command_shell_specific
   prompt_command_extras
