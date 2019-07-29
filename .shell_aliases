@@ -13,43 +13,6 @@ alias mv="mv -i"
 alias cp="cp -i -p"
 alias grep='grep --color=auto'
 
-# 'cd dirname/filename' will strip filename and cd to dirname.
-cd_helper() {
-  if [ "$#" -lt 1 ]; then
-    printf "cd_helper: Expecting exactly one or two arguments\\n" >&2
-    return 1
-  fi
-  local cmd="$1"
-  if [ "$#" -gt 2 ]; then
-    printf "%s: Expecting exactly zero or one arguments\\n" "${cmd}" >&2
-    return 1
-  fi
-  # Support "cd".
-  if [ "$#" -eq 1 ]; then
-    builtin "${cmd}"
-    return
-  fi
-  # Support "cd -".
-  if [ "$2" == '-' ]; then
-    builtin "${cmd}" "$2"
-    return
-  fi
-
-  local dest="$2"
-  if [ -d "${dest}" ]; then
-    builtin "${cmd}" "${dest}"
-    return
-  fi
-  dest="$(dirname "${dest}")"
-  # dirname will output "." if there isn't a directory in $dest, e.g. when $dest
-  # is ~?bin; that indicated an error.
-  if [ "${dest}" == "." ]; then
-    printf "%s: %s: No such file or directory\\n" "${cmd}" "${2}" >&2
-    return 1
-  fi
-  builtin "${cmd}" "${dest}"
-}
-
 cd() {
   cd_helper cd "$@"
 }
@@ -57,13 +20,6 @@ pushd() {
   cd_helper pushd "$@"
 }
 
-# Attach to a tmux session or start a new one.
-tmux_attach() {
-  update_ssh_auth_sock
-  # -D -A only works with named sessions.
-  # Set the name of the first window to ''.
-  tmux new-session -D -A -s "${USER}" -n ''
-}
 alias ta='tmux_attach'
 
 top() {
