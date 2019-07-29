@@ -31,9 +31,6 @@ top() {
   # shellcheck disable=SC2086
   TOP="$((${LINES:-24} - 7))" command top ${top_args} "$@"
 }
-strictperl() {
-  perl -Mstrict -w -MData::Dumper "$@"
-}
 
 # git sets better options if $LESS is unset.
 git() {
@@ -73,12 +70,6 @@ assh() {
   autossh -M 0 -t "$@" bash -l -i -c tmux_attach
 }
 
-# Adapted from http://www.chiark.greenend.org.uk/~sgtatham/aliases.html
-_echo-literally-helper() {
-  history 1 | perl -pe 's/^ *[0-9]+ +[^ ]+ //'
-}
-alias echo-literally='_echo-literally-helper #'
-
 irssi() {
   tmux set-window-option monitor-activity on
   TERM=xterm-color command irssi "$@"
@@ -99,7 +90,7 @@ only_duplicates() {
 
 timestamp-to-human-localtime() {
   # shellcheck disable=SC2016
-  strictperl -n -e 'print scalar localtime $_, qq{\n}'
+  perl -Mstrict -n -e 'print scalar localtime $_, qq{\n}'
 }
 
 # Wrappers around 'go doc'.
@@ -142,7 +133,7 @@ vim-grep() {
   local pattern="$1"
   shift
   grep -r -n "${pattern}" "$@" > "${tmpfile}"
-  vim -c ':cfile '"${tmpfile}"' | :cwindow'
+  vim-cfile "${tmpfile}"
   rm -f "${tmpfile}"
 }
 
@@ -186,6 +177,7 @@ cleanup-fate-world-of-adventure-real() {
   # target"
   local destdir="${HOME}/Media/Games/Fate/World\\ of\\ Adventure/"
   scp "${new_filename}" home:"${destdir}"
+  rm -i "${new_filename}"
 }
 
 bubo() {
