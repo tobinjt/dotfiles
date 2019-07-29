@@ -46,31 +46,28 @@ update_ssh_auth_sock() {
     fi
     ORIG_SSH_AUTH_SOCK="${SSH_AUTH_SOCK}"
     readonly ORIG_SSH_AUTH_SOCK
+    export ORIG_SSH_AUTH_SOCK
   fi
+
   SSH_AUTH_SOCK="${dir}/ssh-auth-sock-${HOSTNAME/lan/local}-${USER}"
-  # Skip checks if -f was passed.
-  if [ "${force_update}" -eq 0 ] && [ -e "${SSH_AUTH_SOCK}" ]; then
-    # If the link points at a newer file do not update it to point to our file.
-    if [ "${SSH_AUTH_SOCK}" -nt "${ORIG_SSH_AUTH_SOCK}" ]; then
-      case "${ORIG_SSH_AUTH_SOCK}" in
-        /private/tmp/com.apple.launchd*/Listeners)
-          # The socket was created by launchd, so I must be logged in directly
-          # on the machine, so I should be using that socket even if there is
-          # another socket from sshing in from elsewhere.
-          true
-          ;;
-        /tmp/ssh-*/agent.*)
-          printf "%s is newer than %s, not changing; use -f to force\\n" \
-            "${SSH_AUTH_SOCK}" "${ORIG_SSH_AUTH_SOCK}"
-          return
-          ;;
-        *)
-          printf "Unknown socket, not replacing: %s\\n" \
-            "${ORIG_SSH_AUTH_SOCK}" >&2
-          return
-          ;;
-      esac
-    fi
+  # Skip checks if -f was passed or if $SSH_CLIENT is not set (because then I'm
+  # on the local machine and I should be using the local ssh-agent rather than
+  # the remote one).
+  # If the link points at a newer file do not update it to point to our file.
+  # Beware: there is one case where this will not work correctly:
+  # - start tmux on the local machine.
+  # - ssh in, update ssh socket link, and reconnect tmux to the ssh session.
+  # - bash on the local machine displays the prompt, updating the link
+  #   incorrectly.
+  # TODO: should I stop running update_ssh_auth_sock from prompt_command and
+  # only run it from tmux_attach instead?
+  if [ "${force_update}" -eq 0 ] \
+      && [ -n "${SSH_CLIENT:-}" ] \
+      && [ -e "${SSH_AUTH_SOCK}" ] \
+      && [ "${SSH_AUTH_SOCK}" -nt "${ORIG_SSH_AUTH_SOCK}" ]; then
+    printf "%s is newer than %s, not changing; use -f to force\\n" \
+      "${SSH_AUTH_SOCK}" "${ORIG_SSH_AUTH_SOCK}" >&2
+    return 1
   fi
   ln -s -f -n "${ORIG_SSH_AUTH_SOCK}" "${SSH_AUTH_SOCK}"
 }
