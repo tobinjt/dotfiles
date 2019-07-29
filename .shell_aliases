@@ -89,7 +89,6 @@ only_duplicates() {
 }
 
 timestamp-to-human-localtime() {
-  # shellcheck disable=SC2016
   perl -Mstrict -n -e 'print scalar localtime $_, qq{\n}'
 }
 
