@@ -1,6 +1,54 @@
 #!/bin/bash
 
-# Shell-neutral functions.
+# Shell-neutral functions that might realistically be used by other code.
+# Aliases and functions intended solely for interactive use belong in
+# .shell_aliases.
+
+# 'cd dirname/filename' will strip filename and cd to dirname.
+cd_helper() {
+  if [ "$#" -lt 1 ]; then
+    printf "cd_helper: Expecting exactly one or two arguments\\n" >&2
+    return 1
+  fi
+  local cmd="$1"
+  if [ "$#" -gt 2 ]; then
+    printf "%s: Expecting exactly zero or one arguments\\n" "${cmd}" >&2
+    return 1
+  fi
+  # Support "cd".
+  if [ "$#" -eq 1 ]; then
+    builtin "${cmd}"
+    return
+  fi
+  # Support "cd -".
+  if [ "$2" == '-' ]; then
+    builtin "${cmd}" "$2"
+    return
+  fi
+
+  local dest="$2"
+  if [ -d "${dest}" ]; then
+    builtin "${cmd}" "${dest}"
+    return
+  fi
+  dest="$(dirname "${dest}")"
+  # dirname will output "." if there isn't a directory in $dest, e.g. when $dest
+  # is ~?bin; that indicated an error.
+  if [ "${dest}" == "." ]; then
+    printf "%s: %s: No such file or directory\\n" "${cmd}" "${2}" >&2
+    return 1
+  fi
+  builtin "${cmd}" "${dest}"
+}
+
+# Attach to a tmux session or start a new one.
+tmux_attach() {
+  # shellcheck disable=SC2119
+  update_ssh_auth_sock
+  # -D -A only works with named sessions.
+  # Set the name of the first window to ''.
+  tmux new-session -D -A -s "${USER}" -n ''
+}
 
 # Remove duplicate elements from a $PATH-like variable while preserving order.
 # This cannot use gawk features because it needs to be portable to Mac OS X.
@@ -46,31 +94,26 @@ update_ssh_auth_sock() {
     fi
     ORIG_SSH_AUTH_SOCK="${SSH_AUTH_SOCK}"
     readonly ORIG_SSH_AUTH_SOCK
+    export ORIG_SSH_AUTH_SOCK
   fi
+
   SSH_AUTH_SOCK="${dir}/ssh-auth-sock-${HOSTNAME/lan/local}-${USER}"
-  # Skip checks if -f was passed.
-  if [ "${force_update}" -eq 0 ] && [ -e "${SSH_AUTH_SOCK}" ]; then
-    # If the link points at a newer file do not update it to point to our file.
-    if [ "${SSH_AUTH_SOCK}" -nt "${ORIG_SSH_AUTH_SOCK}" ]; then
-      case "${ORIG_SSH_AUTH_SOCK}" in
-        /private/tmp/com.apple.launchd*/Listeners)
-          # The socket was created by launchd, so I must be logged in directly
-          # on the machine, so I should be using that socket even if there is
-          # another socket from sshing in from elsewhere.
-          true
-          ;;
-        /tmp/ssh-*/agent.*)
-          printf "%s is newer than %s, not changing; use -f to force\\n" \
-            "${SSH_AUTH_SOCK}" "${ORIG_SSH_AUTH_SOCK}"
-          return
-          ;;
-        *)
-          printf "Unknown socket, not replacing: %s\\n" \
-            "${ORIG_SSH_AUTH_SOCK}" >&2
-          return
-          ;;
-      esac
-    fi
+  # Skip checks if -f was passed or if $SSH_CLIENT is not set (because then I'm
+  # on the local machine and I should be using the local ssh-agent rather than
+  # the remote one).
+  # If the link points at a newer file do not update it to point to our file.
+  # Beware: there is one case where this will not work correctly:
+  # - start tmux on the local machine.
+  # - ssh in, update ssh socket link, and reconnect tmux to the ssh session.
+  # - bash on the local machine displays the prompt, updating the link
+  #   incorrectly.
+  if [ "${force_update}" -eq 0 ] \
+      && [ -n "${SSH_CLIENT:-}" ] \
+      && [ -e "${SSH_AUTH_SOCK}" ] \
+      && [ "${SSH_AUTH_SOCK}" -nt "${ORIG_SSH_AUTH_SOCK}" ]; then
+    printf "%s is newer than %s, not changing; use -f to force\\n" \
+      "${SSH_AUTH_SOCK}" "${ORIG_SSH_AUTH_SOCK}" >&2
+    return 1
   fi
   ln -s -f -n "${ORIG_SSH_AUTH_SOCK}" "${SSH_AUTH_SOCK}"
 }
@@ -95,11 +138,6 @@ function prompt_command() {
       # Put the user in the tmux pane title to warn me it's a different user.
       tmux rename-window -t "${TMUX_PANE}" "${USER}"
     fi
-  fi
-  if [ -z "${TMUX:-}" ]; then
-    # Any shell running under tmux should already have the right environment.
-    # shellcheck disable=SC2119
-    update_ssh_auth_sock
   fi
   prompt_command_shell_specific
   prompt_command_extras

@@ -13,43 +13,6 @@ alias mv="mv -i"
 alias cp="cp -i -p"
 alias grep='grep --color=auto'
 
-# 'cd dirname/filename' will strip filename and cd to dirname.
-cd_helper() {
-  if [ "$#" -lt 1 ]; then
-    printf "cd_helper: Expecting exactly one or two arguments\\n" >&2
-    return 1
-  fi
-  local cmd="$1"
-  if [ "$#" -gt 2 ]; then
-    printf "%s: Expecting exactly zero or one arguments\\n" "${cmd}" >&2
-    return 1
-  fi
-  # Support "cd".
-  if [ "$#" -eq 1 ]; then
-    builtin "${cmd}"
-    return
-  fi
-  # Support "cd -".
-  if [ "$2" == '-' ]; then
-    builtin "${cmd}" "$2"
-    return
-  fi
-
-  local dest="$2"
-  if [ -d "${dest}" ]; then
-    builtin "${cmd}" "${dest}"
-    return
-  fi
-  dest="$(dirname "${dest}")"
-  # dirname will output "." if there isn't a directory in $dest, e.g. when $dest
-  # is ~?bin; that indicated an error.
-  if [ "${dest}" == "." ]; then
-    printf "%s: %s: No such file or directory\\n" "${cmd}" "${2}" >&2
-    return 1
-  fi
-  builtin "${cmd}" "${dest}"
-}
-
 cd() {
   cd_helper cd "$@"
 }
@@ -57,13 +20,6 @@ pushd() {
   cd_helper pushd "$@"
 }
 
-# Attach to a tmux session or start a new one.
-tmux_attach() {
-  update_ssh_auth_sock
-  # -D -A only works with named sessions.
-  # Set the name of the first window to ''.
-  tmux new-session -D -A -s "${USER}" -n ''
-}
 alias ta='tmux_attach'
 
 top() {
@@ -74,9 +30,6 @@ top() {
   fi
   # shellcheck disable=SC2086
   TOP="$((${LINES:-24} - 7))" command top ${top_args} "$@"
-}
-strictperl() {
-  perl -Mstrict -w -MData::Dumper "$@"
 }
 
 # git sets better options if $LESS is unset.
@@ -117,12 +70,6 @@ assh() {
   autossh -M 0 -t "$@" bash -l -i -c tmux_attach
 }
 
-# Adapted from http://www.chiark.greenend.org.uk/~sgtatham/aliases.html
-_echo-literally-helper() {
-  history 1 | perl -pe 's/^ *[0-9]+ +[^ ]+ //'
-}
-alias echo-literally='_echo-literally-helper #'
-
 irssi() {
   tmux set-window-option monitor-activity on
   TERM=xterm-color command irssi "$@"
@@ -142,8 +89,7 @@ only_duplicates() {
 }
 
 timestamp-to-human-localtime() {
-  # shellcheck disable=SC2016
-  strictperl -n -e 'print scalar localtime $_, qq{\n}'
+  perl -Mstrict -n -e 'print scalar localtime $_, qq{\n}'
 }
 
 # Wrappers around 'go doc'.
@@ -186,7 +132,7 @@ vim-grep() {
   local pattern="$1"
   shift
   grep -r -n "${pattern}" "$@" > "${tmpfile}"
-  vim -c ':cfile '"${tmpfile}"' | :cwindow'
+  vim-cfile "${tmpfile}"
   rm -f "${tmpfile}"
 }
 
@@ -230,6 +176,7 @@ cleanup-fate-world-of-adventure-real() {
   # target"
   local destdir="${HOME}/Media/Games/Fate/World\\ of\\ Adventure/"
   scp "${new_filename}" home:"${destdir}"
+  rm -i "${new_filename}"
 }
 
 bubo() {
