@@ -11,11 +11,10 @@
 # vim and python.
 if [ -d "/usr/local/Cellar" ]; then
     PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
+    # Adding these directories here is ugly but easy.
     PATH="/usr/local/opt/python/libexec/bin:${PATH}"
+    PATH="${HOME}/src/gopath/bin:${PATH}"
     MANPATH="/usr/local/man:/usr/local/share/man:${MANPATH}"
-fi
-if [ -d "/usr/local/go/bin" ]; then
-    PATH="/usr/local/go/bin:${HOME}/src/gopath/bin:${PATH}"
 fi
 PATH="${HOME}/gbin:${HOME}/bin:${PATH}:/sbin:/usr/sbin"
 PATH="$(deduplicate_path "${PATH}")"
