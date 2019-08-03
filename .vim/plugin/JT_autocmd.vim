@@ -80,4 +80,4 @@ autocmd FileType tt2 set commentstring=#%s
 
 " Run dot every time the file is saved.
 autocmd BufWritePost *.dot execute 'silent !dot -O -Tpdf %' | redraw!
-autocmd FileType dot setlocal textwidth=200
+autocmd FileType dot setlocal textwidth=300
