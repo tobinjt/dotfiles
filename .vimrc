@@ -16,19 +16,15 @@ let g:netrw_dirhistmax = 0
 let g:quickfixsigns_classes = ['qfl', 'loc', 'marks', 'breakpoints']
 
 " Syntastic.
-" Always add errors to the location list.
-" let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-" Run all the checkers rather than stopping as soon as one produces errors.
-" let g:syntastic_aggregate_errors = 1
+" Configure Go checkers.
 " Don't use the go binary, it complains about packages.
 " go get -u github.com/golang/lint/golint
 " go get -u golang.org/x/tools/cmd/gotype
 " go get -u golang.org/x/tools/cmd/goimports
 " All of these will be run serially; remove if that gets too slow.
 let g:syntastic_go_checkers = ['gofmt', 'golint', 'gotype', 'govet']
-"let g:syntastic_auto_loc_list = 0
 " Configure Javascript checkers.
 let g:syntastic_javascript_checkers = ['closurecompiler', 'gjslint']
 let g:syntastic_javascript_closurecompiler_script = '/usr/bin/closure-compiler'
@@ -38,8 +34,6 @@ let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_python_checkers = ['python', 'mypy', 'pylint']
 
 " vim-go.
-" Don't auto-install tools.
-let g:go_disable_autoinstall = 1
 " Use goimports, it should fix up import lines automatically.
 let g:go_fmt_command = "goimports"
 " More highlighting.
@@ -131,6 +125,8 @@ endif
 
 " Finish vim-plug setup.
 call plug#end()
+
+" All plugins have now been loaded and their functionality is available.
 
 " Explicitly put ~/.vim first, because vim will put spelling additions in the
 " first directory in runtimepath.  Overwrite runtimepath rather than adding to
