@@ -19,12 +19,9 @@ let g:quickfixsigns_classes = ['qfl', 'loc', 'marks', 'breakpoints']
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " Configure Go checkers.
-" Don't use the go binary, it complains about packages.
-" go get -u github.com/golang/lint/golint
-" go get -u golang.org/x/tools/cmd/gotype
-" go get -u golang.org/x/tools/cmd/goimports
+" Install the necessary tools with; $ install-extra-tools-for-vim
 " All of these will be run serially; remove if that gets too slow.
-let g:syntastic_go_checkers = ['gofmt', 'golint', 'gotype', 'govet']
+let g:syntastic_go_checkers = ['go', 'gofmt', 'golint', 'gotype', 'govet']
 " Configure Javascript checkers.
 let g:syntastic_javascript_checkers = ['closurecompiler', 'gjslint']
 let g:syntastic_javascript_closurecompiler_script = '/usr/bin/closure-compiler'
@@ -34,6 +31,7 @@ let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_python_checkers = ['python', 'mypy', 'pylint']
 
 " vim-go.
+" Install the necessary tools with; $ install-extra-tools-for-vim
 " Use goimports, it should fix up import lines automatically.
 let g:go_fmt_command = "goimports"
 " More highlighting.
