@@ -71,9 +71,7 @@ assh() {
 }
 
 irssi() {
-  tmux set-window-option monitor-activity on
   TERM=xterm-color command irssi "$@"
-  tmux set-window-option monitor-activity off
 }
 
 shell_functions() {
