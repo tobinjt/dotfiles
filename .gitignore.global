@@ -7,6 +7,7 @@
 .php_cs.cache
 .phpunit.result.cache
 .pytest_cache
+__debug_bin
 blib
 coverage
 pm_to_blib
