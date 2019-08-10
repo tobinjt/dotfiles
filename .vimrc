@@ -35,12 +35,18 @@ let g:syntastic_python_checkers = ['python', 'mypy', 'pylint']
 " Use goimports, it should fix up import lines automatically.
 let g:go_fmt_command = "goimports"
 " More highlighting.
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
 
 " Change the trigger so it doesn't clash with SuperTab; this means I have to
 " explicitly trigger snippet expansion and it doesn't happen accidentally.
