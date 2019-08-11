@@ -35,7 +35,7 @@ autocmd FileType markdown setlocal nofoldenable
 " tmux(1)
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
 autocmd FileType go setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
-  \ nofoldenable spell textwidth=1000
+  \ nofoldenable spell textwidth=80
 
 " Turn on spelling, if the vim we're using supports it, for specific file types.
 if has("spell")
