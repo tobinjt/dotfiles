@@ -39,8 +39,7 @@ fi
 # search path to ${MANPATH}.
 MANPATH="$(deduplicate_path "${HOME}/man${MANPATH:+:}${MANPATH:-}:")"
 # Where Go should install stuff.
-# Also trick Go into finding things in ~/src.
-GOPATH="$(deduplicate_path "${HOME}/src/gopath:${HOME}${GOPATH:+:}${GOPATH:-}")"
+GOPATH="${HOME}/src/gopath"
 export MANPATH GOPATH
 
 if [ "${OSTYPE#darwin}" != "${OSTYPE}" ]; then
