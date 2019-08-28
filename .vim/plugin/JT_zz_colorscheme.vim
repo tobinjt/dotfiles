@@ -1,10 +1,7 @@
-if ! has("termguicolors")
-  " This happens with /usr/bin/vim on MacOS.
-  " Suppress the error message from Solarized.
-  finish
+if has("termguicolors")
+  set termguicolors
 endif
 " Use TrueColor (24 bit).
-set termguicolors
 set background=dark
 let g:solarized_termtrans = 1
 let g:solarized_diffmode = "low"
