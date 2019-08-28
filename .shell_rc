@@ -13,16 +13,18 @@ if [ -d "/usr/local/Cellar" ]; then
     PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
     # Adding these directories here is ugly but easy.
     PATH="/usr/local/opt/python/libexec/bin:${PATH}"
-    PATH="${HOME}/src/gopath/bin:${PATH}"
     MANPATH="/usr/local/man:/usr/local/share/man:${MANPATH}"
 fi
-PATH="${HOME}/gbin:${HOME}/bin:${PATH}:/sbin:/usr/sbin"
+# Where Go should install stuff; it can all be replaced if necessary so its fine
+# to keep it in tmp.  Set here so that it can be used in $PATH.
+GOPATH="${HOME}/tmp/gopath"
+PATH="${HOME}/gbin:${HOME}/bin:${GOPATH}/bin:${PATH}:/sbin:/usr/sbin"
 PATH="$(deduplicate_path "${PATH}")"
 # EDITOR is set here so that it's correct when running non-interactively, e.g.
 # when sshing in to run update-dotfiles-and-bin, which runs git pull, which
 # needs a commit message for merges.
 EDITOR="vim"
-export EDITOR PATH
+export EDITOR GOPATH PATH
 
 # Make a tmp dir if necessary.
 if [ ! -d "${HOME}/tmp" ]; then
@@ -38,10 +40,6 @@ fi
 # The trailing : is important on Linux; it means to append the standard
 # search path to ${MANPATH}.
 MANPATH="$(deduplicate_path "${HOME}/man${MANPATH:+:}${MANPATH:-}:")"
-# Where Go should install stuff.
-GOPATH="${HOME}/src/gopath"
-export MANPATH GOPATH
-
 if [ "${OSTYPE#darwin}" != "${OSTYPE}" ]; then
   # MacOS
   BROWSER='open -a "Google Chrome"'
@@ -62,10 +60,9 @@ RSYNC_RSH="ssh -o ControlPath=none"
 # moving through the file
 LESS="iMdRW${LESS}"
 PYTHONDONTWRITEBYTECODE="No .pyc files please"
+# Don't install from source if fetching the bottle fails.
 HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
-export BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE RSYNC_RSH
-export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK
-
 # Sort filenames as I expect them to be sorted, regardless of locale.
 LC_COLLATE="C"
-export LC_COLLATE
+export MANPATH BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE RSYNC_RSH
+export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK LC_COLLATE
