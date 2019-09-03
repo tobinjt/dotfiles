@@ -176,23 +176,3 @@ cleanup-fate-world-of-adventure-real() {
   scp "${new_filename}" home:"${destdir}"
   rm -i "${new_filename}"
 }
-
-# Wrappers for repetitive homebrew tasks.
-# Sleep between commands to reduce the chance of errors like:
-# "Error: Another active Homebrew update process is already in progress."
-bubo() {
-  brew update \
-    && sleep 1 \
-    && brew outdated \
-    && sleep 1 \
-    && brew cask outdated
-}
-bubc() {
-  brew update \
-    && sleep 1 \
-    && brew upgrade --force-bottle \
-    && sleep 1 \
-    && brew cask upgrade \
-    && sleep 1 \
-    && brew cleanup
-}
