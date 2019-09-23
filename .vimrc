@@ -98,7 +98,9 @@ endif
 Plug 'cespare/vim-toml'
 Plug 'cmcaine/vim-uci'
 Plug 'ervandew/supertab'
-Plug 'fatih/vim-go'
+if has('patch-8.0.1453')
+  Plug 'fatih/vim-go'
+endif
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
