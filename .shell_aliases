@@ -118,7 +118,7 @@ vimf() {
 
 # grep for something and output in vim quickfix format.
 cfile() {
-  grep -r -l "$@"
+  grep -r -n "$@"
 }
 
 # Load errors from $1.
