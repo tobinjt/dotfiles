@@ -116,6 +116,11 @@ vimf() {
   vim "$(basename "$1")"
 }
 
+# grep for something and output in vim quickfix format.
+cfile() {
+  grep -r -l "$@"
+}
+
 # Load errors from $1.
 vim-cfile() {
   vim -c ':cfile '"$1"' | :cwindow'
