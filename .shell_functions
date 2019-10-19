@@ -4,6 +4,10 @@
 # Aliases and functions intended solely for interactive use belong in
 # .shell_aliases.
 
+is_mac_os() {
+  [ "${OSTYPE#darwin}" != "${OSTYPE}" ]
+}
+
 # 'cd dirname/filename' will strip filename and cd to dirname.
 cd_helper() {
   if [ "$#" -lt 1 ]; then

@@ -40,7 +40,7 @@ fi
 # The trailing : is important on Linux; it means to append the standard
 # search path to ${MANPATH}.
 MANPATH="$(deduplicate_path "${HOME}/man${MANPATH:+:}${MANPATH:-}:")"
-if [ "${OSTYPE#darwin}" != "${OSTYPE}" ]; then
+if is_mac_os; then
   # MacOS
   BROWSER='open -a "Google Chrome"'
 else

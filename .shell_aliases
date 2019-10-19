@@ -25,7 +25,7 @@ alias ta='tmux_attach'
 top() {
   local top_args=""
   # top on Mac OS X does not sort by CPU by default; fix that.
-  if [ "${OSTYPE#darwin}" != "${OSTYPE}" ]; then
+  if is_mac_os; then
     top_args="-o cpu"
   fi
   # shellcheck disable=SC2086
@@ -118,7 +118,18 @@ vimf() {
 
 # grep for something and output in vim quickfix format.
 cfile() {
-  grep -r -n "$@"
+  if [[ -n "$(type rg 2> /dev/null)" ]]; then
+    rg -n --hidden "$@"
+  else
+    if is_mac_os; then
+      # MacOS grep doesn't automatically add the current directory like GNU
+      # grep.  This workaround isn't ideal: if I pass a filename the directory
+      # will still be added.
+      grep -r -n "$@" .
+    else
+      grep -r -n "$@"
+    fi
+  fi
 }
 
 # Load errors from $1.
