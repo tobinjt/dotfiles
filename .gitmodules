@@ -22,9 +22,6 @@
 [submodule ".vim/bundle/file-line"]
 	path = .vim/bundle/file-line
 	url = https://github.com/vim-scripts/file-line.git
-[submodule ".vim/bundle/quickfixsigns"]
-	path = .vim/bundle/quickfixsigns
-	url = https://github.com/vim-scripts/quickfixsigns.git
 [submodule ".vim/bundle/supertab"]
 	path = .vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
