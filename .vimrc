@@ -1,6 +1,5 @@
 " My .vimrc - an attempt to customise vim and save most of my settings so that
 " I'm independant of the global vimrc wherever I go.
-" $Id: .vimrc,v 1.62 2007/03/23 14:20:00 tobinjt Exp $
 
 " Enable for debugging.
 "set verbose=2
@@ -96,7 +95,6 @@ if has("python") || has("python3")
   Plug 'SirVer/ultisnips'
 endif
 Plug 'cespare/vim-toml'
-Plug 'cmcaine/vim-uci'
 Plug 'ervandew/supertab'
 if has('patch-8.0.1453')
   Plug 'fatih/vim-go'
