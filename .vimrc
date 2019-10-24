@@ -115,7 +115,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/LargeFile'
-Plug 'vim-scripts/argtextobj'
 Plug 'vim-scripts/file-line'
 Plug 'vim-scripts/quickfixsigns'
 
