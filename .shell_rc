@@ -11,7 +11,6 @@
 # vim and python.
 if [ -d "/usr/local/Cellar" ]; then
     PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
-    # Adding these directories here is ugly but easy.
     PATH="/usr/local/opt/python/libexec/bin:${PATH}"
     MANPATH="/usr/local/man:/usr/local/share/man:${MANPATH}"
 fi
@@ -41,10 +40,8 @@ fi
 # search path to ${MANPATH}.
 MANPATH="$(deduplicate_path "${HOME}/man${MANPATH:+:}${MANPATH:-}:")"
 if is_mac_os; then
-  # MacOS
   BROWSER='open -a "Google Chrome"'
 else
-  # Everything else.
   BROWSER="google-chrome"
 fi
 if command -v colordiff > /dev/null 2>&1; then
