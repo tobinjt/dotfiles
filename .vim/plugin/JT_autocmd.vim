@@ -34,19 +34,17 @@ autocmd FileType markdown setlocal nofoldenable
   \ formatlistpat=^\\s*\\(\\*\\\|[0-9]\\.\\)\\s\\+ comments=n:>
 " tmux(1)
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
+autocmd FileType text setlocal formatoptions+=nq
 autocmd FileType go setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
-  \ nofoldenable spell textwidth=80 colorcolumn=
+  \ nofoldenable textwidth=80 colorcolumn=
 
-" Turn on spelling, if the vim we're using supports it, for specific file types.
+" Turn on spelling if available.
 if has("spell")
-  autocmd FileType html,tex,text,mail,perl,pod,c,gitcommit,markdown,debchangelog
-    \ setlocal spell
-  " This turns on spell checking properly.
-  autocmd FileType html,text,mail,gitcommit syntax spell toplevel
-  autocmd BufReadPre,BufNewFile *.txt,svn-commit.* setlocal spell
-  autocmd FileType text setlocal formatoptions+=nq
-  autocmd BufReadPre,BufNewFile w3mtmp* setlocal spell tw=72
+  set spell
+  " help files have too many distracting spelling errors.
   autocmd FileType help setlocal nospell
+  " This turns on spell checking properly.
+  autocmd FileType html,text,gitcommit syntax spell toplevel
 endif
 
 " Try to highlight XXX in Latex source
