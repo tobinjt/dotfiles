@@ -42,7 +42,7 @@ autocmd FileType go setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
 if has("spell")
   set spell
   " help files have too many distracting spelling errors.
-  autocmd FileType help setlocal nospell
+  autocmd FileType dot,help setlocal nospell
   " This turns on spell checking properly.
   autocmd FileType html,text,gitcommit syntax spell toplevel
 endif

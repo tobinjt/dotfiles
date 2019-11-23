@@ -91,7 +91,7 @@ let g:vim_markdown_strikethrough = 1
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
 Plug 'ConradIrwin/vim-bracketed-paste'
-if has("python") || has("python3")
+if has("python3")
   Plug 'SirVer/ultisnips'
 endif
 Plug 'cespare/vim-toml'
