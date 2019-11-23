@@ -1,11 +1,12 @@
 [filtering]
 ignore=
   //pool.ntp.org
+  //www.bcs-sgai.org
   //www.example.org
   //www.netsoc.tcd.ie
   //www.tcd.ie
-  /xmlrpc.php
   /js/commento.js
+  /xmlrpc.php
 
 [checking]
 useragent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
