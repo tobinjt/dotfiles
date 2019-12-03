@@ -22,7 +22,7 @@ let g:syntastic_check_on_wq = 0
 " All of these will be run serially; remove if that gets too slow.
 let g:syntastic_go_checkers = ['go', 'gofmt', 'golint', 'gotype', 'govet']
 " Configure Javascript checkers.
-let g:syntastic_javascript_checkers = ['closurecompiler', 'gjslint']
+let g:syntastic_javascript_checkers = ['closurecompiler', 'gjslint', 'glint']
 let g:syntastic_javascript_closurecompiler_script = '/usr/bin/closure-compiler'
 " Make sure that python3 is used so it can parse type annotations.
 let g:syntastic_python_python_exec = 'python3'
