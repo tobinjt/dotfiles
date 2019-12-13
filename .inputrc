@@ -8,7 +8,7 @@ $include /etc/inputrc
 # Use vi keymap.
 #set editing-mode vi
 # show vi mode in prompt
-set show-mode-in-prompt on
+# set show-mode-in-prompt on
 set vi-ins-mode-string +
 set vi-cmd-mode-string :
 
