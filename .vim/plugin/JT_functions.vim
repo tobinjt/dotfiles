@@ -36,6 +36,9 @@ endfunction
 function! TurnOnLineNumbersAndSigns()
   set number relativenumber signcolumn=auto
 endfunction
+function! TraditionalTabs()
+  setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
+endfunction
 
 " This layer of indirection seems to be necessary for map().
 function! s:Run(command)
