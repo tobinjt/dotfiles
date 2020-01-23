@@ -119,7 +119,11 @@ vimf() {
 # grep for something and output in vim quickfix format.
 cfile() {
   if [[ -n "$(type rg 2> /dev/null)" ]]; then
-    rg -n --hidden "$@"
+    if [[ -t 1 ]]; then
+      rg -n --hidden "$@"
+    else
+      rg -n --hidden "$@" | sort
+    fi
   else
     if is_mac_os; then
       # MacOS grep doesn't automatically add the current directory like GNU
