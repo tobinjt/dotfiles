@@ -22,3 +22,4 @@
 [diff]
 	colorMoved = true
 	colorMovedWS = allow-indentation-change
+	noprefix = true
