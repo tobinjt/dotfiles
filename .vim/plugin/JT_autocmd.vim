@@ -76,5 +76,5 @@ autocmd BufReadPost,BufNewFile *.tt2 set filetype=tt2
 autocmd FileType tt2 set commentstring=#%s
 
 " Run dot every time the file is saved.
-autocmd BufWritePost *.dot execute 'silent !dot -O -Tpdf %' | redraw!
+autocmd BufWritePost *.dot call RunDot("%")
 autocmd FileType dot setlocal textwidth=300 foldmethod=indent

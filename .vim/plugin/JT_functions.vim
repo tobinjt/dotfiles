@@ -76,3 +76,11 @@ function! JT_safe_mkdir(dir)
     call mkdir(a:dir, "p", 0700)
   endif
 endfunction
+
+" Run dot(1) and display errors on failure.
+function! RunDot(file)
+  let l:output = system('dot -O -Tpdf ' . shellescape(expand(a:file)))
+  if v:shell_error != 0
+    echomsg trim(l:output)
+  endif
+endfunction
