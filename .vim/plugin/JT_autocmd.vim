@@ -41,7 +41,7 @@ autocmd FileType go setlocal nofoldenable textwidth=80 colorcolumn=
 if has("spell")
   set spell
   " help and some other files have too many distracting spelling errors.
-  autocmd FileType dot,help setlocal nospell
+  autocmd FileType help setlocal nospell
   " This turns on spell checking properly.
   autocmd FileType html,text,gitcommit syntax spell toplevel
 endif
@@ -77,4 +77,4 @@ autocmd FileType tt2 set commentstring=#%s
 
 " Run dot every time the file is saved.
 autocmd BufWritePost *.dot call RunDot("%")
-autocmd FileType dot setlocal textwidth=300 foldmethod=indent
+autocmd FileType dot setlocal textwidth=300 foldmethod=indent spellcapcheck=
