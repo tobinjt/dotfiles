@@ -86,6 +86,8 @@ let g:vim_markdown_strikethrough = 1
 "   Remove any config for the plugin.
 "   Remove the "Plug 'foo/bar'" line below and commit the changes.
 "   $ update-dotfiles-and-bin
+"   It will complain about files left behind, copy and paste the commands to
+"   clean up.
 
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
