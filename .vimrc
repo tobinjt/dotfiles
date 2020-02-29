@@ -102,7 +102,6 @@ endif
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
-Plug 'keith/tmux'
 Plug 'kshenoy/vim-signature'
 Plug 'lifepillar/vim-solarized8'
 Plug 'plasticboy/vim-markdown'
