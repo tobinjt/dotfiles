@@ -42,6 +42,9 @@ if has("spell")
   set spell
   " help and some other files have too many distracting spelling errors.
   autocmd FileType help setlocal nospell
+  " Checking for capitals at the start of a sentence is incorrect for some
+  " files.
+  autocmd FileType dot,tmux set spellcapcheck=
   " This turns on spell checking properly.
   autocmd FileType html,text,gitcommit syntax spell toplevel
 endif
@@ -77,4 +80,4 @@ autocmd FileType tt2 set commentstring=#%s
 
 " Run dot every time the file is saved.
 autocmd BufWritePost *.dot call RunDot("%")
-autocmd FileType dot setlocal textwidth=300 foldmethod=indent spellcapcheck=
+autocmd FileType dot setlocal textwidth=300 foldmethod=indent
