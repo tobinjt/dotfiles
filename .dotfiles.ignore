@@ -24,10 +24,7 @@
 
 # Created by some program.
 .Xauthority
-# In .config, but we need to strip the whole directory which doesn't work with
-# subdirectories.
-# TODO: make .config/Transmission Remote GUI work.
-Transmission Remote GUI
+.config/Transmission Remote GUI
 # Next two files are used by XQuartz.
 .rnd
 .serverauth.*
@@ -36,8 +33,7 @@ Transmission Remote GUI
 .ssh/authorized_keys
 .ssh/config
 .ssh/known_hosts
-# TODO: make .ssh/rsync-net work.
-rsync-net
+.ssh/rsync-net
 
 # Ignore iTerm2 config, iTerm2 is configured to use ~/src/dotfiles/.iterm2, and
 # every time it saves config it breaks the hard link and it's toil to fix.
