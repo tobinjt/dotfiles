@@ -8,8 +8,6 @@
 .dotfiles.ignore
 # Used by root.
 .forward
-# Username and password for twitch.
-.netrc
 
 # Various history files.
 .bash_history
@@ -22,7 +20,7 @@
 .viminfo
 .wget-hsts
 
-# Created by some program.
+# Created by programs, we don't care about them.
 .Xauthority
 .config/Transmission Remote GUI
 # Next two files are used by XQuartz.
