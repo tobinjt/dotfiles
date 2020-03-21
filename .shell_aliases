@@ -168,8 +168,11 @@ using_external_disk() {
   sudo lsof -M -n -P | grep /Volumes
 }
 
-# I can never remember mdfind.
+# I can never remember mdfind and locate is muscle-memory.
 spotlight() {
+  mdfind "$@"
+}
+locate() {
   mdfind "$@"
 }
 
