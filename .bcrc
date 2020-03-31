@@ -5,6 +5,12 @@ g = k * m
 t = k * g
 p = k * t
 e = k * p
+
+thousand = 1000
+million = thousand * thousand
+billion = thousand * million
+trillion = thousand * billion
+
 define factorial(x) {
   if (x <= 1) {
     return (1);
