@@ -36,7 +36,7 @@ if [ "${USER}" != "johntobin" ]; then
 else
   _user="\\u"
 fi
-PS1="\\nI'm ${_user} on \\h's pts/\\l @ \\t, \\d, in \\w/"
+PS1="\\nI'm ${_user} on \\h's \\l @ \\t, \\d, in \\w/"
 PS1="${PS1}\\nWhat is thy bidding? "
 # Trim \w in PS1 to 4 subdirectories.
 PROMPT_DIRTRIM=4
