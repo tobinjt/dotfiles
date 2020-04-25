@@ -19,6 +19,7 @@
 .sqlite_history
 .viminfo
 .wget-hsts
+.zcompdump
 .zsh_history
 
 # Created by programs, we don't care about them.
