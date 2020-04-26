@@ -7,9 +7,6 @@
 #   not interactive we skip everything else.
 # aliases should be put here because they aren't passed on to child processes.
 
-# Umask is here so that it's set when scp(1)ing.
-umask 022
-
 # Source prompt_command et al.
 # shellcheck disable=SC1090
 . "${HOME}/.shell_functions"
