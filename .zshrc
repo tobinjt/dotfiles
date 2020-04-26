@@ -1,7 +1,6 @@
 # Run for interactive shells.
 # TODO: where should I source .shell_functions?  I need tmux_attach defined for
 # assh to work.
-# TODO: cd_helper doesn't work in zsh.
 
 ### Completion settings from setup wizard.
 # Note: added -u to compinit because my user owns homebrew but other users need
