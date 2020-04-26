@@ -79,7 +79,6 @@ bindkey -s "\e[201~" ""
 ### Set environment variables.
 if [[ "${USER}" != "johntobin" ]]; then
   # Highlight other users in my prompt as a warning.
-  # TODO: needs to be tested.
   _prompt_user="%F{red}%n%f"
 else
   _prompt_user="%n"
