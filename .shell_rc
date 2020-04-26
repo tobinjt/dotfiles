@@ -14,8 +14,8 @@ if [ -d "/usr/local/Cellar" ]; then
     PATH="/usr/local/opt/python/libexec/bin:${PATH}"
     MANPATH="/usr/local/man:/usr/local/share/man:${MANPATH}"
 fi
-# Where Go should install stuff; it can all be replaced if necessary so its fine
-# to keep it in tmp.  Set here so that it can be used in $PATH.
+# Where Go should install stuff; it can all be replaced if necessary so it's
+# fine to keep it in tmp.  Set here so that it can be used in $PATH.
 GOPATH="${HOME}/tmp/gopath"
 PATH="${HOME}/gbin:${HOME}/bin:${GOPATH}/bin:${PATH}:/sbin:/usr/sbin"
 PATH="$(deduplicate_path "${PATH}")"
