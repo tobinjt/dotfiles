@@ -4,6 +4,10 @@
 # TODO: cd_helper doesn't work in zsh.
 
 ### Completion settings from setup wizard.
+# Note: added -u to compinit because my user owns homebrew but other users need
+# to use it, and compinit complains about security without -u.  I thought about
+# the security aspect: if someone can put a malicious completion script on my
+# machines, they can do a whole lot worse, so I don't believe it's a problem.
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
@@ -15,7 +19,7 @@ zstyle ':completion:*' prompt 'Corrections (%e):'
 zstyle :compinstall filename '/Users/johntobin/.zshrc'
 
 autoload -Uz compinit
-compinit
+compinit -u
 # End of lines added by compinstall
 ### Other settings from setup wizard.
 # Lines configured by zsh-newuser-install
