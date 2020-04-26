@@ -1,3 +1,3 @@
 # Run for all shells, including shell scripts.
-# Umask is here so that it's set when scp(1)ing.
-umask 022
+# Pull in $PATH etc so I can run 'ssh host command' where command is in ~/bin.
+. "${HOME}/.shell_rc"

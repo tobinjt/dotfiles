@@ -71,9 +71,8 @@ bindkey -s "\xE2\x80\xA6" "..."
 bindkey -s "\e[200~" ""
 bindkey -s "\e[201~" ""
 
-### Pull in aliases/functions/settings from shell-neutral files.
+### Pull in aliases and functions from shell-neutral files.
 . "${HOME}/.shell_functions"
-. "${HOME}/.shell_rc"
 . "${HOME}/.shell_aliases"
 
 ### Set environment variables.

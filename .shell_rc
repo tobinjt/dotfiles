@@ -31,6 +31,9 @@ if [ ! -d "${HOME}/tmp" ]; then
   mkdir -p -m 0700 "${HOME}/tmp"
 fi
 
+# Umask is here so that it's set when scp(1)ing.
+umask 022
+
 if [ "$-" = "${-//i/}" ]; then
   # This is not an interactive shell, skip everything else in this file.
   return
