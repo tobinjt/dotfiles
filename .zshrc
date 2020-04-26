@@ -44,10 +44,6 @@ setopt extended_history hist_ignore_dups hist_save_no_dups hist_verify
 setopt inc_append_history
 # Configure job control.
 setopt nonotify
-# Configure prompting.
-# TODO: check out PROMPT_BANG.
-# Configure shell emulation.
-# TODO: check out POSIX_BUILTINS.
 
 ### Configure keybindings; simplified version of ~/.inputrc.
 # This makes space expand stuff so you can see what !$, !:0 etc. are.
@@ -76,13 +72,8 @@ bindkey -s "\e[200~" ""
 bindkey -s "\e[201~" ""
 
 ### Pull in aliases/functions/settings from shell-neutral files.
-# Source prompt_command et al.
-# shellcheck disable=SC1090
 . "${HOME}/.shell_functions"
-# Source shell-neutral environment settings.
-# shellcheck disable=SC1090
 . "${HOME}/.shell_rc"
-# shellcheck disable=SC1090
 . "${HOME}/.shell_aliases"
 
 ### Set environment variables.
@@ -105,6 +96,5 @@ precmd_functions=(prompt_command)
 ### Local stuff
 local_zsh_rc="${HOME}/.zshrc-local"
 if [ -f "${local_zsh_rc}" ]; then
-  # shellcheck disable=SC1090
   . "${local_zsh_rc}"
 fi
