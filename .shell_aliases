@@ -63,11 +63,12 @@ scp() {
 assh() {
   # Disable autossh monitoring because I have ssh configured to monitor
   # connectivity.  Allocate a pseudo-tty.
-  # Run bash:
-  # - as a login shell so it sources the correct files
-  # - interactively because my configs only define aliases when interactive
+  # Run a shell (the correct shell on the remote end, hence single quotes):
+  # - as a login shell so it sources the correct files (necessary for bash,
+  #   unnecessary for zsh)
   # - execute the function 'tmux_attach'
-  autossh -M 0 -t "$@" bash -l -i -c tmux_attach
+  # shellcheck disable=SC2016
+  autossh -M 0 -t "$@" '${SHELL}' -l -c tmux_attach
 }
 
 irssi() {
