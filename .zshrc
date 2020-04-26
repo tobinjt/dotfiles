@@ -50,6 +50,8 @@ setopt nonotify
 # TODO: check out POSIX_BUILTINS.
 
 ### Configure keybindings; simplified version of ~/.inputrc.
+# This makes space expand stuff so you can see what !$, !:0 etc. are.
+bindkey " " magic-space
 # Mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving.
 # There are many more in ~/.inputrc, but I don't need them now.
 bindkey "\e[1;5C" forward-word
