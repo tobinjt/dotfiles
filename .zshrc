@@ -32,14 +32,12 @@ bindkey -e
 # Configure cd.
 setopt auto_pushd pushd_ignore_dups pushd_silent
 # Configure completion.
-# TODO: figure out how to use bash completion stuff.
-# autoload bashcompinit is a start.
+# If I want to use bash completion stuff start with 'autoload bashcompinit'.
 # Configure expansion and globbing.
 setopt bad_pattern
 # Ignore files created by compiling Lisp or Python.
 fignore=(.fas .fasl .lib .pyc .pyo)
 # Configure history.
-# TODO: use zshaddhistory to strip out 'fg'?
 setopt extended_history hist_ignore_dups hist_save_no_dups hist_verify
 setopt inc_append_history
 # Configure job control.
@@ -91,6 +89,18 @@ export PS1
 ### Misc config.
 # Set up prompt_command.
 precmd_functions=(prompt_command)
+# Do not add fg to history.  zsh doesn't have a way to completely remove it from
+# history, it will be there immediately afterwards but will disappear after
+# running any other command.
+function zshaddhistory() {
+  case "$1" in
+    # The parameter appears to be exactly what was typed, including the newline.
+    $'fg\n')
+      return 1
+      ;;
+  esac
+  return 0
+}
 
 ### Local stuff
 local_zsh_rc="${HOME}/.zshrc-local"
