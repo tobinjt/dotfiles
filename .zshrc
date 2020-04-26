@@ -49,6 +49,30 @@ setopt nonotify
 # Configure shell emulation.
 # TODO: check out POSIX_BUILTINS.
 
+### Configure keybindings; simplified version of ~/.inputrc.
+# Mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving.
+# There are many more in ~/.inputrc, but I don't need them now.
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+# On some Apple keyboards shift-3 sends a weird pound sign, remap it to hash.
+bindkey -s "£" "#"
+# Convert smart quotes to real quotes.
+bindkey -s "\xE2\x80\x9C" "\""
+bindkey -s "\xE2\x80\x9D" "\""
+bindkey -s "\xE2\x80\x98" "'"
+bindkey -s "\xE2\x80\x99" "'"
+# Convert non-breaking space to space.
+bindkey -s "\xC2\xA0" " "
+# Minus and em-dash into plain dashes.
+bindkey -s "\xE2\x80\x93" "-"
+bindkey -s "\xE2\x80\x94" "--"
+# Ellipsis...
+bindkey -s "\xE2\x80\xA6" "..."
+# Bracketed paste escape characters; discard them if they're pasted into the
+# shell.
+bindkey -s "\e[200~" ""
+bindkey -s "\e[201~" ""
+
 ### Pull in aliases/functions/settings from shell-neutral files.
 # Source prompt_command et al.
 # shellcheck disable=SC1090
