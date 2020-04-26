@@ -101,10 +101,13 @@ update_ssh_auth_sock() {
       return 1
     fi
     ORIG_SSH_AUTH_SOCK="${SSH_AUTH_SOCK}"
-    readonly ORIG_SSH_AUTH_SOCK
-    export ORIG_SSH_AUTH_SOCK
+    typeset -g -r -x ORIG_SSH_AUTH_SOCK
   fi
 
+  # bash use $HOSTNAME, zsh uses $HOST :/
+  if [ -z "${HOSTNAME:-}" ]; then
+    HOSTNAME="${HOST}"
+  fi
   SSH_AUTH_SOCK="${dir}/ssh-auth-sock-${HOSTNAME/lan/local}-${USER}"
   # Skip checks if -f was passed or if $SSH_CLIENT is not set (because then I'm
   # on the local machine and I should be using the local ssh-agent rather than
