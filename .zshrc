@@ -1,5 +1,4 @@
 # Run for interactive shells.
-# TODO: set umask from .zshenv?
 # TODO: where should I source .shell_functions?  I need tmux_attach defined for
 # assh to work.
 # TODO: cd_helper doesn't work in zsh.
