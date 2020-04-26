@@ -77,7 +77,7 @@ bindkey -s "\e[201~" ""
 . "${HOME}/.shell_aliases"
 
 ### Set environment variables.
-if [ "${USER}" != "johntobin" ]; then
+if [[ "${USER}" != "johntobin" ]]; then
   # Highlight other users in my prompt as a warning.
   # TODO: needs to be tested.
   _prompt_user="%F{red}%n%f"
@@ -95,6 +95,6 @@ precmd_functions=(prompt_command)
 
 ### Local stuff
 local_zsh_rc="${HOME}/.zshrc-local"
-if [ -f "${local_zsh_rc}" ]; then
+if [[ -f "${local_zsh_rc}" ]]; then
   . "${local_zsh_rc}"
 fi
