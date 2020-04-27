@@ -66,3 +66,10 @@ HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 LC_COLLATE="C"
 export MANPATH BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE RSYNC_RSH
 export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK LC_COLLATE
+
+# Local stuff
+local_shell_rc="${HOME}/.shellrc-local"
+if [ -f "${local_shell_rc}" ]; then
+  # shellcheck disable=SC1090
+  . "${local_shell_rc}"
+fi
