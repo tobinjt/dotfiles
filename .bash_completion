@@ -3,6 +3,18 @@
 # Bash supports programmable completion, i.e. different behaviour on hitting TAB
 # depending on the command.
 
+# Load system and Homebrew bash completion if available; this might be
+# unnecessarily loading system bash completion a second time, which is
+# inefficient but not a problem.
+if [ -f /etc/bash_completion ]; then
+  # shellcheck disable=SC1091
+  source /etc/bash_completion
+fi
+if [ -f "/usr/local/etc/bash_completion" ]; then
+  # shellcheck disable=SC1091
+  . "/usr/local/etc/bash_completion"
+fi
+
 # Make tab completion only show directories when completing cd and rmdir
 complete -A directory -o bashdefault rmdir pushd
 # Additionally ignore VCS directories.
