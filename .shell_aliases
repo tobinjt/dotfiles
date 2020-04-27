@@ -195,3 +195,10 @@ cleanup-fate-world-of-adventure-real() {
   scp "${new_filename}" home:"${destdir}"
   rm -i "${new_filename}"
 }
+
+# Local stuff
+local_shell_aliases="${HOME}/.shell_aliases-local"
+if [ -f "${local_shell_aliases}" ]; then
+  # shellcheck disable=SC1090
+  . "${local_shell_aliases}"
+fi
