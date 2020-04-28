@@ -3,12 +3,12 @@
 # Bash supports programmable completion, i.e. different behaviour on hitting TAB
 # depending on the command.
 
-# Load system and Homebrew bash completion if available.  Guard against
-# including system bash completion a second time, because it includes this file,
-# which creates a loop.
-if [ -f /etc/bash_completion ] && [ -z "${BASH_COMPLETION_VERSINFO:-}" ]; then
+# Load system and Homebrew bash completion if available.  Both will source
+# ~/.bash_completion if it exists, so this file needs to be named something
+# else.
+if [ -f /etc/bash_completion ]; then
   # shellcheck disable=SC1091
-  source /etc/bash_completion
+  . /etc/bash_completion
 fi
 if [ -f "/usr/local/etc/bash_completion" ]; then
   # shellcheck disable=SC1091
