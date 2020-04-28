@@ -3,10 +3,10 @@
 # Bash supports programmable completion, i.e. different behaviour on hitting TAB
 # depending on the command.
 
-# Load system and Homebrew bash completion if available; this might be
-# unnecessarily loading system bash completion a second time, which is
-# inefficient but not a problem.
-if [ -f /etc/bash_completion ]; then
+# Load system and Homebrew bash completion if available.  Guard against
+# including system bash completion a second time, because it includes this file,
+# which creates a loop.
+if [ -f /etc/bash_completion ] && [ -z "${BASH_COMPLETION_VERSINFO:-}" ]; then
   # shellcheck disable=SC1091
   source /etc/bash_completion
 fi
