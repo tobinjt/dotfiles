@@ -1,6 +1,4 @@
 # Run for interactive shells.
-# TODO: where should I source .shell_functions?  I need tmux_attach defined for
-# assh to work.
 
 ### Completion settings from setup wizard.
 # Note: added -u to compinit because my user owns homebrew but other users need
@@ -71,8 +69,8 @@ bindkey -s "\xE2\x80\xA6" "..."
 bindkey -s "\e[200~" ""
 bindkey -s "\e[201~" ""
 
-### Pull in aliases and functions from shell-neutral files.
-. "${HOME}/.shell_functions"
+### Pull in aliases from shell-neutral files; functions have already been pulled
+# in by .zshenv.
 . "${HOME}/.shell_aliases"
 
 ### Set environment variables.
