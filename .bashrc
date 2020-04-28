@@ -92,14 +92,39 @@ if [ -n "${BASH_VERSION}" ]; then
   set +o posix
 fi
 
-# Only do completion stuff if the shell is interactive, errors are generated
-# otherwise - sh doesn't have completion, and this file is sourced by
-# cronjobs.
-# shellcheck disable=SC1090
-. "${HOME}/.bash_completion"
-# Likewise, only set up aliases when running interactively.
+# Only set up aliases and completion if the shell is interactive, errors are generated
+# otherwise when this file is sourced by sh.
 # shellcheck disable=SC1090
 . "${HOME}/.shell_aliases"
+
+# Load system and Homebrew bash completion if available.  Both will source
+# ~/.bash_completion if it exists, so this file needs to be named something
+# else.
+if [ -f /etc/bash_completion ]; then
+  # shellcheck disable=SC1091
+  . /etc/bash_completion
+fi
+if [ -f "/usr/local/etc/bash_completion" ]; then
+  # shellcheck disable=SC1091
+  . "/usr/local/etc/bash_completion"
+fi
+
+# Make tab completion only show directories when completing cd and rmdir
+complete -A directory -o bashdefault rmdir pushd
+# Additionally ignore VCS directories.
+complete -A directory -o bashdefault -X '*@(.git|.svn|CVS)' cd
+# unset complete on variable names
+complete -A variable unset
+# set completes on shell options
+complete -A setopt set
+# shopt completes with shopt options
+complete -A shopt shopt
+# unalias completes with aliases
+complete -A alias unalias
+# command, type and which complete on commands
+complete -A command type which command
+# builtin completes on builtins
+complete -A builtin builtin
 
 # Local stuff
 local_bash_rc="${HOME}/.bashrc-local"
