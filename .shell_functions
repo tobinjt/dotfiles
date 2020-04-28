@@ -101,7 +101,12 @@ update_ssh_auth_sock() {
       return 1
     fi
     ORIG_SSH_AUTH_SOCK="${SSH_AUTH_SOCK}"
-    typeset -g -r -x ORIG_SSH_AUTH_SOCK
+    if [ -n "${ZSH_VERSION:-}" ]; then
+      # In zsh, typeset -r declares a new variable unless we make it global.
+      typeset -g -r -x ORIG_SSH_AUTH_SOCK
+    else
+      typeset -r -x ORIG_SSH_AUTH_SOCK
+    fi
   fi
 
   # bash use $HOSTNAME, zsh uses $HOST :/
