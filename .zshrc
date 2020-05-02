@@ -5,11 +5,13 @@
 # to use it, and compinit complains about security without -u.  I thought about
 # the security aspect: if someone can put a malicious completion script on my
 # machines, they can do a whole lot worse, so I don't believe it's a problem.
+# Note: the first argument after matcher-list was '+' but I removed that because
+# it makes completion case-sensitive.
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' matcher-list '+' 'm:{[:lower:]}={[:upper:]}'
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' max-errors 1
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' prompt 'Corrections (%e):'
