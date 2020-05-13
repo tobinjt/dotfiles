@@ -28,6 +28,7 @@
 # Next two files are used by XQuartz.
 .rnd
 .serverauth.*
+.config/pudb/saved-breakpoints-*
 
 # SSH configs that are generated or distributed separately.
 .ssh/authorized_keys
