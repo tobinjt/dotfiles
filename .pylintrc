@@ -21,7 +21,9 @@ method-rgx=^[a-z_][a-z0-9_]{2,30}$|^setUp$
 min-public-methods=0
 
 [MESSAGES CONTROL]
-disable=
+# similarities complains about boilerplate code for parsing arguments.
+# fixme complains about TODOs.
+disable=similarities,fixme
 
 [DESIGN]
 # It's easy to have more than 15 local variables, and I'm not going to write
