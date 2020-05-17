@@ -31,3 +31,7 @@ disable=similarities,fixme
 max-locals=20
 # Variable names that can be unused.
 dummy-variables-rgx=^_+$|unused_.*
+# Raise the number of branches; the simple validation code in
+# check_website_resources.py triggers this otherwise, and I'm not splitting that
+# into multiple functions.
+max-branches=15
