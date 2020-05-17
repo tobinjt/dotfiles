@@ -1,5 +1,9 @@
 # Run for interactive shells.
 
+# Pull in my settings again so that they override system settings as necessary,
+# in particular on Mac OS where /etc/zprofile overwrites $PATH.
+. "${HOME}/.shell_rc"
+
 ### Completion settings from setup wizard.
 # Note: added -u to compinit because my user owns homebrew but other users need
 # to use it, and compinit complains about security without -u.  I thought about
