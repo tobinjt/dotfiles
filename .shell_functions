@@ -17,28 +17,17 @@ cd_helper() {
   local cmd="$1"
   shift
 
-  # Fall back to builtin for certain arguments.
-  # Support "cd" with no arguments.
-  if [[ "$#" -eq 0 ]]; then
-    builtin "${cmd}"
+  # Try running the builtin with the arguments and see what happens.
+  if builtin "${cmd}" "$@" 2> /dev/null; then
     return
   fi
-  # Support zsh's "cd old new".
   if [[ "$#" -gt 1 ]]; then
-    builtin "${cmd}" "$@"
-    return
-  fi
-  # Support "cd -".
-  if [[ "$1" == '-' ]]; then
-    builtin "${cmd}" "-"
-    return
+    printf "%s: only one argument supported for non-builtin operation.\\n" \
+      "${cmd}" >&2
+    return 1
   fi
 
   local dest="$1" orig_dest="$1"
-  if [[ -d "${dest}" ]]; then
-    builtin "${cmd}" "${dest}"
-    return
-  fi
   dest="$(dirname "${dest}")"
   # dirname will output "." if there isn't a directory in $dest, e.g. when $dest
   # is ~?bin; that indicates an error.
