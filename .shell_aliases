@@ -23,13 +23,12 @@ pushd() {
 alias ta='tmux_attach'
 
 top() {
-  local top_args=""
+  local -a top_args
   # top on Mac OS X does not sort by CPU by default; fix that.
   if is_mac_os; then
-    top_args="-o cpu"
+    top_args=(-o cpu)
   fi
-  # shellcheck disable=SC2086
-  TOP="$((${LINES:-24} - 7))" command top ${top_args} "$@"
+  TOP="$((${LINES:-24} - 7))" command top "${top_args[@]}" "$@"
 }
 
 # git sets better options if $LESS is unset.
@@ -163,6 +162,9 @@ airport() {
 pip() {
   (unset PYTHONDONTWRITEBYTECODE; pip3 "$@")
 }
+pip3() {
+  (unset PYTHONDONTWRITEBYTECODE; command pip3 "$@")
+}
 
 # What's using an external disk?
 using_external_disk() {
@@ -178,7 +180,7 @@ locate() {
 }
 
 process_on_port() {
-  netstat -n -p tcp -v  | grep -e Proto -e "$1"
+  netstat -n -p tcp -v | grep -e Proto -e "$1"
 }
 
 cleanup-fate-world-of-adventure() {
