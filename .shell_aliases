@@ -12,6 +12,7 @@ fi
 alias mv="mv -i"
 alias cp="cp -i -p"
 alias grep='grep --color=auto'
+alias python="python3"
 
 cd() {
   cd_helper cd "$@"
