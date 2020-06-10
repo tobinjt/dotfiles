@@ -123,7 +123,7 @@ cfile() {
     if [[ -t 1 ]]; then
       rg -n --hidden "$@"
     else
-      rg -n --hidden "$@" | LC_ALL=C sort -t : -k 1f,2n
+      rg -n --hidden "$@" | LC_ALL=C natural_sort
     fi
   else
     if is_mac_os; then
