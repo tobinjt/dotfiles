@@ -17,6 +17,9 @@ let g:quickfixsigns_classes = ['qfl', 'loc', 'marks', 'breakpoints']
 " Syntastic.
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" Always update the location list, because otherwise the error window is out of
+" date.
+let g:syntastic_always_populate_loc_list = 1
 " Configure Go checkers.
 " Install the necessary tools with; $ install-extra-tools-for-vim
 " All of these will be run serially; remove if that gets too slow.
