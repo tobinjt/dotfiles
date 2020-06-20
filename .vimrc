@@ -34,6 +34,7 @@ let g:syntastic_python_checkers = ['python', 'mypy', 'pylint']
 " Add phplint to the list of PHP checkers.
 let g:syntastic_php_checkers = ['php', 'phplint']
 let g:syntastic_php_phplint_args = '--modules-path ../phplint-modules'
+let g:syntastic_php_phplint_args .= ' --no-ascii-ext-check'
 
 " vim-go.
 " Install the necessary tools with; $ install-extra-tools-for-vim
