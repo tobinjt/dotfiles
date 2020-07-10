@@ -1,4 +1,8 @@
-scale = 10
+# Don't truncate results to integers, keep this many digits after the decimal
+# point.
+scale = 20
+
+# Useful variables.
 k = 1024
 m = k * k
 g = k * m
@@ -11,6 +15,7 @@ million = thousand * thousand
 billion = thousand * million
 trillion = thousand * billion
 
+# Some functions.
 define factorial(x) {
   if (x <= 1) {
     return (1);
