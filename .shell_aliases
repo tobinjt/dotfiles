@@ -49,7 +49,7 @@ bc() {
   if [ -t 0 ] && [ "$#" -eq 0 ]; then
     command bc -q -i "${HOME}/.bcrc"
   else
-    command bc "$@"
+    command bc -q "$@"
   fi
 }
 
