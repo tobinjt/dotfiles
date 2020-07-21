@@ -3,6 +3,7 @@
 .DS_Store
 .cache
 .coverage
+.mutmut-cache
 .mypy_cache
 .php_cs.cache
 .phpunit.result.cache
