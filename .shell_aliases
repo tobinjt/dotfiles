@@ -205,6 +205,7 @@ ipytest() {
     echo "ipytest: expecting at least one filename." >&2
     return 1
   fi
+  pytest "$@"
   # Use -n2 rather than -n1 because saving a file in vim seems to cause two
   # changes.
   fswatch -o "$@" | xargs -n2 -I{} pytest "$@"
