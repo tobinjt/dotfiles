@@ -46,6 +46,9 @@ fignore=(.fas .fasl .lib .pyc .pyo)
 # Configure history.
 setopt extended_history hist_ignore_dups hist_save_no_dups hist_verify
 setopt inc_append_history
+# Configure input.
+# Ignore lines starting with #, otherwise it's an error 'zsh: bad pattern: #'.
+setopt interactivecomments
 # Configure job control.
 setopt nonotify
 
