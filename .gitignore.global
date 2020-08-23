@@ -7,6 +7,7 @@
 .mypy_cache
 .php_cs.cache
 .phpunit.result.cache
+.pyre
 .pytest_cache
 __debug_bin
 blib
