@@ -121,9 +121,9 @@ vimf() {
 cfile() {
   if [[ -n "$(type rg 2> /dev/null)" ]]; then
     if [[ -t 1 ]]; then
-      rg -n --hidden "$@"
+      rg -n --hidden --glob '!.git/**' "$@"
     else
-      rg -n --hidden "$@" | LC_ALL=C natural_sort
+      rg -n --hidden --glob '!.git/**' "$@" | LC_ALL=C natural_sort
     fi
   else
     if is_mac_os; then
