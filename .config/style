@@ -1,0 +1,5 @@
+; Run `yapf --style-help` to get all settings and explanations.
+[style]
+based_on_style = google
+allow_split_before_dict_value = False
+indent_width = 2

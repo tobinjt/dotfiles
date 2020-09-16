@@ -80,6 +80,7 @@ autocmd BufReadPost,BufNewFile .coveragerc set filetype=dosini
 autocmd BufReadPost,BufNewFile *.tt2 set filetype=tt2
 autocmd FileType tt2 set commentstring=#%s
 autocmd BufReadPost,BufNewFile .bcrc set filetype=bc
+autocmd BufReadPost,BufNewFile */.config/yapf/style set filetype=dosini
 
 " Run dot every time the file is saved.
 autocmd BufWritePost *.dot call RunDot("%")
