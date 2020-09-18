@@ -109,6 +109,7 @@ if has('patch-8.0.1453')
   Plug 'fatih/vim-go'
 endif
 Plug 'godlygeek/tabular'
+Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
 Plug 'kshenoy/vim-signature'
