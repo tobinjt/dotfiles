@@ -1,4 +1,4 @@
---format bestvideo[height<=480]+bestaudio/best[height<=480]
+# --format bestvideo[height<=480]+bestaudio/best[height<=480]
 --limit-rate 3000k
 --output /Users/johntobin/Media/Warhammer-Twitch/%(title)s-%(id)s.%(ext)s
 # Sometimes they way to use twitch is with cookies, sometimes with username and
