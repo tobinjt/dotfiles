@@ -227,6 +227,36 @@ ipytest_macos() {
   fswatch -o "$@" | xargs -n2 -I{} pytest "$@"
 }
 
+igotest() {
+  # Run go test when any inputs change.
+  if [[ "$#" -ne 0 ]]; then
+    echo "igotest: no arguments accepted" >&2
+    return 1
+  fi
+  if is_mac_os; then
+    #shellcheck disable=SC2119
+    igotest_macos
+  else
+    #shellcheck disable=SC2119
+    igotest_linux
+  fi
+}
+
+igotest_linux() {
+  go test
+  while true; do
+    inotifywait --quiet -- *.go
+    go test
+  done
+}
+
+igotest_macos() {
+  go test
+  # Use -n2 rather than -n1 because saving a file in vim seems to cause two
+  # changes.
+  fswatch -o -- *.go | xargs -n2 -I{} go test
+}
+
 # Local stuff
 local_shell_aliases="${HOME}/.shell_aliases-local"
 if [ -f "${local_shell_aliases}" ]; then
