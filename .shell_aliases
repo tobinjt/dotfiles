@@ -257,6 +257,36 @@ igotest_macos() {
   fswatch -o -- *.go | xargs -n2 -I{} go test
 }
 
+igocover() {
+  # Run go cover when any inputs change.
+  if [[ "$#" -ne 0 ]]; then
+    echo "igocover: no arguments accepted" >&2
+    return 1
+  fi
+  if is_mac_os; then
+    #shellcheck disable=SC2119
+    igocover_macos
+  else
+    #shellcheck disable=SC2119
+    igocover_linux
+  fi
+}
+
+igocover_linux() {
+  gocover
+  while true; do
+    inotifywait --quiet -- *.go
+    gocover
+  done
+}
+
+igocover_macos() {
+  gocover
+  # Use -n2 rather than -n1 because saving a file in vim seems to cause two
+  # changes.
+  fswatch -o -- *.go | xargs -n2 -I{} gocover
+}
+
 # Local stuff
 local_shell_aliases="${HOME}/.shell_aliases-local"
 if [ -f "${local_shell_aliases}" ]; then
