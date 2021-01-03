@@ -35,7 +35,7 @@ autocmd FileType markdown setlocal nofoldenable
 " tmux(1)
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
 autocmd FileType text setlocal formatoptions+=nq
-autocmd FileType go setlocal nofoldenable textwidth=80 colorcolumn=
+autocmd FileType go setlocal foldmethod=syntax textwidth=80 colorcolumn=
 
 " Turn on spelling if available.
 if has("spell")
