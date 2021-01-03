@@ -76,6 +76,9 @@ let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
 " Support strikethrough.
 let g:vim_markdown_strikethrough = 1
+" Disable the plugin's folding because it randomly folds and unfolds when
+" editing; autocmds will use my simple folding instead.
+let g:vim_markdown_folding_disabled = 1
 
 " Plugins.
 " To update all the git submodules: update-vim-plugins
