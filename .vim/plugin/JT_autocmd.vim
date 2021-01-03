@@ -37,6 +37,9 @@ autocmd FileType markdown setlocal
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
 autocmd FileType text setlocal formatoptions+=nq
 autocmd FileType go setlocal foldmethod=syntax textwidth=80 colorcolumn=
+" Autoformatting Go code on write causes folds to be closed; this autocmd opens
+" the fold under the cursor.
+autocmd BufWritePost *.go normal! zO
 
 " Turn on spelling if available.
 if has("spell")
