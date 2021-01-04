@@ -84,3 +84,9 @@ function! RunDot(file)
     echomsg trim(l:output)
   endif
 endfunction
+
+function! OpenFoldUnderCursor()
+  if foldlevel(line(".")) > 0
+    foldopen!
+  endif
+endfunction

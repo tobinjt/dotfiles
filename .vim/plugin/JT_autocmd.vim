@@ -39,7 +39,9 @@ autocmd FileType text setlocal formatoptions+=nq
 autocmd FileType go setlocal foldmethod=syntax textwidth=80 colorcolumn=
 " Autoformatting Go code on write causes folds to be closed; this autocmd opens
 " the fold under the cursor.
-autocmd BufWritePost *.go normal! zO
+if has("eval")
+  autocmd BufWritePost *.go call OpenFoldUnderCursor()
+endif
 
 " Turn on spelling if available.
 if has("spell")
