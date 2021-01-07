@@ -20,6 +20,9 @@ cd() {
 pushd() {
   cd_helper pushd "$@"
 }
+cdpwd() {
+  builtin cd "$(pwd -P)"
+}
 
 alias ta='tmux_attach'
 
