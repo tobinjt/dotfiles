@@ -67,3 +67,6 @@
 [submodule ".vim/bundle/yapf"]
 	path = .vim/bundle/yapf
 	url = https://github.com/google/yapf
+[submodule ".vim/bundle/targets.vim"]
+	path = .vim/bundle/targets.vim
+	url = https://github.com/wellle/targets.vim

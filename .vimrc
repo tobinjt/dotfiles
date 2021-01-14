@@ -131,6 +131,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/LargeFile'
 Plug 'vim-scripts/file-line'
+Plug 'wellle/targets.vim'
 
 " This needs to be done before loading plugins, so that runtimepath can be
 " extended first.
