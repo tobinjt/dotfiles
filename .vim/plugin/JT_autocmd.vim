@@ -23,8 +23,7 @@ autocmd FileType c,cpp setlocal foldmethod=syntax
 " Editing bash command lines.
 autocmd BufRead,BufNewFile /tmp/bash-fc-* setlocal filetype=sh
 autocmd BufNewFile,BufRead *.json setlocal filetype=javascript
-autocmd FileType python setlocal foldminlines=5 foldnestmax=3 foldmethod=indent
-  \ shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " Javascript syntax highlighting messes with the way folds are displayed and I
 " don't like it, so set it back to the default.
 autocmd FileType javascript,php setlocal foldtext=foldtext()
