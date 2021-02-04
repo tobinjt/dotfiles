@@ -26,7 +26,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_go_checkers = ['go', 'gofmt', 'golint', 'gotype', 'govet']
 " Configure Javascript checkers.
 let g:syntastic_javascript_checkers = ['closurecompiler', 'gjslint', 'glint']
-let g:syntastic_javascript_closurecompiler_script = '/usr/bin/closure-compiler'
+if executable('/usr/local/bin/closure-compiler')
+  let g:syntastic_javascript_closurecompiler_script =
+        \ '/usr/local/bin/closure-compiler'
+else
+  let g:syntastic_javascript_closurecompiler_script =
+        \ '/usr/bin/closure-compiler'
+endif
 " Make sure that python3 is used so it can parse type annotations.
 let g:syntastic_python_python_exec = 'python3'
 " Add mypy to the list of Python checkers.
