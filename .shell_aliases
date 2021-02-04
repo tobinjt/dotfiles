@@ -290,6 +290,30 @@ igocover_macos() {
   fswatch -o -- *.go | xargs -n2 -I{} gocover
 }
 
+iphpunit() {
+  # Run phpunit when the test file changes.
+  if is_mac_os; then
+    iphpunit_macos
+  else
+    iphpunit_linux
+  fi
+}
+
+iphpunit_linux() {
+  phpunit
+  while true; do
+    inotifywait --quiet .
+    phpunit
+  done
+}
+
+iphpunit_macos() {
+  phpunit
+  # Use -n2 rather than -n1 because saving a file in vim seems to cause two
+  # changes.
+  fswatch -o ./**/*.php | xargs -n2 -I{} phpunit
+}
+
 # Local stuff
 local_shell_aliases="${HOME}/.shell_aliases-local"
 if [ -f "${local_shell_aliases}" ]; then
