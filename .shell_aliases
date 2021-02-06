@@ -210,15 +210,14 @@ inotify_macos() {
   fswatch -o "$@" | xargs -n2 -I{} "${binary}" "$@"
 }
 
-# Run the OS-specific inotify wrapper, passing the right binary; flags to the
-# binary are not supported.
+# Run the OS-specific inotify wrapper; flags to the binary are not supported.
 inotify_wrapper() {
-  local macos_binary="$1" linux_binary="$2"
+  local binary="$1"
   shift 2
   if is_mac_os; then
-    inotify_macos "${macos_binary}" "$@"
+    inotify_macos "${binary}" "$@"
   else
-    inotify_linux "${linux_binary}" "$@"
+    inotify_linux "${binary}" "$@"
   fi
 }
 
@@ -228,7 +227,7 @@ ipytest() {
     echo "ipytest: expecting at least one filename." >&2
     return 1
   fi
-  inotify_wrapper pytest pytest-3 "$@"
+  inotify_wrapper pytest "$@"
 }
 
 igotest() {
@@ -237,7 +236,7 @@ igotest() {
     echo "igotest: no arguments accepted" >&2
     return 1
   fi
-  inotify_wrapper gotest gotest ./*.go
+  inotify_wrapper gotest ./*.go
 }
 
 igocover() {
@@ -246,7 +245,7 @@ igocover() {
     echo "igocover: no arguments accepted" >&2
     return 1
   fi
-  inotify_wrapper gocover gocover ./*.go
+  inotify_wrapper gocover ./*.go
 }
 
 iphpunit() {
@@ -255,7 +254,7 @@ iphpunit() {
     echo "iphpunit: no arguments accepted" >&2
     return 1
   fi
-  inotify_wrapper phpunit phpunit ./**/*.php
+  inotify_wrapper phpunit ./**/*.php
 }
 
 # Local stuff
