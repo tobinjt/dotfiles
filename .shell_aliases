@@ -302,7 +302,7 @@ iphpunit() {
 iphpunit_linux() {
   phpunit
   while true; do
-    inotifywait --quiet .
+    inotifywait --quiet ./**/*.php
     phpunit
   done
 }
