@@ -187,21 +187,6 @@ process_on_port() {
   netstat -n -p tcp -v | grep -e Proto -e "$1"
 }
 
-cleanup-fate-world-of-adventure() {
-  (set -e; cleanup-fate-world-of-adventure-real "$@")
-}
-cleanup-fate-world-of-adventure-real() {
-  local filename="$1" new_filename
-  new_filename="${filename/_o_A_World_of_Adventure_for_Fate_Core/}"
-  new_filename="${new_filename//_/ }"
-  mv "${filename}" "${new_filename}"
-  # Spaces need to be escaped so that scp doesn't complain about "ambiguous
-  # target"
-  local destdir="${HOME}/Media/Games/Fate/World\\ of\\ Adventure/"
-  scp "${new_filename}" home:"${destdir}"
-  rm -i "${new_filename}"
-}
-
 ipytest() {
   # Run pytest when the test file changes.
   if [[ "$#" -eq 0 ]]; then
