@@ -237,28 +237,7 @@ igotest() {
     echo "igotest: no arguments accepted" >&2
     return 1
   fi
-  if is_mac_os; then
-    #shellcheck disable=SC2119
-    igotest_macos
-  else
-    #shellcheck disable=SC2119
-    igotest_linux
-  fi
-}
-
-igotest_linux() {
-  go test
-  while true; do
-    inotifywait --quiet -- *.go
-    go test
-  done
-}
-
-igotest_macos() {
-  go test
-  # Use -n2 rather than -n1 because saving a file in vim seems to cause two
-  # changes.
-  fswatch -o -- *.go | xargs -n2 -I{} go test
+  inotify_wrapper gotest gotest ./*.go
 }
 
 igocover() {
