@@ -21,7 +21,7 @@ pushd() {
   cd_helper pushd "$@"
 }
 cdpwd() {
-  builtin cd "$(pwd -P)"
+  builtin cd "$(pwd -P)" || return 1
 }
 
 alias ta='tmux_attach'
@@ -187,32 +187,48 @@ process_on_port() {
   netstat -n -p tcp -v | grep -e Proto -e "$1"
 }
 
+# Watch the specified files and run the binary when they change.  Flags to the
+# binary are not supported.
+inotify_linux() {
+  local binary="$1"
+  shift
+  "${binary}" "$@"
+  while true; do
+    inotifywait --quiet "$@"
+    "${binary}" "$@"
+  done
+}
+
+# Watch the specified files and run the binary when they change.  Flags to the
+# binary are not supported.
+inotify_macos() {
+  local binary="$1"
+  shift
+  "${binary}" "$@"
+  # Use -n2 rather than -n1 because saving a file in vim seems to cause two
+  # changes.
+  fswatch -o "$@" | xargs -n2 -I{} "${binary}" "$@"
+}
+
+# Run the OS-specific inotify wrapper, passing the right binary; flags to the
+# binary are not supported.
+inotify_wrapper() {
+  local macos_binary="$1" linux_binary="$2"
+  shift 2
+  if is_mac_os; then
+    inotify_macos "${macos_binary}" "$@"
+  else
+    inotify_linux "${linux_binary}" "$@"
+  fi
+}
+
 ipytest() {
   # Run pytest when the test file changes.
   if [[ "$#" -eq 0 ]]; then
     echo "ipytest: expecting at least one filename." >&2
     return 1
   fi
-  if is_mac_os; then
-    ipytest_macos "$@"
-  else
-    ipytest_linux "$@"
-  fi
-}
-
-ipytest_linux() {
-  pytest-3 "$@"
-  while true; do
-    inotifywait --quiet "$@"
-    pytest-3 "$@"
-  done
-}
-
-ipytest_macos() {
-  pytest "$@"
-  # Use -n2 rather than -n1 because saving a file in vim seems to cause two
-  # changes.
-  fswatch -o "$@" | xargs -n2 -I{} pytest "$@"
+  inotify_wrapper pytest pytest-3 "$@"
 }
 
 igotest() {
@@ -251,52 +267,16 @@ igocover() {
     echo "igocover: no arguments accepted" >&2
     return 1
   fi
-  if is_mac_os; then
-    #shellcheck disable=SC2119
-    igocover_macos
-  else
-    #shellcheck disable=SC2119
-    igocover_linux
-  fi
-}
-
-igocover_linux() {
-  gocover
-  while true; do
-    inotifywait --quiet -- *.go
-    gocover
-  done
-}
-
-igocover_macos() {
-  gocover
-  # Use -n2 rather than -n1 because saving a file in vim seems to cause two
-  # changes.
-  fswatch -o -- *.go | xargs -n2 -I{} gocover
+  inotify_wrapper gocover gocover ./*.go
 }
 
 iphpunit() {
-  # Run phpunit when the test file changes.
-  if is_mac_os; then
-    iphpunit_macos
-  else
-    iphpunit_linux
+  # Run phpunit when any PHP files change.
+  if [[ "$#" -ne 0 ]]; then
+    echo "iphpunit: no arguments accepted" >&2
+    return 1
   fi
-}
-
-iphpunit_linux() {
-  phpunit
-  while true; do
-    inotifywait --quiet ./**/*.php
-    phpunit
-  done
-}
-
-iphpunit_macos() {
-  phpunit
-  # Use -n2 rather than -n1 because saving a file in vim seems to cause two
-  # changes.
-  fswatch -o ./**/*.php | xargs -n2 -I{} phpunit
+  inotify_wrapper phpunit phpunit ./**/*.php
 }
 
 # Local stuff
