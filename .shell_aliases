@@ -122,7 +122,7 @@ vimf() {
 
 # grep for something and output in vim quickfix format.
 cfile() {
-  if [[ -n "$(type rg 2> /dev/null)" ]]; then
+  if type rg >& /dev/null; then
     if [[ -t 1 ]]; then
       rg -n --hidden --glob '!.git/**' "$@"
     else
