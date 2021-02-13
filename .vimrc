@@ -107,6 +107,10 @@ let g:vim_markdown_folding_disabled = 1
 "   $ update-dotfiles-and-bin
 "   It will complain about files left behind, copy and paste the commands to
 "   clean up.
+" To use a branch other than master:
+"   $ git config -f .gitmodules submodule.<SUBMODULE-PATH>.branch main
+"   $ git config -f .gitmodules submodule..vim/bundle/yapf.branch main
+"   $ git diff # Should show a branch line added in .gitmodules
 
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
