@@ -108,8 +108,8 @@ let g:vim_markdown_folding_disabled = 1
 "   It will complain about files left behind, copy and paste the commands to
 "   clean up.
 " To use a branch other than master:
-"   $ git config -f .gitmodules submodule.<SUBMODULE-PATH>.branch main
-"   $ git config -f .gitmodules submodule..vim/bundle/yapf.branch main
+"   $ git submodule set-branch --branch BRANCH SUBMODULE_PATH
+"   $ git submodule set-branch --branch main .vim/bundle/yapf
 "   $ git diff # Should show a branch line added in .gitmodules
 
 " Initialise vim-plug.
