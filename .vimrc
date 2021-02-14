@@ -111,6 +111,8 @@ let g:vim_markdown_folding_disabled = 1
 "   $ git submodule set-branch --branch BRANCH SUBMODULE_PATH
 "   $ git submodule set-branch --branch main .vim/bundle/yapf
 "   $ git diff # Should show a branch line added in .gitmodules
+"   # The branch in the submodule will look like `(HEAD detached at a53e340)`
+"   # but it appears to work properly.
 
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
