@@ -24,11 +24,12 @@
 
 # Created by programs, we don't care about them.
 .Xauthority
+.config/iterm2
+.config/pudb/saved-breakpoints-*
 .config/Transmission Remote GUI
 # Next two files are used by XQuartz.
 .rnd
 .serverauth.*
-.config/pudb/saved-breakpoints-*
 
 # SSH configs that are generated or distributed separately.
 .ssh/authorized_keys
