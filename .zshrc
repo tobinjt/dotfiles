@@ -40,7 +40,9 @@ setopt auto_pushd pushd_ignore_dups pushd_silent
 # Configure completion.
 # If I want to use bash completion stuff start with 'autoload bashcompinit'.
 # Configure expansion and globbing.
-setopt bad_pattern extendedglob
+# Disabling extendedglob because I don't use it enough and it breaks arguments
+# like '^foo' to grep and other tools.
+setopt bad_pattern
 # Ignore files created by compiling Lisp or Python.
 fignore=(.fas .fasl .lib .pyc .pyo)
 # Configure history.
