@@ -208,17 +208,15 @@ inotify_macos() {
   "${binary}" "$@"
   # Use -n2 rather than -n1 because saving a file in vim seems to cause two
   # changes.
-  fswatch -o "$@" | xargs -n2 -I{} "${binary}" "$@"
+  fswatch -o "$@" | xargs -n1 -I{} "${binary}" "$@"
 }
 
 # Run the OS-specific inotify wrapper; flags to the binary are not supported.
 inotify_wrapper() {
-  local binary="$1"
-  shift 2
   if is_mac_os; then
-    inotify_macos "${binary}" "$@"
+    inotify_macos "$@"
   else
-    inotify_linux "${binary}" "$@"
+    inotify_linux "$@"
   fi
 }
 
