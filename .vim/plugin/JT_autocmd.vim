@@ -28,8 +28,10 @@ autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " don't like it, so set it back to the default.
 autocmd FileType javascript,php setlocal foldtext=foldtext()
 
+" Autoformat while typing, wrap at textwidth, recognise lists, don't keep long
+" lines unbroken.
 autocmd FileType markdown setlocal
-  \ formatoptions+=nt formatoptions-=l
+  \ formatoptions+=ant formatoptions-=l
   \ formatlistpat=^\\s*\\(\\*\\\|[0-9]\\.\\)\\s\\+ comments=n:>
   \ foldmethod=expr foldexpr=MarkdownFolding(v:lnum)
 " tmux(1)
