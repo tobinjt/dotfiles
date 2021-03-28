@@ -61,9 +61,15 @@ set swapsync=
 if exists('+wildignorecase')
   set wildignorecase
 endif
-" Move swapfiles and tempfiles to ~/tmp/vim.
+
+" Use pipes instead of tempfiles when possible.  system() ignores this setting.
+if has("filterpipe")
+  set noshelltemp
+endif
+
+" Move swapfiles to ~/tmp/vim.
 if has("eval")
-  " Base for temp files and state.
+  " Base directory.
   let _temp_base = expand("~/tmp/vim")
 
   " Move swapfiles.
@@ -74,11 +80,6 @@ if has("eval")
   " Don't ever put swap files in the file's directory: it's bad on non-local
   " filesystems.
   set directory-=.
-
-  " Move tempfiles.
-  let _temp_dir = _temp_base . '/tmp'
-  call JT_safe_mkdir(_temp_dir)
-  let $TMPDIR = _temp_dir
 
   " Save undo history per file.
   if has("persistent_undo")
