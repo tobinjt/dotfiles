@@ -114,6 +114,10 @@ let g:vim_markdown_folding_disabled = 1
 "   # The branch in the submodule will look like `(HEAD detached at a53e340)`
 "   # but it appears to work properly.
 
+function! PluginLoaded(plugin)
+  return stridx(&runtimepath, a:plugin) >= 0
+endfunction
+
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
@@ -155,8 +159,27 @@ if has("eval")
   endif
 endif
 
+" Load vim-codefmt if not already loaded.
+if executable("prettier") && !PluginLoaded("vim-codefmt")
+  Plug 'google/vim-maktaba'
+  Plug 'google/vim-codefmt'
+  Plug 'google/vim-glaive'
+endif
+
 " Finish vim-plug setup.
 call plug#end()
+
+" TODO: these settings might cause problems with my work config.
+if PluginLoaded("vim-glaive")
+  call glaive#Install()
+endif
+
+if PluginLoaded("vim-codefmt")
+  Glaive codefmt plugin[mappings]
+  augroup autoformat_settings
+    autocmd FileType markdown AutoFormatBuffer prettier
+  augroup END
+endif
 
 " All plugins have now been loaded and their functionality is available.
 
