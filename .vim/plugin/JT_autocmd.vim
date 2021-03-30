@@ -28,10 +28,9 @@ autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " don't like it, so set it back to the default.
 autocmd FileType javascript,php setlocal foldtext=foldtext()
 
-" Autoformat while typing, wrap at textwidth, recognise lists, don't keep long
-" lines unbroken.
+" Wrap at textwidth, recognise lists, don't keep long lines unbroken.
 autocmd FileType markdown setlocal
-  \ formatoptions+=ant formatoptions-=l
+  \ formatoptions+=nt formatoptions-=l
   \ formatlistpat=^\\s*\\(\\*\\\|[0-9]\\.\\)\\s\\+ comments=n:>
   \ foldmethod=expr foldexpr=MarkdownFolding(v:lnum)
 " tmux(1)
@@ -92,3 +91,10 @@ autocmd BufReadPost,BufNewFile */.config/yapf/style set filetype=dosini
 " Run dot every time the file is saved.
 autocmd BufWritePost *.dot call RunDot("%")
 autocmd FileType dot setlocal textwidth=300 foldmethod=indent
+
+if PluginLoaded("vim-codefmt")
+  Glaive codefmt plugin[mappings]
+  augroup autoformat_settings
+    autocmd FileType markdown AutoFormatBuffer prettier
+  augroup END
+endif

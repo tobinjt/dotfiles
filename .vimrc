@@ -169,16 +169,8 @@ endif
 " Finish vim-plug setup.
 call plug#end()
 
-" TODO: these settings might cause problems with my work config.
 if PluginLoaded("vim-glaive")
   call glaive#Install()
-endif
-
-if PluginLoaded("vim-codefmt")
-  Glaive codefmt plugin[mappings]
-  augroup autoformat_settings
-    autocmd FileType markdown AutoFormatBuffer prettier
-  augroup END
 endif
 
 " All plugins have now been loaded and their functionality is available.
