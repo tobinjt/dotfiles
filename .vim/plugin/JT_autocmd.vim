@@ -31,7 +31,7 @@ autocmd FileType javascript,php setlocal foldtext=foldtext()
 " Wrap at textwidth, recognise lists, don't keep long lines unbroken.
 autocmd FileType markdown setlocal
   \ formatoptions+=nt formatoptions-=l
-  \ formatlistpat=^\\s*\\(\\*\\\|[0-9]\\.\\)\\s\\+ comments=n:>
+  \ formatlistpat=^\\s*\\([-*]\\\|[0-9]\\.\\)\\s\\+ comments=n:>
   \ foldmethod=expr foldexpr=MarkdownFolding(v:lnum)
 " tmux(1)
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
