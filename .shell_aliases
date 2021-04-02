@@ -189,74 +189,40 @@ process_on_port() {
 }
 
 # Watch the specified files and run the binary and when they change.
-# Usage: inotify_linux file1 [file2 ...] -- binary [args ...]
+# Usage: inotify_wrapper file1 [file2 ...] -- binary [args ...]
 # Files will not be passed to the binary, the caller needs to do that if
 # required.
-inotify_linux() {
-  local files_to_watch=()
-  while [[ "$#" -gt 0 && "$1" != "--" ]]; do
-    files_to_watch+=("$1")
-    shift
-  done
-  ## Discard "--"
-  if [[ "$#" -gt 0 ]]; then
-    shift
-  fi
-  local binary_and_args=("$@")
-
-  if [[ "${#files_to_watch[@]}" -eq 0 ]]; then
-    printf "%s: need at least one file to watch\\n" "$0" >&2
-    return 1
-  fi
-  if [[ "${#binary_and_args[@]}" -eq 0 ]]; then
-    printf "%s: need a binary (and optionally args) to execute\\n" "$0" >&2
-    return 1
-  fi
-
-  "${binary_and_args[@]}"
-  while true; do
-    inotifywait --quiet "${files_to_watch[@]}"
-    "${binary_and_args[@]}"
-  done
-}
-
-# Watch the specified files and run the binary and when they change.
-# Usage: inotify_linux file1 [file2 ...] -- binary [args ...]
-# Files will not be passed to the binary, the caller needs to do that if
-# required.
-inotify_macos() {
-  local files_to_watch=()
-  while [[ "$#" -gt 0 && "$1" != "--" ]]; do
-    files_to_watch+=("$1")
-    shift
-  done
-  ## Discard "--"
-  if [[ "$#" -gt 0 ]]; then
-    shift
-  fi
-  local binary_and_args=("$@")
-
-  if [[ "${#files_to_watch[@]}" -eq 0 ]]; then
-    printf "%s: need at least one file to watch\\n" "$0" >&2
-    return 1
-  fi
-  if [[ "${#binary_and_args[@]}" -eq 0 ]]; then
-    printf "%s: need a binary (and optionally args) to execute\\n" "$0" >&2
-    return 1
-  fi
-
-  "${binary_and_args[@]}"
-  # Use -n2 rather than -n1 because saving a file in vim seems to cause two
-  # changes.
-  fswatch -o "${files_to_watch[@]}" | xargs -n1 -I{} "${binary_and_args[@]}"
-}
-
-# Run the OS-specific inotify wrapper; flags to the binary are not supported.
 inotify_wrapper() {
+  local files_to_watch=()
+  while [[ "$#" -gt 0 && "$1" != "--" ]]; do
+    files_to_watch+=("$1")
+    shift
+  done
+  ## Discard "--"
+  if [[ "$#" -gt 0 ]]; then
+    shift
+  fi
+  local binary_and_args=("$@")
+
+  if [[ "${#files_to_watch[@]}" -eq 0 ]]; then
+    printf "%s: need at least one file to watch\\n" "$0" >&2
+    return 1
+  fi
+  if [[ "${#binary_and_args[@]}" -eq 0 ]]; then
+    printf "%s: need a binary (and optionally args) to execute\\n" "$0" >&2
+    return 1
+  fi
+
+  "${binary_and_args[@]}"
   if is_mac_os; then
-    inotify_macos "$@"
+    # Use -n2 rather than -n1 because saving a file in vim seems to cause two
+    # changes.
+    fswatch -o "${files_to_watch[@]}" | xargs -n1 -I{} "${binary_and_args[@]}"
   else
-    inotify_linux "$@"
+    while true; do
+      inotifywait --quiet "${files_to_watch[@]}"
+      "${binary_and_args[@]}"
+    done
   fi
 }
 
