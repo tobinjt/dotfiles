@@ -237,7 +237,7 @@ ipytest() {
 
 igotest() {
   # Run go test when any inputs change.
-  inotify_wrapper ./*.go -- gotest "$@"
+  inotify_wrapper ./*.go -- go test "$@"
 }
 
 igocover() {
