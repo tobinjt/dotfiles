@@ -1,5 +1,0 @@
-*VT100.Translations: #override \
-<Key>Home: string("\033[7~")
-xterm*background: black
-xterm*foreground: white
-xterm*termName: xterm-color
