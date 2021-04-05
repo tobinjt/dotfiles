@@ -78,10 +78,6 @@ irssi() {
   TERM=xterm-color command irssi "$@"
 }
 
-shell_functions() {
-  set | grep '() $'
-}
-
 countsort() {
   sort "$@" | uniq -c | sort -n
 }
@@ -92,27 +88,6 @@ only_duplicates() {
 
 timestamp-to-human-localtime() {
   perl -Mstrict -n -e 'print scalar localtime $_, qq{\n}'
-}
-
-# Wrappers around 'go doc'.
-godocl() {
-  go doc "$@" | less
-}
-godocf() {
-  go doc "$@" | grep ^func
-}
-godocserver() {
-  printf "http://localhost:12345/\\n"
-  godoc --http=:12345
-}
-gocdpkg() {
-  local pdir
-  pdir="$(go list -f '{{ .Dir }}' "$1")"
-  if [ -z "${pdir}" ]; then
-    printf "no directory found for pkg %s\\n" "$1"
-    return 1
-  fi
-  cd "${pdir}" || return
 }
 
 # Strip the directory from a file.
@@ -163,10 +138,8 @@ airport() {
 }
 
 # Homebrew installs pip as pip3, so wrap it.
-# Also let Python write bytecode for future speed.
-pip() {
-  (unset PYTHONDONTWRITEBYTECODE; pip3 "$@")
-}
+alias pip="pip3"
+# Let Python write bytecode for future speed.
 pip3() {
   (unset PYTHONDONTWRITEBYTECODE; command pip3 "$@")
 }
