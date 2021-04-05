@@ -1,5 +1,6 @@
 # Don't truncate results to integers, keep this many digits after the decimal
-# point.
+# point.  Note that scale=10 causes really weird behaviour for %, e.g. 25%13 ==
+# .0000000010, but with scale=0 25%13 == 12 :(
 scale = 10
 
 # Useful variables.
