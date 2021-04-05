@@ -43,9 +43,10 @@ endif
 set suffixes+=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx
 set suffixes+=,.ilg,.inx,.out,.toc
 " When tab-completing filenames, expand to the longest common substring on the
-" first tab, then show a list on the second tab; basically behave the same as
-" bash does.
-set wildmode=longest,list
+" first tab, then move through options on the second and subsequent tabs;
+" basically behave the same as zsh does.
+set wildmenu
+set wildmode=longest,full
 " Don't make backup copies of files.
 set nobackup
 " Ask the user if they want to save or abandon changes rather than failing.
