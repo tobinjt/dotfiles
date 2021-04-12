@@ -63,17 +63,6 @@ scp() {
   command scp -o ControlMaster=no "$@"
 }
 
-assh() {
-  # Disable autossh monitoring because I have ssh configured to monitor
-  # connectivity.  Allocate a pseudo-tty.
-  # Run a shell (the correct shell on the remote end, hence single quotes):
-  # - as a login shell so it sources the correct files (necessary for bash,
-  #   unnecessary for zsh)
-  # - execute the function 'tmux_attach'
-  # shellcheck disable=SC2016
-  autossh -M 0 -t "$@" '${SHELL}' -l -c tmux_attach
-}
-
 irssi() {
   TERM=xterm-color command irssi "$@"
 }
