@@ -49,8 +49,8 @@ tmux_attach() {
     fi
   fi
 
-  # shellcheck disable=SC2119
-  update_ssh_auth_sock
+  SSH_AUTH_SOCK="$(update_ssh_auth_sock)"
+  export SSH_AUTH_SOCK
   # -D -A only works with named sessions.
   # Set the name of the first window to ''.
   tmux new-session -D -A -s "${USER}" -n ''
@@ -69,61 +69,6 @@ deduplicate_path() {
          }
        }
        END { sub("^:", "", output); print output; }' <<< "$1"
-}
-
-# I might manually call this with -f, so disable the check.
-# shellcheck disable=SC2120
-update_ssh_auth_sock() {
-  local force_update=0
-  if [ "$#" -eq 1 ] && [ "$1" == "-f" ]; then
-    force_update=1
-  fi
-  if [ -z "${SSH_AUTH_SOCK:-}" ]; then
-    if [ -n "${SUDO_USER:-}" ]; then
-      # No ssh forwarding when using sudo, so don't complain.
-      return
-    fi
-    printf "Empty SSH_AUTH_SOCK!  ssh forwarding broken?\\n" >&2
-    return 1
-  fi
-
-  local dir="${HOME}/tmp/ssh"
-  if [ ! -d "${dir}" ]; then
-    mkdir -p "${dir}"
-    chmod 700 "${dir}"
-  fi
-  if [ -z "${ORIG_SSH_AUTH_SOCK:-}" ]; then
-    if grep -q "${dir}" <<<"${SSH_AUTH_SOCK}"; then
-      printf "\$%s is already in %s, but \$%s is not set\\n" \
-        "SSH_AUTH_SOCK" "${dir}" "ORIG_SSH_AUTH_SOCK" >&2
-      return 1
-    fi
-    ORIG_SSH_AUTH_SOCK="${SSH_AUTH_SOCK}"
-  fi
-
-  # bash use $HOSTNAME, zsh uses $HOST :/
-  if [ -z "${HOSTNAME:-}" ]; then
-    HOSTNAME="${HOST}"
-  fi
-  SSH_AUTH_SOCK="${dir}/ssh-auth-sock-${HOSTNAME/lan/local}-${USER}"
-  # Skip checks if -f was passed or if $SSH_CLIENT is not set (because then I'm
-  # on the local machine and I should be using the local ssh-agent rather than
-  # the remote one).
-  # If the link points at a newer file do not update it to point to our file.
-  # Beware: there is one case where this will not work correctly:
-  # - start tmux on the local machine.
-  # - ssh in, update ssh socket link, and reconnect tmux to the ssh session.
-  # - bash on the local machine displays the prompt, updating the link
-  #   incorrectly.
-  if [ "${force_update}" -eq 0 ] \
-      && [ -n "${SSH_CLIENT:-}" ] \
-      && [ -e "${SSH_AUTH_SOCK}" ] \
-      && [ "${SSH_AUTH_SOCK}" -nt "${ORIG_SSH_AUTH_SOCK}" ]; then
-    printf "%s is newer than %s, not changing; use -f to force\\n" \
-      "${SSH_AUTH_SOCK}" "${ORIG_SSH_AUTH_SOCK}" >&2
-    return 1
-  fi
-  ln -s -f -n "${ORIG_SSH_AUTH_SOCK}" "${SSH_AUTH_SOCK}"
 }
 
 # Function to be run every time my prompt is displayed.
