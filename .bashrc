@@ -12,7 +12,7 @@
 . "${HOME}/.shell_functions"
 # Source shell-neutral environment settings.
 # shellcheck disable=SC1090
-. "${HOME}/.shell_rc"
+. "${HOME}/.shellrc"
 
 if [ "$-" == "${-//i/}" ]; then
   # This is not an interactive shell, skip everything else in this file.

@@ -70,8 +70,8 @@ export MANPATH BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT
 export RSYNC_RSH HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK LC_COLLATE
 
 # Local stuff
-local_shell_rc="${HOME}/.shellrc-local"
-if [ -f "${local_shell_rc}" ]; then
+local_shellrc="${HOME}/.shellrc-local"
+if [ -f "${local_shellrc}" ]; then
   # shellcheck disable=SC1090
-  . "${local_shell_rc}"
+  . "${local_shellrc}"
 fi
