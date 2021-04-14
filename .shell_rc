@@ -47,8 +47,8 @@ if is_mac_os; then
 else
   BROWSER="google-chrome"
 fi
-if command -v colordiff > /dev/null 2>&1; then
-  DIFF="colordiff -u"
+if command -v git > /dev/null 2>&1; then
+  DIFF="git --no-pager diff --no-index"
 else
   DIFF="diff -u"
 fi
