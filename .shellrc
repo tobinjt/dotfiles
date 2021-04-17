@@ -69,6 +69,11 @@ LC_COLLATE="C"
 export MANPATH BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT
 export RSYNC_RSH HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK LC_COLLATE
 
+if [ -n "${TMUX}" ] && [ "${USER}" != "johntobin" ]; then
+  # Put the user in the tmux pane title to warn me it's a different user.
+  tmux rename-window -t "${TMUX_PANE}" "${USER}"
+fi
+
 # Local stuff
 local_shellrc="${HOME}/.shellrc-local"
 if [ -f "${local_shellrc}" ]; then
