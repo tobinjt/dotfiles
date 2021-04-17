@@ -82,8 +82,7 @@ bindkey -s "\e[201~" ""
 # Change some control characters to be bash-compatible.
 bindkey \^U backward-kill-line  # Default kill-whole-line.
 
-### Pull in aliases from shell-neutral files; functions have already been pulled
-# in by .zshenv.
+### Pull in aliases from shell-neutral files.
 . "${HOME}/.shell_aliases"
 
 ### Set environment variables.
