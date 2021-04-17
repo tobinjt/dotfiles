@@ -15,9 +15,14 @@
 . "${HOME}/.shellrc"
 
 if [ "$-" == "${-//i/}" ]; then
-  # This is not an interactive shell, skip everything else in this file.
+  # This is not an interactive shell, skip everything else in this file to
+  # prevent errors when this file is sourced by sh.
   return
 fi
+
+# Shell-neutral aliases.
+# shellcheck disable=SC1090
+. "${HOME}/.shell_aliases"
 
 prompt_command_shell_specific() {
   # Write new history lines.
@@ -91,11 +96,6 @@ fi
 if [ -n "${BASH_VERSION}" ]; then
   set +o posix
 fi
-
-# Only set up aliases and completion if the shell is interactive, errors are generated
-# otherwise when this file is sourced by sh.
-# shellcheck disable=SC1090
-. "${HOME}/.shell_aliases"
 
 # Load system and Homebrew bash completion if available.  Both will source
 # ~/.bash_completion if it exists, so this file needs to be named something
