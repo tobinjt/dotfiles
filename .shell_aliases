@@ -14,6 +14,35 @@ alias cp="cp -i -p"
 alias grep='grep --color=auto'
 alias python="python3"
 
+# 'cd dirname/filename' will strip filename and cd to dirname.
+cd_helper() {
+  if [[ "$#" -eq 0 ]]; then
+    printf "Usage: cd_helper cd|pushd ARGS\\n" >&2
+    return 1
+  fi
+  local cmd="$1"
+  shift
+
+  # Try running the builtin with the arguments and see what happens.
+  if builtin "${cmd}" "$@" 2> /dev/null; then
+    return
+  fi
+  if [[ "$#" -gt 1 ]]; then
+    printf "%s: only one argument supported for non-builtin operation.\\n" \
+      "${cmd}" >&2
+    return 1
+  fi
+
+  local dest="$1" orig_dest="$1"
+  dest="$(dirname "${dest}")"
+  # dirname will output "." if there isn't a directory in $dest, e.g. when $dest
+  # is ~?bin; that indicates an error.
+  if [[ "${dest}" == "." ]]; then
+    printf "%s: %s: No such file or directory\\n" "${cmd}" "${orig_dest}" >&2
+    return 1
+  fi
+  builtin "${cmd}" "${dest}"
+}
 cd() {
   cd_helper cd "$@"
 }
