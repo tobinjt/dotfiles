@@ -5,11 +5,8 @@
 #   presumably sshd too.
 # We do enough to set $PATH, then check for being an interactive shell: if we're
 #   not interactive we skip everything else.
-# aliases should be put here because they aren't passed on to child processes.
+# aliases belong in .shell_aliases.
 
-# Source prompt_command et al.
-# shellcheck disable=SC1090
-. "${HOME}/.shell_functions"
 # Source shell-neutral environment settings.
 # shellcheck disable=SC1090
 . "${HOME}/.shellrc"

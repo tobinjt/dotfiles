@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Shell-neutral functions that might realistically be used by other code.
-# Aliases and functions intended solely for interactive use belong in
-# .shell_aliases.
