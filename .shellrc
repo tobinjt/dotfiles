@@ -13,7 +13,6 @@ PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
 # vim and python.
 if [ -d "/usr/local/Cellar" ]; then
     PATH="/usr/local/opt/python/libexec/bin:${PATH}"
-    MANPATH="/usr/local/man:/usr/local/share/man:${MANPATH}"
 fi
 # Where Go should install stuff.  Set here so that it can be used in $PATH.
 GOPATH="${HOME}/src/go"
@@ -45,9 +44,6 @@ if [ "$-" = "${-//i/}" ]; then
   return
 fi
 
-# The trailing : is important on Linux; it means to append the standard
-# search path to ${MANPATH}.
-MANPATH="$(deduplicate_path "${HOME}/man${MANPATH:+:}${MANPATH:-}:")"
 if is_mac_os; then
   BROWSER='open -a "Google Chrome"'
 else
@@ -72,7 +68,7 @@ PYTHONBREAKPOINT="pudb.set_trace"
 HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 # Sort filenames as I expect them to be sorted, regardless of locale.
 LC_COLLATE="C"
-export MANPATH BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT
+export BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT
 export RSYNC_RSH HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK LC_COLLATE
 
 if [ -n "${TMUX}" ] && [ "${USER}" != "johntobin" ]; then
