@@ -3,25 +3,3 @@
 # Shell-neutral functions that might realistically be used by other code.
 # Aliases and functions intended solely for interactive use belong in
 # .shell_aliases.
-
-# Function to be run every time my prompt is displayed.
-function prompt_command() {
-  exit_status="$?"
-  # Exit status 146/148 happens when you suspend something.
-  case "${exit_status}" in
-    0|146|148)
-      :
-      ;;
-    *)
-      printf "\\033[01;31mExit status: %s\\033[0m\\n" "${exit_status}"
-      ;;
-  esac
-  prompt_command_shell_specific
-  prompt_command_extras
-}
-prompt_command_shell_specific() {
-  true
-}
-prompt_command_extras() {
-  true
-}
