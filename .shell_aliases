@@ -130,45 +130,6 @@ timestamp-to-human-localtime() {
   perl -Mstrict -n -e 'print scalar localtime $_, qq{\n}'
 }
 
-# Strip the directory from a file.
-vimf() {
-  vim "$(basename "$1")"
-}
-
-# grep for something and output in vim quickfix format.
-cfile() {
-  if type rg >& /dev/null; then
-    if [[ -t 1 ]]; then
-      rg -n --with-filename --hidden --glob '!.git/**' "$@"
-    else
-      rg -n --with-filename --hidden --glob '!.git/**' "$@" \
-        | LC_ALL=C natural_sort
-    fi
-  else
-    if is_mac_os; then
-      # MacOS grep doesn't automatically add the current directory like GNU
-      # grep.  This workaround isn't ideal: if I pass a filename the directory
-      # will still be added.
-      grep -r -n -H "$@" .
-    else
-      grep -r -n -H "$@"
-    fi
-  fi
-}
-
-# Load errors from $1.
-vim-cfile() {
-  vim -c ':cfile '"$1"' | :cwindow'
-}
-
-vim-grep() {
-  local tmpfile
-  tmpfile="$(mktemp -t vim-grep.XXXXXXXXXXXX)"
-  cfile "$@" > "${tmpfile}"
-  vim-cfile "${tmpfile}"
-  rm -f "${tmpfile}"
-}
-
 # Handy link to airport utility.
 airport() {
   # shellcheck disable=SC2039
