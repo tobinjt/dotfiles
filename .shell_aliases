@@ -130,6 +130,11 @@ timestamp-to-human-localtime() {
   perl -Mstrict -n -e 'print scalar localtime $_, qq{\n}'
 }
 
+# Wrap rg so that is searches hidden files but skips .git directories.
+rg() {
+  rg -n --with-filename --hidden --glob '!.git/**' "$@"
+}
+
 # Handy link to airport utility.
 airport() {
   # shellcheck disable=SC2039
