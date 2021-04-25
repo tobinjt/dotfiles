@@ -132,7 +132,7 @@ timestamp-to-human-localtime() {
 
 # Wrap rg so that is searches hidden files but skips .git directories.
 rg() {
-  rg -n --with-filename --hidden --glob '!.git/**' "$@"
+  command rg -n --with-filename --hidden --glob '!.git/**' "$@"
 }
 
 # Handy link to airport utility.
