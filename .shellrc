@@ -38,6 +38,7 @@ umask 022
 
 if [ "$-" = "${-//i/}" ]; then
   # This is not an interactive shell, skip everything else in this file.
+  # Note: this also skips sourcing .shellrc-local, which might be a problen.
   return
 fi
 
