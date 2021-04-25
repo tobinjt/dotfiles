@@ -13,7 +13,7 @@ if [ -d "/usr/local/Cellar" ]; then
 fi
 # Where Go should install stuff.  Set here so that it can be used in $PATH.
 GOPATH="${HOME}/src/go"
-PATH="${HOME}/gbin:${HOME}/bin:${GOPATH}/bin:${PATH}:/sbin:/usr/sbin"
+PATH="${HOME}/bin:${GOPATH}/bin:${PATH}:/sbin:/usr/sbin"
 # Be careful not to break $PATH if deduplicate_path fails.
 new_PATH="$(deduplicate_path "${PATH}")"
 if [ -n "${new_PATH}" ]; then
