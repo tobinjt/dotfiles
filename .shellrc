@@ -14,13 +14,6 @@ fi
 # Where Go should install stuff.  Set here so that it can be used in $PATH.
 GOPATH="${HOME}/src/go"
 PATH="${HOME}/bin:${GOPATH}/bin:${PATH}:/sbin:/usr/sbin"
-# Be careful not to break $PATH if deduplicate_path fails.
-new_PATH="$(deduplicate_path "${PATH}")"
-if [ -n "${new_PATH}" ]; then
-  PATH="${new_PATH}"
-else
-  printf "Warning: deduplicate_path failed!\\n" >&2
-fi
 # EDITOR is set here so that it's correct when running non-interactively, e.g.
 # when sshing in to run update-dotfiles-and-bin, which runs git pull, which
 # needs a commit message for merges.
@@ -41,6 +34,14 @@ local_shellrc="${HOME}/.shellrc-local"
 if [ -f "${local_shellrc}" ]; then
   # shellcheck disable=SC1090
   . "${local_shellrc}"
+fi
+
+# Be careful not to break $PATH if deduplicate_path fails.
+new_PATH="$(deduplicate_path "${PATH}")"
+if [ -n "${new_PATH}" ]; then
+  PATH="${new_PATH}"
+else
+  printf "Warning: deduplicate_path failed!\\n" >&2
 fi
 
 if [ "$-" = "${-//i/}" ]; then
