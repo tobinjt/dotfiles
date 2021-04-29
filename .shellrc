@@ -36,9 +36,15 @@ fi
 # Umask is here so that it's set when scp(1)ing.
 umask 022
 
+# Local non-interactive stuff
+local_shellrc="${HOME}/.shellrc-local"
+if [ -f "${local_shellrc}" ]; then
+  # shellcheck disable=SC1090
+  . "${local_shellrc}"
+fi
+
 if [ "$-" = "${-//i/}" ]; then
   # This is not an interactive shell, skip everything else in this file.
-  # Note: this also skips sourcing .shellrc-local, which might be a problen.
   return
 fi
 
@@ -74,8 +80,8 @@ if [ -n "${TMUX}" ] && [ "${USER}" != "johntobin" ]; then
   tmux rename-window -t "${TMUX_PANE}" "${USER}"
 fi
 
-# Local stuff
-local_shellrc="${HOME}/.shellrc-local"
+# Local interactive stuff
+local_shellrc="${HOME}/.shellrc-local-interactive"
 if [ -f "${local_shellrc}" ]; then
   # shellcheck disable=SC1090
   . "${local_shellrc}"
