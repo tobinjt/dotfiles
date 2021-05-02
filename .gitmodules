@@ -84,5 +84,5 @@
 	path = .vim/bundle/vim-glaive
 	url = https://github.com/google/vim-glaive
 [submodule ".vim/bundle/rust"]
-	path = .vim/bundle/rust
+	path = .vim/bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim
