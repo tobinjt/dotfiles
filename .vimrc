@@ -89,6 +89,10 @@ let g:vim_markdown_strikethrough = 1
 " editing; autocmds will use my simple folding instead.
 let g:vim_markdown_folding_disabled = 1
 
+" rust
+" Autoformat on save.
+let g:rustfmt_autosave = 1
+
 " Plugins.
 " To update all the git submodules: update-vim-plugins
 " To update a single submodule:
