@@ -46,3 +46,7 @@ __pycache__
 
 # Automatically created on hosting.
 .cloud-locale-test.skip
+
+# Managed by rustup.
+.cargo
+.rustup
