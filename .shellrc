@@ -5,7 +5,7 @@
 #   not interactive we skip everything else.
 
 # I always want /usr/local first in $PATH.
-PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
+PATH="/usr/local/bin:/usr/local/sbin:${PATH}:/sbin:/usr/sbin"
 # If homebrew is in use, put it first so I can replace system binaries like
 # vim and python.
 if [ -d "/usr/local/Cellar" ]; then
@@ -13,7 +13,10 @@ if [ -d "/usr/local/Cellar" ]; then
 fi
 # Where Go should install stuff.  Set here so that it can be used in $PATH.
 GOPATH="${HOME}/src/go"
-PATH="${HOME}/bin:${GOPATH}/bin:${PATH}:/sbin:/usr/sbin"
+if [ -d "${GOPATH}" ]; then
+  PATH="${GOPATH}/bin:${PATH}"
+fi
+PATH="${HOME}/bin:${PATH}"
 # EDITOR is set here so that it's correct when running non-interactively, e.g.
 # when sshing in to run update-dotfiles-and-bin, which runs git pull, which
 # needs a commit message for merges.
