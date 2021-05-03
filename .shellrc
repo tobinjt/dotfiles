@@ -56,11 +56,6 @@ if [ "$-" = "${-//i/}" ]; then
   return
 fi
 
-if is_mac_os; then
-  BROWSER='open -a "Google Chrome"'
-else
-  BROWSER="google-chrome"
-fi
 if command -v git > /dev/null 2>&1; then
   DIFF="git --no-pager diff --no-index"
 else
@@ -80,7 +75,7 @@ PYTHONBREAKPOINT="pudb.set_trace"
 HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 # Sort filenames as I expect them to be sorted, regardless of locale.
 LC_COLLATE="C"
-export BROWSER DIFF LESS PAGER PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT
+export DIFF LESS PAGER PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT
 export RSYNC_RSH HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK LC_COLLATE
 
 if [ -n "${TMUX}" ] && [ "${USER}" != "johntobin" ]; then
