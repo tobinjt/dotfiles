@@ -2,7 +2,7 @@
 
 # Shell-neutral environment variables needed for interactive shells.
 # We do enough to set $PATH, then check for being an interactive shell: if we're
-#   not interactive we skip everything else.
+# not interactive we skip everything else.
 
 # I always want /usr/local first in $PATH.
 PATH="/usr/local/bin:/usr/local/sbin:${PATH}:/sbin:/usr/sbin"
@@ -67,7 +67,7 @@ RSYNC_RSH="ssh -o ControlPath=none"
 # smart case matching; long prompt; suppress dumb terminal error messages;
 # allow ANSI colour escape sequences; highlight the first new line when
 # moving through the file
-LESS="iMdRW${LESS}"
+LESS="iMdRW${LESS:-}"
 PYTHONDONTWRITEBYTECODE="No .pyc files please"
 # Set breakpoint() in Python to call pudb; untested.
 PYTHONBREAKPOINT="pudb.set_trace"
@@ -78,7 +78,7 @@ LC_COLLATE="C"
 export DIFF LESS PAGER PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT
 export RSYNC_RSH HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK LC_COLLATE
 
-if [ -n "${TMUX}" ] && [ "${USER}" != "johntobin" ]; then
+if [ -n "${TMUX:-}" ] && [ "${USER}" != "johntobin" ]; then
   # Put the user in the tmux pane title to warn me it's a different user.
   tmux rename-window -t "${TMUX_PANE}" "${USER}"
 fi
