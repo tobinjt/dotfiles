@@ -29,8 +29,7 @@ export EDITOR GOPATH PATH
 
 # Make a tmp dir if necessary.
 if [ ! -d "${HOME}/tmp" ]; then
-  # shellcheck disable=SC2174
-  mkdir -p -m 0700 "${HOME}/tmp"
+  mkdir -m 0700 "${HOME}/tmp"
 fi
 
 # Umask is here so that it's set when scp(1)ing.
