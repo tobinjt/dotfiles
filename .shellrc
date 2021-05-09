@@ -39,7 +39,6 @@ umask 022
 # Local non-interactive stuff
 local_shellrc="${HOME}/.shellrc-local"
 if [ -f "${local_shellrc}" ]; then
-  # shellcheck disable=SC1090
   . "${local_shellrc}"
 fi
 
@@ -75,8 +74,10 @@ PYTHONBREAKPOINT="pudb.set_trace"
 HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 # Sort filenames as I expect them to be sorted, regardless of locale.
 LC_COLLATE="C"
-export DIFF LESS PAGER PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT
-export RSYNC_RSH HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK LC_COLLATE
+# Disable shellcheck warnings about not checking sourced files.
+SHELLCHECK_OPTS="-e SC1090 -e SC1091"
+export DIFF LESS PAGER PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT RSYNC_RSH
+export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK LC_COLLATE SHELLCHECK_OPTS
 
 if [ -n "${TMUX:-}" ] && [ "${USER}" != "johntobin" ]; then
   # Put the user in the tmux pane title to warn me it's a different user.
@@ -86,6 +87,5 @@ fi
 # Local interactive stuff
 local_shellrc="${HOME}/.shellrc-local-interactive"
 if [ -f "${local_shellrc}" ]; then
-  # shellcheck disable=SC1090
   . "${local_shellrc}"
 fi

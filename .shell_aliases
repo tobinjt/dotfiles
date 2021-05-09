@@ -169,6 +169,5 @@ process_on_port() {
 # Local stuff
 local_shell_aliases="${HOME}/.shell_aliases-local"
 if [ -f "${local_shell_aliases}" ]; then
-  # shellcheck disable=SC1090
   . "${local_shell_aliases}"
 fi

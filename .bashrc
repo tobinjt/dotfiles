@@ -8,7 +8,6 @@
 # aliases belong in .shell_aliases.
 
 # Source shell-neutral environment settings.
-# shellcheck disable=SC1090
 . "${HOME}/.shellrc"
 
 if [ "$-" == "${-//i/}" ]; then
@@ -18,7 +17,6 @@ if [ "$-" == "${-//i/}" ]; then
 fi
 
 # Shell-neutral aliases.
-# shellcheck disable=SC1090
 . "${HOME}/.shell_aliases"
 
 prompt_command_shell_specific() {
@@ -98,11 +96,9 @@ fi
 # ~/.bash_completion if it exists, so this file needs to be named something
 # else.
 if [ -f /etc/bash_completion ]; then
-  # shellcheck disable=SC1091
   . /etc/bash_completion
 fi
 if [ -f "/usr/local/etc/bash_completion" ]; then
-  # shellcheck disable=SC1091
   . "/usr/local/etc/bash_completion"
 fi
 
@@ -126,6 +122,5 @@ complete -A builtin builtin
 # Local stuff
 local_bash_rc="${HOME}/.bashrc-local"
 if [ -f "${local_bash_rc}" ]; then
-  # shellcheck disable=SC1090
   . "${local_bash_rc}"
 fi
