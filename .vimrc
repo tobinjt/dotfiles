@@ -11,9 +11,6 @@ source $VIMRUNTIME/defaults.vim
 " Don't save netrw history, I don't use it.
 let g:netrw_dirhistmax = 0
 
-" Remove 'vcsdiff' because it overwrites Syntastic error markers.
-let g:quickfixsigns_classes = ['qfl', 'loc', 'marks', 'breakpoints']
-
 " Syntastic.
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
@@ -66,10 +63,6 @@ let g:go_highlight_types = 1
 " Change the trigger so it doesn't clash with SuperTab; this means I have to
 " explicitly trigger snippet expansion and it doesn't happen accidentally.
 let g:UltiSnipsExpandTrigger = "<C-N>"
-" AFAIK there isn't a way to list the snippets for a filetype - I have to read
-" the definitions.  This should list the possible snippets for the word I have
-" just typed, I think.
-let g:UltiSnipsListSnippets = "<F3>"
 
 " vim-markdown
 " Recognise ```shell as a block with sh syntax.
