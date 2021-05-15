@@ -130,17 +130,18 @@ endif
 Plug 'google/yapf', { 'rtp': 'plugins/vim' }
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
+" Puts marks in the sign column.
 Plug 'kshenoy/vim-signature'
 Plug 'lifepillar/vim-solarized8'
 Plug 'plasticboy/vim-markdown'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
+# Better folding of Python.
 Plug 'tmhedberg/SimpylFold'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/LargeFile'
