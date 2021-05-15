@@ -59,9 +59,6 @@
 	path = .vim/bundle/yapf
 	url = https://github.com/google/yapf
 	branch = main
-[submodule ".vim/bundle/targets.vim"]
-	path = .vim/bundle/targets.vim
-	url = https://github.com/wellle/targets.vim
 [submodule ".vim/bundle/SimpylFold"]
 	path = .vim/bundle/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold
