@@ -60,10 +60,6 @@ let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 
-" Change the trigger so it doesn't clash with SuperTab; this means I have to
-" explicitly trigger snippet expansion and it doesn't happen accidentally.
-let g:UltiSnipsExpandTrigger = "<C-N>"
-
 " vim-markdown
 " Recognise ```shell as a block with sh syntax.
 let g:vim_markdown_fenced_languages = ['shell=sh']
@@ -119,16 +115,12 @@ endfunction
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
 Plug 'ConradIrwin/vim-bracketed-paste'
-if has("python3")
-  Plug 'SirVer/ultisnips'
-endif
 Plug 'cespare/vim-toml'
 Plug 'ervandew/supertab'
 if has('patch-8.0.1453')
   Plug 'fatih/vim-go'
 endif
 Plug 'google/yapf', { 'rtp': 'plugins/vim' }
-Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
 " Puts marks in the sign column.
 Plug 'kshenoy/vim-signature'
