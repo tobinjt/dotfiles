@@ -51,11 +51,6 @@ let python_highlight_all = 1
 " Add bash specific stuff
 let readline_has_bash = 1
 
-" Go
-" Disable Go's trailing space highlighting, mine is better because it
-" ignores the current line.
-let go_highlight_trailing_whitespace_error = 0
-
 " Folding in various languages.
 let tex_fold_enabled=1
 let vimsyn_folding = "f"
