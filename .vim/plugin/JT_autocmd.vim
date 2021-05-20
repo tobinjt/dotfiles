@@ -28,11 +28,22 @@ autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " don't like it, so set it back to the default.
 autocmd FileType javascript,php setlocal foldtext=foldtext()
 
-" Wrap at textwidth, recognise lists, don't keep long lines unbroken.
-autocmd FileType markdown setlocal
-  \ formatoptions+=nt formatoptions-=l
-  \ formatlistpat=^\\s*\\([-*]\\\|[0-9]\\.\\)\\s\\+ comments=n:>
-  \ foldmethod=expr foldexpr=MarkdownFolding(v:lnum)
+" Markdown
+" Recognise bulleted lists starting with ^\*, so that line wrapping doesn't
+" destroy bulleted lists.
+autocmd FileType markdown setlocal formatoptions+=n
+  \ formatlistpat=^\\s*\\([-*]\\\|[0-9]\\.\\)\\s\\+
+" Automatically wrap text at textwidth.
+autocmd FileType markdown setlocal formatoptions+=t formatoptions-=l
+" Interpret blockquotes (lines starting with '>') as comments, so that line
+" wrapping doesn't mangle the blockquote markers.
+autocmd FileType markdown setlocal comments=n:>
+" Turn on spell checking.
+autocmd FileType markdown setlocal spell
+" Enable simple folding.
+autocmd FileType markdown setlocal foldmethod=expr
+  \ foldexpr=MarkdownFolding(v:lnum)
+
 " tmux(1)
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
 autocmd FileType text setlocal formatoptions+=nq
