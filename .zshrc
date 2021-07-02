@@ -119,5 +119,4 @@ if [[ -f "${local_zsh_rc}" ]]; then
   . "${local_zsh_rc}"
 fi
 
-source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "${HOME}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
