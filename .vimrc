@@ -114,6 +114,7 @@ endfunction
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
+" Plug 'bogado/file-line'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'cespare/vim-toml'
 Plug 'ervandew/supertab'
@@ -136,7 +137,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/LargeFile'
-Plug 'vim-scripts/file-line'
 
 " This needs to be done before loading plugins, so that runtimepath can be
 " extended first.
