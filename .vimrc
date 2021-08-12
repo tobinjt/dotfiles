@@ -126,7 +126,6 @@ Plug 'junegunn/vim-plug'
 " Puts marks in the sign column.
 Plug 'kshenoy/vim-signature'
 Plug 'lifepillar/vim-solarized8'
-Plug 'plasticboy/vim-markdown'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'

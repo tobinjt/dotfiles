@@ -16,9 +16,6 @@
 [submodule ".vim/bundle/vim-bracketed-paste"]
 	path = .vim/bundle/vim-bracketed-paste
 	url = https://github.com/ConradIrwin/vim-bracketed-paste.git
-[submodule ".vim/bundle/vim-markdown"]
-	path = .vim/bundle/vim-markdown
-	url = https://github.com/plasticboy/vim-markdown
 [submodule ".vim/bundle/vim-plug"]
 	path = .vim/bundle/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
