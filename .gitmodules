@@ -68,3 +68,4 @@
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = https://github.com/tobinjt/vim-markdown
+	branch = my-changes
