@@ -132,6 +132,7 @@ Plug 'scrooloose/syntastic'
 " Better folding of Python.
 Plug 'tmhedberg/SimpylFold'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tobinjt/vim-markdown'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
