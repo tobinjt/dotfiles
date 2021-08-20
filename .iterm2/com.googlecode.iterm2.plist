@@ -1314,6 +1314,8 @@
 			<string>/Users/johntobin</string>
 		</dict>
 	</array>
+	<key>OnlyWhenMoreTabs</key>
+	<false/>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PasteTabToStringTabStopSize</key>
@@ -1357,6 +1359,8 @@
 		</dict>
 	</dict>
 	<key>Print In Black And White</key>
+	<true/>
+	<key>PromptOnQuit</key>
 	<true/>
 	<key>Selection Respects Soft Boundaries</key>
 	<true/>
