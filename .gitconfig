@@ -12,10 +12,10 @@
   unpushed-commits = log @{u}..
   unpushed-commits-diffs = diff @{u}..
 [push]
-	default = current
+  default = current
 [diff]
-	colorMoved = true
-	colorMovedWS = allow-indentation-change
-	noprefix = true
+  colorMoved = true
+  colorMovedWS = allow-indentation-change
+  noprefix = true
 [pull]
-	rebase = false
+  rebase = false
