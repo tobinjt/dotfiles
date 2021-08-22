@@ -8,12 +8,6 @@
 [core]
   excludesfile = ~/.gitignore.global
 [alias]
-  wdiff = diff --color-words
-  wshow = show --color-words
-  gdiff = difftool --tool tkdiff --no-prompt
-  lint-comments = commit -m 'Lint comments.'
-  merge-conflicts = commit -m 'Fix merge conflicts.'
-  review-comments = commit -m 'Review comments.'
   upstream = commit -a -m 'Upstream changes.'
   unpushed-commits = log @{u}..
   unpushed-commits-diffs = diff @{u}..
