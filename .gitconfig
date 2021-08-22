@@ -23,3 +23,5 @@
 	colorMoved = true
 	colorMovedWS = allow-indentation-change
 	noprefix = true
+[pull]
+	rebase = false
