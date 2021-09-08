@@ -136,6 +136,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/LargeFile'
+" Makes filename:line-number[:column] work.
+Plug 'wsdjeg/vim-fetch'
 
 " This needs to be done before loading plugins, so that runtimepath can be
 " extended first.
