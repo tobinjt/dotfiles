@@ -114,7 +114,6 @@ endfunction
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
-Plug 'bogado/file-line'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'cespare/vim-toml'
 Plug 'ervandew/supertab'
