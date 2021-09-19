@@ -22,3 +22,7 @@ src
 wp
 submodule
 PHPLint
+dotfiles
+VCS
+IPv6
+vimrc
