@@ -5,6 +5,7 @@ ignore=
   //www.amazon.co.uk
   //www.bcs-sgai.org
   //www.example.org
+  //www.games-workshop.com
   //www.icosaedro.it/phplint/
   //www.netsoc.tcd.ie
   //www.scss.tcd.ie
@@ -13,4 +14,4 @@ ignore=
   /xmlrpc.php
 
 [checking]
-useragent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+useragent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36
