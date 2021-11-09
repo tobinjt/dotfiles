@@ -115,7 +115,13 @@ scp() {
 }
 
 irssi() {
+  if [ -n "${TMUX:-}" ]; then
+    tmux rename-window -t "${TMUX_PANE}" 'irssi'
+  fi
   TERM=xterm-color command irssi "$@"
+  if [ -n "${TMUX:-}" ]; then
+    tmux rename-window -t "${TMUX_PANE}" ''
+  fi
 }
 
 countsort() {
