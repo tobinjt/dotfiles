@@ -23,13 +23,21 @@ prompt_command_extras() {
 }
 
 # ls needs different options to enable colour :/
-if ls --color=always &> /dev/null; then
+if command ls --color=always &> /dev/null; then
   # Linux.
-  alias ls='ls --color=auto -F'
+  ls_options=(--color=auto -F)
 else
   # OS X.
-  alias ls='ls -G -F'
+  ls_options=(-G -F)
 fi
+# Only pass extra options to ls when output is to a terminal.
+ls() {
+  if [[ -t 1 ]]; then
+    command ls "${ls_options[@]}" "$@"
+  else
+    command ls "$@"
+  fi
+}
 
 alias mv="mv -i"
 alias cp="cp -i -p"
