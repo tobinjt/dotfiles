@@ -111,7 +111,7 @@ set expandtab tabstop=2 shiftwidth=2
 "  - blah blah
 "  * blah blah
 "  2. blah blah
-set formatlistpat=^\\s*\\([-*]\\\|\\d\\+\\.\\)\ \\s*
+set formatlistpat=^\\s*\\([-*]\\\|\\d\\+\\.\\)\\s*
 
 " Movement through the file.
 " Proper backspace, that deletes previously entered text.
