@@ -10,7 +10,7 @@ autocmd BufReadPost *
 " On BSD systems, the original file provided by crontab(1) must be written to,
 " rather than writing a new file and renaming it.
 autocmd FileType crontab setlocal backupcopy=yes textwidth=1000
-" Auto-wrap text, autowrap comments, allow fomment formatting, don't break lines
+" Auto-wrap text, autowrap comments, allow comment formatting, don't break lines
 " that are longer than textwidth when insertion starts.
 autocmd FileType pod setlocal textwidth=72 formatoptions+=tcql
 " Assume foo.t is Perl; Perl Modules come with tests in t/*.t
@@ -29,10 +29,6 @@ autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript,php setlocal foldtext=foldtext()
 
 " Markdown
-" Recognise bulleted lists starting with ^\*, so that line wrapping doesn't
-" destroy bulleted lists.
-autocmd FileType markdown setlocal formatoptions+=n
-  \ formatlistpat=^\\s*\\([-*]\\\|[0-9]\\.\\)\\s\\+
 " Automatically wrap text at textwidth.
 autocmd FileType markdown setlocal formatoptions+=t formatoptions-=l
 " Interpret blockquotes (lines starting with '>') as comments, so that line

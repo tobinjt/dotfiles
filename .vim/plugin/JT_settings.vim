@@ -98,6 +98,8 @@ endif
 set formatoptions+=ro
 " Remove comment characters when joining lines.
 set formatoptions+=j
+" Recognise lists; see formatlistpat below for accepted styles.
+set formatoptions+=n
 set textwidth=80
 " Turn on automatic indenting.
 set autoindent
@@ -105,8 +107,11 @@ set autoindent
 set pastetoggle=<F1>
 " Expand tabs to 2 spaces.
 set expandtab tabstop=2 shiftwidth=2
-" Recognise extra list headers.  Use let instead of set, to avoid backslashitis.
-let &formatlistpat='^\s*\(\d\+\|\a\+\.\|\*\)[.:)]\s*'
+" List formats to recognise:
+"  - blah blah
+"  * blah blah
+"  2. blah blah
+set formatlistpat=^\\s*\\([-*]\\\|\\d\\+\\.\\)\ \\s*
 
 " Movement through the file.
 " Proper backspace, that deletes previously entered text.
