@@ -34,8 +34,6 @@ autocmd FileType markdown setlocal formatoptions+=t formatoptions-=l
 " Interpret blockquotes (lines starting with '>') as comments, so that line
 " wrapping doesn't mangle the blockquote markers.
 autocmd FileType markdown setlocal comments=n:>
-" Turn on spell checking.
-autocmd FileType markdown setlocal spell
 " Enable simple folding.
 autocmd FileType markdown setlocal foldmethod=expr
   \ foldexpr=MarkdownFolding(v:lnum)
