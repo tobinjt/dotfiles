@@ -82,6 +82,14 @@ if has("eval")
   " filesystems.
   set directory-=.
 
+  " Move tempfiles.  I'm trying this again because long-lived vim sessions get
+  " their temp directory removed sometimes; I don't see anything in
+  " /var/log/daily.out, but I *feel* like it's related to updating homebrew
+  " packages.
+  let _temp_dir = _temp_base . '/tmp'
+  call JT_safe_mkdir(_temp_dir)
+  let $TMPDIR = _temp_dir
+
   " Save undo history per file.
   if has("persistent_undo")
     let _undo_dir = _temp_base . '/undo'
