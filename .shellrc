@@ -4,6 +4,7 @@
 # We do enough to set $PATH, then check for being an interactive shell: if we're
 # not interactive we skip everything else.
 
+# Set up $PATH.
 # I always want /usr/local first in $PATH.
 PATH="/usr/local/bin:/usr/local/sbin:${PATH}:/sbin:/usr/sbin"
 # If homebrew is in use, put it first so I can replace system binaries like
@@ -19,6 +20,14 @@ fi
 # Add Rust to $PATH if it exists.
 if [ -d "${HOME}/.cargo" ]; then
   PATH="${HOME}/.cargo/bin:${PATH}"
+fi
+# Add tools installed using virtualenv, after the rest of $PATH, so they don't
+# mess with the standard Python binary.
+virtualenv_dir="${HOME}/tmp/virtualenv"
+if [ -d "${virtualenv_dir}" ]; then
+  for dir in "${virtualenv_dir}"/*/bin; do
+    PATH="${PATH}:${dir}"
+  done
 fi
 PATH="${HOME}/bin:${PATH}"
 # EDITOR is set here so that it's correct when running non-interactively, e.g.
