@@ -7,11 +7,6 @@
 # Set up $PATH.
 # I always want /usr/local first in $PATH.
 PATH="/usr/local/bin:/usr/local/sbin:${PATH}:/sbin:/usr/sbin"
-# If homebrew is in use, put it first so I can replace system binaries like
-# vim and python.
-if [ -d "/usr/local/Cellar" ]; then
-    PATH="/usr/local/opt/python/libexec/bin:${PATH}"
-fi
 # Where Go should install stuff.  Set here so that it can be used in $PATH.
 GOPATH="${HOME}/src/go"
 if [ -d "${GOPATH}" ]; then
