@@ -17,11 +17,13 @@ let g:syntastic_check_on_wq = 0
 " Always update the location list, because otherwise the error window is out of
 " date.
 let g:syntastic_always_populate_loc_list = 1
-" Configure Go checkers.
+" Debugging.
+" let g:syntastic_debug = 1
+" --- Configure Go checkers.
 " Install the necessary tools with; $ install-extra-tools-for-vim
 " All of these will be run serially; remove if that gets too slow.
 let g:syntastic_go_checkers = ['go', 'gofmt', 'golint', 'gotype', 'govet']
-" Configure Javascript checkers.
+" --- Configure Javascript checkers.
 let g:syntastic_javascript_checkers = ['closurecompiler', 'gjslint', 'glint']
 if executable('/usr/local/bin/closure-compiler')
   let g:syntastic_javascript_closurecompiler_script =
@@ -30,11 +32,16 @@ else
   let g:syntastic_javascript_closurecompiler_script =
         \ '/usr/bin/closure-compiler'
 endif
+" --- Configure markdown checkers.
+" Use markdownlint for the mdl linter.
+let g:syntastic_markdown_mdl_exec = "markdownlint"
+let g:syntastic_markdown_mdl_args = ""
+" --- Configure Python checkers.
 " Make sure that python3 is used so it can parse type annotations.
 let g:syntastic_python_python_exec = 'python3'
 " Add mypy to the list of Python checkers.
 let g:syntastic_python_checkers = ['python', 'mypy', 'pylint']
-" Extend the list of PHP checkers.
+" --- Configure PHP checkers.
 let g:syntastic_php_checkers = ['php', 'phplint', 'phpstan']
 let g:syntastic_php_phplint_args = '--modules-path ../phplint-modules'
 let g:syntastic_php_phplint_args .= ' --no-ascii-ext-check'
