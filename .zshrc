@@ -1,3 +1,8 @@
+# shellcheck shell=bash
+# Specifying the shell like above or a #! line is a shellcheck requirement, and
+# it doesn't support zsh, so I'm pretending this is bash so that presubmit
+# checks succeed.
+#
 # Run for interactive shells.
 
 # Pull in my settings again so that they override system settings as necessary,
@@ -28,6 +33,7 @@ compinit -u
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zsh_history
 HISTSIZE=100000000000
+# shellcheck disable=SC2034
 SAVEHIST=100000000000
 setopt appendhistory autocd nomatch
 unsetopt beep
@@ -44,6 +50,7 @@ setopt auto_pushd pushd_ignore_dups pushd_silent
 # like '^foo' to grep and other tools.
 setopt bad_pattern
 # Ignore files created by compiling Lisp or Python.
+# shellcheck disable=SC2034
 fignore=(.fas .fasl .lib .pyc .pyo)
 # Configure history.
 setopt extended_history hist_ignore_dups hist_save_no_dups hist_verify
@@ -80,7 +87,7 @@ bindkey -s "\xE2\x80\xA6" "..."
 bindkey -s "\e[200~" ""
 bindkey -s "\e[201~" ""
 # Change some control characters to be bash-compatible.
-bindkey \^U backward-kill-line  # Default kill-whole-line.
+bindkey ^U backward-kill-line  # Default kill-whole-line.
 
 ### Pull in aliases from shell-neutral files.
 . "${HOME}/.shell_aliases"
@@ -99,6 +106,7 @@ export PS1
 
 ### Misc config.
 # Set up prompt_command.
+# shellcheck disable=SC2034
 precmd_functions=(prompt_command)
 # Do not add fg to history.  zsh doesn't have a way to completely remove it from
 # history, it will be there immediately afterwards but will disappear after
