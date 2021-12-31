@@ -1,5 +1,5 @@
 " My .vimrc - an attempt to customise vim and save most of my settings so that
-" I'm independant of the global vimrc wherever I go.
+" I'm independent of the global vimrc wherever I go.
 
 " Enable for debugging.
 "set verbose=2
