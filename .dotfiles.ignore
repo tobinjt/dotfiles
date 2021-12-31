@@ -6,6 +6,7 @@
 
 # There might be one in each repo but there can only be one destination file.
 .dotfiles.ignore
+.pre-commit-config.yaml
 # Used by root.
 .forward
 
