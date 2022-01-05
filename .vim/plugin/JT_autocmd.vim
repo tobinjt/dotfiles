@@ -41,12 +41,16 @@ autocmd FileType markdown setlocal foldmethod=expr
 " tmux(1)
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
 autocmd FileType text setlocal formatoptions+=nq
+" Golang
 autocmd FileType go setlocal foldmethod=syntax textwidth=80 colorcolumn=
 " Autoformatting Go code on write causes folds to be closed; this autocmd opens
 " the fold under the cursor.
 if has("eval")
   autocmd BufWritePost *.go call OpenFoldUnderCursor()
 endif
+" Disable Airline mixed indent check for golang-coverage-pre-commit_test.go.
+autocmd BufRead golang-coverage-pre-commit_test.go
+  \ let b:airline_whitespace_checks = ['trailing', 'long', 'conflicts']
 
 " Turn on spelling if available.
 if has("spell")
