@@ -144,9 +144,15 @@ timestamp-to-human-localtime() {
   perl -Mstrict -n -e 'print scalar localtime $_, qq{\n}'
 }
 
-# Wrap rg so that is searches hidden files but skips .git directories.
+# Wrap rg so that in a dotfiles directory it searches hidden files but skips
+# .git directories.
 rg() {
-  command rg -n --with-filename --hidden --glob '!.git' --ignore "$@"
+  if echo "${PWD}" | grep -q dotfiles; then
+    # Searching in a dotfiles directory, include dotfiles.
+    command rg -n --with-filename --hidden --glob '!.git' --ignore "$@"
+  else
+    command rg "$@"
+  fi
 }
 
 # Handy link to airport utility.
