@@ -50,7 +50,7 @@ if has("eval")
 endif
 " Disable Airline mixed indent check for golang-coverage-pre-commit_test.go.
 autocmd BufRead golang-coverage-pre-commit_test.go
-  \ let b:airline_whitespace_checks = ['trailing', 'conflicts']
+  \ let b:airline_whitespace_checks = ['trailing', 'long', 'conflicts']
 
 " Turn on spelling if available.
 if has("spell")
