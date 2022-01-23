@@ -42,7 +42,9 @@ autocmd FileType markdown setlocal foldmethod=expr
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
 autocmd FileType text setlocal formatoptions+=nq
 " Golang
-autocmd FileType go setlocal foldmethod=syntax textwidth=80 colorcolumn=
+" Set a wide textwidth because Golang tends to have wide lines and airline
+" whitespace checks use textwidth.
+autocmd FileType go setlocal foldmethod=syntax textwidth=120 colorcolumn=
 " Autoformatting Go code on write causes folds to be closed; this autocmd opens
 " the fold under the cursor.
 if has("eval")
