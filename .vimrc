@@ -126,14 +126,13 @@ call plug#begin('~/.vim/bundle')
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'cespare/vim-toml'
 Plug 'ervandew/supertab'
-if has('patch-8.0.1453')
-  Plug 'fatih/vim-go'
-endif
+Plug 'fatih/vim-go'
 Plug 'google/yapf', { 'rtp': 'plugins/vim' }
 Plug 'junegunn/vim-plug'
 " Puts marks in the sign column.
 Plug 'kshenoy/vim-signature'
 Plug 'lifepillar/vim-solarized8'
+Plug 'preservim/tagbar'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
