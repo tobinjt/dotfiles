@@ -11,6 +11,10 @@ source $VIMRUNTIME/defaults.vim
 " Don't save netrw history, I don't use it.
 let g:netrw_dirhistmax = 0
 
+" rust
+" Autoformat on save.
+let g:rustfmt_autosave = 1
+
 " Syntastic.
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
@@ -47,6 +51,46 @@ let g:syntastic_php_phplint_args = '--modules-path ../phplint-modules'
 let g:syntastic_php_phplint_args .= ' --no-ascii-ext-check'
 " Use the level defined in phpstan.neon.
 let g:syntastic_php_phpstan_args = []
+
+" tagbar
+" Configuration for CSS.
+let g:tagbar_type_css = {
+\ 'ctagstype' : 'Css',
+  \ 'kinds'   : [
+    \ 'c:classes',
+    \ 's:selectors',
+    \ 'i:identities'
+  \ ]
+\ }
+" Configuration for Golang; the gotags binary is installed by vim-go.
+" https://github.com/jstemmer/gotags
+let g:tagbar_type_go = {
+  \ 'ctagstype' : 'go',
+  \ 'kinds'     : [
+    \ 'p:package',
+    \ 'i:imports:1',
+    \ 'c:constants',
+    \ 'v:variables',
+    \ 't:types',
+    \ 'n:interfaces',
+    \ 'w:fields',
+    \ 'e:embedded',
+    \ 'm:methods',
+    \ 'r:constructor',
+    \ 'f:functions'
+  \ ],
+  \ 'sro' : '.',
+  \ 'kind2scope' : {
+    \ 't' : 'ctype',
+    \ 'n' : 'ntype'
+  \ },
+  \ 'scope2kind' : {
+    \ 'ctype' : 't',
+    \ 'ntype' : 'n'
+  \ },
+  \ 'ctagsbin'  : 'gotags',
+  \ 'ctagsargs' : '-sort -silent'
+\ }
 
 " vim-go.
 " Install the necessary tools with; $ install-extra-tools-for-vim
@@ -86,10 +130,6 @@ let g:vim_markdown_strikethrough = 1
 " Disable the plugin's folding because it randomly folds and unfolds when
 " editing; autocmds will use my simple folding instead.
 let g:vim_markdown_folding_disabled = 1
-
-" rust
-" Autoformat on save.
-let g:rustfmt_autosave = 1
 
 " Plugins.
 " To update all the git submodules: update-vim-plugins
