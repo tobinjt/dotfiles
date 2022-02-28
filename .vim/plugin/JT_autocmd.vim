@@ -10,18 +10,9 @@ autocmd BufReadPost *
 " On BSD systems, the original file provided by crontab(1) must be written to,
 " rather than writing a new file and renaming it.
 autocmd FileType crontab setlocal backupcopy=yes textwidth=1000
-" Auto-wrap text, autowrap comments, allow comment formatting, don't break lines
-" that are longer than textwidth when insertion starts.
-autocmd FileType pod setlocal textwidth=72 formatoptions+=tcql
-" Assume foo.t is Perl; Perl Modules come with tests in t/*.t
-autocmd BufEnter *.t setlocal ft=perl
 autocmd FileType make setlocal shiftwidth=8 tabstop=8
-autocmd FileType tex setlocal textwidth=75 makeprg=make\ -s foldmethod=syntax
-  \ formatoptions+=2
 autocmd FileType c,cpp setlocal foldmethod=syntax
 
-" Editing bash command lines.
-autocmd BufRead,BufNewFile /tmp/bash-fc-* setlocal filetype=sh
 autocmd BufNewFile,BufRead *.json setlocal filetype=javascript
 autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " Javascript syntax highlighting messes with the way folds are displayed and I
@@ -41,6 +32,7 @@ autocmd FileType markdown setlocal foldmethod=expr
 " tmux(1)
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
 autocmd FileType text setlocal formatoptions+=nq
+
 " Golang
 " Set a wide textwidth because Golang tends to have wide lines and airline
 " whitespace checks use textwidth.
@@ -65,9 +57,6 @@ if has("spell")
   " This turns on spell checking properly.
   autocmd FileType html,text,gitcommit syntax spell toplevel
 endif
-
-" Try to highlight XXX in Latex source
-autocmd FileType tex syn match texError "XXX"
 
 " Highlight the first three characters over the line length limit.  Clearing the
 " highlight group first makes the background the same colour, so we only see
