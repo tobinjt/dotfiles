@@ -53,6 +53,13 @@ let g:syntastic_php_phplint_args .= ' --no-ascii-ext-check'
 let g:syntastic_php_phpstan_args = []
 
 " tagbar
+let g:tagbar_show_data_type = 1
+" Show line numbers for easier navigation.
+let g:tagbar_show_linenumbers = -1
+let g:tagbar_show_tag_linenumbers = 1
+" Highlight the current tag in the tagbar; updates after several seconds without
+" movement.
+let g:tagbar_highlight_follow_insert = 1
 " Configuration for CSS.
 let g:tagbar_type_css = {
 \ 'ctagstype' : 'Css',
