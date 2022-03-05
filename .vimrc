@@ -172,6 +172,7 @@ call plug#begin('~/.vim/bundle')
 " Add bundles here.
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'cespare/vim-toml'
+Plug 'dense-analysis/ale'
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'google/yapf', { 'rtp': 'plugins/vim' }
