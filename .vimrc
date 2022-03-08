@@ -172,7 +172,6 @@ call plug#begin('~/.vim/bundle')
 " Add bundles here.
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'cespare/vim-toml'
-Plug 'dense-analysis/ale'
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'google/yapf', { 'rtp': 'plugins/vim' }
@@ -195,6 +194,9 @@ Plug 'vim-syntastic/syntastic'
 " Makes filename:line-number[:column] work.
 Plug 'wsdjeg/vim-fetch'
 
+" A hook for my work config to disable loading ALE.
+let g:johntobin_load_ale_plugin = 1
+
 " This needs to be done before loading plugins, so that runtimepath can be
 " extended first.
 if has("eval")
@@ -209,6 +211,10 @@ if executable("prettier") && !PluginLoaded("vim-codefmt")
   Plug 'google/vim-maktaba'
   Plug 'google/vim-codefmt'
   Plug 'google/vim-glaive'
+endif
+
+if g:johntobin_load_ale_plugin == 1
+  Plug 'dense-analysis/ale'
 endif
 
 " Finish vim-plug setup.
