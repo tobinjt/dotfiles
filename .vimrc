@@ -11,6 +11,10 @@ source $VIMRUNTIME/defaults.vim
 " Don't save netrw history, I don't use it.
 let g:netrw_dirhistmax = 0
 
+" nerdcommenter
+" Add spaces between delimiters and line contents.
+let g:NERDSpaceDelims = 1
+
 " rust
 " Autoformat on save.
 let g:rustfmt_autosave = 1
