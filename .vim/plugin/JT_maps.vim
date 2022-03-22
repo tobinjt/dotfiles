@@ -4,3 +4,5 @@ inoremap £ #
 lnoremap £ #
 onoremap £ #
 vnoremap £ #
+
+cnoremap cwindow botright cwindow
