@@ -184,7 +184,12 @@ Plug 'junegunn/vim-plug'
 Plug 'kshenoy/vim-signature'
 Plug 'lifepillar/vim-solarized8'
 Plug 'preservim/nerdcommenter'
-Plug 'preservim/tagbar'
+" Check that ctags is available before loading tagbar.  We don't care about the
+" output of the command, just the exit code.
+silent call system("ctags --version")
+if !v:shell_error
+  Plug 'preservim/tagbar'
+endif
 Plug 'rust-lang/rust.vim'
 " Better folding of Python.
 Plug 'tmhedberg/SimpylFold'
