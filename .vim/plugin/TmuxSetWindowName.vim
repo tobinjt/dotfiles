@@ -26,14 +26,14 @@ if ! exists('g:TmuxGetWindowName_Enabled')
   let g:TmuxGetWindowName_Enabled = 1
 endif
 
-function! TmuxGetWindowList()
+function! s:TmuxGetWindowList()
   " Return a list of tmux wndows in the current session.
   let l:cmd = 'tmux list-windows -F "#{pane_id} #{window_name}" 2>&1'
   return systemlist(l:cmd)
 endfunction
 
-function! TmuxWindowListToDict(window_list)
-  " Convert the output of TmuxGetWindowList() to a dict mapping window numbers
+function! s:TmuxWindowListToDict(window_list)
+  " Convert the output of s:TmuxGetWindowList() to a dict mapping window numbers
   " to window titles.
   " We start with lines like:
   "   %0 vim foo.txt
@@ -56,9 +56,9 @@ function! TmuxWindowListToDict(window_list)
   return l:dict
 endfunction
 
-function! TmuxGetWindowName()
+function! s:TmuxGetWindowName()
   " Get the name of the current window.
-  let l:window_names = TmuxWindowListToDict(TmuxGetWindowList())
+  let l:window_names = s:TmuxWindowListToDict(s:TmuxGetWindowList())
   for [l:id, l:name] in items(l:window_names)
     if l:id == $TMUX_PANE
       return l:name
@@ -68,7 +68,7 @@ function! TmuxGetWindowName()
   return 'Unable to find window name'
 endfunction
 
-function! TmuxSetWindowName(name, redraw, ignore_timeout)
+function! s:TmuxSetWindowName(name, redraw, ignore_timeout)
   " Set the name of the current window if necessary.
   " Args:
   "   name: the new name of the window
@@ -85,7 +85,7 @@ function! TmuxSetWindowName(name, redraw, ignore_timeout)
     let s:last_update_timestamp = s:current_timestamp
   endif
 
-  let s:current_window_name = TmuxGetWindowName()
+  let s:current_window_name = s:TmuxGetWindowName()
   if s:current_window_name == a:name
     return
   endif
@@ -100,7 +100,7 @@ function! TmuxSetWindowName(name, redraw, ignore_timeout)
   endif
 endfunction
 
-function! TmuxFormatFilenameForDisplay()
+function! s:TmuxFormatFilenameForDisplay()
   " Format the filename for display, adding extra information.
   let l:display_name = expand('%:t')
   if l:display_name ==# ''
@@ -126,17 +126,18 @@ function! TmuxFormatFilenameForDisplay()
     \         ' ')
 endfunction
 
-function! TmuxSetWindowNameToFilename(ignore_timeout)
+function! s:TmuxSetWindowNameToFilename(ignore_timeout)
   " Set the window name to the name of the current file plus additional info.
   if g:TmuxGetWindowName_Enabled == 1
-    call TmuxSetWindowName(TmuxFormatFilenameForDisplay(), 0, a:ignore_timeout)
+    call s:TmuxSetWindowName(
+        \ s:TmuxFormatFilenameForDisplay(), 0, a:ignore_timeout)
   endif
 endfunction
 
-function! TmuxSetWindowNameCalledByTimer(timer)
+function! s:TmuxSetWindowNameCalledByTimer(timer)
   " Set the window name to the name of the current file plus additional info.
   if g:TmuxGetWindowName_Enabled == 1
-    call TmuxSetWindowName(TmuxFormatFilenameForDisplay(), 1, 0)
+    call s:TmuxSetWindowName(s:TmuxFormatFilenameForDisplay(), 1, 0)
   endif
 endfunction
 
@@ -149,22 +150,23 @@ function! YesTmuxSetWindowName()
 endfunction
 
 " Restore the original window name when leaving.
-let s:orig_window_name = TmuxGetWindowName()
+let s:orig_window_name = s:TmuxGetWindowName()
 augroup TmuxSetWindowName
   autocmd!
-  autocmd VimLeavePre * call TmuxSetWindowName(s:orig_window_name, 0, 1)
+  autocmd VimLeavePre * call s:TmuxSetWindowName(s:orig_window_name, 0, 1)
   " Set the tmux window name when moving between vim buffers (moving between
   " windows implies moving between buffers), writing a file, or editing a
   " different file.
-  autocmd BufReadPost,BufEnter,BufWritePost * call TmuxSetWindowNameToFilename(1)
+  autocmd BufReadPost,BufEnter,BufWritePost *
+      \ call s:TmuxSetWindowNameToFilename(1)
   " Set the tmux window name when entering or leaving insert mode so it's set
   " after suspending.
-  autocmd InsertEnter,InsertLeave * call TmuxSetWindowNameToFilename(0)
+  autocmd InsertEnter,InsertLeave * call s:TmuxSetWindowNameToFilename(0)
 augroup END
 
 " Set the window name periodically so it is set correctly after suspending.
 if has('timers') && g:TmuxSetWindowName_EnableTimers == 1
   call timer_start(g:TmuxSetWindowName_RefreshIntervalMilliseconds,
-                 \ 'TmuxSetWindowNameCalledByTimer',
+                 \ 's:TmuxSetWindowNameCalledByTimer',
                  \ {'repeat': -1})
 endif
