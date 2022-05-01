@@ -23,7 +23,7 @@ function! GetGooglePythonIndent(lnum)
         \ . " =~ '\\(Comment\\|String\\)$'")
   if par_line > 0
     call cursor(par_line, 1)
-    if par_col != col("$") - 1
+    if par_col != col('$') - 1
       return par_col
     endif
   endif
@@ -33,5 +33,5 @@ function! GetGooglePythonIndent(lnum)
 
 endfunction
 
-let pyindent_nested_paren="&sw*2"
-let pyindent_open_paren="&sw*2"
+let pyindent_nested_paren='&sw*2'
+let pyindent_open_paren='&sw*2'
