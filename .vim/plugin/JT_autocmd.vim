@@ -1,4 +1,4 @@
-if !has("autocmd")
+if !has('autocmd')
  finish
 endif
 " Taken from Bram Moolenar's example vimrc:
@@ -39,7 +39,7 @@ autocmd FileType text setlocal formatoptions+=nq
 autocmd FileType go setlocal foldmethod=syntax textwidth=120 colorcolumn=
 " Autoformatting Go code on write causes folds to be closed; this autocmd opens
 " the fold under the cursor.
-if has("eval")
+if has('eval')
   autocmd BufWritePost *.go call OpenFoldUnderCursor()
 endif
 " Disable Airline mixed indent check for golang-coverage-pre-commit_test.go.
@@ -47,7 +47,7 @@ autocmd BufRead golang-coverage-pre-commit_test.go
   \ let b:airline_whitespace_checks = ['trailing', 'long', 'conflicts']
 
 " Turn on spelling if available.
-if has("spell")
+if has('spell')
   set spell
   " help and some other files have too many distracting spelling errors.
   autocmd FileType help setlocal nospell
@@ -92,14 +92,14 @@ autocmd BufReadPost,BufNewFile */.config/yapf/style set filetype=dosini
 autocmd BufWritePost *.dot call RunDot("%")
 autocmd FileType dot setlocal textwidth=300 foldmethod=indent
 
-if PluginLoaded("vim-codefmt")
+if PluginLoaded('vim-codefmt')
   Glaive codefmt plugin[mappings]
   augroup autoformat_settings
     autocmd FileType markdown AutoFormatBuffer prettier
   augroup END
 endif
 
-if PluginLoaded("tagbar")
+if PluginLoaded('tagbar')
   " Open tagbar when starting vim with a supported file type.
   autocmd VimEnter * nested :call tagbar#autoopen(1)
   " Open tagbar when opening a supported file type.

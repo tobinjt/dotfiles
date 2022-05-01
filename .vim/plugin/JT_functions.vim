@@ -55,9 +55,9 @@ function! UpdateSpellFiles()
 endfunction
 
 " Functions to do magic things when you start editing a new file.
-function! JT_populate_sh() "
+function! JT_populate_sh()
   " Don't execute this function a second time.
-  if ( line ( "$" ) != 1 || getline ( "$" ) != "" )
+  if (line('$') != 1 || getline('$') != '')
     return
   endif
   insert
@@ -66,14 +66,14 @@ function! JT_populate_sh() "
 set -e -f -u -o pipefail
 
 .
-  call cursor ( line ( "$" ), 0 )
+  call cursor(line('$'), 0)
   set filetype=sh
 endfunction
 
 " Create a directory if it does not exist.
 function! JT_safe_mkdir(dir)
   if !isdirectory(a:dir)
-    call mkdir(a:dir, "p", 0700)
+    call mkdir(a:dir, 'p', 0700)
   endif
 endfunction
 
@@ -86,7 +86,7 @@ function! RunDot(file)
 endfunction
 
 function! OpenFoldUnderCursor()
-  if foldlevel(line(".")) > 0
+  if foldlevel(line('.')) > 0
     foldopen!
   endif
 endfunction

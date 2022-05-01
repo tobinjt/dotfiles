@@ -1,5 +1,5 @@
-if has("eval")
-  if ! exists("g:MarkdownMinimumHeaderFoldingLevel")
+if has('eval')
+  if ! exists('g:MarkdownMinimumHeaderFoldingLevel')
     let g:MarkdownMinimumHeaderFoldingLevel = 2
   endif
   function! MarkdownFolding(lnum)

@@ -29,7 +29,7 @@ set lazyredraw
 " Show as much of the last line on screen as possible.
 set display+=lastline
 " Change the xterm title, but not under tmux.
-if has('title') && ! exists("$TMUX")
+if has('title') && ! exists('$TMUX')
   set title
 endif
 
@@ -64,20 +64,20 @@ if exists('+wildignorecase')
 endif
 
 " Use pipes instead of tempfiles when possible.  system() ignores this setting.
-if has("filterpipe")
+if has('filterpipe')
   set noshelltemp
 endif
 
 " Move swapfiles to ~/tmp/vim.
-if has("eval")
+if has('eval')
   " Base directory.
-  let _temp_base = expand("~/tmp/vim")
+  let _temp_base = expand('~/tmp/vim')
 
   " Move swapfiles.
   let _swap_dir = _temp_base . '/swap'
   call JT_safe_mkdir(_swap_dir)
   " Adding '//' means create the filename from the full path to prevent clashes.
-  let &directory = _swap_dir . "//," . &directory
+  let &directory = _swap_dir . '//,' . &directory
   " Don't ever put swap files in the file's directory: it's bad on non-local
   " filesystems.
   set directory-=.
@@ -91,10 +91,10 @@ if has("eval")
   let $TMPDIR = _temp_dir
 
   " Save undo history per file.
-  if has("persistent_undo")
+  if has('persistent_undo')
     let _undo_dir = _temp_base . '/undo'
     call JT_safe_mkdir(_undo_dir)
-    let &undodir = _undo_dir . "," . &undodir
+    let &undodir = _undo_dir . ',' . &undodir
     set undodir-=.
     set undofile
   endif
@@ -173,7 +173,7 @@ if exists('+spellfile')
   set spellfile+=~/.vim/spell/en.utf-8.add
 endif
 
-if has("user_commands") && !exists(":DiffOrig")
+if has('user_commands') && !exists(':DiffOrig')
   " Taken from :help :DiffOrig - this should diff the current buffer against
   " the file on disk.
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis

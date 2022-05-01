@@ -1,4 +1,4 @@
-if !has("eval")
+if !has('eval')
   finish
 endif
 
@@ -53,7 +53,7 @@ let readline_has_bash = 1
 
 " Folding in various languages.
 let tex_fold_enabled=1
-let vimsyn_folding = "f"
+let vimsyn_folding = 'f'
 let javaScript_fold = 1
 
 " Settings for syntax/2html.vim.

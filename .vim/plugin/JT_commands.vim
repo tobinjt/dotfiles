@@ -1,4 +1,4 @@
-if !has("user-commands")
+if !has('user-commands')
   finish
 endif
 command! WordGrep call Grep('\<' . expand('<cword>') . '\>')
