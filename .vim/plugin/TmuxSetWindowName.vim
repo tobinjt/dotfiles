@@ -29,7 +29,7 @@ endif
 function! TmuxGetWindowList()
   " Return a list of tmux wndows in the current session.
   let l:cmd = 'tmux list-windows -F "#{pane_id} #{window_name}" 2>&1'
-  return split(system(l:cmd), '\n')
+  return systemlist(l:cmd)
 endfunction
 
 function! TmuxWindowListToDict(window_list)
