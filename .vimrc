@@ -42,8 +42,8 @@ else
 endif
 " --- Configure markdown checkers.
 " Use markdownlint for the mdl linter.
-let g:syntastic_markdown_mdl_exec = "markdownlint"
-let g:syntastic_markdown_mdl_args = ""
+let g:syntastic_markdown_mdl_exec = 'markdownlint'
+let g:syntastic_markdown_mdl_args = ''
 " --- Configure Python checkers.
 " Make sure that python3 is used so it can parse type annotations.
 let g:syntastic_python_python_exec = 'python3'
@@ -106,7 +106,7 @@ let g:tagbar_type_go = {
 " vim-go.
 " Install the necessary tools with; $ install-extra-tools-for-vim
 " Use goimports, it should fix up import lines automatically.
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 " More highlighting.
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_chan_whitespace_error = 1
@@ -186,7 +186,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'preservim/nerdcommenter'
 " Check that ctags is available before loading tagbar.  We don't care about the
 " output of the command, just the exit code.
-silent call system("ctags --version")
+silent call system('ctags --version')
 if !v:shell_error
   Plug 'preservim/tagbar'
 endif
@@ -208,7 +208,7 @@ let g:johntobin_load_ale_plugin = 1
 
 " This needs to be done before loading plugins, so that runtimepath can be
 " extended first.
-if has("eval")
+if has('eval')
   let b:local_filename=expand('~/.vim/local.vim')
   if filereadable(b:local_filename)
     exec 'source ' . b:local_filename
@@ -216,7 +216,7 @@ if has("eval")
 endif
 
 " Load vim-codefmt if not already loaded.
-if executable("prettier") && !PluginLoaded("vim-codefmt")
+if executable('prettier') && !PluginLoaded('vim-codefmt')
   Plug 'google/vim-maktaba'
   Plug 'google/vim-codefmt'
   Plug 'google/vim-glaive'
@@ -229,7 +229,7 @@ endif
 " Finish vim-plug setup.
 call plug#end()
 
-if PluginLoaded("vim-glaive")
+if PluginLoaded('vim-glaive')
   call glaive#Install()
 endif
 
