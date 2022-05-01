@@ -103,14 +103,14 @@ endfunction
 function! TmuxFormatFilenameForDisplay()
   " Format the filename for display, adding extra information.
   let l:display_name = expand('%:t')
-  if l:display_name == ''
+  if l:display_name ==# ''
     let l:display_name = '[No Name]'
   endif
 
   let l:additional_info_list =
-    \ [&readonly           ? 'RO'   : '',
-    \  &filetype == 'help' ? 'Help' : '',
-    \  &modified           ? '+'    : '',
+    \ [&readonly            ? 'RO'   : '',
+    \  &filetype ==# 'help' ? 'Help' : '',
+    \  &modified            ? '+'    : '',
     \ ]
   let l:additional_info =
     \ join(map(filter(l:additional_info_list,

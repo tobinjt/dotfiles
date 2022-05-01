@@ -15,14 +15,14 @@ function! Grep(pattern)
 endfunction
 function! ReGrep()
   " This can't work if there wasn't a previous search.
-  if s:last_search == ''
+  if s:last_search ==# ''
     return
   endif
   let l:pattern = '/' . escape(s:last_search, '/') . '/j'
   let l:path = expand('%:h')
   " Handle there not being a filename; we don't want to start searching
   " from /.
-  if l:path == ''
+  if l:path ==# ''
     let l:path = getcwd()
   endif
   let l:path = l:path . '/**'
@@ -57,7 +57,7 @@ endfunction
 " Functions to do magic things when you start editing a new file.
 function! JT_populate_sh()
   " Don't execute this function a second time.
-  if (line('$') != 1 || getline('$') != '')
+  if (line('$') != 1 || getline('$') !=# '')
     return
   endif
   insert
