@@ -150,14 +150,18 @@ endfunction
 
 " Restore the original window name when leaving.
 let s:orig_window_name = TmuxGetWindowName()
-autocmd VimLeavePre * call TmuxSetWindowName(s:orig_window_name, 0, 1)
-" Set the tmux window name when moving between vim buffers (moving between
-" windows implies moving between buffers), writing a file, or editing a
-" different file.
-autocmd BufReadPost,BufEnter,BufWritePost * call TmuxSetWindowNameToFilename(1)
-" Set the tmux window name when entering or leaving insert mode so it's set
-" after suspending.
-autocmd InsertEnter,InsertLeave * call TmuxSetWindowNameToFilename(0)
+augroup TmuxSetWindowName
+  autocmd!
+  autocmd VimLeavePre * call TmuxSetWindowName(s:orig_window_name, 0, 1)
+  " Set the tmux window name when moving between vim buffers (moving between
+  " windows implies moving between buffers), writing a file, or editing a
+  " different file.
+  autocmd BufReadPost,BufEnter,BufWritePost * call TmuxSetWindowNameToFilename(1)
+  " Set the tmux window name when entering or leaving insert mode so it's set
+  " after suspending.
+  autocmd InsertEnter,InsertLeave * call TmuxSetWindowNameToFilename(0)
+augroup END
+
 " Set the window name periodically so it is set correctly after suspending.
 if has('timers') && g:TmuxSetWindowName_EnableTimers == 1
   call timer_start(g:TmuxSetWindowName_RefreshIntervalMilliseconds,

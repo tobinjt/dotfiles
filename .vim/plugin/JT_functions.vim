@@ -1,4 +1,4 @@
-if !has("eval")
+if !has('eval')
  finish
 endif
 

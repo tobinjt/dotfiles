@@ -1,6 +1,12 @@
 if !has('autocmd')
  finish
 endif
+
+" Put most autocmds in my own custom group, as recommended by the Google Vim
+" style guide.
+augroup johntobin
+autocmd!
+
 " Taken from Bram Moolenar's example vimrc:
 " Jump to the previous position in the file.
 autocmd BufReadPost *
@@ -58,22 +64,6 @@ if has('spell')
   autocmd FileType html,text,gitcommit syntax spell toplevel
 endif
 
-" Highlight the first three characters over the line length limit.  Clearing the
-" highlight group first makes the background the same colour, so we only see
-" this once we actually exceed the limit.
-"
-" (Note: we have to use autocommands for the highlighting since :colorscheme can
-" overwrite this highlighting, and :colorscheme apparently gets applied after
-" the .vimrc is done sourcing.)
-if exists('+colorcolumn')
-  set colorcolumn=+1,+2,+3
-  augroup color_tweak
-    autocmd!
-    autocmd ColorScheme * highlight clear ColorColumn
-    autocmd ColorScheme * highlight ColorColumn guifg=red ctermfg=red gui=bold
-  augroup END
-endif
-
 " Set filetype=sshconfig for all ssh config snippets.
 autocmd BufReadPost,BufNewFile */.ssh/config* set filetype=sshconfig
 " Set a wide textwidth for authorized_keys.
@@ -94,9 +84,7 @@ autocmd FileType dot setlocal textwidth=300 foldmethod=indent
 
 if PluginLoaded('vim-codefmt')
   Glaive codefmt plugin[mappings]
-  augroup autoformat_settings
-    autocmd FileType markdown AutoFormatBuffer prettier
-  augroup END
+  autocmd FileType markdown AutoFormatBuffer prettier
 endif
 
 if PluginLoaded('tagbar')
@@ -104,4 +92,21 @@ if PluginLoaded('tagbar')
   autocmd VimEnter * nested :call tagbar#autoopen(1)
   " Open tagbar when opening a supported file type.
   autocmd FileType * nested :call tagbar#autoopen(0)
+endif
+augroup END
+
+" Highlight the first three characters over the line length limit.  Clearing the
+" highlight group first makes the background the same colour, so we only see
+" this once we actually exceed the limit.
+"
+" (Note: we have to use autocommands for the highlighting since :colorscheme can
+" overwrite this highlighting, and :colorscheme apparently gets applied after
+" the .vimrc is done sourcing.)
+if exists('+colorcolumn')
+  set colorcolumn=+1,+2,+3
+  augroup color_tweak
+    autocmd!
+    autocmd ColorScheme * highlight clear ColorColumn
+    autocmd ColorScheme * highlight ColorColumn guifg=red ctermfg=red gui=bold
+  augroup END
 endif
