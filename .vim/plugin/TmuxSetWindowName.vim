@@ -17,7 +17,6 @@ if exists('g:loaded_TmuxSetWindowName')
   finish
 endif
 let g:loaded_TmuxSetWindowName = 'v2'
-let g:TmuxSetWindowName_EnableTimers = 0
 let s:last_update_timestamp = 0
 if ! exists('g:TmuxSetWindowName_RefreshIntervalMilliseconds')
   let g:TmuxSetWindowName_RefreshIntervalMilliseconds = 5000  " 5 seconds.
@@ -134,13 +133,6 @@ function! s:TmuxSetWindowNameToFilename(ignore_timeout)
   endif
 endfunction
 
-function! s:TmuxSetWindowNameCalledByTimer(timer)
-  " Set the window name to the name of the current file plus additional info.
-  if g:TmuxGetWindowName_Enabled == 1
-    call s:TmuxSetWindowName(s:TmuxFormatFilenameForDisplay(), 1, 0)
-  endif
-endfunction
-
 function! NoTmuxSetWindowName()
   let g:TmuxGetWindowName_Enabled = 0
 endfunction
@@ -163,10 +155,3 @@ augroup TmuxSetWindowName
   " after suspending.
   autocmd InsertEnter,InsertLeave * call s:TmuxSetWindowNameToFilename(0)
 augroup END
-
-" Set the window name periodically so it is set correctly after suspending.
-if has('timers') && g:TmuxSetWindowName_EnableTimers == 1
-  call timer_start(g:TmuxSetWindowName_RefreshIntervalMilliseconds,
-                 \ 's:TmuxSetWindowNameCalledByTimer',
-                 \ {'repeat': -1})
-endif
