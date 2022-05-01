@@ -18,7 +18,7 @@ function! GetGooglePythonIndent(lnum)
   "       100, 200, 300, 400)
   call cursor(a:lnum, 1)
   let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
-        \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
+        \ "line('.') < " . (a:lnum - s:maxoff) . ' ? dummy :'
         \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
         \ . " =~ '\\(Comment\\|String\\)$'")
   if par_line > 0
