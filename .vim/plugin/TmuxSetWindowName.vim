@@ -68,9 +68,9 @@ function! s:TmuxSetWindowName(name, ignore_timeout)
   " Set the name of the current window if necessary.
   " Args:
   "   name: the new name of the window
-  "   ignore_timeout: if ignore_timeout == 1, update even if the timeout hasn't
-  "   expired.
-  if a:ignore_timeout == 0
+  "   ignore_timeout: if ignore_timeout is true, update even if the timeout
+  "                   hasn't expired.
+  if a:ignore_timeout is v:false
     let l:current_timestamp = localtime()
     " Convert milliseconds to seconds.
     let l:timeout = g:TmuxSetWindowName_RefreshIntervalMilliseconds / 1000
@@ -127,13 +127,13 @@ endfunction
 let s:orig_window_name = s:TmuxGetWindowName()
 augroup TmuxSetWindowName
   autocmd!
-  autocmd VimLeavePre * call s:TmuxSetWindowName(s:orig_window_name, 1)
+  autocmd VimLeavePre * call s:TmuxSetWindowName(s:orig_window_name, v:true)
   " Set the tmux window name when moving between vim buffers (moving between
   " windows implies moving between buffers), writing a file, or editing a
   " different file.
   autocmd BufReadPost,BufEnter,BufWritePost *
-      \ call s:TmuxSetWindowNameToFilename(1)
+      \ call s:TmuxSetWindowNameToFilename(v:true)
   " Set the tmux window name when entering or leaving insert mode so it's set
   " after suspending.
-  autocmd InsertEnter,InsertLeave * call s:TmuxSetWindowNameToFilename(0)
+  autocmd InsertEnter,InsertLeave * call s:TmuxSetWindowNameToFilename(v:false)
 augroup END
