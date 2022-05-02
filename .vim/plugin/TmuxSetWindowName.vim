@@ -44,7 +44,7 @@ function! s:TmuxWindowListToDict(window_list)
   for l:line in a:window_list
     let l:matches = matchlist(l:line, '^\(%\d\+\) \(.*\)$')
     if empty(l:matches)
-      echomsg 'TmuxWindowListToDict: Unparsed line: "' . line . '"'
+      echomsg 'TmuxWindowListToDict: Unparsed line: "' . l:line . '"'
     else
       let l:dict[l:matches[1]] = l:matches[2]
     endif
@@ -72,17 +72,17 @@ function! s:TmuxSetWindowName(name, redraw, ignore_timeout)
   "   ignore_timeout: if ignore_timeout == 1, update even if the timeout hasn't
   "   expired.
   if a:ignore_timeout == 0
-    let s:current_timestamp = localtime()
+    let l:current_timestamp = localtime()
     " Convert milliseconds to seconds.
-    let s:timeout = g:TmuxSetWindowName_RefreshIntervalMilliseconds / 1000
-    if s:last_update_timestamp + s:timeout > s:current_timestamp
+    let l:timeout = g:TmuxSetWindowName_RefreshIntervalMilliseconds / 1000
+    if s:last_update_timestamp + l:timeout > l:current_timestamp
       return
     endif
-    let s:last_update_timestamp = s:current_timestamp
+    let s:last_update_timestamp = l:current_timestamp
   endif
 
-  let s:current_window_name = s:TmuxGetWindowName()
-  if s:current_window_name == a:name
+  let l:current_window_name = s:TmuxGetWindowName()
+  if l:current_window_name == a:name
     return
   endif
 
