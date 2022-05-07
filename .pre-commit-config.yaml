@@ -18,3 +18,8 @@ repos:
     language: system
     types: [shell]
     entry: shellcheck
+  - id: vint
+    name: Run `vint` if it's installed
+    language: system
+    types: [vim]
+    entry: run-if-exists vint
