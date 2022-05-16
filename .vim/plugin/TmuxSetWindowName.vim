@@ -92,13 +92,8 @@ function! s:TmuxSetWindowName(name, ignore_timeout)
    \            . ' 2>&1')
 endfunction
 
-function! s:TmuxFormatFilenameForDisplay()
+function! s:TmuxFormatFilenameForDisplay(display_name)
   " Format the filename for display, adding extra information.
-  let l:display_name = expand('%:t')
-  if l:display_name ==# ''
-    let l:display_name = '[No Name]'
-  endif
-
   let l:additional_info_list =
     \ [&readonly            ? 'RO'   : '',
     \  &filetype ==# 'help' ? 'Help' : '',
@@ -112,7 +107,7 @@ function! s:TmuxFormatFilenameForDisplay()
 
   return join(filter(['vim',
     \                 l:additional_info,
-    \                 l:display_name,
+    \                 a:display_name,
     \                ],
     \                'strlen(v:val) > 0'),
     \         ' ')
@@ -120,7 +115,13 @@ endfunction
 
 function! s:TmuxSetWindowNameToFilename(ignore_timeout)
   " Set the window name to the name of the current file plus additional info.
-  call s:TmuxSetWindowName(s:TmuxFormatFilenameForDisplay(), a:ignore_timeout)
+  let l:display_name = expand('%:t')
+  if l:display_name ==# ''
+    return
+  endif
+
+  call s:TmuxSetWindowName(
+      \ s:TmuxFormatFilenameForDisplay(l:display_name), a:ignore_timeout)
 endfunction
 
 " Restore the original window name when leaving.
