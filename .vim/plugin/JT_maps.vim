@@ -8,3 +8,4 @@ onoremap £ #
 vnoremap £ #
 
 cnoremap cwindow botright cwindow
+cnoremap copen botright copen
