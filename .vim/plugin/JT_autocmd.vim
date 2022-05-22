@@ -34,6 +34,10 @@ autocmd FileType markdown setlocal comments=n:>
 " Enable simple folding.
 autocmd FileType markdown setlocal foldmethod=expr
   \ foldexpr=MarkdownFolding(v:lnum)
+" Set formatlistpat to my setting, overwriting the setting from
+" vim82/ftplugin/markdown.vim.
+autocmd FileType markdown call JT_set_formatlistpat()
+
 
 " tmux(1)
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux

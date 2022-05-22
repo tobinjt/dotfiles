@@ -54,6 +54,12 @@ function! JT_safe_mkdir(dir)
   endif
 endfunction
 
+" Set formatlistpat to my setting.  Relies on JT_settings.vim setting
+" g:johntobin_formatlistpat.
+  function! JT_set_formatlistpat()
+    let &formatlistpat = g:johntobin_formatlistpat
+  endfunction
+
 " Run dot(1) and display errors on failure.
 function! RunDot(file)
   let l:output = system('dot -O -Tpdf ' . shellescape(expand(a:file)))

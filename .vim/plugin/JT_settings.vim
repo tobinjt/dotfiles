@@ -120,6 +120,10 @@ set expandtab tabstop=2 shiftwidth=2
 "  * blah blah
 "  2. blah blah
 set formatlistpat=^\\s*\\([-*]\\\|\\d\\+\\.\\)\\s*
+if has('eval')
+  " Save this so it can be restored later.
+  let g:johntobin_formatlistpat = &formatlistpat
+endif
 
 " Movement through the file.
 " Proper backspace, that deletes previously entered text.
