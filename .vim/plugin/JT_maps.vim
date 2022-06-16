@@ -9,3 +9,6 @@ vnoremap £ #
 
 cnoremap cwindow botright cwindow
 cnoremap copen botright copen
+
+" Remap ^W-F to open the file under the cursor in a vertical split.
+nnoremap <C-W>F <C-W>vgF
