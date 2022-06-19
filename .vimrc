@@ -103,6 +103,12 @@ let g:tagbar_type_go = {
   \ 'ctagsargs' : '-sort -silent'
 \ }
 
+" Ultisnips.
+" Use Ctrl-n to trigger Ultisnips.
+" let g:UltiSnipsExpandTrigger='<C-n>'
+" UltiSnipsEdit splits the window rather than replacing the current window.
+let g:UltiSnipsEditSplit='vertical'
+
 " vim-go.
 " Install the necessary tools with; $ install-extra-tools-for-vim
 " Use goimports, it should fix up import lines automatically.
@@ -179,6 +185,7 @@ Plug 'cespare/vim-toml'
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'google/yapf', { 'rtp': 'plugins/vim' }
+Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
 " Puts marks in the sign column.
 Plug 'kshenoy/vim-signature'
@@ -191,6 +198,7 @@ if !v:shell_error
   Plug 'preservim/tagbar'
 endif
 Plug 'rust-lang/rust.vim'
+Plug 'SirVer/ultisnips'
 " Better folding of Python.
 Plug 'tmhedberg/SimpylFold'
 Plug 'tmux-plugins/vim-tmux-focus-events'
