@@ -57,6 +57,8 @@ let g:syntastic_php_phplint_args .= ' --no-ascii-ext-check'
 let g:syntastic_php_phpstan_args = []
 
 " tagbar
+" Put the tagbar window in a vertical split on the left for visibility.
+let g:tagbar_position = 'leftabove vertical'
 let g:tagbar_show_data_type = 1
 " Show line numbers for easier navigation.
 let g:tagbar_show_linenumbers = -1
