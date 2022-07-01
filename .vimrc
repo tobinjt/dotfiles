@@ -56,55 +56,6 @@ let g:syntastic_php_phplint_args .= ' --no-ascii-ext-check'
 " Use the level defined in phpstan.neon.
 let g:syntastic_php_phpstan_args = []
 
-" tagbar
-" Put the tagbar window in a vertical split on the left for visibility.
-let g:tagbar_position = 'leftabove vertical'
-let g:tagbar_show_data_type = 1
-" Show line numbers for easier navigation.
-let g:tagbar_show_linenumbers = -1
-let g:tagbar_show_tag_linenumbers = 1
-" Highlight the current tag in the tagbar; updates after several seconds without
-" movement.
-let g:tagbar_highlight_follow_insert = 1
-" Configuration for CSS.
-let g:tagbar_type_css = {
-\ 'ctagstype' : 'Css',
-  \ 'kinds'   : [
-    \ 'c:classes',
-    \ 's:selectors',
-    \ 'i:identities'
-  \ ]
-\ }
-" Configuration for Golang; the gotags binary is installed by vim-go.
-" https://github.com/jstemmer/gotags
-let g:tagbar_type_go = {
-  \ 'ctagstype' : 'go',
-  \ 'kinds'     : [
-    \ 'p:package',
-    \ 'i:imports:1',
-    \ 'c:constants',
-    \ 'v:variables',
-    \ 't:types',
-    \ 'n:interfaces',
-    \ 'w:fields',
-    \ 'e:embedded',
-    \ 'm:methods',
-    \ 'r:constructor',
-    \ 'f:functions'
-  \ ],
-  \ 'sro' : '.',
-  \ 'kind2scope' : {
-    \ 't' : 'ctype',
-    \ 'n' : 'ntype'
-  \ },
-  \ 'scope2kind' : {
-    \ 'ctype' : 't',
-    \ 'ntype' : 'n'
-  \ },
-  \ 'ctagsbin'  : 'gotags',
-  \ 'ctagsargs' : '-sort -silent'
-\ }
-
 " Ultisnips.
 " Use Ctrl-n to trigger Ultisnips.
 " let g:UltiSnipsExpandTrigger='<C-n>'
@@ -193,12 +144,6 @@ Plug 'junegunn/vim-plug'
 Plug 'kshenoy/vim-signature'
 Plug 'lifepillar/vim-solarized8'
 Plug 'preservim/nerdcommenter'
-" Check that ctags is available before loading tagbar.  We don't care about the
-" output of the command, just the exit code.
-silent call system('ctags --version')
-if !v:shell_error
-  Plug 'preservim/tagbar'
-endif
 Plug 'rust-lang/rust.vim'
 Plug 'SirVer/ultisnips'
 " Better folding of Python.

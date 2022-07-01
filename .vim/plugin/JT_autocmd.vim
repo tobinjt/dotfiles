@@ -88,12 +88,6 @@ if PluginLoaded('vim-codefmt')
   autocmd FileType markdown AutoFormatBuffer prettier
 endif
 
-if PluginLoaded('tagbar')
-  " Open tagbar when starting vim with a supported file type.
-  autocmd VimEnter * nested :call tagbar#autoopen(1)
-  " Open tagbar when opening a supported file type.
-  autocmd FileType * nested :call tagbar#autoopen(0)
-endif
 augroup END
 
 " Highlight the first three characters over the line length limit.  Clearing the
