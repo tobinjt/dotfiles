@@ -173,7 +173,12 @@ set smarttab
 if has('multi_lang')
   language en_IE.UTF-8
 endif
+if exists('+spelloptions')
+  " In CamelCase words recognise each sub-word.
+  set spelloptions+=camel
+endif
 if exists('+spellfile')
+  " My word to recognise will be added to this file.
   set spellfile+=~/.vim/spell/en.utf-8.add
 endif
 
