@@ -113,7 +113,9 @@ let g:vim_markdown_folding_disabled = 1
 "   $ update-dotfiles-and-bin
 " To remove a submodule:
 "   $ git rm DESTINATION
-"   $ git rm .vim/bundle/vim-plug
+"   E.g. git rm .vim/bundle/vim-plug
+"   $ rm -rf .git/modules/DESTINATION
+"   E.g. rm -rf .git/modules/.vim/bundle/vim-plug
 "   Remove any config for the plugin.
 "   Remove the "Plug 'foo/bar'" line below and commit the changes.
 "   $ update-dotfiles-and-bin
@@ -133,7 +135,7 @@ endfunction
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
-Plug 'aliou/bats.vim'
+Plug 'tobinjt/bats.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'cespare/vim-toml'
 Plug 'ervandew/supertab'

@@ -81,3 +81,7 @@
 [submodule ".vim/bundle/vim-snippets"]
 	path = .vim/bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
+[submodule ".vim/bundle/bats.vim"]
+	path = .vim/bundle/bats.vim
+	url = https://github.com/tobinjt/bats.vim.git
+	branch = indentation
