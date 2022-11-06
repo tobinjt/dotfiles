@@ -15,10 +15,6 @@ let g:netrw_dirhistmax = 0
 " Add spaces between delimiters and line contents.
 let g:NERDSpaceDelims = 1
 
-" rust
-" Autoformat on save.
-let g:rustfmt_autosave = 1
-
 " Syntastic.
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
@@ -147,7 +143,6 @@ Plug 'junegunn/vim-plug'
 Plug 'kshenoy/vim-signature'
 Plug 'lifepillar/vim-solarized8'
 Plug 'preservim/nerdcommenter'
-Plug 'rust-lang/rust.vim'
 Plug 'SirVer/ultisnips'
 " Better folding of Python.
 Plug 'tmhedberg/SimpylFold'

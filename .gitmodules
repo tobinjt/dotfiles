@@ -56,9 +56,6 @@
 [submodule ".vim/bundle/vim-glaive"]
 	path = .vim/bundle/vim-glaive
 	url = https://github.com/google/vim-glaive
-[submodule ".vim/bundle/rust"]
-	path = .vim/bundle/rust.vim
-	url = https://github.com/rust-lang/rust.vim
 [submodule ".zsh/zsh-syntax-highlighting"]
 	path = .zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
