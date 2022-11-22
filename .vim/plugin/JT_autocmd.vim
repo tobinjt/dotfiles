@@ -20,7 +20,8 @@ autocmd FileType make setlocal shiftwidth=8 tabstop=8
 autocmd FileType c,cpp setlocal foldmethod=syntax
 
 autocmd BufNewFile,BufRead *.json setlocal filetype=javascript
-autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" Wider textwidth for compatibility with black.
+autocmd FileType python setlocal textwidth=88
 " Javascript syntax highlighting messes with the way folds are displayed and I
 " don't like it, so set it back to the default.
 autocmd FileType javascript,php setlocal foldtext=foldtext()
