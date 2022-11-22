@@ -119,7 +119,7 @@ let g:vim_markdown_folding_disabled = 1
 "   clean up.
 " To use a branch other than master:
 "   $ git submodule set-branch --branch BRANCH SUBMODULE_PATH
-"   $ git submodule set-branch --branch main .vim/bundle/yapf
+"   $ git submodule set-branch --branch main .vim/bundle/vim-plug
 "   $ git diff # Should show a branch line added in .gitmodules
 "   # The branch in the submodule will look like `(HEAD detached at a53e340)`
 "   # but it appears to work properly.
@@ -136,7 +136,6 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'cespare/vim-toml'
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
-Plug 'google/yapf', { 'rtp': 'plugins/vim' }
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
 " Puts marks in the sign column.
