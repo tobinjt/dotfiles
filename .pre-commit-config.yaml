@@ -1,25 +1,25 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.3.0
-  hooks:
-  - id: check-case-conflict
-  - id: check-executables-have-shebangs
-  - id: check-merge-conflict
-  - id: check-symlinks
-  - id: check-vcs-permalinks
-  - id: end-of-file-fixer
-  - id: trailing-whitespace
-- repo: local
-  hooks:
-  - id: shellcheck
-    name: Run `shellcheck`
-    language: system
-    types: [shell]
-    entry: shellcheck
-  - id: vint
-    name: Run `vint` if it's installed
-    language: system
-    types: [vim]
-    entry: run-if-exists vint
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-vcs-permalinks
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: shellcheck
+        name: Run `shellcheck`
+        language: system
+        types: [shell]
+        entry: shellcheck
+      - id: vint
+        name: Run `vint` if it's installed
+        language: system
+        types: [vim]
+        entry: run-if-exists vint
