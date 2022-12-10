@@ -142,7 +142,9 @@ Plug 'junegunn/vim-plug'
 Plug 'kshenoy/vim-signature'
 Plug 'lifepillar/vim-solarized8'
 Plug 'preservim/nerdcommenter'
-Plug 'SirVer/ultisnips'
+if has('python3')
+  Plug 'SirVer/ultisnips'
+endif
 " Better folding of Python.
 Plug 'tmhedberg/SimpylFold'
 Plug 'tmux-plugins/vim-tmux-focus-events'
