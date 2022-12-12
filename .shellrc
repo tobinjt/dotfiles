@@ -73,6 +73,11 @@ LESS="iMdRW${LESS:-}"
 PYTHONDONTWRITEBYTECODE="No .pyc files please"
 # Set breakpoint() in Python to call pudb; untested.
 PYTHONBREAKPOINT="pudb.set_trace"
+# Removing old versions of vim breaks running vim sessions, and sometimes the
+# autocmds break badly enough that modified files can't be saved.  Disable
+# removal of old versions of vim.
+# Similarly for tmux.
+HOMEBREW_NO_CLEANUP_FORMULAE=tmux,vim
 # Don't install from source if fetching the bottle fails.
 HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 # Sort filenames as I expect them to be sorted, regardless of locale.
@@ -80,7 +85,8 @@ LC_COLLATE="C"
 # Disable shellcheck warnings about not checking sourced files.
 SHELLCHECK_OPTS="-e SC1090 -e SC1091"
 export DIFF LESS PAGER PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT RSYNC_RSH
-export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK LC_COLLATE SHELLCHECK_OPTS
+export HOMEBREW_NO_CLEANUP_FORMULAE HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK
+export LC_COLLATE SHELLCHECK_OPTS
 
 if [ -n "${TMUX:-}" ] && [ "${USER}" != "johntobin" ]; then
   # Put the user in the tmux pane title to warn me it's a different user.
