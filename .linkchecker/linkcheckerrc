@@ -1,19 +1,14 @@
 [filtering]
 ignore=
-  //fonts.gstatic.com
+  //dev.mysql.com
   //pool.ntp.org
-  //www.amazon.co.uk
-  //www.bcs-sgai.org
   //www.example.org
   //www.games-workshop.com
-  //www.hetzner.com/
-  //www.icosaedro.it/phplint/
+  //www.mysql.com
   //www.netsoc.tcd.ie
   //www.sciencedirect.com/
-  //www.scss.tcd.ie
-  //www.tcd.ie
   /js/commento.js
   /xmlrpc.php
 
 [checking]
-useragent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36
+useragent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
