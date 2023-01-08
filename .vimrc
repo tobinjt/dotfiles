@@ -78,6 +78,11 @@ let g:go_highlight_operators = 1
 let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
+let g:go_debug_mappings = {
+  \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
+  \ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
+  \ '(go-debug-step)': {'key': 's'},
+\}
 
 " vim-markdown
 " Recognise ```shell as a block with sh syntax.
