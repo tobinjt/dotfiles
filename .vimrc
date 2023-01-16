@@ -145,6 +145,7 @@ Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
 " Puts marks in the sign column.
 Plug 'kshenoy/vim-signature'
+Plug 'ludovicchabant/vim-lawrencium'
 Plug 'lifepillar/vim-solarized8'
 Plug 'preservim/nerdcommenter'
 if has('python3')
