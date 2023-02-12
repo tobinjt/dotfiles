@@ -25,6 +25,7 @@
 
 # Created by programs, we don't care about them.
 .Xauthority
+.config/composer
 .config/iterm2
 .config/pudb/saved-breakpoints-*
 .config/StardewValley
