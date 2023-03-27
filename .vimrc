@@ -26,7 +26,7 @@ let g:syntastic_always_populate_loc_list = 1
 " --- Configure Go checkers.
 " Install the necessary tools with; $ install-extra-tools-for-vim
 " All of these will be run serially; remove if that gets too slow.
-let g:syntastic_go_checkers = ['go', 'gofmt', 'golint', 'gotype', 'govet']
+let g:syntastic_go_checkers = ['go', 'gofmt', 'golangci_lint', 'gotype', 'govet']
 " --- Configure Javascript checkers.
 let g:syntastic_javascript_checkers = ['closurecompiler', 'gjslint', 'glint']
 if executable('/usr/local/bin/closure-compiler')
