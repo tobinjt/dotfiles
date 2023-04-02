@@ -15,6 +15,10 @@ let g:netrw_dirhistmax = 0
 " Add spaces between delimiters and line contents.
 let g:NERDSpaceDelims = 1
 
+" Supertab
+" Use more clever completion.
+let g:SuperTabDefaultCompletionType = 'context'
+
 " Syntastic.
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
@@ -54,7 +58,7 @@ let g:syntastic_php_phpstan_args = []
 
 " Ultisnips.
 " Use Ctrl-n to trigger Ultisnips.
-" let g:UltiSnipsExpandTrigger='<C-n>'
+let g:UltiSnipsExpandTrigger='<C-n>'
 " UltiSnipsEdit splits the window rather than replacing the current window.
 let g:UltiSnipsEditSplit='vertical'
 

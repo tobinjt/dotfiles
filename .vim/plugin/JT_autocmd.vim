@@ -55,6 +55,9 @@ autocmd FileType go setlocal foldmethod=syntax textwidth=120 colorcolumn=
 if has('eval')
   autocmd BufWritePost *.go call OpenFoldUnderCursor()
 endif
+" Supertab will use vim-go's omnifunc first, and if that doesn't produce results
+" will fall back to vim's standard completion.
+autocmd FileType go call SuperTabChain(&omnifunc, "<c-p>")
 
 " Turn on spelling if available.
 if has('spell')
