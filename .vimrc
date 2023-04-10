@@ -140,7 +140,7 @@ endfunction
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
-Plug 'tobinjt/bats.vim'
+Plug 'aliou/bats.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'cespare/vim-toml'
 Plug 'ervandew/supertab'
