@@ -24,6 +24,7 @@
 .zsh_history
 
 # Created by programs, we don't care about them.
+.clasprc.json
 .Xauthority
 .config/composer
 .config/iterm2
