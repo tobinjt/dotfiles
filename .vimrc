@@ -30,9 +30,11 @@ let g:syntastic_always_populate_loc_list = 1
 " --- Configure Go checkers.
 " Install the necessary tools with; $ install-extra-tools-for-vim
 " All of these will be run serially; remove if that gets too slow.
-let g:syntastic_go_checkers = ['go', 'gofmt', 'golangci_lint', 'gotype', 'govet']
+let g:syntastic_go_checkers =
+      \ ['go', 'gofmt', 'golangci_lint', 'gotype', 'govet']
 " --- Configure Javascript checkers.
-let g:syntastic_javascript_checkers = ['closurecompiler', 'gjslint', 'glint']
+let g:syntastic_javascript_checkers =
+      \ ['closurecompiler', 'eslint', 'gjslint', 'glint']
 if executable('/usr/local/bin/closure-compiler')
   let g:syntastic_javascript_closurecompiler_script =
         \ '/usr/local/bin/closure-compiler'
@@ -40,6 +42,7 @@ else
   let g:syntastic_javascript_closurecompiler_script =
         \ '/usr/bin/closure-compiler'
 endif
+let g:syntastic_typescript_checkers = ['eslint']
 " --- Configure markdown checkers.
 " Use markdownlint for the mdl linter.
 let g:syntastic_markdown_mdl_exec = 'markdownlint'
