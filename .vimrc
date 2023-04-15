@@ -11,6 +11,15 @@ source $VIMRUNTIME/defaults.vim
 " Don't save netrw history, I don't use it.
 let g:netrw_dirhistmax = 0
 
+" ALE
+" Automatically fix Typescript.
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+  \  'typescript': [
+  \    'eslint',
+  \  ],
+  \}
+
 " nerdcommenter
 " Add spaces between delimiters and line contents.
 let g:NERDSpaceDelims = 1
