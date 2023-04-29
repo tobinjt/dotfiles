@@ -1,16 +1,22 @@
 # Files ignored by dotfiles.
 
 # Created by MacOS.
+# keep-sorted start
 .CFUserTextEncoding
 .DS_Store
+# keep-sorted end
 
-# There might be one in each repo but there can only be one destination file.
-.dotfiles.ignore
-.pre-commit-config.yaml
 # Used by root.
 .forward
 
+# There might be one in each repo but there can only be one destination file.
+# keep-sorted start
+.dotfiles.ignore
+.pre-commit-config.yaml
+# keep-sorted end
+
 # Various history files.
+# keep-sorted start
 .bash_history
 .gdb_history
 .lesshst
@@ -22,25 +28,30 @@
 .wget-hsts
 .zcompdump
 .zsh_history
+# keep-sorted end
 
 # Created by programs, we don't care about them.
-.clasprc.json
+# keep-sorted start
 .Xauthority
 .cabal
+.clasprc.json
+.config/StardewValley
+.config/Transmission Remote GUI
 .config/composer
 .config/iterm2
 .config/pudb/saved-breakpoints-*
-.config/StardewValley
-.config/Transmission Remote GUI
 # Next two files are used by XQuartz.
 .rnd
 .serverauth.*
+# keep-sorted end
 
 # SSH configs that are generated or distributed separately.
+# keep-sorted start
 .ssh/authorized_keys
 .ssh/config
 .ssh/known_hosts
 .ssh/rsync-net
+# keep-sorted end
 
 # Ignore iTerm2 config, iTerm2 is configured to use ~/src/dotfiles/.iterm2, and
 # every time it saves config it breaks the hard link and it's toil to fix.

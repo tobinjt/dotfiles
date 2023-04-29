@@ -9,6 +9,10 @@ repos:
       - id: check-vcs-permalinks
       - id: end-of-file-fixer
       - id: trailing-whitespace
+  - repo: https://github.com/google/keep-sorted
+    rev: v0.1.0
+    hooks:
+      - id: keep-sorted
   - repo: local
     hooks:
       - id: shellcheck
