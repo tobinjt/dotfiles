@@ -152,8 +152,9 @@ endfunction
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
-Plug 'aliou/bats.vim'
+" keep-sorted start
 Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'aliou/bats.vim'
 Plug 'cespare/vim-toml'
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
@@ -161,12 +162,9 @@ Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-plug'
 " Puts marks in the sign column.
 Plug 'kshenoy/vim-signature'
-Plug 'ludovicchabant/vim-lawrencium'
 Plug 'lifepillar/vim-solarized8'
+Plug 'ludovicchabant/vim-lawrencium'
 Plug 'preservim/nerdcommenter'
-if has('python3')
-  Plug 'SirVer/ultisnips'
-endif
 " Better folding of Python.
 Plug 'tmhedberg/SimpylFold'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -178,6 +176,10 @@ Plug 'vim-scripts/LargeFile'
 Plug 'vim-syntastic/syntastic'
 " Makes filename:line-number[:column] work.
 Plug 'wsdjeg/vim-fetch'
+" keep-sorted end
+if has('python3')
+  Plug 'SirVer/ultisnips'
+endif
 
 " A hook for my work config to disable loading ALE.
 let g:johntobin_load_ale_plugin = 1
