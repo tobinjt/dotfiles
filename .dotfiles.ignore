@@ -26,6 +26,7 @@
 # Created by programs, we don't care about them.
 .clasprc.json
 .Xauthority
+.cabal
 .config/composer
 .config/iterm2
 .config/pudb/saved-breakpoints-*
