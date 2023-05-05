@@ -7,6 +7,8 @@ set scrolloff=8
 set ruler
 " Always display a status line.
 set laststatus=2
+" Highlight the current line.
+set cursorline
 " Line numbers to make jumping easier.
 set number relativenumber
 " Don't highlight search results afterwards.
