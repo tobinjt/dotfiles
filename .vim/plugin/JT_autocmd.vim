@@ -81,7 +81,7 @@ autocmd BufReadPost,BufNewFile */hugo-coder/*/*.html set filetype=gohtmltmpl
 " .coveragerc used by Python coverage is actually an ini file.
 autocmd BufReadPost,BufNewFile .coveragerc set filetype=dosini
 autocmd BufReadPost,BufNewFile *.tt2 set filetype=tt2
-autocmd FileType tt2 set commentstring=#%s
+autocmd FileType dosini,tt2 set commentstring=#%s
 autocmd BufReadPost,BufNewFile .bcrc set filetype=bc
 
 " Run dot every time the file is saved.
