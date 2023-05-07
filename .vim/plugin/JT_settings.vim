@@ -1,12 +1,14 @@
 " Visual stuff.
 " Use a visual flash rather than ringing the bell.
 set visualbell
-" Display 5 lines of context while moving through the file.
-set scrolloff=5
+" Display 8 lines of context while moving through the file.
+set scrolloff=8
 " Show the position within the file in the status bar.
 set ruler
 " Always display a status line.
 set laststatus=2
+" Highlight the current line.
+set cursorline
 " Line numbers to make jumping easier.
 set number relativenumber
 " Don't highlight search results afterwards.
