@@ -40,6 +40,7 @@
 .config/composer
 .config/iterm2
 .config/pudb/saved-breakpoints-*
+.offlineimap
 # Next two files are used by XQuartz.
 .rnd
 .serverauth.*
@@ -62,3 +63,7 @@ __pycache__
 
 # Automatically created on hosting.
 .cloud-locale-test.skip
+
+# Temporarily ignore until I've finished writing them.
+.offlineimap.py
+.offlineimaprc
