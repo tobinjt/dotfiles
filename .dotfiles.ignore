@@ -65,5 +65,6 @@ __pycache__
 .cloud-locale-test.skip
 
 # Temporarily ignore until I've finished writing them.
+.config/mailctl
 .offlineimap.py
 .offlineimaprc
