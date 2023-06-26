@@ -61,7 +61,6 @@ autocmd FileType go call SuperTabChain(&omnifunc, "<c-p>")
 
 " Turn on spelling if available.
 if has('spell')
-  set spell
   " help and some other files have too many distracting spelling errors.
   autocmd FileType help setlocal nospell
   " Checking for capitals at the start of a sentence is incorrect for some

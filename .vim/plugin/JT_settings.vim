@@ -175,6 +175,10 @@ set smarttab
 if has('multi_lang')
   language en_IE.UTF-8
 endif
+if has('spell')
+  " Turn on spelling if available.
+  set spell
+endif
 if exists('+spelloptions')
   " In CamelCase words recognise each sub-word.
   set spelloptions+=camel
