@@ -40,6 +40,7 @@
 .config/composer
 .config/iterm2
 .config/pudb/saved-breakpoints-*
+.config/rclone
 .offlineimap
 # Next two files are used by XQuartz.
 .rnd
