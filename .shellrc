@@ -12,7 +12,7 @@ if [ -d "/opt/homebrew/bin" ]; then
   PATH="/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}"
 fi
 # Where Go should install stuff.  Set here so that it can be used in $PATH.
-GOPATH="${HOME}/src/go"
+GOPATH="${HOME}/tmp/go"
 if [ -d "${GOPATH}" ]; then
   PATH="${GOPATH}/bin:${PATH}"
 fi
