@@ -1,5 +1,11 @@
 # Files ignored by dotfiles.
 
+# Contains secrets that shouldn't be backed up.
+# keep-sorted start
+.config/backup-restic
+.config/rclone
+# keep-sorted end
+
 # Created by MacOS.
 # keep-sorted start
 .CFUserTextEncoding
@@ -40,7 +46,6 @@
 .config/composer
 .config/iterm2
 .config/pudb/saved-breakpoints-*
-.config/rclone
 .offlineimap
 # Next two files are used by XQuartz.
 .rnd
