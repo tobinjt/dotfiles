@@ -32,3 +32,5 @@ submodules
 timestamp
 vimrc
 wp
+rclone
+restic
