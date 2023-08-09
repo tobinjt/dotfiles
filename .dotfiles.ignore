@@ -58,6 +58,7 @@
 .ssh/config
 .ssh/known_hosts
 .ssh/rsync-net
+.ssh/rsync-net_restic
 # keep-sorted end
 
 # Ignore iTerm2 config, iTerm2 is configured to use ~/src/dotfiles/.iterm2, and
