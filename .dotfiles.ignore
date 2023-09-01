@@ -50,6 +50,7 @@
 # Next two files are used by XQuartz.
 .rnd
 .serverauth.*
+.sudo_as_admin_successful
 # keep-sorted end
 
 # SSH configs that are generated or distributed separately.
