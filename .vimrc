@@ -164,6 +164,7 @@ Plug 'junegunn/vim-plug'
 Plug 'kshenoy/vim-signature'
 Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-lawrencium'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'preservim/nerdcommenter'
 " Better folding of Python.
 Plug 'tmhedberg/SimpylFold'
