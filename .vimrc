@@ -156,6 +156,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'aliou/bats.vim'
 Plug 'cespare/vim-toml'
+Plug 'chrisbra/csv.vim'
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'honza/vim-snippets'

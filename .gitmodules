@@ -83,3 +83,6 @@
 [submodule ".vim/bundle/vim-lsp"]
 	path = .vim/bundle/vim-lsp
 	url = https://github.com/prabirshrestha/vim-lsp
+[submodule ".vim/bundle/csv.vim"]
+	path = .vim/bundle/csv.vim
+	url = https://github.com/chrisbra/csv.vim
