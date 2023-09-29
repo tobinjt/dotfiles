@@ -93,6 +93,10 @@ if PluginLoaded('vim-codefmt')
   autocmd FileType yaml AutoFormatBuffer prettier
 endif
 
+if PluginLoaded('vim-lsp')
+  autocmd BufReadPost * call DisableLSPForBufferWhenThereAreConflictMarkers()
+endif
+
 augroup END
 
 " Highlight the first three characters over the line length limit.  Clearing the

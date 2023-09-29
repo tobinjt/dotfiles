@@ -73,3 +73,24 @@ function! OpenFoldUnderCursor()
     foldopen!
   endif
 endfunction
+
+function! BufferHasConflictMarkers()
+  " This is very simplistic but will likely work; if not, see
+  " s:conflict_marker in autoload/airline/extensions/whitespace.vim
+  let pattern = '^<\{7}\|^=\{7}\|>\{7}'
+  return search(pattern, 'nw') != 0
+endfunction
+
+function! DisableLSPForBuffer()
+  call lsp#disable_diagnostics_for_buffer()
+endfunction
+
+function! EnableLSPForBuffer()
+  call lsp#enable_diagnostics_for_buffer()
+endfunction
+
+function! DisableLSPForBufferWhenThereAreConflictMarkers()
+  if BufferHasConflictMarkers()
+    call DisableLSPForBuffer()
+  endif
+endfunction
