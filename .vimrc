@@ -156,6 +156,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'aliou/bats.vim'
 Plug 'cespare/vim-toml'
+Plug 'chrisbra/csv.vim'
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'honza/vim-snippets'
@@ -178,6 +179,10 @@ Plug 'vim-syntastic/syntastic'
 " Makes filename:line-number[:column] work.
 Plug 'wsdjeg/vim-fetch'
 " keep-sorted end
+if has('patch-8.0.902')
+  " Puts VCS info in the signs column.
+  Plug 'mhinz/vim-signify'
+endif
 if has('python3')
   Plug 'SirVer/ultisnips'
 endif
