@@ -105,6 +105,15 @@ hg() {
     (unset LESS; command hg "$@")
 }
 
+diff() {
+  if [[ -n "${ZSH_VERSION:-}" ]]; then
+    # We need to explicitly split in Zsh.
+    "${=DIFF}" "$@"
+  else
+    # Unquoted so that splitting occurs.
+    ${DIFF} "$@"
+  fi
+}
 
 # Load .bcrc to have some helper stuff, but only when running interactively.
 bc() {
