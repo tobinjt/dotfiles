@@ -165,6 +165,8 @@ Plug 'junegunn/vim-plug'
 Plug 'kshenoy/vim-signature'
 Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-lawrencium'
+" Puts VCS info in the signs column.
+Plug 'mhinz/vim-signify'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'preservim/nerdcommenter'
 " Better folding of Python.
@@ -179,10 +181,6 @@ Plug 'vim-syntastic/syntastic'
 " Makes filename:line-number[:column] work.
 Plug 'wsdjeg/vim-fetch'
 " keep-sorted end
-if has('patch-8.0.902')
-  " Puts VCS info in the signs column.
-  Plug 'mhinz/vim-signify'
-endif
 if has('python3')
   Plug 'SirVer/ultisnips'
 endif
