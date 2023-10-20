@@ -152,6 +152,7 @@ endfunction
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
+" keep-sorted start sticky_prefixes="
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'aliou/bats.vim'
 Plug 'cespare/vim-toml'
@@ -177,6 +178,7 @@ Plug 'vim-scripts/LargeFile'
 Plug 'vim-syntastic/syntastic'
 " Makes filename:line-number[:column] work.
 Plug 'wsdjeg/vim-fetch'
+" keep-sorted end
 if has('patch-8.0.902')
   " Puts VCS info in the signs column.
   Plug 'mhinz/vim-signify'
