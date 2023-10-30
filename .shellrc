@@ -21,7 +21,10 @@ fi
 virtualenv_dir="${HOME}/tmp/virtualenv"
 if [ -d "${virtualenv_dir}" ]; then
   for dir in "${virtualenv_dir}"/*/bin; do
-    PATH="${PATH}:${dir}"
+    # Skip the dated directories.
+    if [ "${dir%%-20*}" = "${dir}" ]; then
+      PATH="${PATH}:${dir}"
+    fi
   done
 fi
 PATH="${HOME}/bin:${PATH}"

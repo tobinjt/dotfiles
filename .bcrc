@@ -16,6 +16,11 @@ million = thousand * thousand
 billion = thousand * million
 trillion = thousand * billion
 
+seconds = 60
+hour = 60 * seconds
+day = 24 * hour
+year = 365 * day
+
 # Some functions.
 define factorial(x) {
   if (x <= 1) {
