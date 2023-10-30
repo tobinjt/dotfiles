@@ -3,9 +3,12 @@ ignore=
   //dev.mysql.com
   //pool.ntp.org
   //www.amazon.co.uk
+  //www.dccoi.ie/
   //www.example.org
   //www.games-workshop.com
   //www.hetzner.com
+  //www.icosaedro.it/phplint/
+  //www.jewellerycourse.ie/
   //www.mysql.com
   //www.netsoc.tcd.ie
   //www.sciencedirect.com
