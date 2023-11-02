@@ -158,7 +158,6 @@ call plug#begin('~/.vim/bundle')
 " Add bundles here.
 " keep-sorted start sticky_prefixes="
 Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'SirVer/ultisnips'
 Plug 'aliou/bats.vim'
 Plug 'cespare/vim-toml'
 Plug 'chrisbra/csv.vim'
