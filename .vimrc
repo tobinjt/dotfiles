@@ -28,6 +28,10 @@ let g:NERDSpaceDelims = 1
 " Use more clever completion.
 let g:SuperTabDefaultCompletionType = 'context'
 
+" rust
+" Autoformat on save.
+let g:rustfmt_autosave = 1
+
 " Syntastic.
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
@@ -154,6 +158,7 @@ call plug#begin('~/.vim/bundle')
 " Add bundles here.
 " keep-sorted start sticky_prefixes="
 Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'SirVer/ultisnips'
 Plug 'aliou/bats.vim'
 Plug 'cespare/vim-toml'
 Plug 'chrisbra/csv.vim'
@@ -169,6 +174,7 @@ Plug 'ludovicchabant/vim-lawrencium'
 Plug 'mhinz/vim-signify'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'preservim/nerdcommenter'
+Plug 'rust-lang/rust.vim'
 " Better folding of Python.
 Plug 'tmhedberg/SimpylFold'
 Plug 'tmux-plugins/vim-tmux-focus-events'
