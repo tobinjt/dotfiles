@@ -16,6 +16,10 @@ GOPATH="${HOME}/tmp/go"
 if [ -d "${GOPATH}" ]; then
   PATH="${GOPATH}/bin:${PATH}"
 fi
+# Add Rust to $PATH if it exists.
+if [ -d "${HOME}/.cargo/bin" ]; then
+  PATH="${HOME}/.cargo/bin:${PATH}"
+fi
 # Add tools installed using virtualenv, after the rest of $PATH, so they don't
 # mess with the standard Python binary.
 virtualenv_dir="${HOME}/tmp/virtualenv"
