@@ -1,4 +1,5 @@
 " Config for https://github.com/prabirshrestha/vim-lsp
+" https://github.com/mattn/vim-lsp-settings configures language servers.
 
 if ! PluginLoaded('vim-lsp')
   finish
@@ -17,14 +18,5 @@ function! s:on_lsp_buffer_enabled() abort
 endfunction
 " Call s:on_lsp_buffer_enabled only for languages with registered servers.
 autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-
-if executable('pylsp')
-  " pip install python-lsp-server
-  autocmd User lsp_setup call lsp#register_server({
-    \ 'name': 'pylsp',
-    \ 'cmd': {server_info->['pylsp']},
-    \ 'allowlist': ['python'],
-    \ })
-endif
 
 augroup END
