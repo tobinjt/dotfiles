@@ -169,7 +169,6 @@ Plug 'junegunn/vim-plug'
 Plug 'kshenoy/vim-signature'
 Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-lawrencium'
-Plug 'mattn/vim-lsp-settings'
 " Puts VCS info in the signs column.
 Plug 'mhinz/vim-signify'
 Plug 'prabirshrestha/vim-lsp'
@@ -187,6 +186,8 @@ Plug 'vim-syntastic/syntastic'
 " Makes filename:line-number[:column] work.
 Plug 'wsdjeg/vim-fetch'
 " keep-sorted end
+" Must be loaded after prabirshrestha/vim-lsp is loaded.
+Plug 'mattn/vim-lsp-settings'
 if has('python3')
   Plug 'SirVer/ultisnips'
 endif
