@@ -29,6 +29,8 @@ let g:NERDSpaceDelims = 1
 let g:SuperTabDefaultCompletionType = 'context'
 
 " rust
+" Enable folding.
+let g:rust_fold = 1
 " Autoformat on save.
 let g:rustfmt_autosave = 1
 
