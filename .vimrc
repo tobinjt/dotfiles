@@ -33,6 +33,8 @@ let g:SuperTabDefaultCompletionType = 'context'
 let g:rust_fold = 1
 " Autoformat on save.
 let g:rustfmt_autosave = 1
+" Use `cargo clippy` rather than `cargo check` when available.
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 
 " Syntastic.
 let g:syntastic_check_on_open = 1
