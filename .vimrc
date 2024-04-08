@@ -35,6 +35,8 @@ let g:rust_fold = 1
 let g:rustfmt_autosave = 1
 " Use `cargo clippy` rather than `cargo check` when available.
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+" Run cargo on tests too.
+let g:rust_cargo_check_tests = 1
 
 " Syntastic.
 let g:syntastic_check_on_open = 1
