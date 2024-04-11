@@ -1,0 +1,4 @@
+# Invoked for index out of bounds.
+b panic_bounds_check
+# Invoked for panic!().
+b rust_panic_with_hook
