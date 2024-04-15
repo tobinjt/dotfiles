@@ -2,3 +2,5 @@
 b panic_bounds_check
 # Invoked for panic!().
 b rust_panic_with_hook
+# Stop at my breakpoints.
+b breakpoint
