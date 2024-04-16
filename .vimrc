@@ -20,7 +20,7 @@ let g:ale_fixers = {
   \  ],
   \}
 
-" nerdcommenter
+" Nerdcommenter
 " Add spaces between delimiters and line contents.
 let g:NERDSpaceDelims = 1
 
@@ -28,7 +28,7 @@ let g:NERDSpaceDelims = 1
 " Use more clever completion.
 let g:SuperTabDefaultCompletionType = 'context'
 
-" rust
+" Rust
 " Enable folding.
 let g:rust_fold = 1
 " Autoformat on save.
@@ -121,6 +121,10 @@ let g:vim_markdown_strikethrough = 1
 " Disable the plugin's folding because it randomly folds and unfolds when
 " editing; autocmds will use my simple folding instead.
 let g:vim_markdown_folding_disabled = 1
+
+" LSP
+" Disable diagnostics, they are really intrusive.
+let g:lsp_diagnostics_enabled = 0
 
 " Plugins.
 " To update all the git submodules: update-vim-plugins
