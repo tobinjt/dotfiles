@@ -78,12 +78,6 @@ let g:syntastic_php_phplint_args .= ' --no-ascii-ext-check'
 " Use the level defined in phpstan.neon.
 let g:syntastic_php_phpstan_args = []
 
-" Ultisnips.
-" Use Ctrl-n to trigger Ultisnips.
-let g:UltiSnipsExpandTrigger='<C-n>'
-" UltiSnipsEdit splits the window rather than replacing the current window.
-let g:UltiSnipsEditSplit='vertical'
-
 " vim-go.
 " Install the necessary tools with; $ install-extra-tools-for-vim
 " Use goimports, it should fix up import lines automatically.
@@ -168,14 +162,10 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'aliou/bats.vim'
 " TOML syntax highlighting for Hugo.
 Plug 'cespare/vim-toml'
-" CSV support; I've never used this, consider removing?
-Plug 'chrisbra/csv.vim'
 " Tab completion.
 Plug 'ervandew/supertab'
 " Golang support.
 Plug 'fatih/vim-go'
-" Snippet for Ultisnips; consider removing because I don't use it.
-Plug 'honza/vim-snippets'
 " Plugin management.
 Plug 'junegunn/vim-plug'
 " Puts marks in the sign column.
@@ -213,10 +203,6 @@ Plug 'wsdjeg/vim-fetch'
 " keep-sorted end
 " Must be loaded after prabirshrestha/vim-lsp is loaded.
 Plug 'mattn/vim-lsp-settings'
-if has('python3')
-  " Consider removing because I never use it?
-  Plug 'SirVer/ultisnips'
-endif
 
 " A hook for my work config to disable loading ALE.
 let g:johntobin_load_ale_plugin = 1
