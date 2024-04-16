@@ -164,30 +164,49 @@ call plug#begin('~/.vim/bundle')
 " Add bundles here.
 " keep-sorted start sticky_prefixes="
 Plug 'ConradIrwin/vim-bracketed-paste'
+" https://github.com/bats-core/bats-core syntax highlighting.
 Plug 'aliou/bats.vim'
+" TOML syntax highlighting for Hugo.
 Plug 'cespare/vim-toml'
+" CSV support; I've never used this, consider removing?
 Plug 'chrisbra/csv.vim'
+" Tab completion.
 Plug 'ervandew/supertab'
+" Golang support.
 Plug 'fatih/vim-go'
+" Snippet for Ultisnips; consider removing because I don't use it.
 Plug 'honza/vim-snippets'
+" Plugin management.
 Plug 'junegunn/vim-plug'
 " Puts marks in the sign column.
 Plug 'kshenoy/vim-signature'
+" Solarized colour scheme.
 Plug 'lifepillar/vim-solarized8'
+" Mercurial support.
 Plug 'ludovicchabant/vim-lawrencium'
 " Puts VCS info in the signs column.
 Plug 'mhinz/vim-signify'
+" Language Server Protocol support.
 Plug 'prabirshrestha/vim-lsp'
+" Smart commenting.
 Plug 'preservim/nerdcommenter'
+" Rust support.
 Plug 'rust-lang/rust.vim'
 " Better folding of Python.
 Plug 'tmhedberg/SimpylFold'
+" Reload files when changing Tmux panes.
 Plug 'tmux-plugins/vim-tmux-focus-events'
+" Markdown syntax highlighting.
 Plug 'tobinjt/vim-markdown'
+" Git support.
 Plug 'tpope/vim-fugitive'
+" Reasonable settings.
 Plug 'tpope/vim-sensible'
+" Improved status bar.
 Plug 'vim-airline/vim-airline'
+" Turn off various things when editing really large files.
 Plug 'vim-scripts/LargeFile'
+" Run lint and other tools when saving files.
 Plug 'vim-syntastic/syntastic'
 " Makes filename:line-number[:column] work.
 Plug 'wsdjeg/vim-fetch'
@@ -195,6 +214,7 @@ Plug 'wsdjeg/vim-fetch'
 " Must be loaded after prabirshrestha/vim-lsp is loaded.
 Plug 'mattn/vim-lsp-settings'
 if has('python3')
+  " Consider removing because I never use it?
   Plug 'SirVer/ultisnips'
 endif
 
@@ -218,6 +238,7 @@ if executable('prettier') && !PluginLoaded('vim-codefmt')
 endif
 
 if g:johntobin_load_ale_plugin == 1
+  " Run lint and other tools on the fly.
   Plug 'dense-analysis/ale'
 endif
 
