@@ -33,3 +33,6 @@ define ncr(n, r) {
   denominator = factorial(r) * factorial(n-r);
   return factorial(n) / denominator;
 }
+define sum_to_n(n) {
+  return n * (n + 1) / 2;
+}
