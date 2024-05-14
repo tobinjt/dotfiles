@@ -59,6 +59,11 @@ endif
 " will fall back to vim's standard completion.
 autocmd FileType go call SuperTabChain(&omnifunc, "<c-p>")
 
+" Rust.
+if has('eval') && PluginLoaded('vim-lsp')
+  autocmd BufWritePre *.rs LspDocumentFormatSync
+endif
+
 " Turn on spelling if available.
 if has('spell')
   " help and some other files have too many distracting spelling errors.

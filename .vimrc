@@ -31,8 +31,9 @@ let g:SuperTabDefaultCompletionType = 'context'
 " Rust
 " Enable folding.
 let g:rust_fold = 1
-" Autoformat on save.
-let g:rustfmt_autosave = 1
+" Autoformat on save: rust.vim's autoformat is really slow, search for
+" Rust in plugin/JT_autocmd.vim for how I've implemented autoformat.
+let g:rustfmt_autosave = 0
 " Use `cargo clippy` rather than `cargo check` when available.
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 " Run cargo on tests too.
