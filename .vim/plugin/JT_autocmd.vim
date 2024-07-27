@@ -95,6 +95,7 @@ autocmd FileType dot setlocal textwidth=300 foldmethod=indent
 if PluginLoaded('vim-codefmt')
   Glaive codefmt plugin[mappings]
   autocmd FileType markdown AutoFormatBuffer prettier
+  autocmd FileType python AutoFormatBuffer black
   autocmd FileType yaml AutoFormatBuffer prettier
 endif
 
