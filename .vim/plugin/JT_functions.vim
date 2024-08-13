@@ -2,9 +2,12 @@ if !has('eval')
  finish
 endif
 
-" Return the name of the syntax highlighting group under the cursor.
+" Echo the name of the syntax highlighting group under the cursor.
 function! SyntaxUnderCursor()
   echomsg synIDattr(synID(line('.'), col('.'), 1), 'name')
+endfunction
+function! SyntaxIDUnderCursor()
+  echomsg synID(line('.'), col('.'), 1)
 endfunction
 
 function! TurnOffLineNumbersAndSigns()
@@ -157,9 +160,8 @@ function! WrapCommentBlock()
   let l:end_line = FindEndOfBlock(line('.'), l:syn_id)
 
   call cursor(l:start_line, len(getline(l:start_line)))
-  if l:end_line == l:start_line
-    execute 'normal! gqgq'
-  else
+  if l:end_line > l:start_line
+    " There's no point in wrapping if the comment is a single line.
     execute 'normal! ' . (l:end_line - l:start_line) . 'gqgq'
   endif
 endfunction
