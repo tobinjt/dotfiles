@@ -77,8 +77,8 @@ endfunction
 function! BufferHasConflictMarkers()
   " This is very simplistic but will likely work; if not, see
   " s:conflict_marker in autoload/airline/extensions/whitespace.vim
-  let pattern = '^<\{7}\|^=\{7}\|>\{7}'
-  return search(pattern, 'nw') != 0
+  let l:pattern = '^<\{7}\|^=\{7}\|>\{7}'
+  return search(l:pattern, 'nw') != 0
 endfunction
 
 function! DisableLSPForBuffer()
@@ -89,9 +89,17 @@ function! EnableLSPForBuffer()
   call lsp#enable_diagnostics_for_buffer()
 endfunction
 
+let g:disabled_lsp_due_to_conflict_markers = 0
 function! DisableLSPForBufferWhenThereAreConflictMarkers()
   if BufferHasConflictMarkers()
+    let g:disabled_lsp_due_to_conflict_markers = 1
     call DisableLSPForBuffer()
+  endif
+endfunction
+function! ReenableLSPForBufferWhenThereWereConflictMarkers()
+  if ! BufferHasConflictMarkers()
+    let g:disabled_lsp_due_to_conflict_markers = 0
+    call EnableLSPForBuffer()
   endif
 endfunction
 

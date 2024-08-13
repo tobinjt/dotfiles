@@ -101,6 +101,7 @@ endif
 
 if PluginLoaded('vim-lsp')
   autocmd BufReadPost * call DisableLSPForBufferWhenThereAreConflictMarkers()
+  autocmd BufWritePost * call ReenableLSPForBufferWhenThereWereConflictMarkers()
 endif
 
 augroup END
