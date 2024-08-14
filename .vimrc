@@ -191,6 +191,8 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 " Markdown syntax highlighting.
 Plug 'tobinjt/vim-markdown'
+" Easy wrapping of comment blocks with \wc.
+Plug 'tobinjt/wrap-comment-block.vim'
 " Git support.
 Plug 'tpope/vim-fugitive'
 " Reasonable settings.
