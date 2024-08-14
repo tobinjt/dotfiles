@@ -187,6 +187,8 @@ Plug 'mhinz/vim-signify'
 Plug 'prabirshrestha/vim-lsp'
 " Smart commenting.
 Plug 'preservim/nerdcommenter'
+" Configures ALE and vim-lsp to work together.
+Plug 'rhysd/vim-lsp-ale'
 " Rust support.
 Plug 'rust-lang/rust.vim'
 " Better folding of Python.
