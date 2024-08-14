@@ -167,6 +167,8 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'aliou/bats.vim'
 " TOML syntax highlighting for Hugo.
 Plug 'cespare/vim-toml'
+" Run lint and other tools on the fly.
+Plug 'dense-analysis/ale'
 " Tab completion.
 Plug 'ervandew/supertab'
 " Golang support.
@@ -209,9 +211,6 @@ Plug 'wsdjeg/vim-fetch'
 " Must be loaded after prabirshrestha/vim-lsp is loaded.
 Plug 'mattn/vim-lsp-settings'
 
-" A hook for my work config to disable loading ALE.
-let g:johntobin_load_ale_plugin = 1
-
 " This needs to be done before loading plugins, so that runtimepath can be
 " extended first.
 if has('eval')
@@ -226,11 +225,6 @@ if executable('prettier') && !PluginLoaded('vim-codefmt')
   Plug 'google/vim-maktaba'
   Plug 'google/vim-codefmt'
   Plug 'google/vim-glaive'
-endif
-
-if g:johntobin_load_ale_plugin == 1
-  " Run lint and other tools on the fly.
-  Plug 'dense-analysis/ale'
 endif
 
 " Finish vim-plug setup.
