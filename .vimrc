@@ -39,14 +39,8 @@ let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 " Run cargo on tests too.
 let g:rust_cargo_check_tests = 1
 
-" Syntastic.
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" Always update the location list, because otherwise the error window is out of
-" date.
-let g:syntastic_always_populate_loc_list = 1
-" Debugging.
-" let g:syntastic_debug = 1
+" Syntastic.  I've removed Syntastic, I'm keeping this for now so that I can
+" more easily reconfigure ALE if necessary.
 " --- Configure Go checkers.
 " Install the necessary tools with; $ install-extra-tools-for-vim
 " All of these will be run serially; remove if that gets too slow.
@@ -167,6 +161,8 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'aliou/bats.vim'
 " TOML syntax highlighting for Hugo.
 Plug 'cespare/vim-toml'
+" Run lint and other tools on the fly.
+Plug 'dense-analysis/ale'
 " Tab completion.
 Plug 'ervandew/supertab'
 " Golang support.
@@ -185,6 +181,8 @@ Plug 'mhinz/vim-signify'
 Plug 'prabirshrestha/vim-lsp'
 " Smart commenting.
 Plug 'preservim/nerdcommenter'
+" Configures ALE and vim-lsp to work together.
+Plug 'rhysd/vim-lsp-ale'
 " Rust support.
 Plug 'rust-lang/rust.vim'
 " Better folding of Python.
@@ -201,16 +199,11 @@ Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 " Turn off various things when editing really large files.
 Plug 'vim-scripts/LargeFile'
-" Run lint and other tools when saving files.
-Plug 'vim-syntastic/syntastic'
 " Makes filename:line-number[:column] work.
 Plug 'wsdjeg/vim-fetch'
 " keep-sorted end
 " Must be loaded after prabirshrestha/vim-lsp is loaded.
 Plug 'mattn/vim-lsp-settings'
-
-" A hook for my work config to disable loading ALE.
-let g:johntobin_load_ale_plugin = 1
 
 " This needs to be done before loading plugins, so that runtimepath can be
 " extended first.
@@ -226,11 +219,6 @@ if executable('prettier') && !PluginLoaded('vim-codefmt')
   Plug 'google/vim-maktaba'
   Plug 'google/vim-codefmt'
   Plug 'google/vim-glaive'
-endif
-
-if g:johntobin_load_ale_plugin == 1
-  " Run lint and other tools on the fly.
-  Plug 'dense-analysis/ale'
 endif
 
 " Finish vim-plug setup.
