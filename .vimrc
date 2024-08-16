@@ -122,7 +122,7 @@ let g:vim_markdown_folding_disabled = 1
 let g:lsp_diagnostics_enabled = 0
 
 " Plugins.
-" To update all the git submodules: update-vim-plugins
+" To update all the git submodules: update-dotfiles-and-bin-plugins
 " To update a single submodule:
 "   $ git fetch origin --tags && git checkout master && git pull
 " To add a new submodule:
