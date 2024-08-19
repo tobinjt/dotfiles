@@ -105,3 +105,12 @@ function! ReenableLSPForBufferWhenThereWereConflictMarkers()
     call EnableLSPForBuffer()
   endif
 endfunction
+
+function! StartProfiling()
+  profile start profile.log
+  profile file *
+  profile func *
+endfunction
+function! StopProfiling()
+  profile stop
+endfunction
