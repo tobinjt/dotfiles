@@ -12,8 +12,9 @@ source $VIMRUNTIME/defaults.vim
 let g:netrw_dirhistmax = 0
 
 " ALE
-" Automatically fix Typescript.
+" Autofix if available.
 let g:ale_fix_on_save = 1
+" Automatically fix Typescript.
 let g:ale_fixers = {
   \  'typescript': [
   \    'eslint',
