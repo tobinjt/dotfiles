@@ -59,7 +59,9 @@ set complete-=i
 " inside vim.
 set autoread
 " Don't sync the swap file
-set swapsync=
+if !has('nvim')
+  set swapsync=
+endif
 " Case-insensitive completion for filenames.
 if exists('+wildignorecase')
   set wildignorecase
@@ -165,7 +167,9 @@ endif
 " Selecting text within Vim won't copy it to the X server's clipboard, but
 " selecting text from the terminal will.  You won't notice the difference
 " unless you've got the mouse enabled.
-set clipboard=exclude:.*
+if !has('nvim')
+  set clipboard=exclude:.*
+endif
 " Don't treat numbers starting with a 0 as octal.
 set nrformats-=octal
 " But do support incrementing single alphabetical characters.

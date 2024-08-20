@@ -5,8 +5,10 @@
 "set verbose=2
 
 " Load vim defaults.
-unlet! skip_defaults_vim
-source $VIMRUNTIME/defaults.vim
+if !has('nvim')
+  unlet! skip_defaults_vim
+  source $VIMRUNTIME/defaults.vim
+endif
 
 " Don't save netrw history, I don't use it.
 let g:netrw_dirhistmax = 0
