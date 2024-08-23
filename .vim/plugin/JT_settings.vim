@@ -96,7 +96,11 @@ if has('eval')
 
   " Save undo history per file.
   if has('persistent_undo')
-    let _undo_dir = _temp_base . '/undo'
+    if has('nvim')
+      let _undo_dir = _temp_base . '/undo-nvim'
+    else
+      let _undo_dir = _temp_base . '/undo'
+    endif
     call JT_safe_mkdir(_undo_dir)
     let &undodir = _undo_dir . ',' . &undodir
     set undodir-=.
