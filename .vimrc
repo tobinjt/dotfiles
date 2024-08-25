@@ -159,7 +159,6 @@ endfunction
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
 " keep-sorted start sticky_prefixes="
-Plug 'ConradIrwin/vim-bracketed-paste'
 " https://github.com/bats-core/bats-core syntax highlighting.
 Plug 'aliou/bats.vim'
 " TOML syntax highlighting for Hugo.

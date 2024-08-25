@@ -10,9 +10,6 @@
 [submodule ".vim/bundle/vim-go"]
 	path = .vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
-[submodule ".vim/bundle/vim-bracketed-paste"]
-	path = .vim/bundle/vim-bracketed-paste
-	url = https://github.com/ConradIrwin/vim-bracketed-paste.git
 [submodule ".vim/bundle/vim-plug"]
 	path = .vim/bundle/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
