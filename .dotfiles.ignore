@@ -75,6 +75,3 @@ __pycache__
 # Managed by rustup.
 .cargo
 .rustup
-
-# Temporarily ignore until I am ready to commit.
-.config/nvim
