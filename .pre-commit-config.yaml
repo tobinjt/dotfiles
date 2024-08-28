@@ -15,6 +15,16 @@ repos:
       - id: keep-sorted
   - repo: local
     hooks:
+      - id: luac
+        name: Run `luac` if it's installed
+        language: system
+        types: [lua]
+        entry: run-if-exists luac -p
+      - id: luacheck
+        name: Run `luacheck` if it's installed
+        language: system
+        types: [lua]
+        entry: run-if-exists luacheck --globals vim --codes --ranges
       - id: shellcheck
         name: Run `shellcheck`
         language: system
