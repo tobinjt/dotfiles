@@ -22,6 +22,8 @@ let g:ale_fixers = {
   \    'eslint',
   \  ],
   \}
+" Recognise the global variables neovim provides.
+let g:ale_lua_luacheck_options = '--globals vim'
 
 " Nerdcommenter
 " Add spaces between delimiters and line contents.
