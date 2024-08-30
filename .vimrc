@@ -22,7 +22,7 @@ let g:ale_fixers = {
   \    'eslint',
   \  ],
   \}
-" Recognise the global variables neovim provides.
+" Recognise the global variables Neovim provides.
 let g:ale_lua_luacheck_options = '--globals vim'
 
 " Nerdcommenter
