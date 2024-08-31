@@ -1,5 +1,7 @@
 -- Check out https://docs.astronvim.com/reference/default_plugins/
 return {
+  -- Change markers signs and Git support.  No Mercurial support.
+  "lewis6991/gitsigns.nvim",
   -- Easily comment or uncomment lines.
   "numToStr/Comment.nvim",
 
@@ -40,8 +42,6 @@ return {
     },
   },
 
-  -- Adds signs for changed lines.  Other stuff I'm not clear about.
-  -- "lewis6991/gitsigns.nvim",
   -- Windows for LSP diagnostics and other things.
   -- "folke/trouble.nvim",
   -- Generic formatting support.  Needs configuration for each formatter.
