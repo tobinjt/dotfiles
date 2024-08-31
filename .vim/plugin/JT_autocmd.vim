@@ -41,11 +41,6 @@ autocmd FileType markdown setlocal foldmethod=expr
 " vim82/ftplugin/markdown.vim.
 autocmd FileType markdown call JT_set_formatlistpat()
 
-
-" tmux(1)
-autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setlocal filetype=tmux
-autocmd FileType text setlocal formatoptions+=nq
-
 " Golang
 " Set a wide textwidth because Golang tends to have wide lines and airline
 " whitespace checks use textwidth.
