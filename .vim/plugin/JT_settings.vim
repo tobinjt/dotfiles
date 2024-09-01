@@ -30,17 +30,8 @@ set splitbelow splitright equalalways
 set lazyredraw
 " Show as much of the last line on screen as possible.
 set display+=lastline
-" Change the xterm title, but not under tmux.
-if has('title') && ! exists('$TMUX')
-  set title
-endif
 
 " File related stuff.
-" Disable modelines because of security vulnerability.
-" http://seclists.org/oss-sec/2016/q4/506
-if v:version < 801
-  set nomodeline
-endif
 " Ignore files with these suffixes when doing tab completion.
 set suffixes+=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx
 set suffixes+=,.ilg,.inx,.out,.toc
@@ -119,8 +110,6 @@ set formatoptions+=n
 set textwidth=80
 " Turn on automatic indenting.
 set autoindent
-" This effectively maps F1 to :set paste!
-set pastetoggle=<F1>
 " Expand tabs to 2 spaces.
 set expandtab tabstop=2 shiftwidth=2
 " List formats to recognise:
@@ -178,11 +167,10 @@ endif
 set nrformats-=octal
 " But do support incrementing single alphabetical characters.
 set nrformats+=alpha
-" Enable smart tabs, to see what they do.
+" Tab at the start of a line inserts spaces.  Delete at the start of a line
+" deletes as `shiftwidth` worth of spaces.  I think this also applies to
+" whitespace after comments?
 set smarttab
-if has('multi_lang')
-  language en_IE.UTF-8
-endif
 if has('spell')
   " Turn on spelling if available.
   set spell
@@ -194,11 +182,4 @@ endif
 if exists('+spellfile')
   " My word to recognise will be added to this file.
   set spellfile+=~/.vim/spell/en.utf-8.add
-endif
-
-if has('user_commands') && !exists(':DiffOrig')
-  " Taken from :help :DiffOrig - this should diff the current buffer against
-  " the file on disk.
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-    \ | wincmd p | diffthis
 endif
