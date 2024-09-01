@@ -24,11 +24,6 @@ endfunction
 function! s:Run(command)
   execute a:command
 endfunction
-" Update helptags for all bundles.
-function! UpdateBundleHelptags()
-  call map(split(glob('~/.vim/bundle/*/doc'), '\n'),
-         \ 's:Run("helptags " . v:val)')
-endfunction
 " Update all spell files.
 function! UpdateSpellFiles()
   call map(split(&spellfile, ','), 's:Run("mkspell! " . v:val)')
