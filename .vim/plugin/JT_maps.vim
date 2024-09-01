@@ -13,4 +13,4 @@ cnoremap copen botright copen
 " Remap ^W-F to open the file under the cursor in a vertical split.
 nnoremap <C-W>F <C-W>vgF
 
-command -complete=help -nargs=1 Vhelp vertical help
+command! -complete=help -nargs=1 Vhelp vertical help <Args>
