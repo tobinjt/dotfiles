@@ -187,6 +187,8 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tobinjt/vim-markdown'
 " Easy wrapping of comment blocks with \wc.
 Plug 'tobinjt/wrap-comment-block.vim'
+" Easy commenting and uncommenting.
+Plug 'tpope/vim-commentary'
 " Git support.
 Plug 'tpope/vim-fugitive'
 " Reasonable settings.

@@ -74,3 +74,6 @@
 [submodule ".vim/bundle/wrap-comment-block.vim"]
 	path = .vim/bundle/wrap-comment-block.vim
 	url = https://github.com/tobinjt/wrap-comment-block.vim
+[submodule ".vim/bundle/vim-commentary"]
+	path = .vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary
