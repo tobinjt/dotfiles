@@ -177,8 +177,6 @@ Plug 'mhinz/vim-signify'
 Plug 'prabirshrestha/vim-lsp'
 " Configures ALE and vim-lsp to work together.
 Plug 'rhysd/vim-lsp-ale'
-" Rust support.
-Plug 'rust-lang/rust.vim'
 " Better folding of Python.
 Plug 'tmhedberg/SimpylFold'
 " Reload files when changing Tmux panes.
