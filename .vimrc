@@ -162,8 +162,6 @@ endfunction
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
 " keep-sorted start sticky_prefixes="
-" https://github.com/bats-core/bats-core syntax highlighting.
-Plug 'aliou/bats.vim'
 " TOML syntax highlighting for Hugo.
 Plug 'cespare/vim-toml'
 " Run lint and other tools on the fly.
