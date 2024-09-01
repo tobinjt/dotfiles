@@ -138,10 +138,7 @@ let g:lsp_diagnostics_enabled = 0
 "   $ update-dotfiles-and-bin
 " To remove a submodule:
 "   $ DESTINATION=".vim/bundle/asdf"
-"   $ git rm "${DESTINATION}"
-"   E.g. git rm .vim/bundle/vim-plug
-"   $ rm -rf ".git/modules/${DESTINATION}"
-"   E.g. rm -rf .git/modules/.vim/bundle/vim-plug
+"   $ git rm "${DESTINATION}" && rm -rf ".git/modules/${DESTINATION}"
 "   Remove any config for the plugin.
 "   Remove the "Plug 'foo/bar'" line below and commit the changes.
 "   $ update-dotfiles-and-bin
