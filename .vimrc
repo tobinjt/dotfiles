@@ -171,8 +171,6 @@ Plug 'junegunn/vim-plug'
 Plug 'kshenoy/vim-signature'
 " Solarized colour scheme.
 Plug 'lifepillar/vim-solarized8'
-" Mercurial support.
-Plug 'ludovicchabant/vim-lawrencium'
 " Puts VCS info in the signs column.
 Plug 'mhinz/vim-signify'
 " Language Server Protocol support.

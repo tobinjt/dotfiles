@@ -62,9 +62,6 @@
 [submodule ".vim/bundle/honza/vim-snippets"]
 	path = .vim/bundle/honza/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
-[submodule ".vim/bundle/vim-lawrencium"]
-	path = .vim/bundle/vim-lawrencium
-	url = https://github.com/ludovicchabant/vim-lawrencium
 [submodule ".vim/bundle/vim-lsp"]
 	path = .vim/bundle/vim-lsp
 	url = https://github.com/prabirshrestha/vim-lsp
