@@ -175,8 +175,6 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'mhinz/vim-signify'
 " Language Server Protocol support.
 Plug 'prabirshrestha/vim-lsp'
-" Smart commenting.
-Plug 'preservim/nerdcommenter'
 " Configures ALE and vim-lsp to work together.
 Plug 'rhysd/vim-lsp-ale'
 " Rust support.

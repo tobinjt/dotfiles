@@ -1,6 +1,3 @@
-[submodule ".vim/bundle/nerdcommenter"]
-	path = .vim/bundle/nerdcommenter
-	url = https://github.com/preservim/nerdcommenter.git
 [submodule ".vim/bundle/LargeFile"]
 	path = .vim/bundle/LargeFile
 	url = https://github.com/vim-scripts/LargeFile.git
