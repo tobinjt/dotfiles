@@ -162,8 +162,6 @@ endfunction
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
 " keep-sorted start sticky_prefixes="
-" TOML syntax highlighting for Hugo.
-Plug 'cespare/vim-toml'
 " Run lint and other tools on the fly.
 Plug 'dense-analysis/ale'
 " Tab completion.
