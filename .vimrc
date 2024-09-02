@@ -189,8 +189,6 @@ Plug 'tobinjt/wrap-comment-block.vim'
 Plug 'tpope/vim-commentary'
 " Git support.
 Plug 'tpope/vim-fugitive'
-" Reasonable settings.
-Plug 'tpope/vim-sensible'
 " Improved status bar.
 Plug 'vim-airline/vim-airline'
 " Turn off various things when editing really large files.
