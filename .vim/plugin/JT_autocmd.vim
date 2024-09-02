@@ -7,12 +7,6 @@ endif
 augroup johntobin
 autocmd!
 
-" Taken from Bram Moolenar's example vimrc:
-" Jump to the previous position in the file.
-autocmd BufReadPost *
-  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-  \   | exe "normal! g`\""
-  \ | endif
 " On BSD systems, the original file provided by crontab(1) must be written to,
 " rather than writing a new file and renaming it.
 autocmd FileType crontab setlocal backupcopy=yes textwidth=1000
