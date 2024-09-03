@@ -206,19 +206,8 @@ if has('eval')
   endif
 endif
 
-" Load vim-codefmt if not already loaded.
-if executable('prettier') && !PluginLoaded('vim-codefmt')
-  Plug 'google/vim-maktaba'
-  Plug 'google/vim-codefmt'
-  Plug 'google/vim-glaive'
-endif
-
 " Finish vim-plug setup.
 call plug#end()
-
-if PluginLoaded('vim-glaive')
-  call glaive#Install()
-endif
 
 " All plugins have now been loaded and their functionality is available.
 

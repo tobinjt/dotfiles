@@ -81,13 +81,6 @@ autocmd BufReadPost,BufNewFile .bcrc set filetype=bc
 autocmd BufWritePost *.dot call RunDot("%")
 autocmd FileType dot setlocal textwidth=300 foldmethod=indent
 
-if PluginLoaded('vim-codefmt')
-  Glaive codefmt plugin[mappings]
-  autocmd FileType markdown AutoFormatBuffer prettier
-  autocmd FileType python AutoFormatBuffer black
-  autocmd FileType yaml AutoFormatBuffer prettier
-endif
-
 if PluginLoaded('vim-lsp')
   autocmd BufReadPost * call DisableLSPForBufferWhenThereAreConflictMarkers()
   autocmd BufWritePost * call ReenableLSPForBufferWhenThereWereConflictMarkers()
