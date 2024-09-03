@@ -226,4 +226,4 @@ endif
 " first directory in runtimepath.  Overwrite runtimepath rather than adding to
 " it because additions are placed at the end.
 set runtimepath-=~/.vim
-exec 'set runtimepath=~/.vim,' . &runtimepath
+set runtimepath^=~/.vim
