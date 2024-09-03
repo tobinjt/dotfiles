@@ -187,8 +187,6 @@ Plug 'tobinjt/vim-markdown'
 Plug 'tobinjt/wrap-comment-block.vim'
 " Easy commenting and uncommenting.
 Plug 'tpope/vim-commentary'
-" Git support.
-Plug 'tpope/vim-fugitive'
 " Improved status bar.
 Plug 'vim-airline/vim-airline'
 " Turn off various things when editing really large files.
