@@ -23,10 +23,6 @@ let php_parent_error_open = 1
 " PHP folding: fold classes and functions.
 let php_folding = 1
 
-" Python settings.
-" Turn on the maximum amount of highlighting.
-let python_highlight_all = 1
-
 " Readline
 " Add bash specific stuff
 let readline_has_bash = 1
