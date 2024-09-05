@@ -48,11 +48,6 @@ endif
 " will fall back to vim's standard completion.
 autocmd FileType go call SuperTabChain(&omnifunc, "<c-p>")
 
-" Rust.
-if has('eval') && PluginLoaded('vim-lsp')
-  autocmd BufWritePre *.rs LspDocumentFormatSync
-endif
-
 " Turn on spelling if available.
 if has('spell')
   " help and some other files have too many distracting spelling errors.
@@ -76,14 +71,12 @@ autocmd BufReadPost,BufNewFile .coveragerc set filetype=dosini
 autocmd BufReadPost,BufNewFile *.tt2 set filetype=tt2
 autocmd FileType dosini,tt2 set commentstring=#%s
 autocmd BufReadPost,BufNewFile .bcrc set filetype=bc
-
-" Run dot every time the file is saved.
-autocmd BufWritePost *.dot call RunDot("%")
 autocmd FileType dot setlocal textwidth=300 foldmethod=indent
 
-if PluginLoaded('vim-lsp')
+if has('eval') && PluginLoaded('vim-lsp')
   autocmd BufReadPost * call DisableLSPForBufferWhenThereAreConflictMarkers()
   autocmd BufWritePost * call ReenableLSPForBufferWhenThereWereConflictMarkers()
+  autocmd BufWritePre *.rs LspDocumentFormatSync
 endif
 
 augroup END

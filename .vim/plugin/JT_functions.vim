@@ -16,9 +16,6 @@ endfunction
 function! TurnOnLineNumbersAndSigns()
   set number relativenumber signcolumn=auto
 endfunction
-function! TraditionalTabs()
-  setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
-endfunction
 
 " This layer of indirection seems to be necessary for map().
 function! s:Run(command)
@@ -54,16 +51,8 @@ endfunction
 
 " Set formatlistpat to my setting.  Relies on JT_settings.vim setting
 " g:johntobin_formatlistpat.
-  function! JT_set_formatlistpat()
-    let &formatlistpat = g:johntobin_formatlistpat
-  endfunction
-
-" Run dot(1) and display errors on failure.
-function! RunDot(file)
-  let l:output = system('dot -O -Tpdf ' . shellescape(expand(a:file)))
-  if v:shell_error != 0
-    echomsg trim(l:output)
-  endif
+function! JT_set_formatlistpat()
+  let &formatlistpat = g:johntobin_formatlistpat
 endfunction
 
 function! OpenFoldUnderCursor()
