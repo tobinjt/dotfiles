@@ -125,7 +125,7 @@ endif
 " Movement through the file.
 " Proper backspace, that deletes previously entered text.
 set backspace=indent,eol,start
-" Make the arrow keys wrap - i.e. hitting left arraw at the start of a
+" Make the arrow keys wrap - i.e. hitting left arrow at the start of a
 " line will move the cursor to the end of the previous line.
 set whichwrap+=<,>,b,[,]
 " Make % work with <>.
@@ -141,17 +141,7 @@ set makeprg+=\ -s
 
 " Completion settings
 " Dictionary file to read - Linux/*BSD, Solaris.
-set dictionary+=/usr/share/dict/words,/usr/share/lib/dict/words
-
-" History
-" Keep a history of commands type in command mode (after typing ':'), and
-" searches.
-set history=100
-if has('viminfo')
-  " Default:
-  "set viminfo='20,<50,s10,h
-  set viminfo='100,<50,s10,h
-endif
+set dictionary+=/usr/share/dict/words
 
 " Misc stuff, bugfixes.
 " Prevent vim connecting to the X server so that using PuTTY works without
