@@ -25,6 +25,12 @@ let g:ale_fixers = {
 " Recognise the global variables Neovim provides.
 let g:ale_lua_luacheck_options = '--globals vim'
 
+" --- Configure PHP checkers.  Untested, ported from Syntastic.
+let g:ale_php_phplint_args = '--modules-path ../phplint-modules'
+let g:ale_php_phplint_args .= ' --no-ascii-ext-check'
+" Use the level defined in phpstan.neon.
+let g:ale_php_phpstan_args = []
+
 " Nerdcommenter
 " Add spaces between delimiters and line contents.
 let g:NERDSpaceDelims = 1
@@ -43,40 +49,6 @@ let g:rustfmt_autosave = 0
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 " Run cargo on tests too.
 let g:rust_cargo_check_tests = 1
-
-" Syntastic.  I've removed Syntastic, I'm keeping this for now so that I can
-" more easily reconfigure ALE if necessary.
-" --- Configure Go checkers.
-" Install the necessary tools with; $ install-extra-tools-for-vim
-" All of these will be run serially; remove if that gets too slow.
-let g:syntastic_go_checkers =
-      \ ['go', 'gofmt', 'golangci_lint', 'gotype', 'govet']
-" --- Configure Javascript checkers.
-let g:syntastic_javascript_checkers =
-      \ ['closurecompiler', 'eslint', 'gjslint', 'glint']
-if executable('/usr/local/bin/closure-compiler')
-  let g:syntastic_javascript_closurecompiler_script =
-        \ '/usr/local/bin/closure-compiler'
-else
-  let g:syntastic_javascript_closurecompiler_script =
-        \ '/usr/bin/closure-compiler'
-endif
-let g:syntastic_typescript_checkers = ['eslint']
-" --- Configure markdown checkers.
-" Use markdownlint for the mdl linter.
-let g:syntastic_markdown_mdl_exec = 'markdownlint'
-let g:syntastic_markdown_mdl_args = ''
-" --- Configure Python checkers.
-" Make sure that python3 is used so it can parse type annotations.
-let g:syntastic_python_python_exec = 'python3'
-" Add mypy to the list of Python checkers.
-let g:syntastic_python_checkers = ['python', 'mypy', 'pylint']
-" --- Configure PHP checkers.
-let g:syntastic_php_checkers = ['php', 'phplint', 'phpstan']
-let g:syntastic_php_phplint_args = '--modules-path ../phplint-modules'
-let g:syntastic_php_phplint_args .= ' --no-ascii-ext-check'
-" Use the level defined in phpstan.neon.
-let g:syntastic_php_phpstan_args = []
 
 " vim-go.
 " Install the necessary tools with; $ install-extra-tools-for-vim
