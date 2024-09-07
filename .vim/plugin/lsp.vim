@@ -1,13 +1,13 @@
 " LSP
-" Disable diagnostics, they are really intrusive.
-let g:lsp_diagnostics_enabled = 0
-
 " Config for https://github.com/prabirshrestha/vim-lsp
 " https://github.com/mattn/vim-lsp-settings configures language servers.
 
 if ! PluginLoaded('vim-lsp')
   finish
 endif
+
+" Disable diagnostics, they are really intrusive.
+let g:lsp_diagnostics_enabled = 0
 
 augroup johntobin-lsp
 autocmd!
