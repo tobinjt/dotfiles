@@ -76,7 +76,8 @@ let g:rust_cargo_check_tests = 1
 "   # but it appears to work properly.
 
 function! PluginLoaded(plugin)
-  return stridx(&runtimepath, a:plugin) >= 0
+  " Use / and , to ensure vim-lsp doesn't match vim-lsp-settings.
+  return stridx(&runtimepath, '/' . a:plugin . ',') >= 0
 endfunction
 
 " Initialise vim-plug.
