@@ -18,19 +18,6 @@ autocmd FileType javascript,php setlocal foldtext=foldtext()
 " Shorter textwidth to stay within hg commit message guidelines.
 autocmd FileType hgcommit setlocal textwidth=78
 
-" Markdown
-" Automatically wrap text at textwidth.
-autocmd FileType markdown setlocal formatoptions+=t formatoptions-=l
-" Interpret blockquotes (lines starting with '>') as comments, so that line
-" wrapping doesn't mangle the blockquote markers.
-autocmd FileType markdown setlocal comments=n:>
-" Enable simple folding.
-autocmd FileType markdown setlocal foldmethod=expr
-  \ foldexpr=MarkdownFolding(v:lnum)
-" Set formatlistpat to my setting, overwriting the setting from
-" vim82/ftplugin/markdown.vim.
-autocmd FileType markdown call JT_set_formatlistpat()
-
 " Golang
 " Set a wide textwidth because Golang tends to have wide lines and airline
 " whitespace checks use textwidth.
