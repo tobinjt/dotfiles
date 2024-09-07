@@ -50,32 +50,6 @@ let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 " Run cargo on tests too.
 let g:rust_cargo_check_tests = 1
 
-" vim-go.
-" Install the necessary tools with; $ install-extra-tools-for-vim
-" Use goimports, it should fix up import lines automatically.
-let g:go_fmt_command = 'goimports'
-" More highlighting.
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_chan_whitespace_error = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_string_spellcheck = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-let g:go_debug_mappings = {
-  \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
-  \ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
-  \ '(go-debug-step)': {'key': 's'},
-\}
-
 " LSP
 " Disable diagnostics, they are really intrusive.
 let g:lsp_diagnostics_enabled = 0

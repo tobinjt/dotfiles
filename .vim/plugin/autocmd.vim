@@ -19,17 +19,6 @@ autocmd FileType javascript,php setlocal foldtext=foldtext()
 autocmd FileType hgcommit setlocal textwidth=78
 autocmd FileType vim setlocal foldmethod=syntax
 
-" Golang
-" Set a wide textwidth because Golang tends to have wide lines and airline
-" whitespace checks use textwidth.
-autocmd FileType go setlocal foldmethod=syntax textwidth=120 colorcolumn=
-" Autoformatting Go code on write causes folds to be closed; this autocmd opens
-" the fold under the cursor.
-autocmd BufWritePost *.go call OpenFoldUnderCursor()
-" Supertab will use vim-go's omnifunc first, and if that doesn't produce results
-" will fall back to vim's standard completion.
-autocmd FileType go call SuperTabChain(&omnifunc, "<c-p>")
-
 " help and some other files have too many distracting spelling errors.
 autocmd FileType help setlocal nospell
 " Checking for capitals at the start of a sentence is incorrect for some
