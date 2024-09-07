@@ -58,11 +58,6 @@ if exists('+wildignorecase')
   set wildignorecase
 endif
 
-" Use pipes instead of tempfiles when possible.  system() ignores this setting.
-if has('filterpipe')
-  set noshelltemp
-endif
-
 " Move swapfiles to ~/tmp/vim.
 if has('eval')
   " Base directory.
@@ -85,18 +80,16 @@ if has('eval')
   call JT_safe_mkdir(_temp_dir)
   let $TMPDIR = _temp_dir
 
-  " Save undo history per file.
-  if has('persistent_undo')
-    if has('nvim')
-      let _undo_dir = _temp_base . '/undo-nvim'
-    else
-      let _undo_dir = _temp_base . '/undo'
-    endif
-    call JT_safe_mkdir(_undo_dir)
-    let &undodir = _undo_dir . ',' . &undodir
-    set undodir-=.
-    set undofile
+" Save undo history per file.
+  if has('nvim')
+    let _undo_dir = _temp_base . '/undo-nvim'
+  else
+    let _undo_dir = _temp_base . '/undo'
   endif
+  call JT_safe_mkdir(_undo_dir)
+  let &undodir = _undo_dir . ',' . &undodir
+  set undodir-=.
+  set undofile
 endif
 
 " Formatting options.
@@ -117,10 +110,8 @@ set expandtab tabstop=2 shiftwidth=2
 "  * blah blah
 "  2. blah blah
 set formatlistpat=^\\s*\\([-*]\\\|\\d\\+\\.\\)\\s*
-if has('eval')
-  " Save this so it can be restored later.
-  let g:johntobin_formatlistpat = &formatlistpat
-endif
+" Save this so it can be restored later.
+let g:johntobin_formatlistpat = &formatlistpat
 
 " Movement through the file.
 " Proper backspace, that deletes previously entered text.
@@ -161,15 +152,9 @@ set nrformats+=alpha
 " deletes as `shiftwidth` worth of spaces.  I think this also applies to
 " whitespace after comments?
 set smarttab
-if has('spell')
-  " Turn on spelling if available.
-  set spell
-endif
-if exists('+spelloptions')
-  " In CamelCase words recognise each sub-word.
-  set spelloptions+=camel
-endif
-if exists('+spellfile')
-  " My word to recognise will be added to this file.
-  set spellfile+=~/.vim/spell/en.utf-8.add
-endif
+" Turn on spelling.
+set spell
+" In CamelCase words recognise each sub-word.
+set spelloptions+=camel
+" My word to recognise will be added to this file.
+set spellfile+=~/.vim/spell/en.utf-8.add

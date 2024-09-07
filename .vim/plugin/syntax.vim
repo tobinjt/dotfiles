@@ -1,7 +1,3 @@
-if !has('eval')
-  finish
-endif
-
 " Assume shell scripts are really using bash, so that we get bash-enhanced
 " syntax.
 let g:is_bash = 1

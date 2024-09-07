@@ -4,13 +4,7 @@
 " Date:              2016/10/30
 " Version:           2
 
-if ! has('eval')
-  finish
-endif
 if ! exists('$TMUX')
-  finish
-endif
-if ! exists('$TMUX_PANE')
   finish
 endif
 if exists('g:loaded_TmuxSetWindowName')

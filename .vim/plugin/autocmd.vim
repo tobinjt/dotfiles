@@ -1,7 +1,3 @@
-if !has('autocmd')
- finish
-endif
-
 " Put most autocmds in my own custom group, as recommended by the Google Vim
 " style guide.
 augroup johntobin
@@ -41,23 +37,18 @@ autocmd FileType markdown call JT_set_formatlistpat()
 autocmd FileType go setlocal foldmethod=syntax textwidth=120 colorcolumn=
 " Autoformatting Go code on write causes folds to be closed; this autocmd opens
 " the fold under the cursor.
-if has('eval')
-  autocmd BufWritePost *.go call OpenFoldUnderCursor()
-endif
+autocmd BufWritePost *.go call OpenFoldUnderCursor()
 " Supertab will use vim-go's omnifunc first, and if that doesn't produce results
 " will fall back to vim's standard completion.
 autocmd FileType go call SuperTabChain(&omnifunc, "<c-p>")
 
-" Turn on spelling if available.
-if has('spell')
-  " help and some other files have too many distracting spelling errors.
-  autocmd FileType help setlocal nospell
-  " Checking for capitals at the start of a sentence is incorrect for some
-  " files.
-  autocmd FileType dot,tmux set spellcapcheck=
-  " This turns on spell checking properly.
-  autocmd FileType html,text,gitcommit syntax spell toplevel
-endif
+" help and some other files have too many distracting spelling errors.
+autocmd FileType help setlocal nospell
+" Checking for capitals at the start of a sentence is incorrect for some
+" files.
+autocmd FileType dot,tmux set spellcapcheck=
+" This turns on spell checking properly.
+autocmd FileType html,text,gitcommit syntax spell toplevel
 
 " Set filetype=sshconfig for all ssh config snippets.
 autocmd BufReadPost,BufNewFile */.ssh/config* set filetype=sshconfig
@@ -73,7 +64,7 @@ autocmd FileType dosini,tt2 set commentstring=#%s
 autocmd BufReadPost,BufNewFile .bcrc set filetype=bc
 autocmd FileType dot setlocal textwidth=300 foldmethod=indent
 
-if has('eval') && PluginLoaded('vim-lsp')
+if PluginLoaded('vim-lsp')
   autocmd BufReadPost * call DisableLSPForBufferWhenThereAreConflictMarkers()
   autocmd BufWritePost * call ReenableLSPForBufferWhenThereWereConflictMarkers()
   autocmd BufWritePre *.rs LspDocumentFormatSync
