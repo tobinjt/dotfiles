@@ -12,9 +12,6 @@ if exists('g:loaded_TmuxSetWindowName')
 endif
 let g:loaded_TmuxSetWindowName = 'v2'
 let s:last_update_timestamp = 0
-if ! exists('g:TmuxSetWindowName_RefreshIntervalMilliseconds')
-  let g:TmuxSetWindowName_RefreshIntervalMilliseconds = 5000  " 5 seconds.
-endif
 
 function! s:TmuxGetWindowList()
   " Return a list of tmux wndows in the current session.
@@ -64,15 +61,12 @@ function! s:TmuxSetWindowName(name, ignore_timeout)
   "   name: the new name of the window
   "   ignore_timeout: if ignore_timeout is true, update even if the timeout
   "                   hasn't expired.
+  let l:current_timestamp = localtime()
   if a:ignore_timeout is v:false
-    let l:current_timestamp = localtime()
-    " Convert milliseconds to seconds.
-    let l:timeout = g:TmuxSetWindowName_RefreshIntervalMilliseconds / 1000
-    if s:last_update_timestamp + l:timeout > l:current_timestamp
-      return
-    endif
-    let s:last_update_timestamp = l:current_timestamp
+        \ && s:last_update_timestamp + 5 > l:current_timestamp
+    return
   endif
+  let s:last_update_timestamp = l:current_timestamp
 
   let l:current_window_name = s:TmuxGetWindowName()
   if l:current_window_name == a:name
