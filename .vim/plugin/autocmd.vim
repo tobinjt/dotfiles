@@ -41,8 +41,6 @@ autocmd FileType dosini,tt2 set commentstring=#%s
 autocmd BufReadPost,BufNewFile .bcrc set filetype=bc
 autocmd FileType dot setlocal textwidth=300 foldmethod=indent
 
-augroup END
-
 " Highlight the first three characters over the line length limit.  Clearing the
 " highlight group first makes the background the same colour, so we only see
 " this once we actually exceed the limit.
@@ -50,11 +48,7 @@ augroup END
 " (Note: we have to use autocommands for the highlighting since :colorscheme can
 " overwrite this highlighting, and :colorscheme apparently gets applied after
 " the .vimrc is done sourcing.)
-if exists('+colorcolumn')
-  set colorcolumn=+1,+2,+3
-  augroup color_tweak
-    autocmd!
-    autocmd ColorScheme * highlight clear ColorColumn
-    autocmd ColorScheme * highlight ColorColumn guifg=red ctermfg=red gui=bold
-  augroup END
-endif
+set colorcolumn=+1,+2,+3
+autocmd ColorScheme * highlight clear ColorColumn
+autocmd ColorScheme * highlight ColorColumn guifg=red ctermfg=red gui=bold
+augroup END

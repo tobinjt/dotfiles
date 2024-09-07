@@ -1,9 +1,7 @@
 " Markdown
 
 " Simple folding of sections.
-if ! exists('g:MarkdownMinimumHeaderFoldingLevel')
-  let g:MarkdownMinimumHeaderFoldingLevel = 2
-endif
+let g:MarkdownMinimumHeaderFoldingLevel = 2
 function! MarkdownFolding(lnum)
   let l:line = getline(a:lnum)
   let l:matches = matchlist(l:line, '^\(#\+\)')

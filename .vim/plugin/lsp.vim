@@ -42,12 +42,11 @@ autocmd BufReadPost * call DisableLSPForBufferWhenThereAreConflictMarkers()
 autocmd BufWritePost * call ReenableLSPForBufferWhenThereWereConflictMarkers()
 
 " Copied from https://github.com/prabirshrestha/vim-lsp#registering-servers
+" and simplified somewhat.
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
-  if exists('+tagfunc')
-    setlocal tagfunc=lsp#tagfunc
-  endif
+  setlocal tagfunc=lsp#tagfunc
 endfunction
 " Call s:on_lsp_buffer_enabled only for languages with registered servers.
 autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()

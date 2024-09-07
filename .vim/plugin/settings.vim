@@ -54,9 +54,7 @@ if !has('nvim')
   set swapsync=
 endif
 " Case-insensitive completion for filenames.
-if exists('+wildignorecase')
-  set wildignorecase
-endif
+set wildignorecase
 
 " Move swapfiles to ~/tmp/vim.
 call MoveSwapAndTempAndUndoFilesToTmp()
