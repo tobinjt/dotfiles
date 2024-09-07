@@ -30,7 +30,7 @@ autocmd FileType markdown setlocal foldmethod=expr
   \ foldexpr=MarkdownFolding(v:lnum)
 " Set formatlistpat to my setting, overwriting the setting from
 " vim??/ftplugin/markdown.vim.
-autocmd FileType markdown call JT_set_formatlistpat()
+autocmd FileType markdown call SetFormatlistpat()
 
 augroup END
 

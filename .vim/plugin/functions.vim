@@ -23,7 +23,7 @@ function! UpdateSpellFiles()
 endfunction
 
 " Functions to do magic things when you start editing a new file.
-function! JT_populate_sh()
+function! PopulateSH()
   " Don't execute this function a second time.
   if (line('$') != 1 || getline('$') !=# '')
     return
@@ -45,9 +45,9 @@ function! JT_safe_mkdir(dir)
   endif
 endfunction
 
-" Set formatlistpat to my setting.  Relies on JT_settings.vim setting
+" Set formatlistpat to my setting.  Relies on settings.vim setting
 " g:johntobin_formatlistpat.
-function! JT_set_formatlistpat()
+function! SetFormatlistpat()
   let &formatlistpat = g:johntobin_formatlistpat
 endfunction
 
