@@ -14,7 +14,7 @@ autocmd BufNewFile,BufRead *.json setlocal filetype=javascript
 autocmd FileType python setlocal textwidth=88
 " Javascript syntax highlighting messes with the way folds are displayed and I
 " don't like it, so set it back to the default.
-autocmd FileType javascript,php setlocal foldtext=foldtext()
+autocmd FileType javascript setlocal foldtext=foldtext()
 " Shorter textwidth to stay within hg commit message guidelines.
 autocmd FileType hgcommit setlocal textwidth=78
 autocmd FileType vim setlocal foldmethod=syntax

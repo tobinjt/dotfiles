@@ -19,12 +19,6 @@ let g:ale_fixers = {
 " Recognise the global variables Neovim provides.
 let g:ale_lua_luacheck_options = '--globals vim'
 
-" --- Configure PHP checkers.  Untested, ported from Syntastic.
-let g:ale_php_phplint_args = '--modules-path ../phplint-modules'
-let g:ale_php_phplint_args .= ' --no-ascii-ext-check'
-" Use the level defined in phpstan.neon.
-let g:ale_php_phpstan_args = []
-
 " Supertab
 " Use more clever completion.
 let g:SuperTabDefaultCompletionType = 'context'
