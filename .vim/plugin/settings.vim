@@ -30,6 +30,10 @@ set splitbelow splitright equalalways
 set lazyredraw
 " Show as much of the last line on screen as possible.
 set display+=lastline
+" Use TrueColor (24 bit).
+set termguicolors
+" I always have a dark background in my terminal.
+set background=dark
 
 " File related stuff.
 " Ignore files with these suffixes when doing tab completion.

@@ -123,3 +123,6 @@ call plug#end()
 " it because additions are placed at the end.
 set runtimepath-=~/.vim
 set runtimepath^=~/.vim
+
+let g:solarized_diffmode = 'low'
+colorscheme solarized8
