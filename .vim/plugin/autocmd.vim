@@ -64,12 +64,6 @@ autocmd FileType dosini,tt2 set commentstring=#%s
 autocmd BufReadPost,BufNewFile .bcrc set filetype=bc
 autocmd FileType dot setlocal textwidth=300 foldmethod=indent
 
-if PluginLoaded('vim-lsp')
-  autocmd BufReadPost * call DisableLSPForBufferWhenThereAreConflictMarkers()
-  autocmd BufWritePost * call ReenableLSPForBufferWhenThereWereConflictMarkers()
-  autocmd BufWritePre *.rs LspDocumentFormatSync
-endif
-
 augroup END
 
 " Highlight the first three characters over the line length limit.  Clearing the
