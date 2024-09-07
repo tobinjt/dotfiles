@@ -24,5 +24,5 @@ let php_folding = 1
 let readline_has_bash = 1
 
 " Folding in various languages.
-let g:vimsyn_folding = 'f'
+let g:vimsyn_folding = 'af'
 let javaScript_fold = 1

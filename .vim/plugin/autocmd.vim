@@ -17,6 +17,7 @@ autocmd FileType python setlocal textwidth=88
 autocmd FileType javascript,php setlocal foldtext=foldtext()
 " Shorter textwidth to stay within hg commit message guidelines.
 autocmd FileType hgcommit setlocal textwidth=78
+autocmd FileType vim setlocal foldmethod=syntax
 
 " Golang
 " Set a wide textwidth because Golang tends to have wide lines and airline
