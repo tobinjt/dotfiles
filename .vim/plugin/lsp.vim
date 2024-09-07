@@ -9,9 +9,6 @@ endif
 " Disable diagnostics, they are really intrusive.
 let g:lsp_diagnostics_enabled = 0
 
-augroup johntobin-lsp
-autocmd!
-
 " Disable LSP if there are conflict markers, and re-enable it afterwards.
 function! BufferHasConflictMarkers()
   " This is very simplistic but will likely work; if not, see
@@ -42,9 +39,6 @@ function! ReenableLSPForBufferWhenThereWereConflictMarkers()
   endif
 endfunction
 
-autocmd BufReadPost * call DisableLSPForBufferWhenThereAreConflictMarkers()
-autocmd BufWritePost * call ReenableLSPForBufferWhenThereWereConflictMarkers()
-
 " Copied from https://github.com/prabirshrestha/vim-lsp#registering-servers
 " and simplified somewhat.
 function! s:on_lsp_buffer_enabled() abort
@@ -52,10 +46,18 @@ function! s:on_lsp_buffer_enabled() abort
   setlocal signcolumn=yes
   setlocal tagfunc=lsp#tagfunc
 endfunction
-" Call s:on_lsp_buffer_enabled only for languages with registered servers.
-autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 
-" Use LSP to format Rust.
-autocmd BufWritePre *.rs LspDocumentFormatSync
+augroup johntobin-lsp
+  autocmd!
+  " Call s:on_lsp_buffer_enabled only for languages with registered servers.
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+
+  " Disable LSP when there are conflict markers, because conflict markers always
+  " cause errors.
+  autocmd BufReadPost * call DisableLSPForBufferWhenThereAreConflictMarkers()
+  autocmd BufWritePost * call ReenableLSPForBufferWhenThereWereConflictMarkers()
+
+  " Use LSP to format Rust.
+  autocmd BufWritePre *.rs LspDocumentFormatSync
 
 augroup END
