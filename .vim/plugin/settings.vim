@@ -59,38 +59,8 @@ if exists('+wildignorecase')
 endif
 
 " Move swapfiles to ~/tmp/vim.
-if has('eval')
-  " Base directory.
-  let _temp_base = expand('~/tmp/vim')
-
-  " Move swapfiles.
-  let _swap_dir = _temp_base . '/swap'
-  call JT_safe_mkdir(_swap_dir)
-  " Adding '//' means create the filename from the full path to prevent clashes.
-  let &directory = _swap_dir . '//,' . &directory
-  " Don't ever put swap files in the file's directory: it's bad on non-local
-  " filesystems.
-  set directory-=.
-
-  " Move tempfiles.  I'm trying this again because long-lived vim sessions get
-  " their temp directory removed sometimes; I don't see anything in
-  " /var/log/daily.out, but I *feel* like it's related to updating homebrew
-  " packages.
-  let _temp_dir = _temp_base . '/tmp'
-  call JT_safe_mkdir(_temp_dir)
-  let $TMPDIR = _temp_dir
-
-" Save undo history per file.
-  if has('nvim')
-    let _undo_dir = _temp_base . '/undo-nvim'
-  else
-    let _undo_dir = _temp_base . '/undo'
-  endif
-  call JT_safe_mkdir(_undo_dir)
-  let &undodir = _undo_dir . ',' . &undodir
-  set undodir-=.
-  set undofile
-endif
+call MoveSwapAndTempAndUndoFilesToTmp()
+set undofile
 
 " Formatting options.
 " Automatically insert comment leaders after hitting return in Insert mode or
