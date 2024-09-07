@@ -1,17 +1,11 @@
 " My .vimrc - an attempt to customise vim and save most of my settings so that
 " I'm independent of the global vimrc wherever I go.
 
-" Enable for debugging.
-"set verbose=2
-
 " Load vim defaults.
 if !has('nvim')
   unlet! skip_defaults_vim
   source $VIMRUNTIME/defaults.vim
 endif
-
-" Don't save netrw history, I don't use it.
-let g:netrw_dirhistmax = 0
 
 " ALE
 " Autofix if available.
@@ -30,10 +24,6 @@ let g:ale_php_phplint_args = '--modules-path ../phplint-modules'
 let g:ale_php_phplint_args .= ' --no-ascii-ext-check'
 " Use the level defined in phpstan.neon.
 let g:ale_php_phpstan_args = []
-
-" Nerdcommenter
-" Add spaces between delimiters and line contents.
-let g:NERDSpaceDelims = 1
 
 " Supertab
 " Use more clever completion.
