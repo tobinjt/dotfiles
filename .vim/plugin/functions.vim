@@ -38,13 +38,6 @@ set -e -f -u -o pipefail
   set filetype=sh
 endfunction
 
-" Create a directory if it does not exist.
-function! JT_safe_mkdir(dir)
-  if !isdirectory(a:dir)
-    call mkdir(a:dir, 'p', 0700)
-  endif
-endfunction
-
 " Set formatlistpat to my setting.  Relies on settings.vim setting
 " g:johntobin_formatlistpat.
 function! SetFormatlistpat()
@@ -72,7 +65,7 @@ function! MoveSwapAndTempAndUndoFilesToTmp()
 
   " Move swapfiles.
   let l:_swap_dir = _temp_base . '/swap'
-  call JT_safe_mkdir(l:_swap_dir)
+  call mkdir(l:_swap_dir, 'p', 0700)
   " Adding '//' means create the filename from the full path to prevent clashes.
   let &directory = l:_swap_dir . '//,' . &directory
   " Don't ever put swap files in the file's directory: it's bad on non-local
@@ -84,7 +77,7 @@ function! MoveSwapAndTempAndUndoFilesToTmp()
   " /var/log/daily.out, but I *feel* like it's related to updating homebrew
   " packages.
   let _temp_dir = l:_temp_base . '/tmp'
-  call JT_safe_mkdir(l:_temp_dir)
+  call mkdir(l:_temp_dir, 'p', 0700)
   let $TMPDIR = l:_temp_dir
 
 " Save undo history per file.
@@ -93,7 +86,7 @@ function! MoveSwapAndTempAndUndoFilesToTmp()
   else
     let l:_undo_dir = l:_temp_base . '/undo'
   endif
-  call JT_safe_mkdir(l:_undo_dir)
+  call mkdir(l:_undo_dir, 'p', 0700)
   let &undodir = l:_undo_dir . ',' . &undodir
   set undodir-=.
 endfunction
