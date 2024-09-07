@@ -16,19 +16,19 @@ function! MarkdownFolding(lnum)
 endfunction
 
 augroup johntobin-markdown
-autocmd!
+  autocmd!
 
-" Automatically wrap text at textwidth.
-autocmd FileType markdown setlocal formatoptions+=t formatoptions-=l
-" Interpret blockquotes (lines starting with '>') as comments, so that line
-" wrapping doesn't mangle the blockquote markers.
-autocmd FileType markdown setlocal comments=n:>
-" Enable simple folding.
-autocmd FileType markdown setlocal foldmethod=expr
-  \ foldexpr=MarkdownFolding(v:lnum)
-" Set formatlistpat to my setting, overwriting the setting from
-" vim??/ftplugin/markdown.vim.
-autocmd FileType markdown call SetFormatlistpat()
+  " Automatically wrap text at textwidth.
+  autocmd FileType markdown setlocal formatoptions+=t formatoptions-=l
+  " Interpret blockquotes (lines starting with '>') as comments, so that line
+  " wrapping doesn't mangle the blockquote markers.
+  autocmd FileType markdown setlocal comments=n:>
+  " Enable simple folding.
+  autocmd FileType markdown setlocal foldmethod=expr
+    \ foldexpr=MarkdownFolding(v:lnum)
+  " Set formatlistpat to my setting, overwriting the setting from
+  " vim??/ftplugin/markdown.vim.
+  autocmd FileType markdown call SetFormatlistpat()
 
 augroup END
 
