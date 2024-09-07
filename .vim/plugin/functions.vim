@@ -44,12 +44,6 @@ function! SetFormatlistpat()
   let &formatlistpat = g:johntobin_formatlistpat
 endfunction
 
-function! OpenFoldUnderCursor()
-  if foldlevel(line('.')) > 0
-    foldopen!
-  endif
-endfunction
-
 function! StartProfiling()
   profile start profile.log
   profile file *

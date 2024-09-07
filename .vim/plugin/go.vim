@@ -1,4 +1,10 @@
 " Golang
+function! OpenFoldUnderCursor()
+  if foldlevel(line('.')) > 0
+    foldopen!
+  endif
+endfunction
+
 augroup johntobin-golang
   autocmd!
   " Set a wide textwidth because Golang tends to have wide lines and airline
