@@ -50,10 +50,6 @@ let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 " Run cargo on tests too.
 let g:rust_cargo_check_tests = 1
 
-" LSP
-" Disable diagnostics, they are really intrusive.
-let g:lsp_diagnostics_enabled = 0
-
 " Plugins.
 " To update all the git submodules: update-dotfiles-and-bin-plugins
 " To update a single submodule:
