@@ -34,6 +34,8 @@ set display+=lastline
 set termguicolors
 " I always have a dark background in my terminal.
 set background=dark
+" Highlight the first three characters over the line length limit.
+set colorcolumn=+1,+2,+3
 
 " File related stuff.
 " Ignore files with these suffixes when doing tab completion.
