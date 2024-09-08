@@ -23,22 +23,22 @@ autocmd!
   autocmd FileType help setlocal nospell
   " Checking for capitals at the start of a sentence is incorrect for some
   " files.
-  autocmd FileType dot,tmux set spellcapcheck=
+  autocmd FileType dot,tmux setlocal spellcapcheck=
   " This turns on spell checking properly.
   autocmd FileType html,text,gitcommit syntax spell toplevel
 
   " Set filetype=sshconfig for all ssh config snippets.
-  autocmd BufReadPost,BufNewFile */.ssh/config* set filetype=sshconfig
+  autocmd BufReadPost,BufNewFile */.ssh/config* setlocal filetype=sshconfig
   " Set a wide textwidth for authorized_keys.
-  autocmd BufReadPost,BufNewFile */.ssh/authorized_keys set textwidth=1000
-  autocmd BufReadPost,BufNewFile authorized_keys* set textwidth=1000
+  autocmd BufReadPost,BufNewFile */.ssh/authorized_keys setlocal textwidth=1000
+  autocmd BufReadPost,BufNewFile authorized_keys* setlocal textwidth=1000
   " Hugo files are go html templates, not pure html.
-  autocmd BufReadPost,BufNewFile */hugo-coder/*/*.html set filetype=gohtmltmpl
+  autocmd BufReadPost,BufNewFile */hugo-coder/*/*.html setlocal filetype=gohtmltmpl
   " .coveragerc used by Python coverage is actually an ini file.
-  autocmd BufReadPost,BufNewFile .coveragerc set filetype=dosini
-  autocmd BufReadPost,BufNewFile *.tt2 set filetype=tt2
-  autocmd FileType dosini,tt2 set commentstring=#%s
-  autocmd BufReadPost,BufNewFile .bcrc set filetype=bc
+  autocmd BufReadPost,BufNewFile .coveragerc setlocal filetype=dosini
+  autocmd BufReadPost,BufNewFile *.tt2 setlocal filetype=tt2
+  autocmd FileType dosini,tt2 setlocal commentstring=#%s
+  autocmd BufReadPost,BufNewFile .bcrc setlocal filetype=bc
   autocmd FileType dot setlocal textwidth=300 foldmethod=indent
 
   " Highlight the first three characters over the line length limit.  Requires
