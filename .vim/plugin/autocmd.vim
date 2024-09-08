@@ -19,23 +19,27 @@ autocmd!
   " On BSD systems, the original file provided by crontab(1) must be written to,
   " rather than writing a new file and renaming it.
   autocmd FileType crontab setlocal backupcopy=yes textwidth=1000
-  autocmd FileType dosini,tt2 setlocal commentstring=#%s
-  autocmd FileType dot setlocal textwidth=300 foldmethod=indent
-  " Checking for capitals at the start of a sentence is incorrect for some
-  " files.
-  autocmd FileType dot,tmux setlocal spellcapcheck=
-  " help and some other files have too many distracting spelling errors.
+  " Stop checking for capitals at the start of a sentence.
+  autocmd FileType dot setlocal spellcapcheck= textwidth=300 foldmethod=indent
+  " This turns on spell checking properly.
+  autocmd FileType gitcommit syntax spell toplevel
+  " Too many distracting spelling errors.
   autocmd FileType help setlocal nospell
   " Shorter textwidth to stay within hg commit message guidelines.
   autocmd FileType hgcommit setlocal textwidth=78
   " This turns on spell checking properly.
-  autocmd FileType html,text,gitcommit syntax spell toplevel
+  autocmd FileType html syntax spell toplevel
   " Javascript syntax highlighting messes with the way folds are displayed and I
   " don't like it, so set it back to the default.
   autocmd FileType javascript setlocal foldtext=foldtext()
   autocmd FileType make setlocal shiftwidth=8 tabstop=8
   " Wider textwidth for compatibility with black.
   autocmd FileType python setlocal textwidth=88
+  " This turns on spell checking properly.
+  autocmd FileType text syntax spell toplevel
+  " Stop checking for capitals at the start of a sentence.
+  autocmd FileType tmux setlocal spellcapcheck=
+  autocmd FileType tt2 setlocal commentstring=#%s
   autocmd FileType vim setlocal foldmethod=syntax
   " keep-sorted end
 
