@@ -3,43 +3,41 @@
 augroup johntobin
 autocmd!
 
+  " keep-sorted start sticky_prefixes="
+
+  autocmd BufReadPost,BufNewFile *.json setlocal filetype=javascript
+  autocmd BufReadPost,BufNewFile *.tt2 setlocal filetype=tt2
+  " Set filetype=sshconfig for all ssh config snippets.
+  autocmd BufReadPost,BufNewFile */.ssh/config* setlocal filetype=sshconfig
+  " Hugo files are go html templates, not pure html.
+  autocmd BufReadPost,BufNewFile */hugo-coder/*/*.html setlocal filetype=gohtmltmpl
+  autocmd BufReadPost,BufNewFile .bcrc setlocal filetype=bc
+  " .coveragerc used by Python coverage is actually an ini file.
+  autocmd BufReadPost,BufNewFile .coveragerc setlocal filetype=dosini
+  autocmd BufReadPost,BufNewFile authorized_keys* setlocal textwidth=1000
+  autocmd FileType c,cpp setlocal foldmethod=syntax
   " On BSD systems, the original file provided by crontab(1) must be written to,
   " rather than writing a new file and renaming it.
   autocmd FileType crontab setlocal backupcopy=yes textwidth=1000
-  autocmd FileType make setlocal shiftwidth=8 tabstop=8
-  autocmd FileType c,cpp setlocal foldmethod=syntax
-
-  autocmd BufNewFile,BufRead *.json setlocal filetype=javascript
-  " Wider textwidth for compatibility with black.
-  autocmd FileType python setlocal textwidth=88
-  " Javascript syntax highlighting messes with the way folds are displayed and I
-  " don't like it, so set it back to the default.
-  autocmd FileType javascript setlocal foldtext=foldtext()
-  " Shorter textwidth to stay within hg commit message guidelines.
-  autocmd FileType hgcommit setlocal textwidth=78
-  autocmd FileType vim setlocal foldmethod=syntax
-
-  " help and some other files have too many distracting spelling errors.
-  autocmd FileType help setlocal nospell
+  autocmd FileType dosini,tt2 setlocal commentstring=#%s
+  autocmd FileType dot setlocal textwidth=300 foldmethod=indent
   " Checking for capitals at the start of a sentence is incorrect for some
   " files.
   autocmd FileType dot,tmux setlocal spellcapcheck=
+  " help and some other files have too many distracting spelling errors.
+  autocmd FileType help setlocal nospell
+  " Shorter textwidth to stay within hg commit message guidelines.
+  autocmd FileType hgcommit setlocal textwidth=78
   " This turns on spell checking properly.
   autocmd FileType html,text,gitcommit syntax spell toplevel
-
-  " Set filetype=sshconfig for all ssh config snippets.
-  autocmd BufReadPost,BufNewFile */.ssh/config* setlocal filetype=sshconfig
-  " Set a wide textwidth for authorized_keys.
-  autocmd BufReadPost,BufNewFile */.ssh/authorized_keys setlocal textwidth=1000
-  autocmd BufReadPost,BufNewFile authorized_keys* setlocal textwidth=1000
-  " Hugo files are go html templates, not pure html.
-  autocmd BufReadPost,BufNewFile */hugo-coder/*/*.html setlocal filetype=gohtmltmpl
-  " .coveragerc used by Python coverage is actually an ini file.
-  autocmd BufReadPost,BufNewFile .coveragerc setlocal filetype=dosini
-  autocmd BufReadPost,BufNewFile *.tt2 setlocal filetype=tt2
-  autocmd FileType dosini,tt2 setlocal commentstring=#%s
-  autocmd BufReadPost,BufNewFile .bcrc setlocal filetype=bc
-  autocmd FileType dot setlocal textwidth=300 foldmethod=indent
+  " Javascript syntax highlighting messes with the way folds are displayed and I
+  " don't like it, so set it back to the default.
+  autocmd FileType javascript setlocal foldtext=foldtext()
+  autocmd FileType make setlocal shiftwidth=8 tabstop=8
+  " Wider textwidth for compatibility with black.
+  autocmd FileType python setlocal textwidth=88
+  autocmd FileType vim setlocal foldmethod=syntax
+  " keep-sorted end
 
   " Highlight the first three characters over the line length limit.  Requires
   " setting colorcolumn which is done in settings.vim.
