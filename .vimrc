@@ -126,3 +126,10 @@ set runtimepath^=~/.vim
 
 let g:solarized_diffmode = 'low'
 colorscheme solarized8
+" Highlight the first three characters over the line length limit.  Requires
+" setting colorcolumn which is done in settings.vim.
+"
+" Clearing the highlight group first makes the background the same colour as the
+" normal background, so we only see this once we actually exceed the limit.
+highlight clear ColorColumn
+highlight ColorColumn guifg=red ctermfg=red gui=bold
