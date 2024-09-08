@@ -132,3 +132,6 @@ set spell
 set spelloptions+=camel
 " My word to recognise will be added to this file.
 set spellfile+=~/.vim/spell/en.utf-8.add
+" Timeout when reading mappings.
+set ttimeout
+set ttimeoutlen=100
