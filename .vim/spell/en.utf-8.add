@@ -4,6 +4,7 @@ Ariane's
 Harshad
 Homebrew
 IPv6
+Neovim
 PHPLint
 SEAI
 SRE
@@ -20,9 +21,11 @@ offsite
 onsite
 plugin
 plugins
+rclone
 readonly
 recurse
 recursing
+restic
 robosheep
 rsync
 src
@@ -32,6 +35,3 @@ submodules
 timestamp
 vimrc
 wp
-rclone
-restic
-Neovim
