@@ -10,7 +10,9 @@ main() {
   # in my shell input stream with older versions of vim.
   vim --cmd 'let g:loaded_TmuxSetWindowName=1' \
     --cmd 'set t_u7=' \
-    -c 'helptags ALL | call UpdateSpellFiles() | :quit'
+    -c ':helptags ALL' \
+    -c 'execute "mkspell! " &spellfile' \
+    -c ':quit'
 }
 
 main "$@"
