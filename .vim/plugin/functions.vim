@@ -13,15 +13,6 @@ function! TurnOnLineNumbersAndSigns()
   set number relativenumber signcolumn=auto
 endfunction
 
-" This layer of indirection seems to be necessary for map().
-function! s:Run(command)
-  execute a:command
-endfunction
-" Update all spell files.
-function! UpdateSpellFiles()
-  call map(split(&spellfile, ','), 's:Run("mkspell! " . v:val)')
-endfunction
-
 " Functions to do magic things when you start editing a new file.
 function! PopulateSH()
   " Don't execute this function a second time.
