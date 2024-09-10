@@ -2,7 +2,7 @@
 " Config for https://github.com/prabirshrestha/vim-lsp
 " https://github.com/mattn/vim-lsp-settings configures language servers.
 
-if ! PluginLoaded('vim-lsp')
+if ! plugin_loaded#plugin_loaded('vim-lsp')
   finish
 endif
 
