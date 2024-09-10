@@ -124,5 +124,4 @@ call plug#end()
 set runtimepath-=~/.vim
 set runtimepath^=~/.vim
 
-let g:solarized_diffmode = 'low'
-colorscheme solarized8
+colorscheme solarized8-mine
