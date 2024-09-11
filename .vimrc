@@ -59,11 +59,6 @@ let g:rust_cargo_check_tests = 1
 "   # The branch in the submodule will look like `(HEAD detached at a53e340)`
 "   # but it appears to work properly.
 
-function! PluginLoaded(plugin)
-  " Use / and , to ensure vim-lsp doesn't match vim-lsp-settings.
-  return stridx(&runtimepath, '/' . a:plugin . ',') >= 0
-endfunction
-
 " Initialise vim-plug.
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
@@ -124,5 +119,4 @@ call plug#end()
 set runtimepath-=~/.vim
 set runtimepath^=~/.vim
 
-let g:solarized_diffmode = 'low'
-colorscheme solarized8
+colorscheme solarized8-mine
