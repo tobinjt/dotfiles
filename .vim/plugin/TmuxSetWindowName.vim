@@ -93,7 +93,12 @@ function! s:TmuxFormatFilenameForDisplay(display_name)
     \          '"[" . v:val . "]"'),
     \       '')
 
-  return join(filter(['vim',
+  if has('nvim')
+    let l:editor = 'nvim'
+  else
+    let l:editor = 'vim'
+  endif
+  return join(filter([l:editor,
     \                 l:additional_info,
     \                 a:display_name,
     \                ],
