@@ -2,6 +2,7 @@
 " See :help colorscheme for more info about overrides.
 let g:solarized_diffmode = 'low'
 runtime colors/solarized8.vim
+let g:colors_name = 'solarized8-mine'
 
 " Highlight the first three characters over the line length limit.  Requires
 " setting colorcolumn which is done in settings.vim.
