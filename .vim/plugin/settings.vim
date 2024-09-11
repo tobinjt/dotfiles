@@ -9,6 +9,7 @@ set ruler
 set laststatus=2
 " Highlight the current line.
 set cursorline
+set cursorlineopt=number
 " Line numbers to make jumping easier.
 set number relativenumber
 " Don't highlight search results afterwards.
