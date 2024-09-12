@@ -2,8 +2,6 @@
 return {
   -- Change markers signs and Git support.  No Mercurial support.
   "lewis6991/gitsigns.nvim",
-  -- Easily comment or uncomment lines.
-  "numToStr/Comment.nvim",
 
   -- LSP support.
   {
