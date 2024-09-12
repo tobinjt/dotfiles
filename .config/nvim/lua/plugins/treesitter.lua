@@ -29,6 +29,13 @@ return {
         "vimdoc",
         -- keep-sorted end
       },
+      highlight = {
+        enable = true,
+      },
+      indent = {
+        enable = true,
+      },
+      -- :help nvim-treesitter-incremental-selection-mod
     },
   },
 }
