@@ -11,14 +11,23 @@ return {
     opts = {
       -- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
       ensure_installed = {
+        -- keep-sorted start
+        "awk",
         "bash",
+        "css",
+        "gitcommit",
         "go",
+        "html",
+        "luadoc",
         "markdown",
         "markdown_inline",
+        "printf",
         "python",
+        "regex",
         "rust",
         "vim",
         "vimdoc",
+        -- keep-sorted end
       },
     },
   },
