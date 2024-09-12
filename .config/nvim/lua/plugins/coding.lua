@@ -1,7 +1,10 @@
 -- Check out https://docs.astronvim.com/reference/default_plugins/
 return {
-  -- Change markers signs and Git support.  No Mercurial support.
-  "lewis6991/gitsigns.nvim",
+  {
+    -- VCS indicators in the signs column.
+    dir = vim.fn.expand("~/.vim/bundle/vim-signify"),
+    lazy = false,
+  },
 
   -- LSP support.
   {
