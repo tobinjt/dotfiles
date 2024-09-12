@@ -5,9 +5,13 @@ return {
     -- Based on https://www.lazyvim.org/plugins/treesitter#nvim-treesitter
     -- treesitter.setup() doesn't install parsers, instead we need
     -- treesitter.config.setup(opts).
+    -- https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation#lazynvim
+    -- documents all this.
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
     end,
+    -- Update parsers if necessary.
+    build = ":TSUpdate",
     opts = {
       -- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
       ensure_installed = {
