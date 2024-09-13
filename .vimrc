@@ -34,17 +34,6 @@ let g:signify_skip = {
 " Use more clever completion.
 let g:SuperTabDefaultCompletionType = 'context'
 
-" Rust
-" Enable folding.
-let g:rust_fold = 1
-" Autoformat on save: rust.vim's autoformat is really slow, search for
-" Rust in plugin/JT_autocmd.vim for how I've implemented autoformat.
-let g:rustfmt_autosave = 0
-" Use `cargo clippy` rather than `cargo check` when available.
-let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
-" Run cargo on tests too.
-let g:rust_cargo_check_tests = 1
-
 " Plugins.
 " To update all the git submodules: update-dotfiles-and-bin-plugins
 " To update a single submodule:
