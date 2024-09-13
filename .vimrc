@@ -83,8 +83,6 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'rhysd/vim-lsp-ale'
 " Better folding of Python.
 Plug 'tmhedberg/SimpylFold'
-" Reload files when changing Tmux panes.
-Plug 'tmux-plugins/vim-tmux-focus-events'
 " Markdown syntax highlighting.
 Plug 'tobinjt/vim-markdown'
 " Easy wrapping of comment blocks with \wc.
