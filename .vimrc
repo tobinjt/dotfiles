@@ -1,17 +1,6 @@
 " Load vim defaults.
 source $VIMRUNTIME/defaults.vim
 
-" Signify; disable VCS systems I don't use.
-let g:signify_skip = {
-      \  'vcs': {
-      \    'allow': [
-      \      'git',
-      \      'hg',
-      \      'perforce',
-      \    ],
-      \  }
-      \}
-
 " Supertab
 " Use more clever completion.
 let g:SuperTabDefaultCompletionType = 'context'
