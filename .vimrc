@@ -19,6 +19,17 @@ let g:ale_fixers = {
 " Recognise the global variables Neovim provides.
 let g:ale_lua_luacheck_options = '--globals vim'
 
+" Signify; disable VCS systems I don't use.
+let g:signify_skip = {
+      \  'vcs': {
+      \    'allow': [
+      \      'git',
+      \      'hg',
+      \      'perforce',
+      \    ],
+      \  }
+      \}
+
 " Supertab
 " Use more clever completion.
 let g:SuperTabDefaultCompletionType = 'context'
