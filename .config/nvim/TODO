@@ -2,7 +2,6 @@
 - Folding.
   - https://stackoverflow.com/questions/77220511/neovim-fold-code-with-foldmethod-syntax-or-foldmethod-expr-depending-on-tre
   - https://www.reddit.com/r/neovim/comments/16xz3q9/treesitter_highlighted_folds_are_now_in_neovim/
-- Supertab
 - Linting
 - Autoformatting
 - Trouble.nvim
