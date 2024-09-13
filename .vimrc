@@ -1,11 +1,5 @@
-" My .vimrc - an attempt to customise vim and save most of my settings so that
-" I'm independent of the global vimrc wherever I go.
-
 " Load vim defaults.
-if !has('nvim')
-  unlet! skip_defaults_vim
-  source $VIMRUNTIME/defaults.vim
-endif
+source $VIMRUNTIME/defaults.vim
 
 " Signify; disable VCS systems I don't use.
 let g:signify_skip = {
@@ -100,8 +94,7 @@ call plug#end()
 " All plugins have now been loaded and their functionality is available.
 
 " Explicitly put ~/.vim first, because vim will put spelling additions in the
-" first directory in runtimepath.  Overwrite runtimepath rather than adding to
-" it because additions are placed at the end.
+" first directory in runtimepath.
 set runtimepath-=~/.vim
 set runtimepath^=~/.vim
 
