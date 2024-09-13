@@ -6,5 +6,5 @@
 - Linting
 - Autoformatting
 - Trouble.nvim
-- tobinjt/wrap-comment-block.vim
-- wsdjeg/vim-fetch
+- Wrap comment block: needs a rewrite because I'm not using standard Vim syntax
+  highlighting, I'm using Treesitter.
