@@ -1,3 +1,4 @@
+" Reading .vimrc is step 3 in :help startup.
 " Load vim defaults.
 source $VIMRUNTIME/defaults.vim
 
@@ -80,11 +81,8 @@ endif
 " Finish vim-plug setup.
 call plug#end()
 
-" All plugins have now been loaded and their functionality is available.
-
-" Explicitly put ~/.vim first, because vim will put spelling additions in the
-" first directory in runtimepath.
-set runtimepath-=~/.vim
-set runtimepath^=~/.vim
+" Plugins have been added to &runtimepath, and next is step 4 in :help startup:
+" loading plugins.  ~/.vim should be the first entry in &runtimepath so that
+" config from ~/.vim/plugin can influence plugins loaded later.
 
 colorscheme solarized8-mine
