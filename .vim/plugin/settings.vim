@@ -62,6 +62,9 @@ if !has('nvim')
 endif
 " Case-insensitive completion for filenames.
 set wildignorecase
+" Fully unload files when I close them, otherwise they can't be opened in other
+" instances.
+set nohidden
 
 " Move swapfiles to ~/tmp/vim.
 call MoveSwapAndTempAndUndoFilesToTmp()
