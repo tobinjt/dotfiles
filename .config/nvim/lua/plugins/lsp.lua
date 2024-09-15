@@ -6,15 +6,7 @@ return {
     --   "mason.nvim",
     --   "mason-lspconfig.nvim",
     -- },
-    ft = {
-      -- keep-sorted start
-      "go",
-      "lua",
-      "python",
-      "rust",
-      "shell",
-      -- keep-sorted end
-    },
+    lazy = false,
     -- config() is an empty function because you can't call
     -- require("lspconfig").start(), it's not a function.
     config = function(_, _)
