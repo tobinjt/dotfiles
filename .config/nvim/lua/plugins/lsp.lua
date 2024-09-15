@@ -1,3 +1,4 @@
+-- Note: some plugin configs also contain LSP config, e.g. lua.lua.
 return {
   {
     "neovim/nvim-lspconfig",
@@ -14,7 +15,15 @@ return {
       "shell",
       -- keep-sorted end
     },
+    -- config() is an empty function because you can't call
+    -- require("lspconfig").start(), it's not a function.
     config = function(_, _)
+    end,
+    -- This doesn't change opts, it runs code with side effects to configure
+    -- LSP.  This allows us to separate config for some languages, because
+    -- opts is evaluated and merged for every stanza, unlike config where the
+    -- last definition wins and the others are overwritten.
+    opts = function(_, opts)
       local lspconfig = require("lspconfig")
       -- keep-sorted start
       lspconfig.bashls.setup{}
@@ -22,24 +31,7 @@ return {
       lspconfig.pylsp.setup{}
       lspconfig.rust_analyzer.setup{}
       -- keep-sorted end
-
-      lspconfig.lua_ls.setup {
-        settings = {
-          Lua = {
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global.
-              globals = {
-                'require',
-                'vim'
-              },
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files.
-              library = vim.api.nvim_get_runtime_file("", true),
-            },
-          },
-        },
-      }
+      return opts
     end
   },
 

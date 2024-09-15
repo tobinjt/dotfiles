@@ -3,7 +3,30 @@ return {
     "folke/lazydev.nvim",
     ft = "lua",
   },
-  -- There is additional config in lsp.lua, because I can't figure out how to
-  -- separate the config for neovim/nvim-lspconfig without overwriting one or
-  -- the other config.
+  {
+    "neovim/nvim-lspconfig",
+    -- See comments in lsp.lua about how the split setup works.
+    opts = function(_, opts)
+      require("lspconfig").lua_ls.setup {
+        settings = {
+          Lua = {
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global.
+              globals = {
+                'require',
+                'vim'
+              },
+            },
+            workspace = {
+              -- Make the server aware of Neovim runtime files.
+              -- This is copied from a post on Reddit, I don't know how
+              -- necessary it is.
+              library = vim.api.nvim_get_runtime_file("", true),
+            },
+          },
+        },
+      }
+      return opts
+    end
+  },
 }
