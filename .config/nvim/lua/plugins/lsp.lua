@@ -2,11 +2,13 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    -- dependencies = {
-    --   "mason.nvim",
-    --   "mason-lspconfig.nvim",
-    -- },
     lazy = false,
+    -- Dependencies are not necessary in other configs, setting them once is
+    -- enough.
+    dependencies = {
+      "mason.nvim",
+      "mason-lspconfig.nvim",
+    },
     -- config() is an empty function because you can't call
     -- require("lspconfig").start(), it's not a function.
     config = function(_, _)
@@ -26,8 +28,4 @@ return {
       return opts
     end
   },
-
-  -- Automatic installation and configuration of LSP servers, linters, and more.
-  -- "williamboman/mason.nvim",
-  -- "williamboman/mason-lspconfig.nvim",
 }
