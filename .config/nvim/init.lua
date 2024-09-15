@@ -5,3 +5,6 @@ require("config.lazy")
 -- Load all the configs defined in lua/plugins/*.lua
 require("lazy").setup("plugins")
 vim.cmd.colorscheme('solarized8-mine')
+-- Configure folding to use Treesitter.
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
