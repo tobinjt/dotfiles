@@ -23,6 +23,7 @@ return {
       lspconfig.bashls.setup{}
       lspconfig.gopls.setup{}
       lspconfig.pylsp.setup{}
+      lspconfig.ruff.setup{}
       lspconfig.rust_analyzer.setup{}
       -- keep-sorted end
       return opts
