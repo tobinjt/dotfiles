@@ -20,11 +20,12 @@ return {
     opts = function(_, opts)
       local lspconfig = require("lspconfig")
       -- keep-sorted start
-      lspconfig.bashls.setup{}
-      lspconfig.gopls.setup{}
-      lspconfig.pylsp.setup{}
-      lspconfig.ruff.setup{}
-      lspconfig.rust_analyzer.setup{}
+      lspconfig.bashls.setup {}
+      lspconfig.gopls.setup {}
+      lspconfig.pylsp.setup {}
+      lspconfig.ruff.setup {}
+      lspconfig.rust_analyzer.setup {}
+      lspconfig.vimls.setup {}
       -- keep-sorted end
       return opts
     end
