@@ -65,10 +65,11 @@ set wildignorecase
 " Fully unload files when I close them, otherwise they can't be opened in other
 " instances.
 set nohidden
+" Track undo information so that I can undo when I reopen a file.
+set undofile
 
 " Move swapfiles to ~/tmp/vim.
 call MoveSwapAndTempAndUndoFilesToTmp()
-set undofile
 
 " Formatting options.
 " Automatically insert comment leaders after hitting return in Insert mode or
