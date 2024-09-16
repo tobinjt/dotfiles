@@ -1,5 +1,4 @@
 - Linting
-- Autoformatting
 - Trouble.nvim
 - Wrap comment block: needs a rewrite because I'm not using standard Vim syntax
   highlighting, I'm using Treesitter.
