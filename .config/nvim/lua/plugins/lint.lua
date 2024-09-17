@@ -1,6 +1,7 @@
 return {
   {
     "mfussenegger/nvim-lint",
+    lazy = false,
     config = function(_, _)
       local lint = require("lint")
       lint.linters_by_ft = {
