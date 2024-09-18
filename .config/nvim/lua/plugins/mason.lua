@@ -6,8 +6,7 @@
 -- I have configured dependencies in lsp.lua to do this.
 return {
   {
-  "williamboman/mason.nvim",
-    lazy = false,
+    "williamboman/mason.nvim",
     opts = {
       ui = {
         -- I want to control when package updates are made, at least at first.
@@ -16,8 +15,7 @@ return {
     },
   },
   {
-  "williamboman/mason-lspconfig.nvim",
-    lazy = false,
+    "williamboman/mason-lspconfig.nvim",
     -- Trigger setup so the plugin is functional.
     config = true,
     dependencies = {

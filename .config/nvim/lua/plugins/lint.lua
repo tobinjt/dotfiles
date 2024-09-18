@@ -1,7 +1,6 @@
 return {
   {
     "mfussenegger/nvim-lint",
-    lazy = false,
 
     config = function(_, opts)
       local lint = require("lint")

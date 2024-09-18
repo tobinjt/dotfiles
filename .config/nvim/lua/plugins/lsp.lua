@@ -2,7 +2,6 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    lazy = false,
     -- Dependencies are not necessary in other configs, setting them once is
     -- enough.
     dependencies = {

@@ -21,7 +21,6 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    lazy = false,
     -- See comments in lsp.lua about how the split setup works.
     opts = function(_, opts)
       require("lspconfig").lua_ls.setup {
