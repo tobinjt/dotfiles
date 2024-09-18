@@ -24,7 +24,7 @@ repos:
         name: Run `luacheck` if it's installed
         language: system
         types: [lua]
-        entry: run-if-exists luacheck --globals vim --codes --ranges
+        entry: run-if-exists luacheck --globals vim table.unpack --codes --ranges
       - id: shellcheck
         name: Run `shellcheck`
         language: system
