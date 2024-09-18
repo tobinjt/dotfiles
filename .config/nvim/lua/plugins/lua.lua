@@ -3,6 +3,22 @@ return {
     "folke/lazydev.nvim",
     ft = "lua",
   },
+
+  {
+    "mfussenegger/nvim-lint",
+    opts = function(_, opts)
+      local lint = require("lint")
+      lint.linters.luacheck.args = {
+        "--globals",
+        "vim",
+        table.unpack(lint.linters.luacheck.args),
+      }
+      opts.linters_by_ft = opts.linters_by_ft or {}
+      opts.linters_by_ft["lua"] = "luacheck"
+      return opts
+    end
+  },
+
   {
     "neovim/nvim-lspconfig",
     lazy = false,
