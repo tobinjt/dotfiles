@@ -40,6 +40,7 @@ return {
         enable = true,
       },
       -- :help nvim-treesitter-incremental-selection-mod
+      -- Consider "nvim-treesitter/nvim-treesitter-textobjects" ?
     },
   },
 }

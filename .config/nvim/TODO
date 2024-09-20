@@ -1,6 +1,2 @@
-- Trouble.nvim
-- nvim-cmp?
-- Use Treesitter to define custom text objects.
-  "nvim-treesitter/nvim-treesitter-textobjects",
 - Wrap comment block: needs a rewrite because I'm not using standard Vim syntax
   highlighting, I'm using Treesitter.
