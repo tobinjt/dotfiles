@@ -91,8 +91,9 @@ fi
 LC_COLLATE="C"
 # smart case matching; long prompt; suppress dumb terminal error messages;
 # allow ANSI colour escape sequences; highlight the first new line when
-# moving through the file
-LESS="iMdRW${LESS:-}"
+# moving through the file; exit immediately if the contents can be displayed on
+# a single screen.
+LESS="iMdRWF"
 PAGER="less"
 # Don't create or use a shared connection for rsync.
 RSYNC_RSH="ssh -o ControlPath=none"
