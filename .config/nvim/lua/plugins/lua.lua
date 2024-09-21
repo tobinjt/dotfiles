@@ -14,7 +14,7 @@ return {
         table.unpack(lint.linters.luacheck.args),
       }
       opts.linters_by_ft = opts.linters_by_ft or {}
-      opts.linters_by_ft["lua"] = "luacheck"
+      opts.linters_by_ft["lua"] = { "luacheck" }
       return opts
     end
   },
