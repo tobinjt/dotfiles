@@ -10,6 +10,8 @@ require("config.lazy")
 -- https://lazy.folke.io/usage/structuring
 -- Load all the configs defined in lua/plugins/*.lua
 require("lazy").setup("plugins")
+
+-- Some config that doesn't really fit elsewhere.
 vim.cmd.colorscheme("solarized-osaka")
 -- Configure folding to use Treesitter.
 vim.opt.foldmethod = "expr"
