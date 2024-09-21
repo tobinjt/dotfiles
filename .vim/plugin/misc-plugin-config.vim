@@ -13,3 +13,11 @@ let loaded_matchparen = 1
 " Supertab
 " Use more clever completion.
 let g:SuperTabDefaultCompletionType = 'context'
+augroup johntobin-supertab
+  autocmd!
+  " If omnifunc is set use that first, then standard vim completion.
+  autocmd FileType *
+    \ if &omnifunc != '' |
+    \   call SuperTabChain(&omnifunc, "<c-p>") |
+    \ endif
+augroup END

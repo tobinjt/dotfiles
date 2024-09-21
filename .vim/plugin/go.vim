@@ -13,9 +13,6 @@ augroup johntobin-golang
   " Autoformatting Go code on write causes folds to be closed; this autocmd opens
   " the fold under the cursor.
   autocmd BufWritePost *.go call OpenFoldUnderCursor()
-  " Supertab will use vim-go's omnifunc first, and if that doesn't produce results
-  " will fall back to vim's standard completion.
-  autocmd FileType go call SuperTabChain(&omnifunc, "<c-p>")
 augroup END
 
 " vim-go.
