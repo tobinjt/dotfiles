@@ -100,8 +100,6 @@ set backspace=indent,eol,start
 set whichwrap+=<,>,b,[,]
 " Make % work with <>.
 set matchpairs+=<:>
-" Stop the goddamn MatchParen plugin from loading.
-let loaded_matchparen = 1
 " Disable the mouse, I don't like it.
 set mouse=""
 
@@ -140,11 +138,3 @@ set spellfile+=~/.vim/spell/en.utf-8.add
 " Timeout when reading mappings.
 set ttimeout
 set ttimeoutlen=100
-
-" Stop loading netrw, it creates a history file.
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
-
-" Supertab
-" Use more clever completion.
-let g:SuperTabDefaultCompletionType = 'context'
