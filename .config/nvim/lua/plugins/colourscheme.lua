@@ -21,18 +21,4 @@ return {
       end,
     },
   },
-
-  {
-    dir = vim.fn.expand("~/.vim/bundle/vim-solarized8"),
-    priority = 1000,
-    lazy = false,
-  },
-
-  -- bluz71/vim-nightfly-colors
-  -- rebelot/kanagawa.nvim
-  -- habamax
-  -- kanagawa
-  -- kanagawa-dragon
-  -- nightfly
-
 }
