@@ -2,10 +2,6 @@
 " Load vim defaults.
 source $VIMRUNTIME/defaults.vim
 
-" Supertab
-" Use more clever completion.
-let g:SuperTabDefaultCompletionType = 'context'
-
 " Plugins.
 " To update all the git submodules: update-dotfiles-and-bin-plugins
 " To update a single submodule:
