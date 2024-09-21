@@ -9,7 +9,15 @@ table.unpack = table.unpack or unpack
 require("config.lazy")
 -- https://lazy.folke.io/usage/structuring
 -- Load all the configs defined in lua/plugins/*.lua
-require("lazy").setup("plugins")
+require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+  },
+  change_detection = {
+    -- Stop telling me that a package spec was reloaded.
+    notify = false,
+  },
+})
 
 -- Some config that doesn't really fit elsewhere.
 vim.cmd.colorscheme("solarized-osaka")
