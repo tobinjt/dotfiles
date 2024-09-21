@@ -111,7 +111,7 @@ set makeprg+=\ -s
 " Dictionary file to read - Linux/*BSD, Solaris.
 set dictionary+=/usr/share/dict/words
 " Fill in the longest common prefix first, then show a menu.
-set completeopt=longest,menu
+set completeopt=longest,menu,preview
 
 " Misc stuff, bugfixes.
 " Prevent vim connecting to the X server so that using PuTTY works without
