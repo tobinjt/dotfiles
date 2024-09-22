@@ -1,8 +1,12 @@
 -- Neovim is permanently on Lua 5.1, but everything else assumes a later Lua
 -- version, and complains that `unpack` is deprecated and I should use
 -- `table.unpack` instead, which doesn't exist in Lua 5.1, so create it.
+-- This makes linters unhappy so we need to silence both luacheck and LSP.
+-- https://luacheck.readthedocs.io/en/stable/inline.html
+-- luacheck: ignore 122
 ---@diagnostic disable-next-line: deprecated
 table.unpack = table.unpack or unpack
+-- luacheck: enable 122
 
 -- Copied from https://lazy.folke.io/installation
 -- Bootstrap lazy.nvim.
