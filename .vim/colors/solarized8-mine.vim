@@ -1,11 +1,7 @@
-" Wrap solarized8 or solarized-osaka so that I can reliably override parts of it.
+" Wrap solarized8 so that I can reliably override parts of it.
 " See :help colorscheme for more info about overrides.
-if 0 == 0 || !has('nvim')
-  let g:solarized_diffmode = 'low'
-  runtime colors/solarized8.vim
-else
-  runtime colors/solarized-osaka.lua
-endif
+let g:solarized_diffmode = 'low'
+runtime colors/solarized8.vim
 let g:colors_name = 'solarized8-mine'
 
 " Highlight the first three characters over the line length limit.  Requires
