@@ -18,6 +18,9 @@ dotfiles
 filesystem
 hostname
 johntobin
+linter
+linters
+nvim
 offsite
 onsite
 plugin
