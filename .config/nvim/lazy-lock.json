@@ -8,5 +8,6 @@
   "nvim-lspconfig": { "branch": "master", "commit": "f4fef355efa3c5d0813512480ee7b2c050b09fe4" },
   "nvim-treesitter": { "branch": "master", "commit": "929ca9c76ee20bb27cffbde4ee90583b6c54d616" },
   "solarized-osaka.nvim": { "branch": "main", "commit": "126d394c0c979a99206214a2b6b8c86e456c9c0f" },
-  "trouble.nvim": { "branch": "main", "commit": "6efc446226679fda0547c0fd6a7892fd5f5b15d8" }
+  "trouble.nvim": { "branch": "main", "commit": "6efc446226679fda0547c0fd6a7892fd5f5b15d8" },
+  "vim-lastplace": { "branch": "master", "commit": "e58cb0df716d3c88605ae49db5c4741db8b48aa9" }
 }

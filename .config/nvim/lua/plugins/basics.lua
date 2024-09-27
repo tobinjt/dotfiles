@@ -11,4 +11,8 @@ return {
     -- Makes filename:line-number[:column] work.
     dir = vim.fn.expand("~/.vim/bundle/vim-fetch"),
   },
+  {
+    -- Jumps to the last exited location in files.
+    "farmergreg/vim-lastplace",
+  },
 }
