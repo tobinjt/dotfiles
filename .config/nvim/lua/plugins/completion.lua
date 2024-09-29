@@ -10,10 +10,9 @@ return {
       -- keep-sorted end
     },
     -- TODO: get the documentation window to come up.
-    -- TODO: figure out type.
+    ---@type cmp.ConfigSchema
     opts = {
-      -- TODO: figure out how to get the type recognised.
-      ---@ztype cmp.SourceConfig[]
+      ---@type cmp.SourceConfig[]
       sources = {
         -- Order determines the order they're presented in completion results.
         -- Try using :help cmp-config.sources[n].group_index
