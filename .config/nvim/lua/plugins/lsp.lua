@@ -5,7 +5,6 @@ return {
     -- Dependencies are not necessary in other configs, setting them once is
     -- enough.
     dependencies = {
-      "mason.nvim",
       "mason-lspconfig.nvim",
     },
     -- config() is an empty function because you can't call
