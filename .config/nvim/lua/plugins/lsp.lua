@@ -10,12 +10,23 @@ return {
     },
 
     -- The servers to enable are collected in opts.enabled_servers with the
-    -- server options if any.
+    -- server options if any.  Config required by cmp-nvim-lsp is added
+    -- automatically.
     -- require("lspconfig").start() doesn't exist so don't call it.
     config = function(_, opts)
       local lspconfig = require("lspconfig")
+      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      local capabilities = {
+        capabilities = vim.tbl_deep_extend("force",
+          vim.lsp.protocol.make_client_capabilities(),
+          cmp_nvim_lsp.default_capabilities()
+        ),
+      }
       for server, server_opts in pairs(opts.enabled_servers) do
-        lspconfig[server].setup(server_opts)
+        local combined_opts = vim.tbl_deep_extend("force",
+          server_opts,
+          capabilities)
+        lspconfig[server].setup(combined_opts)
       end
     end,
 
