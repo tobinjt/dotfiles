@@ -35,15 +35,8 @@ return {
             diagnostics = {
               -- Get the language server to recognize the `vim` global.
               globals = {
-                'require',
                 'vim'
               },
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files.
-              -- This is copied from a post on Reddit, I don't know how
-              -- necessary it is.
-              library = vim.api.nvim_get_runtime_file("", true),
             },
           },
         },
