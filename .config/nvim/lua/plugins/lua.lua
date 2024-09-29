@@ -27,21 +27,21 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    -- See comments in lsp.lua about how the split setup works.
-    opts = function(_, opts)
-      require("lspconfig").lua_ls.setup {
-        settings = {
-          Lua = {
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global.
-              globals = {
-                'vim'
+    opts = {
+      enabled_servers = {
+        lua_ls = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                -- Get the language server to recognize the `vim` global.
+                globals = {
+                  'vim',
+                },
               },
             },
           },
         },
-      }
-      return opts
-    end
+      },
+    },
   },
 }

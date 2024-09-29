@@ -5,27 +5,31 @@ return {
     -- Dependencies are not necessary in other configs, setting them once is
     -- enough.
     dependencies = {
+      "cmp-nvim-lsp",
       "mason-lspconfig.nvim",
     },
-    -- config() is an empty function because you can't call
-    -- require("lspconfig").start(), it's not a function.
-    config = function(_, _)
-    end,
-    -- This doesn't change opts, it runs code with side effects to configure
-    -- LSP.  This allows us to separate config for some languages, because
-    -- opts is evaluated and merged for every stanza, unlike config where the
-    -- last definition wins and the others are overwritten.
-    opts = function(_, opts)
+
+    -- The servers to enable are collected in opts.enabled_servers with the
+    -- server options if any.
+    -- require("lspconfig").start() doesn't exist so don't call it.
+    config = function(_, opts)
       local lspconfig = require("lspconfig")
-      -- keep-sorted start
-      lspconfig.bashls.setup {}
-      lspconfig.gopls.setup {}
-      lspconfig.pylsp.setup {}
-      lspconfig.ruff.setup {}
-      lspconfig.rust_analyzer.setup {}
-      lspconfig.vimls.setup {}
-      -- keep-sorted end
-      return opts
-    end
+      for server, server_opts in pairs(opts.enabled_servers) do
+        lspconfig[server].setup(server_opts)
+      end
+    end,
+
+    opts = {
+      enabled_servers = {
+        -- keep-sorted start
+        bashls = {},
+        gopls = {},
+        pylsp = {},
+        ruff = {},
+        rust_analyzer = {},
+        vimls = {},
+        -- keep-sorted end
+      },
+    }
   },
 }

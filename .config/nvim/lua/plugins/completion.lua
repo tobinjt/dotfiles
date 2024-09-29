@@ -9,6 +9,7 @@ return {
       "hrsh7th/cmp-path",
       -- keep-sorted end
     },
+
     -- TODO: get the documentation window to come up.
     ---@type cmp.ConfigSchema
     opts = {
@@ -21,6 +22,7 @@ return {
         { name = "nvim_lua" },
         { name = "buffer" },
       },
+
       completion = {
         autocomplete = false,
       },
@@ -63,6 +65,13 @@ return {
           end
         end,
       },
+    },
+  },
+
+  {
+    "hrsh7th/cmp-nvim-lsp",
+    dependencies = {
+      "mason-lspconfig.nvim",
     },
   },
 }
