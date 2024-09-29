@@ -2,6 +2,8 @@ return {
   {
     "folke/lazydev.nvim",
     ft = "lua",
+    -- Requires Neovim 0.10 or later.
+    cond = vim.fn.has("nvim-0.10"),
   },
 
   {
