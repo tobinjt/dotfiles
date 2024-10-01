@@ -10,7 +10,6 @@ return {
       -- keep-sorted end
     },
 
-    -- TODO: get the documentation window to come up.
     ---@type cmp.ConfigSchema
     opts = {
       ---@type cmp.SourceConfig[]
@@ -30,6 +29,8 @@ return {
         -- Keymappings:
         -- - Tab starts completion, and moves to the next completion item.
         -- - Enter selects the current completion item.
+        -- - K shows documentation window (standard Neovim config, not
+        --   configured here).
         -- Copied from `:help cmp-mapping`.
         ['<CR>'] = function(fallback)
           local cmp = require('cmp')
