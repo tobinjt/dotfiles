@@ -3,7 +3,7 @@ return {
     "folke/lazydev.nvim",
     ft = "lua",
     -- Requires Neovim 0.10 or later.
-    cond = vim.fn.has("nvim-0.10"),
+    cond = vim.fn.has("nvim-0.10") == 1,
     opts = {
       -- Force adding all the plugins I have so that type annotations work.
       library = vim.fn.split(vim.fn.glob('~/.local/share/nvim/lazy/*/lua'), "\n"),

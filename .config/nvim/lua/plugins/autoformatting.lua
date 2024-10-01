@@ -2,7 +2,7 @@ return {
   {
     'stevearc/conform.nvim',
     -- Requires Neovim 0.10 or later.
-    cond = vim.fn.has("nvim-0.10"),
+    cond = vim.fn.has("nvim-0.10") == 1,
     opts = {
       -- I can configure additional formatters here, but for now the LSP servers
       -- are covering all the file types I've tested.
