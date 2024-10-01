@@ -33,14 +33,14 @@ call plug#begin('~/.vim/bundle')
 " keep-sorted start sticky_prefixes="
 " Run lint and other tools on the fly.
 Plug 'dense-analysis/ale'
-" Tab completion.
-Plug 'ervandew/supertab'
 " Golang support.
 Plug 'fatih/vim-go'
 " Plugin management.
 Plug 'junegunn/vim-plug'
 " Puts marks in the sign column.
 Plug 'kshenoy/vim-signature'
+" Tab completion.
+Plug 'lifepillar/vim-mucomplete'
 " Solarized colour scheme.
 Plug 'lifepillar/vim-solarized8'
 " Puts VCS info in the signs column.

@@ -101,7 +101,7 @@ else
 fi
 _prompt_nl=$'\n%{\r%}'
 PS1="${_prompt_nl}I'm ${_prompt_user} on %m's %l @ %T, %D{%a %Y-%m-%d}, in %8~/"
-PS1="${PS1}${_prompt_nl}What is thy bidding? ZSH! "
+PS1="${PS1}${_prompt_nl}What is thy bidding? "
 export PS1
 
 ### Misc config.

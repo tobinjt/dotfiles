@@ -2,6 +2,12 @@ return {
   {
     "folke/lazydev.nvim",
     ft = "lua",
+    -- Requires Neovim 0.10 or later.
+    cond = vim.fn.has("nvim-0.10"),
+    opts = {
+      -- Force adding all the plugins I have so that type annotations work.
+      library = vim.fn.split(vim.fn.glob('~/.local/share/nvim/lazy/*/lua'), "\n"),
+    },
   },
 
   {
@@ -21,28 +27,21 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    -- See comments in lsp.lua about how the split setup works.
-    opts = function(_, opts)
-      require("lspconfig").lua_ls.setup {
-        settings = {
-          Lua = {
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global.
-              globals = {
-                'require',
-                'vim'
+    opts = {
+      enabled_servers = {
+        lua_ls = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                -- Get the language server to recognize the `vim` global.
+                globals = {
+                  'vim',
+                },
               },
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files.
-              -- This is copied from a post on Reddit, I don't know how
-              -- necessary it is.
-              library = vim.api.nvim_get_runtime_file("", true),
             },
           },
         },
-      }
-      return opts
-    end
+      },
+    },
   },
 }

@@ -15,6 +15,10 @@ repos:
       - id: keep-sorted
   - repo: local
     hooks:
+      - id: dotfiles
+        name: Run `dotfiles`
+        language: system
+        entry: dotfiles
       - id: luac
         name: Run `luac` if it's installed
         language: system
@@ -30,6 +34,12 @@ repos:
         language: system
         types: [shell]
         entry: shellcheck
+      - id: sort-spell-file
+        name: Sort vim's spell file.
+        language: system
+        files: .vim/spell/en.utf-8.add
+        pass_filenames: false
+        entry: sort -o .vim/spell/en.utf-8.add .vim/spell/en.utf-8.add
       - id: vint
         name: Run `vint` if it's installed
         language: system

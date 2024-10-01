@@ -23,8 +23,8 @@ autocmd!
   autocmd FileType dot setlocal spellcapcheck= textwidth=300 foldmethod=indent
   " This turns on spell checking properly.
   autocmd FileType gitcommit syntax spell toplevel
-  " Too many distracting spelling errors.
-  autocmd FileType help setlocal nospell
+  " Too many distracting spelling errors and long lines.
+  autocmd FileType help setlocal nospell colorcolumn=
   " Shorter textwidth to stay within hg commit message guidelines.
   autocmd FileType hgcommit setlocal textwidth=78
   " This turns on spell checking properly.

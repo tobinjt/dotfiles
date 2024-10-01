@@ -26,6 +26,8 @@ augroup johntobin-markdown
   " Enable simple folding.
   autocmd FileType markdown setlocal foldmethod=expr
     \ foldexpr=MarkdownFolding(v:lnum)
+  " Overwrite the default of 4 set by markdown syntax highlighting.
+  autocmd FileType markdown setlocal shiftwidth=2
   " Set formatlistpat to my setting, overwriting the setting from
   " vim??/ftplugin/markdown.vim.
   autocmd FileType markdown call SetFormatlistpat()
