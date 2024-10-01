@@ -15,6 +15,10 @@ repos:
       - id: keep-sorted
   - repo: local
     hooks:
+      - id: dotfiles
+        name: Run `dotfiles`
+        language: system
+        entry: dotfiles
       - id: luac
         name: Run `luac` if it's installed
         language: system
