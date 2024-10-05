@@ -9,7 +9,10 @@ augroup johntobin-golang
   autocmd!
   " Set a wide textwidth because Golang tends to have wide lines and airline
   " whitespace checks use textwidth.
-  autocmd FileType go setlocal foldmethod=syntax textwidth=120 colorcolumn=
+  autocmd FileType go setlocal textwidth=120 colorcolumn=
+  if !has('nvim')
+    autocmd FileType go setlocal foldmethod=syntax
+  endif
   " Autoformatting Go code on write causes folds to be closed; this autocmd opens
   " the fold under the cursor.
   autocmd BufWritePost *.go call OpenFoldUnderCursor()
