@@ -73,14 +73,9 @@ PYTHONBREAKPOINT="pudb.set_trace"
 export MYPY_CACHE_DIR PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT
 
 ## Homebrew.
-# Removing old versions of vim breaks running vim sessions, and sometimes the
-# autocmds break badly enough that modified files can't be saved.  Disable
-# removal of old versions of vim.
-# Similarly for tmux.
-HOMEBREW_NO_CLEANUP_FORMULAE=tmux,vim
 # Don't install from source if fetching the bottle fails.
 HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
-export HOMEBREW_NO_CLEANUP_FORMULAE HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK
+export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK
 
 if command -v git > /dev/null 2>&1; then
   DIFF="git --no-pager diff --no-index"
