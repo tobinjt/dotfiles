@@ -13,15 +13,6 @@ return {
     },
   },
   {
-    "leoluz/nvim-dap-go",
-    -- Untested.
-    enabled = false,
-    config = true,
-    dependencies = {
-      "mfussenegger/nvim-dap",
-    },
-  },
-  {
     "mrcjkb/rustaceanvim",
     enabled = false,
     config = true,
@@ -42,7 +33,21 @@ return {
       },
     },
     dependencies = {
-      "nvim-neotest/nvim-nio",
+      -- keep-sorted start block=yes
+      {
+        "leoluz/nvim-dap-go",
+        config = true,
+        dependencies = {
+          "mfussenegger/nvim-dap",
+        },
+        keys = {
+          {
+            "<leader>dt",
+            function() require('dap-go').debug_test() end,
+            desc = "Terminate"
+          },
+        },
+      },
       {
         "mfussenegger/nvim-dap-python",
         lazy = true,
@@ -143,7 +148,7 @@ return {
             },
 
             {
-              "<leader>dt",
+              "<leader>dT",
               function() require("dap").terminate() end,
               desc = "Terminate"
             },
@@ -157,12 +162,16 @@ return {
         },
       },
       {
+        "nvim-neotest/nvim-nio",
+      },
+      {
         "theHamsta/nvim-dap-virtual-text",
         config = true,
         dependencies = {
           "mfussenegger/nvim-dap",
         },
       },
+      -- keep-sorted end
     },
   },
   -- keep-sorted end
