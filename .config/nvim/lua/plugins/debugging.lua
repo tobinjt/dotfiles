@@ -1,11 +1,7 @@
 -- Docs at https://github.com/mfussenegger/nvim-dap-python are useful.
 return {
-  {
-    "mfussenegger/nvim-dap",
-    -- lua require'dap'.continue()
-  },
-
   -- keep-sorted start block=yes
+
   {
     "jay-babu/mason-nvim-dap.nvim",
     -- Untested.
@@ -26,16 +22,9 @@ return {
     },
   },
   {
-    "mfussenegger/nvim-dap-python",
-    config = function()
-      local python = vim.fn.expand("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
-      require("dap-python").setup(python)
-    end,
-    -- Consider the mappings at
-    -- https://github.com/mfussenegger/nvim-dap-python?tab=readme-ov-file#mappings
-    dependencies = {
-      "mfussenegger/nvim-dap",
-    },
+    "mfussenegger/nvim-dap",
+    -- lua require'dap'.continue()
+    lazy = true,
   },
   {
     "mrcjkb/rustaceanvim",
@@ -59,15 +48,27 @@ return {
       },
     },
     dependencies = {
-      "mfussenegger/nvim-dap",
       "nvim-neotest/nvim-nio",
-    },
-  },
-  {
-    "theHamsta/nvim-dap-virtual-text",
-    config = true,
-    dependencies = {
-      "mfussenegger/nvim-dap",
+      {
+        "mfussenegger/nvim-dap-python",
+        lazy = true,
+        config = function()
+          local python = vim.fn.expand("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
+          require("dap-python").setup(python)
+        end,
+        -- Consider the mappings at
+        -- https://github.com/mfussenegger/nvim-dap-python?tab=readme-ov-file#mappings
+        dependencies = {
+          "mfussenegger/nvim-dap",
+        },
+      },
+      {
+        "theHamsta/nvim-dap-virtual-text",
+        config = true,
+        dependencies = {
+          "mfussenegger/nvim-dap",
+        },
+      },
     },
   },
   -- keep-sorted end
