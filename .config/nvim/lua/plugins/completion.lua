@@ -65,6 +65,15 @@ return {
             fallback()
           end
         end,
+
+        ["<S-Tab>"] = function(fallback)
+          local cmp = require("cmp")
+          if cmp.visible() then
+            cmp.select_prev_item()
+          else
+            fallback()
+          end
+        end,
       },
     },
   },
