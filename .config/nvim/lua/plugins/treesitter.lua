@@ -10,9 +10,6 @@ return {
 
     main = "nvim-treesitter.configs",
 
-    -- Update parsers if necessary.
-    build = ":TSUpdate",
-
     opts = {
       -- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
       ensure_installed = {
