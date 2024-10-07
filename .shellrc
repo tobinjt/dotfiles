@@ -35,7 +35,11 @@ PATH="${HOME}/bin:${PATH}"
 # EDITOR is set here so that it's correct when running non-interactively, e.g.
 # when sshing in to run update-dotfiles-and-bin, which runs git pull, which
 # needs a commit message for merges.
-EDITOR="vim"
+if type nvim >& /dev/null; then
+  EDITOR="nvim"
+else
+  EDITOR="vim"
+fi
 export EDITOR GOPATH PATH
 
 # Make a tmp dir if necessary.
