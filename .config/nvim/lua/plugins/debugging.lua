@@ -3,16 +3,6 @@ return {
   -- keep-sorted start block=yes
 
   {
-    "jay-babu/mason-nvim-dap.nvim",
-    -- Untested.
-    enabled = false,
-    config = true,
-    dependencies = {
-      "mfussenegger/nvim-dap",
-      "williamboman/mason.nvim",
-    },
-  },
-  {
     "mfussenegger/nvim-dap",
     lazy = true,
     -- Copied from LazyVim/lua/lazyvim/plugins/extras/dap/core.lua and
@@ -137,6 +127,30 @@ return {
     },
     dependencies = {
       -- keep-sorted start block=yes
+      {
+        "jay-babu/mason-nvim-dap.nvim",
+        ---@type MasonNvimDapSettings
+        opts = {
+          -- This line is essential to making automatic installation work
+          -- :exploding-brain
+          handlers = {},
+          automatic_installation = {
+            exclude = {
+              "delve",
+              "python",
+            },
+          },
+          ensure_installed = {
+            "bash",
+            "codelldb",
+            "php",
+          },
+        },
+        dependencies = {
+          "mfussenegger/nvim-dap",
+          "williamboman/mason.nvim",
+        },
+      },
       {
         "leoluz/nvim-dap-go",
         config = true,
