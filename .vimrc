@@ -43,8 +43,6 @@ Plug 'lifepillar/vim-mucomplete'
 Plug 'lifepillar/vim-solarized8'
 " Puts VCS info in the signs column.
 Plug 'mhinz/vim-signify'
-" Language Server Protocol support.
-Plug 'prabirshrestha/vim-lsp'
 " Configures ALE and vim-lsp to work together.
 Plug 'rhysd/vim-lsp-ale'
 " Better folding of Python.

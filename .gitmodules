@@ -32,9 +32,6 @@
 [submodule ".vim/bundle/honza/vim-snippets"]
 	path = .vim/bundle/honza/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
-[submodule ".vim/bundle/vim-lsp"]
-	path = .vim/bundle/vim-lsp
-	url = https://github.com/prabirshrestha/vim-lsp
 [submodule ".vim/bundle/vim-signify"]
 	path = .vim/bundle/vim-signify
 	url = https://github.com/mhinz/vim-signify
