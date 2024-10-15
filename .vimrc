@@ -41,8 +41,6 @@ Plug 'lifepillar/vim-mucomplete'
 Plug 'lifepillar/vim-solarized8'
 " Puts VCS info in the signs column.
 Plug 'mhinz/vim-signify'
-" Better folding of Python.
-Plug 'tmhedberg/SimpylFold'
 " Markdown syntax highlighting.
 Plug 'tobinjt/vim-markdown'
 " Easy wrapping of comment blocks with \wc.
