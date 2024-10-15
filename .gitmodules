@@ -38,9 +38,6 @@
 [submodule ".vim/bundle/vim-lsp-settings"]
 	path = .vim/bundle/vim-lsp-settings
 	url = https://github.com/mattn/vim-lsp-settings
-[submodule ".vim/bundle/vim-lsp-ale"]
-	path = .vim/bundle/vim-lsp-ale
-	url = https://github.com/rhysd/vim-lsp-ale
 [submodule ".vim/bundle/wrap-comment-block.vim"]
 	path = .vim/bundle/wrap-comment-block.vim
 	url = https://github.com/tobinjt/wrap-comment-block.vim
