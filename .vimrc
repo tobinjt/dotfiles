@@ -35,8 +35,6 @@ call plug#begin('~/.vim/bundle')
 Plug 'fatih/vim-go'
 " Plugin management.
 Plug 'junegunn/vim-plug'
-" Puts marks in the sign column.
-Plug 'kshenoy/vim-signature'
 " Tab completion.
 Plug 'lifepillar/vim-mucomplete'
 " Solarized colour scheme.

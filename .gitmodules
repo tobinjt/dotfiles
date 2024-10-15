@@ -13,9 +13,6 @@
 [submodule ".vim/bundle/vim-solarized8"]
 	path = .vim/bundle/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8
-[submodule ".vim/bundle/vim-signature"]
-	path = .vim/bundle/vim-signature
-	url = https://github.com/kshenoy/vim-signature
 [submodule ".vim/bundle/SimpylFold"]
 	path = .vim/bundle/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold
