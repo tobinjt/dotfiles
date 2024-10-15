@@ -31,8 +31,6 @@ source $VIMRUNTIME/defaults.vim
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
 " keep-sorted start sticky_prefixes="
-" Run lint and other tools on the fly.
-Plug 'dense-analysis/ale'
 " Golang support.
 Plug 'fatih/vim-go'
 " Plugin management.

@@ -14,12 +14,6 @@ let php_parent_error_open = 1
 " PHP folding: fold classes and functions.
 let php_folding = 1
 
-" --- Configure PHP checkers.  Untested, ported from Syntastic.
-let g:ale_php_phplint_args = '--modules-path ../phplint-modules'
-let g:ale_php_phplint_args .= ' --no-ascii-ext-check'
-" Use the level defined in phpstan.neon.
-let g:ale_php_phpstan_args = []
-
 augroup johntobin-php
   autocmd!
   autocmd FileType php setlocal foldtext=foldtext()
