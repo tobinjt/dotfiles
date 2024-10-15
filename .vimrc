@@ -58,8 +58,6 @@ Plug 'vim-scripts/LargeFile'
 " Makes filename:line-number[:column] work.
 Plug 'wsdjeg/vim-fetch'
 " keep-sorted end
-" Must be loaded after prabirshrestha/vim-lsp is loaded.
-Plug 'mattn/vim-lsp-settings'
 
 " This needs to be done before loading plugins, so that runtimepath can be
 " extended first.
