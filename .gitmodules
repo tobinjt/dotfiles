@@ -1,6 +1,3 @@
-[submodule ".vim/bundle/LargeFile"]
-	path = .vim/bundle/LargeFile
-	url = https://github.com/vim-scripts/LargeFile.git
 [submodule ".vim/bundle/vim-go"]
 	path = .vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git

@@ -49,8 +49,6 @@ Plug 'tobinjt/wrap-comment-block.vim'
 Plug 'tpope/vim-commentary'
 " Improved status bar.
 Plug 'vim-airline/vim-airline'
-" Turn off various things when editing really large files.
-Plug 'vim-scripts/LargeFile'
 " Makes filename:line-number[:column] work.
 Plug 'wsdjeg/vim-fetch'
 " keep-sorted end
