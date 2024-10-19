@@ -4,38 +4,30 @@
 # We do enough to set $PATH, then check for being an interactive shell: if we're
 # not interactive we skip everything else.
 
-# Set up $PATH.
-# I always want /usr/local first in $PATH.
-PATH="/usr/local/bin:/usr/local/sbin:${PATH}:/sbin:/usr/sbin"
-# Add Homebrew's Apple silicon directory to $PATH if it exists.
-if [ -d "/opt/homebrew/bin" ]; then
-  PATH="/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}"
-fi
 # Where Go should install stuff.  Set here so that it can be used in $PATH.
 GOPATH="${HOME}/tmp/go"
-if [ -d "${GOPATH}" ]; then
-  PATH="${GOPATH}/bin:${PATH}"
-fi
-# Add Rust to $PATH if it exists.
-if [ -d "${HOME}/.cargo/bin" ]; then
-  PATH="${HOME}/.cargo/bin:${PATH}"
-fi
-# Add tools installed using virtualenv, after the rest of $PATH, so they don't
-# mess with the standard Python binary.
-virtualenv_dir="${HOME}/tmp/virtualenv"
-if [ -d "${virtualenv_dir}" ]; then
-  for dir in "${virtualenv_dir}"/*/bin; do
-    # Skip the dated directories.
-    if [ "${dir%%-20*}" = "${dir}" ]; then
-      PATH="${PATH}:${dir}"
-    fi
-  done
-fi
-# Add tools installed by Neovim's Mason.
-if [ -d "${HOME}/.local/share/nvim/mason/bin" ]; then
-  PATH="${PATH}:${HOME}/.local/share/nvim/mason/bin"
-fi
-PATH="${HOME}/bin:${PATH}"
+# Set up $PATH.  Each directory that exists will be *prepended* to $PATH, so put
+# more specific directories last.
+path_additions=(
+  "/sbin" "/usr/sbin" "/usr/local/sbin"
+  # Homebrew's Apple silicon directory.
+  "/opt/homebrew/bin" "/opt/homebrew/sbin"
+  # Python tooling in virtualenvs.
+  "${HOME}/tmp/virtualenv/python" "${HOME}/tmp/virtualenv/flexget"
+  # Golang.
+  "${GOPATH}/bin"
+  # Rust.
+  "${HOME}/.cargo/bin"
+  # Tools installed by Neovim's Mason.
+  "${HOME}/.local/share/nvim/mason/bin"
+  "${HOME}/bin"
+)
+for path_addition in "${path_additions[@]}"; do
+  if [ -d "${path_addition}" ]; then
+    PATH="${path_addition}:${PATH}"
+  fi
+done
+
 # EDITOR is set here so that it's correct when running non-interactively, e.g.
 # when sshing in to run update-dotfiles-and-bin, which runs git pull, which
 # needs a commit message for merges.
