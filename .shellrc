@@ -9,7 +9,12 @@ GOPATH="${HOME}/tmp/go"
 # Set up $PATH.  Each directory that exists will be *prepended* to $PATH, so put
 # more specific directories last.
 path_additions=(
+  # Sometimes I need binaries from here.
   "/sbin" "/usr/sbin" "/usr/local/sbin"
+  # These are automatically added but *after* this file is sources by ~/.zshenv,
+  # so any binaries in /usr/local/bin won't be in $PATH yet.  Add them here for
+  # reliability.
+  "/bin" "/usr/bin" "/usr/local/bin"
   # Homebrew's Apple silicon directory.
   "/opt/homebrew/bin" "/opt/homebrew/sbin"
   # Python tooling in virtualenvs.
