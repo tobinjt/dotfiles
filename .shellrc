@@ -18,7 +18,7 @@ path_additions=(
   # Homebrew's Apple silicon directory.
   "/opt/homebrew/bin" "/opt/homebrew/sbin"
   # Python tooling in virtualenvs.
-  "${HOME}/tmp/virtualenv/python" "${HOME}/tmp/virtualenv/flexget"
+  "${HOME}/tmp/virtualenv/python/bin" "${HOME}/tmp/virtualenv/flexget/bin"
   # Golang.
   "${GOPATH}/bin"
   # Rust.
