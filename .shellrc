@@ -18,6 +18,8 @@ path_additions=(
   "${GOPATH}/bin"
   # Rust.
   "${HOME}/.cargo/bin"
+  # AppImage of Neovim for Debian which has an older version packaged.
+  "${HOME}/tmp/nvim.appimage/usr/bin"
   # Tools installed by Neovim's Mason.
   "${HOME}/.local/share/nvim/mason/bin"
   "${HOME}/bin"
