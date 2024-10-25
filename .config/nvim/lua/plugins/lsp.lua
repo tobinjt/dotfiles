@@ -37,7 +37,6 @@ return {
         gopls = {},
         pylsp = {},
         ruff = {},
-        rust_analyzer = {},
         vimls = {},
         -- keep-sorted end
       },

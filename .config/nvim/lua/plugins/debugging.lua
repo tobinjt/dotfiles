@@ -106,14 +106,6 @@ return {
     },
   },
   {
-    "mrcjkb/rustaceanvim",
-    enabled = false,
-    config = true,
-    dependencies = {
-      "mfussenegger/nvim-dap",
-    },
-  },
-  {
     "rcarriga/nvim-dap-ui",
     config = true,
     keys = {
