@@ -4,7 +4,7 @@ return {
     -- Makes debugging work seamlessly.
     "mrcjkb/rustaceanvim",
     version = '^5', -- Recommended by module.
-    lazy = false,
+    ft = "rust",
     dependencies = {
       "mfussenegger/nvim-dap",
     },
