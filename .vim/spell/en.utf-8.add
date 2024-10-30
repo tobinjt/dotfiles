@@ -41,4 +41,5 @@ submodule
 submodules
 timestamp
 vimrc
+virtualenv
 wp
