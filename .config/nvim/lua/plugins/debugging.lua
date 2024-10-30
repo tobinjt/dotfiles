@@ -9,12 +9,6 @@ return {
     -- modified.
     keys = {
       {
-        "<leader>dB",
-        function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
-        desc = "Breakpoint Condition"
-      },
-
-      {
         "<leader>db",
         function() require("dap").toggle_breakpoint() end,
         desc = "Toggle Breakpoint"
@@ -36,12 +30,6 @@ return {
         "<leader>dT",
         function() require("dap").terminate() end,
         desc = "Terminate"
-      },
-
-      {
-        "<leader>dw",
-        function() require("dap.ui.widgets").hover() end,
-        desc = "Widgets"
       },
     },
   },
@@ -67,15 +55,18 @@ return {
           -- :exploding-brain
           handlers = {},
           automatic_installation = {
+            -- These will be configured by separate plugins.
             exclude = {
               "delve",
               "python",
             },
           },
+          -- DAP servers: Mason will be invoked to install these if necessary.
           ensure_installed = {
             "bash",
             "codelldb",
             "php",
+            "python",
           },
         },
         dependencies = {
@@ -93,7 +84,7 @@ return {
           {
             "<leader>dt",
             function() require('dap-go').debug_test() end,
-            desc = "Terminate"
+            desc = "Debug test"
           },
         },
       },
