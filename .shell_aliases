@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# keep-sorted start
+alias cp="cp -i -p"
+alias grep='grep --color=auto'
+# shellcheck disable=SC2139
+alias lazygit="lazygit --use-config-file ${HOME}/.config/lazygit/config.yml"
+alias mv="mv -i"
+# Homebrew installs pip as pip3, so wrap it.
+# Let Python write bytecode for future speed.
+alias pip3="PYTHONDONTWRITEBYTECODE= pip3"
+alias pip="PYTHONDONTWRITEBYTECODE= pip3"
+alias python="python3"
+alias ta='tmux_attach'
+# keep-sorted end
+
 # Function to be run every time my prompt is displayed.
 function prompt_command() {
   exit_status="$?"
@@ -39,11 +53,6 @@ ls() {
   fi
 }
 
-alias mv="mv -i"
-alias cp="cp -i -p"
-alias grep='grep --color=auto'
-alias python="python3"
-
 # 'cd dirname/filename' will strip filename and cd to dirname.
 cd_helper() {
   if [[ "$#" -eq 0 ]]; then
@@ -77,8 +86,6 @@ cd() {
   cd_helper cd "$@"
 }
 
-alias ta='tmux_attach'
-
 top() {
   local -a top_args
   # top on Mac OS X does not sort by CPU by default; fix that.
@@ -108,9 +115,6 @@ diff() {
     ${DIFF} "$@"
   fi
 }
-
-# shellcheck disable=SC2139
-alias lazygit="lazygit --use-config-file ${HOME}/.config/lazygit/config.yml"
 
 # Load .bcrc to have some helper stuff, but only when running interactively.
 bc() {
@@ -149,13 +153,6 @@ rg() {
   else
     command rg "$@"
   fi
-}
-
-# Homebrew installs pip as pip3, so wrap it.
-alias pip="pip3"
-# Let Python write bytecode for future speed.
-pip3() {
-  (unset PYTHONDONTWRITEBYTECODE; command pip3 "$@")
 }
 
 process_on_port() {
