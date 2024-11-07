@@ -115,6 +115,9 @@ diff() {
   fi
 }
 
+# shellcheck disable=SC2139
+alias lazygit="lazygit --use-config-file ${HOME}/.config/lazygit/config.yml"
+
 # Load .bcrc to have some helper stuff, but only when running interactively.
 bc() {
   if [ -t 0 ] && [ "$#" -eq 0 ]; then

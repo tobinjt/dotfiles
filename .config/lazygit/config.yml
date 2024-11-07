@@ -1,0 +1,4 @@
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+gui:
+  # Disable the mouse.
+  mouseEvents: false
