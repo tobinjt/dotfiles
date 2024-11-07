@@ -15,7 +15,7 @@ alias ta='tmux_attach'
 # keep-sorted end
 
 # Function to be run every time my prompt is displayed.
-function prompt_command() {
+prompt_command() {
   exit_status="$?"
   # Exit status 146/148 happens when you suspend something.
   case "${exit_status}" in
@@ -136,14 +136,6 @@ countsort() {
   sort "$@" | uniq -c | sort -n
 }
 
-only_duplicates() {
-  fmt -1 "$@" | sort | uniq -d | xargs echo
-}
-
-timestamp-to-human-localtime() {
-  perl -Mstrict -n -e 'print scalar localtime $_, qq{\n}'
-}
-
 # Wrap rg so that in a dotfiles directory it searches hidden files but skips
 # .git directories.
 rg() {
@@ -153,10 +145,6 @@ rg() {
   else
     command rg "$@"
   fi
-}
-
-process_on_port() {
-  netstat -n -p tcp -v | grep -e Proto -e "$1"
 }
 
 # Local stuff
