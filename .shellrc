@@ -84,6 +84,8 @@ export MYPY_CACHE_DIR PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT
 HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK
 
+# Experimenting with difftastic.
+DFT_BACKGROUND="light"
 if command -v git > /dev/null 2>&1; then
   DIFF="git --no-pager diff --no-index"
 else
@@ -101,7 +103,7 @@ PAGER="less"
 RSYNC_RSH="ssh -o ControlPath=none"
 # Disable shellcheck warnings about not checking sourced files.
 SHELLCHECK_OPTS="-e SC1090 -e SC1091"
-export DIFF LC_COLLATE LESS PAGER RSYNC_RSH SHELLCHECK_OPTS
+export DFT_BACKGROUND DIFF LC_COLLATE LESS PAGER RSYNC_RSH SHELLCHECK_OPTS
 
 if [ -n "${TMUX:-}" ] && [ "${USER}" != "johntobin" ]; then
   # Put the user in the tmux pane title to warn me it's a different user.
