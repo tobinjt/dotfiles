@@ -76,12 +76,6 @@ cd_helper() {
 cd() {
   cd_helper cd "$@"
 }
-pushd() {
-  cd_helper pushd "$@"
-}
-cdpwd() {
-  builtin cd "$(pwd -P)" || return 1
-}
 
 alias ta='tmux_attach'
 
@@ -157,31 +151,11 @@ rg() {
   fi
 }
 
-# Handy link to airport utility.
-airport() {
-  local file="/System/Library/PrivateFrameworks/Apple80211.framework/Versions"
-  file="${file}/A/Resources/airport"
-  "${file}" "$@"
-}
-
 # Homebrew installs pip as pip3, so wrap it.
 alias pip="pip3"
 # Let Python write bytecode for future speed.
 pip3() {
   (unset PYTHONDONTWRITEBYTECODE; command pip3 "$@")
-}
-
-# What's using an external disk?
-using_external_disk() {
-  sudo lsof -M -n -P | grep /Volumes
-}
-
-# I can never remember mdfind and locate is muscle-memory.
-spotlight() {
-  mdfind "$@"
-}
-locate() {
-  mdfind "$@"
 }
 
 process_on_port() {
