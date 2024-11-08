@@ -36,23 +36,6 @@ prompt_command_extras() {
   true
 }
 
-# ls needs different options to enable colour :/
-if command ls --color=always &> /dev/null; then
-  # Linux.
-  ls_options=(--color=auto -F)
-else
-  # OS X.
-  ls_options=(-G -F)
-fi
-# Only pass extra options to ls when output is to a terminal.
-ls() {
-  if [[ -t 1 ]]; then
-    command ls "${ls_options[@]}" "$@"
-  else
-    command ls "$@"
-  fi
-}
-
 # 'cd dirname/filename' will strip filename and cd to dirname.
 cd_helper() {
   if [[ "$#" -eq 0 ]]; then
@@ -84,6 +67,24 @@ cd_helper() {
 }
 cd() {
   cd_helper cd "$@"
+}
+
+# ls needs different options to enable colour :/
+if command ls --color=always &> /dev/null; then
+  # Linux.
+  ls_options=(--color=auto -F)
+else
+  # OS X.
+  ls_options=(-G -F)
+fi
+
+# Only pass extra options to ls when output is to a terminal.
+ls() {
+  if [[ -t 1 ]]; then
+    command ls "${ls_options[@]}" "$@"
+  else
+    command ls "$@"
+  fi
 }
 
 top() {
