@@ -78,33 +78,18 @@ else
   ls_options=(-G -F)
 fi
 
-# Only pass extra options to ls when output is to a terminal.
-ls() {
-  if [[ -t 1 ]]; then
-    command ls "${ls_options[@]}" "$@"
+# keep-sorted start block=yes newline_separated=yes
+# Load .bcrc to have some helper stuff, but only when running interactively.
+bc() {
+  if [ -t 0 ] && [ "$#" -eq 0 ]; then
+    command bc -q -i "${HOME}/.bcrc"
   else
-    command ls "$@"
+    command bc -q "$@"
   fi
 }
 
-top() {
-  local -a top_args
-  # top on Mac OS X does not sort by CPU by default; fix that.
-  if is_mac_os; then
-    top_args=(-o cpu)
-  fi
-  TOP="$((${LINES:-24} - 7))" command top "${top_args[@]}" "$@"
-}
-
-# git sets better options if $LESS is unset.
-git() {
-    # MacOS env doesn't have --unset.
-    (unset LESS; command git "$@")
-}
-# hg sets better options if $LESS is unset.
-hg() {
-    # MacOS env doesn't have --unset.
-    (unset LESS; command hg "$@")
+countsort() {
+  sort "$@" | uniq -c | sort -n
 }
 
 diff() {
@@ -117,24 +102,26 @@ diff() {
   fi
 }
 
-# Load .bcrc to have some helper stuff, but only when running interactively.
-bc() {
-  if [ -t 0 ] && [ "$#" -eq 0 ]; then
-    command bc -q -i "${HOME}/.bcrc"
+# git sets better options if $LESS is unset.
+git() {
+    # MacOS env doesn't have --unset.
+    (unset LESS; command git "$@")
+}
+
+# hg sets better options if $LESS is unset.
+hg() {
+    # MacOS env doesn't have --unset.
+    (unset LESS; command hg "$@")
+}
+
+# Only pass extra options to ls when output is to a terminal.
+# Depends on ${ls_options[@]} being set earlier.
+ls() {
+  if [[ -t 1 ]]; then
+    command ls "${ls_options[@]}" "$@"
   else
-    command bc -q "$@"
+    command ls "$@"
   fi
-}
-
-scp() {
-  # Do not set up the ControlMaster socket because scp does not set up SSH
-  # forwarding, so if I ssh over an scp ControlMaster ssh forwarding doesn't
-  # work.
-  command scp -o ControlMaster=no "$@"
-}
-
-countsort() {
-  sort "$@" | uniq -c | sort -n
 }
 
 # Wrap rg so that in a dotfiles directory it searches hidden files but skips
@@ -147,6 +134,23 @@ rg() {
     command rg "$@"
   fi
 }
+
+scp() {
+  # Do not set up the ControlMaster socket because scp does not set up SSH
+  # forwarding, so if I ssh over an scp ControlMaster ssh forwarding doesn't
+  # work.
+  command scp -o ControlMaster=no "$@"
+}
+
+top() {
+  local -a top_args
+  # top on Mac OS X does not sort by CPU by default; fix that.
+  if is_mac_os; then
+    top_args=(-o cpu)
+  fi
+  TOP="$((${LINES:-24} - 7))" command top "${top_args[@]}" "$@"
+}
+# keep-sorted end
 
 # Local stuff
 local_shell_aliases="${HOME}/.shell_aliases-local"
