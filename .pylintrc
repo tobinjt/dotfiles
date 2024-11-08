@@ -1,6 +1,6 @@
 # To figure out setting to change run: pylint --generate-rcfile | less
 [REPORTS]
-# Keep the output format parsable, in paricular include filenames and line
+# Keep the output format parseable, in particular include filenames and line
 # numbers.
 output-format=parseable
 # Disable the very long reports.
