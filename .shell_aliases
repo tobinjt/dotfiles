@@ -2,11 +2,7 @@
 
 # keep-sorted start
 alias cp="cp -i -p"
-# git sets better options if $LESS is unset.
-alias git="env -u LESS git"
 alias grep='grep --color=auto'
-# hg sets better options if $LESS is unset.
-alias hg="env -u LESS hg"
 # shellcheck disable=SC2139
 alias lazygit="lazygit --use-config-file ${HOME}/.config/lazygit/config.yml"
 alias mv="mv -i"
