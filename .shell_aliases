@@ -2,7 +2,11 @@
 
 # keep-sorted start
 alias cp="cp -i -p"
+# git sets better options if $LESS is unset.
+alias git="env -u LESS git"
 alias grep='grep --color=auto'
+# hg sets better options if $LESS is unset.
+alias hg="env -u LESS hg"
 # shellcheck disable=SC2139
 alias lazygit="lazygit --use-config-file ${HOME}/.config/lazygit/config.yml"
 alias mv="mv -i"
@@ -90,18 +94,6 @@ diff() {
     # Unquoted so that splitting occurs.
     ${DIFF} "$@"
   fi
-}
-
-# git sets better options if $LESS is unset.
-git() {
-    # MacOS env doesn't have --unset.
-    (unset LESS; command git "$@")
-}
-
-# hg sets better options if $LESS is unset.
-hg() {
-    # MacOS env doesn't have --unset.
-    (unset LESS; command hg "$@")
 }
 
 # Only pass extra options to ls when output is to a terminal.
