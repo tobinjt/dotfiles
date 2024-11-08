@@ -36,6 +36,25 @@ prompt_command_extras() {
   true
 }
 
+# ls needs different options to enable colour :/
+if command ls --color=always &> /dev/null; then
+  # Linux.
+  ls_options=(--color=auto -F)
+else
+  # OS X.
+  ls_options=(-G -F)
+fi
+
+# keep-sorted start block=yes newline_separated=yes
+# Load .bcrc to have some helper stuff, but only when running interactively.
+bc() {
+  if [ -t 0 ] && [ "$#" -eq 0 ]; then
+    command bc -q -i "${HOME}/.bcrc"
+  else
+    command bc -q "$@"
+  fi
+}
+
 # 'cd dirname/filename' will strip filename and cd to dirname.
 cd() {
   # Try running cd with the arguments and see what happens.
@@ -57,25 +76,6 @@ cd() {
   fi
   # shellcheck disable=SC2164
   builtin cd "${dest}"
-}
-
-# ls needs different options to enable colour :/
-if command ls --color=always &> /dev/null; then
-  # Linux.
-  ls_options=(--color=auto -F)
-else
-  # OS X.
-  ls_options=(-G -F)
-fi
-
-# keep-sorted start block=yes newline_separated=yes
-# Load .bcrc to have some helper stuff, but only when running interactively.
-bc() {
-  if [ -t 0 ] && [ "$#" -eq 0 ]; then
-    command bc -q -i "${HOME}/.bcrc"
-  else
-    command bc -q "$@"
-  fi
 }
 
 countsort() {
