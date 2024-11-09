@@ -23,6 +23,9 @@ autocmd!
   autocmd FileType dot setlocal spellcapcheck= textwidth=300 foldmethod=indent
   " This turns on spell checking properly.
   autocmd FileType gitcommit syntax spell toplevel
+  " Set a wide textwidth because Golang tends to have wide lines and airline
+  " whitespace checks use textwidth.
+  autocmd FileType go setlocal textwidth=120 colorcolumn=
   " Too many distracting spelling errors and long lines.
   autocmd FileType help setlocal nospell colorcolumn=
   " Shorter textwidth to stay within hg commit message guidelines.

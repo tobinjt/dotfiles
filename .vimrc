@@ -31,8 +31,6 @@ source $VIMRUNTIME/defaults.vim
 call plug#begin('~/.vim/bundle')
 " Add bundles here.
 " keep-sorted start sticky_prefixes="
-" Golang support.
-Plug 'fatih/vim-go'
 " Plugin management.
 Plug 'junegunn/vim-plug'
 " Tab completion.
