@@ -44,6 +44,7 @@
 .config/StardewValley
 .config/Transmission Remote GUI
 .config/composer
+.config/go/telemetry
 .config/iterm2
 .config/procps
 .config/pudb/saved-breakpoints-*
