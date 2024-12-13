@@ -11,4 +11,7 @@ config.font = wezterm.font(
   })
 config.font_size = 15
 
+-- https://wezfurlong.org/wezterm/config/lua/config/selection_word_boundary.html
+config.selection_word_boundary = " \t\n{}[]()\"'`" .. ":"
+
 return config
