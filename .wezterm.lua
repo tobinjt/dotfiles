@@ -1,6 +1,10 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+-- Appearance.
+-- Hide the title bar to give more vertical space.
+config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+
 -- Colour scheme.
 config.color_scheme = 'Solarized (dark) (terminal.sexy)'
 
@@ -12,7 +16,7 @@ config.font = wezterm.font(
     stretch = "Normal",
     style = "Normal",
   })
-config.font_size = 15
+config.font_size = 13
 
 -- Key bindings.
 config.keys = {
