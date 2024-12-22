@@ -87,6 +87,37 @@ config.keys = {
 
 }
 
+-- Mouse bindings.
+-- Copied from https://wezfurlong.org/wezterm/config/mouse.html#configuring-mouse-assignments
+-- and cleaned up.
+config.mouse_bindings = {
+  -- Change the default click behavior so that it only selects text and doesn't
+  -- open hyperlinks.
+  {
+    event = {
+      Up = {
+        streak = 1,
+        button = 'Left'
+      }
+    },
+    mods = 'NONE',
+    action = wezterm.action.CompleteSelection('ClipboardAndPrimarySelection'),
+  },
+
+  -- And make CMD-Click open hyperlinks.
+  {
+    event = {
+      Up = {
+        streak = 1,
+        button = 'Left'
+      }
+    },
+    mods = 'CMD',
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
+}
+
+
 -- Recognise colon as a word separator.
 -- https://wezfurlong.org/wezterm/config/lua/config/selection_word_boundary.html
 config.selection_word_boundary = " \t\n{}[]()\"'`" .. ":"
