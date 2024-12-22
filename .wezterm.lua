@@ -7,10 +7,10 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 -- Font configuration.
 local fonts = {
-  'Fira Code',       -- 54 lines
-  'Hack',            -- 54 lines
+  'Fira Code',       -- 55 lines
+  'Hack',            -- 59 lines
   -- 'Inconsolata',  -- 58 lines, needs font_size=13.
-  'Monaspace Argon', -- 55 lines, lighter than other Monaspace fonts.
+  'Monaspace Argon', -- 57 lines, lighter than other Monaspace fonts.
 }
 config.font = wezterm.font(fonts[math.random(#fonts)])
 config.font_size = 12
