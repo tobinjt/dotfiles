@@ -9,14 +9,17 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 -- config.color_scheme = 'Solarized (dark) (terminal.sexy)'
 
 -- Font configuration.
-config.font = wezterm.font(
-  "Inconsolata",
-  {
-    weight = "Regular",
-    stretch = "Normal",
-    style = "Normal",
-  })
-config.font_size = 13
+local fonts = {
+  'Fira Code',       -- 54 lines
+  'Hack',            -- 54 lines
+  -- 'Inconsolata',  -- 58 lines, needs font_size=13.
+  'Monaspace Argon', -- 55 lines, lighter than other Monaspace fonts.
+}
+config.font = wezterm.font(fonts[math.random(#fonts)])
+config.font_size = 12
+-- Change rows and columns rather than changing window size when changing font
+-- size.
+config.adjust_window_size_when_changing_font_size = false
 
 -- Key bindings.
 config.keys = {
