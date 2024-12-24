@@ -3,7 +3,7 @@ local config = wezterm.config_builder()
 
 -- Appearance.
 -- Hide the title bar to give more vertical space.
-config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 
 -- Font configuration.
 local fonts = {
@@ -120,6 +120,6 @@ config.mouse_bindings = {
 
 -- Recognise extra characters as word separators.
 -- https://wezfurlong.org/wezterm/config/lua/config/selection_word_boundary.html
-config.selection_word_boundary = " \t\n{}[]()\"'`" .. ":,"
+config.selection_word_boundary = [[ \t\n{}[]()"'`]] .. ':,'
 
 return config
