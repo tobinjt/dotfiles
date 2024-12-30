@@ -1,3 +1,6 @@
+-- To see the config for a single formatter:
+-- :lua vim.print(require("conform").get_formatter_info("mdformat"))
+-- :lua vim.print(require("conform").formatters.mdformat)
 return {
   {
     'stevearc/conform.nvim',
@@ -13,7 +16,16 @@ return {
       },
       formatters_by_ft = {
         markdown = {
+          "mdformat",
           "prettier",
+        },
+      },
+      formatters = {
+        mdformat = {
+          prepend_args = {
+            "--wrap",
+            "80",
+          },
         },
       },
     },
