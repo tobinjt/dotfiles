@@ -16,5 +16,6 @@ let php_folding = 1
 
 augroup johntobin-php
   autocmd!
-  autocmd FileType php setlocal foldtext=foldtext()
+  " Automatic indentation is awful, disable it.
+  autocmd FileType php setlocal foldtext=foldtext() indentexpr=
 augroup END
