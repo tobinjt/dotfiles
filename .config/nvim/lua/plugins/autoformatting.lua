@@ -11,6 +11,11 @@ return {
         timeout_ms = 5000,
         lsp_format = "fallback",
       },
+      formatters_by_ft = {
+        markdown = {
+          "prettier",
+        },
+      },
     },
   }
 }
