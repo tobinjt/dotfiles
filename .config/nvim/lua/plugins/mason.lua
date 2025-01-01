@@ -7,17 +7,11 @@
 return {
   {
     "williamboman/mason.nvim",
-    opts = {
-      ui = {
-        -- I want to control when package updates are made, at least at first.
-        check_outdated_packages_on_open = false,
-      },
-    },
+    opts = {},
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    -- Trigger setup so the plugin is functional.
-    config = true,
+    opts = {},
     dependencies = {
       "mason.nvim",
     },
