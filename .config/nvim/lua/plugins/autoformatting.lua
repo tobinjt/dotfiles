@@ -1,4 +1,5 @@
 -- To see the config for a single formatter:
+-- :ConformInfo
 -- :lua vim.print(require("conform").get_formatter_info("mdformat"))
 -- :lua vim.print(require("conform").formatters.mdformat)
 return {
