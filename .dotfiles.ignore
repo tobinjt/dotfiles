@@ -3,6 +3,7 @@
 # Contains secrets that shouldn't be backed up.
 # keep-sorted start
 .config/backup-restic
+.config/github-copilot
 .config/rclone
 # keep-sorted end
 
