@@ -9,6 +9,12 @@
 # in particular on Mac OS where /etc/zprofile overwrites $PATH.
 . "${HOME}/.shellrc"
 
+# Add homebrew paths to $fpath so that completions are loaded.  Must be done
+# before running compinit.
+# I'm using MacOS Zsh rather than Homebrew Zsh because I don't see any advantage
+# to the latter, so it doesn't include this by default.
+fpath+=("/opt/homebrew/share/zsh/site-functions")
+
 ### Completion settings from setup wizard.
 # Note: added -u to compinit because my user owns homebrew but other users need
 # to use it, and compinit complains about security without -u.  I thought about
