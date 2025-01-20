@@ -44,6 +44,9 @@ autocmd!
   autocmd FileType tmux setlocal spellcapcheck=
   autocmd FileType tt2 setlocal commentstring=#%s
   autocmd FileType vim setlocal foldmethod=syntax
+  " Resize splits when the window is resized.
+  autocmd VimResized * execute "normal! \<C-w>="
+
   " keep-sorted end
 
 augroup END
