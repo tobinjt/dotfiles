@@ -60,6 +60,8 @@ return {
         -- keep-sorted start
         bashls = {},
         gopls = {},
+        -- Used for PHP.
+        intelephense = {},
         pylsp = {},
         ruff = {},
         vimls = {},
