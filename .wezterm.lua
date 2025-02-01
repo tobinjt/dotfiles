@@ -22,6 +22,18 @@ end
 -- Change rows and columns rather than changing window size when changing font
 -- size.
 config.adjust_window_size_when_changing_font_size = false
+-- Add font name and size to status bar
+wezterm.on("update-right-status", function(window)
+  local font = window:effective_config().font.font[1].family
+  local size = window:effective_config().font_size
+  local status = wezterm.format({
+    "ResetAttributes",
+    { Background = { Color = "#666666" } },
+    { Foreground = { Color = "White" } },
+    { Text = string.format(" %s %spt  ", font, size) },
+  })
+  window:set_right_status(status)
+end)
 
 -- Colour scheme.
 -- Copied manually from iTerm2's Solarized theme.
