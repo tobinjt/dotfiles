@@ -6,23 +6,33 @@ local config = wezterm.config_builder()
 config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 
 -- Font configuration.
+-- https://www.codingfont.com/ was helpful in choosing these.
+-- There was also a lot of searching and browsing and testing.
 local fonts = {
-  'Fira Code',       -- 55 lines
-  'Hack',            -- 59 lines
-  'Inconsolata',     -- 58 lines, needs font_size=13.
-  'Monaspace Argon', -- 57 lines, lighter than other Monaspace fonts.
+  -- keep-sorted start
+  ['Anonymous Pro'] = 13,   -- 63 lines
+  ['Cousine'] = 12,         -- 59 lines
+  ['Fira Code'] = 12,       -- 55 lines
+  ['Hack'] = 12,            -- 59 lines
+  ['Inconsolata'] = 13,     -- 58 lines
+  ['Monaspace Argon'] = 12, -- 57 lines, lighter than other Monaspace fonts.
+  ['PT Mono'] = 12,         -- 62 lines
+  ['Red Hat Mono'] = 12,    -- 51 lines
+  ['Source Code Pro'] = 12, -- 53 lines
+  -- keep-sorted end
 }
-local chosen_font = fonts[math.random(#fonts)]
-config.font = wezterm.font(chosen_font)
-if chosen_font == 'Inconsolata' then
-  config.font_size = 13
-else
-  config.font_size = 12
+
+local font_keys = {}
+for k in pairs(fonts) do
+  table.insert(font_keys, k)
 end
+local chosen_font = font_keys[math.random(#font_keys)]
+config.font = wezterm.font(chosen_font)
+config.font_size = fonts[chosen_font]
 -- Change rows and columns rather than changing window size when changing font
 -- size.
 config.adjust_window_size_when_changing_font_size = false
--- Add font name and size to status bar
+-- Add font name and size to status bar.
 wezterm.on("update-right-status", function(window)
   local font = window:effective_config().font.font[1].family
   local size = window:effective_config().font_size
