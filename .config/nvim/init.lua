@@ -23,6 +23,9 @@ require("lazy").setup({
   },
 })
 
+-- Auto-install tools.
+require("config.autoinstall")
+
 -- Some config that doesn't really fit elsewhere.
 vim.cmd.colorscheme("solarized-osaka")
 -- Configure folding to use Treesitter.
