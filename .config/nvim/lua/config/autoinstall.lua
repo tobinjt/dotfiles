@@ -6,8 +6,8 @@ local tools = {
   -- can't install these tools.
   cat = {
     -- keep-sorted start
+    "bash-debug-adapter",
     "lua-language-server",
-    "ruff",
     "vint",
     -- keep-sorted end
   },
@@ -19,6 +19,19 @@ local tools = {
     "vim-language-server",
     -- keep-sorted end
   },
+  php = {
+    -- keep-sorted start
+    "intelephense",
+    "php-debug-adapter",
+    -- keep-sorted end
+  },
+  python = {
+    "debugpy",
+    "ruff",
+  },
+  rustc = {
+    "codelldb",
+  }
 }
 
 local mason_registry = require("mason-registry")
