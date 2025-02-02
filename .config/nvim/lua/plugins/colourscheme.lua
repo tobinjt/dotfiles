@@ -11,11 +11,10 @@ return {
       ---@param highlights Highlights
       ---@param colors ColorScheme
       on_highlights = function(highlights, colors)
-        local config = require("solarized-osaka.config")
-        -- ColorColumn: stop setting background colour, change style to match
-        -- comments so it stands out slightly.
+        -- ColorColumn: stop setting background colour, change style to italic
+        -- so it stands out slightly.
         highlights.ColorColumn.bg = colors.none
-        highlights.ColorColumn.style = config.options.styles.comments
+        highlights.ColorColumn.italic = true
         -- Change line numbers from orange to white.
         highlights.LineNr.fg = colors.fg
       end,
