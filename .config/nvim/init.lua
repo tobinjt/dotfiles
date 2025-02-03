@@ -25,6 +25,8 @@ require("lazy").setup({
 
 -- Auto-install tools.
 require("config.autoinstall")
+-- Highlight column after textwidth.
+require("config.colorcolumn")
 
 -- Some config that doesn't really fit elsewhere.
 vim.cmd.colorscheme("solarized-osaka")
