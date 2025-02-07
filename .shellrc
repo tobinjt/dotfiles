@@ -26,7 +26,7 @@ path_additions=(
   # Wezterm.
   "/Applications/WezTerm.app/Contents/MacOS"
   # AppImage of Neovim for Debian which has an older version packaged.
-  "${HOME}/tmp/nvim.appimage/usr/bin"
+  "${HOME}/tmp/nvim/nvim/usr/bin"
   # Neovim on MacOS without Homebrew.
   "${HOME}/tmp/nvim-macos-x86_64/bin"
   # Tools installed by Neovim's Mason.
