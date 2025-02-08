@@ -11,9 +11,6 @@
   upstream = commit -a -m 'Upstream changes.'
   unpushed-commits = log @{u}..
   unpushed-commits-diffs = diff @{u}..
-
-  # https://difftastic.wilfred.me.uk/git.html
-  difft = -c diff.external=difft diff
 [push]
   default = current
 [diff]
