@@ -16,9 +16,16 @@ local autocmd_callback = function()
     return
   end
 
-  -- Clean up old matches.
+  -- Clean up old matches.  Occasionally a match isn't found, so we can't delete
+  -- it without checking if it exists.
   if vim.b.colorcolum_matchadd_id then
-    vim.fn.matchdelete(vim.b.colorcolum_matchadd_id)
+    for _, match in ipairs(vim.fn.getmatches()) do
+      if match.id == vim.b.colorcolum_matchadd_id then
+        vim.fn.matchdelete(vim.b.colorcolum_matchadd_id)
+        vim.b.colorcolum_matchadd_id = nil
+        break
+      end
+    end
   end
 
   -- Create the new match.
