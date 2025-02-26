@@ -10,15 +10,15 @@ config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 -- There was also a lot of searching and browsing and testing.
 local fonts = {
   -- keep-sorted start
-  ['Anonymous Pro'] = 13,   -- 63 lines
-  ['Cousine'] = 12,         -- 59 lines
-  ['Fira Code'] = 12,       -- 55 lines
-  ['Hack'] = 12,            -- 59 lines
-  ['Inconsolata'] = 13,     -- 58 lines
-  ['Monaspace Argon'] = 12, -- 57 lines, lighter than other Monaspace fonts.
-  ['PT Mono'] = 12,         -- 62 lines
-  ['Red Hat Mono'] = 12,    -- 51 lines
-  ['Source Code Pro'] = 12, -- 53 lines
+  ['Anonymous Pro'] = 13,
+  ['Cousine'] = 12,
+  ['Fira Code'] = 12,
+  ['Hack'] = 12,
+  ['Inconsolata'] = 13,
+  ['Monaspace Argon'] = 12, -- Lighter than other Monaspace fonts.
+  ['PT Mono'] = 12,
+  ['Red Hat Mono'] = 12,
+  ['Source Code Pro'] = 12,
   -- keep-sorted end
 }
 
