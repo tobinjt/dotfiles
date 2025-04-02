@@ -11,20 +11,9 @@ return {
 
     keys = {
       {
-        "<leader>rn",
-        vim.lsp.buf.rename,
-        desc = "Rename",
-      },
-      {
         "<leader>gd",
         vim.lsp.buf.definition,
         desc = "Goto Definition",
-      },
-
-      {
-        "<leader>gi",
-        vim.lsp.buf.implementation,
-        desc = "Goto Implementation"
       },
 
       {
