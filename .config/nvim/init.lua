@@ -33,6 +33,8 @@ vim.cmd.colorscheme("solarized-osaka")
 -- Configure folding to use Treesitter.
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- Put a border around popup windows.
+vim.o.winborder = 'rounded'
 -- Support local config.  If the file doesn't exist this will fail quietly, and
 -- if it does exist the file will be loaded.  All setup needs to be done as part
 -- of loading - we don't call setup() or similar.
