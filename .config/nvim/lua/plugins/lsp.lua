@@ -42,6 +42,19 @@ return {
           capabilities)
         lspconfig[server].setup(combined_opts)
       end
+
+      -- Configure how diagnostics are displayed.
+      vim.diagnostic.config(
+        {
+          -- Show diagnostic messages at the end of lines.
+          virtual_text = true,
+          -- But for the current line use virtual lines underneath so I can see
+          -- multiple diagnostic messages.
+          virtual_lines = {
+            current_line = true,
+          },
+        }
+      )
     end,
 
     opts = {
