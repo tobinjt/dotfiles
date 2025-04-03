@@ -64,7 +64,11 @@ return {
           if client == nil then
             return
           end
-          if client:supports_method('textDocument/completion') then
+          -- Support Neovim < 0.11.
+          if vim.lsp["completion"] == nil then
+            return
+          end
+          if client.supports_method('textDocument/completion') then
             vim.lsp.completion.enable(
               true,
               client.id,
