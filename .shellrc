@@ -28,7 +28,7 @@ path_additions=(
   # AppImage of Neovim for Debian which has an older version packaged.
   "${HOME}/tmp/nvim/nvim/usr/bin"
   # Neovim on MacOS without Homebrew.
-  "${HOME}/tmp/nvim-macos-x86_64/bin"
+  "${HOME}/tmp/nvim/nvim/bin"
   # Tools installed by Neovim's Mason.
   "${HOME}/.local/share/nvim/mason/bin"
   # Manual install of lazygit.
