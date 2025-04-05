@@ -11,12 +11,14 @@ GOPATH="${HOME}/tmp/go"
 path_additions=(
   # Sometimes I need binaries from here.
   "/sbin" "/usr/sbin" "/usr/local/sbin"
-  # These are automatically added but *after* this file is sources by ~/.zshenv,
+  # These are automatically added but *after* this file is sourced by ~/.zshenv,
   # so any binaries in /usr/local/bin won't be in $PATH yet.  Add them here for
   # reliability.
   "/bin" "/usr/bin" "/usr/local/bin"
   # Homebrew's Apple silicon directory.
   "/opt/homebrew/bin" "/opt/homebrew/sbin"
+  # Node modules.
+  "${HOME}/tmp/node_modules/bin"
   # Python tooling in virtualenvs.
   "${HOME}/tmp/virtualenv/python/bin" "${HOME}/tmp/virtualenv/flexget/bin"
   # Golang.
