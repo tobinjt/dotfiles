@@ -81,7 +81,7 @@ if [ "$-" = "${-//i/}" ]; then
 fi
 
 ## Python.
-MYPY_CACHE_DIR="${HOME}/tmp/mypy_cache"
+MYPY_CACHE_DIR="${HOME}/tmp/generated/mypy_cache"
 PYTHONDONTWRITEBYTECODE="No .pyc files please"
 # Set breakpoint() in Python to call pudb; untested.
 PYTHONBREAKPOINT="pudb.set_trace"
