@@ -5,7 +5,7 @@
 # not interactive we skip everything else.
 
 # Where Go should install stuff.  Set here so that it can be used in $PATH.
-GOPATH="${HOME}/tmp/go"
+GOPATH="${HOME}/tmp/bin/go"
 # Set up $PATH.  Each directory that exists will be *prepended* to $PATH, so put
 # more specific directories last.
 path_additions=(
@@ -18,9 +18,9 @@ path_additions=(
   # Homebrew's Apple silicon directory.
   "/opt/homebrew/bin" "/opt/homebrew/sbin"
   # Node modules.
-  "${HOME}/tmp/node_modules/bin"
+  "${HOME}/tmp/bin/node_modules/bin"
   # Python tooling in virtualenvs.
-  "${HOME}/tmp/virtualenv/python/bin" "${HOME}/tmp/virtualenv/flexget/bin"
+  "${HOME}/tmp/bin/virtualenv/python/bin" "${HOME}/tmp/bin/virtualenv/flexget/bin"
   # Golang.
   "${GOPATH}/bin"
   # Rust.
@@ -28,13 +28,13 @@ path_additions=(
   # Wezterm.
   "/Applications/WezTerm.app/Contents/MacOS"
   # AppImage of Neovim for Debian which has an older version packaged.
-  "${HOME}/tmp/nvim/nvim/usr/bin"
+  "${HOME}/tmp/bin/nvim/nvim/usr/bin"
   # Neovim on MacOS without Homebrew.
-  "${HOME}/tmp/nvim/nvim/bin"
+  "${HOME}/tmp/bin/nvim/nvim/bin"
   # Tools installed by Neovim's Mason.
   "${HOME}/.local/share/nvim/mason/bin"
   # Manual install of lazygit.
-  "${HOME}/tmp/lazygit"
+  "${HOME}/tmp/bin/lazygit"
   "${HOME}/bin"
 )
 for path_addition in "${path_additions[@]}"; do
