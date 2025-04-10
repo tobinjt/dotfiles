@@ -29,7 +29,7 @@ return {
         lua = { "luacheck" },
         markdown = { "markdownlint" },
         php = { "phpstan" },
-        python = { "ruff", "mypy" },
+        python = { "ruff" },
         rust = { "clippy" },
         sh = { "shellcheck" },
         vim = { "vint" },
