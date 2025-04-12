@@ -20,6 +20,7 @@ return {
         "gitcommit",
         "go",
         "html",
+        "lua",
         "luadoc",
         "markdown",
         "markdown_inline",
