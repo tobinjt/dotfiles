@@ -13,7 +13,9 @@ local tools = {
     -- keep-sorted end
   },
   luarocks = {
+    -- keep-sorted start
     "luacheck",
+    -- keep-sorted end
   },
   mpm = {
     -- keep-sorted start
@@ -47,6 +49,7 @@ local tools = {
     "prettier",
     -- keep-sorted end
   },
+  -- keep-sorted end
 }
 
 local mason_registry = require("mason-registry")
