@@ -35,9 +35,9 @@ local tools = {
 }
 
 local mason_registry = require("mason-registry")
-for installer, tool_list in ipairs(tools) do
+for installer, tool_list in pairs(tools) do
   if vim.fn.executable(installer) == 1 then
-    for tool in tool_list do
+    for _, tool in ipairs(tool_list) do
       if vim.fn.executable(tool) == 0 and not mason_registry.is_installed(tool) then
         vim.cmd(":MasonInstall " .. tool)
       end
