@@ -37,9 +37,16 @@ local tools = {
     -- keep-sorted end
   },
   rustc = {
+    -- keep-sorted start
     "codelldb",
-  }
-  -- keep-sorted end
+    -- keep-sorted end
+  },
+  uniq = {
+    -- keep-sorted start
+    "marksman",
+    "prettier",
+    -- keep-sorted end
+  },
 }
 
 local mason_registry = require("mason-registry")
