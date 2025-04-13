@@ -2,6 +2,7 @@
 -- Map of "install tool" => "list of tools to install", so I only try to install
 -- tools where the install tool exists.
 local tools = {
+  -- keep-sorted start block=yes
   -- Use an install tool that always exists, because I want a noisy error if I
   -- can't install these tools.
   cat = {
@@ -29,13 +30,16 @@ local tools = {
     -- keep-sorted end
   },
   python3 = {
+    -- keep-sorted start
     "debugpy",
     "python-lsp-server",
     "ruff",
+    -- keep-sorted end
   },
   rustc = {
     "codelldb",
   }
+  -- keep-sorted end
 }
 
 local mason_registry = require("mason-registry")
