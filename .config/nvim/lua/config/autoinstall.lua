@@ -11,6 +11,9 @@ local tools = {
     "vint",
     -- keep-sorted end
   },
+  luarocks = {
+    "luacheck",
+  },
   mpm = {
     -- keep-sorted start
     "bash-language-server",
