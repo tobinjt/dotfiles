@@ -28,7 +28,7 @@ local tools = {
     "php-debug-adapter",
     -- keep-sorted end
   },
-  python = {
+  python3 = {
     "debugpy",
     "ruff",
   },
