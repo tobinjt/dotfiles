@@ -9,6 +9,7 @@ local tools = {
     -- keep-sorted start
     "bash-debug-adapter",
     "lua-language-server",
+    "marksman",
     "vint",
     -- keep-sorted end
   },
@@ -22,6 +23,7 @@ local tools = {
     "bash-language-server",
     "jsonlint",
     "markdownlint",
+    "prettier",
     "vim-language-server",
     -- keep-sorted end
   },
@@ -41,12 +43,6 @@ local tools = {
   rustc = {
     -- keep-sorted start
     "codelldb",
-    -- keep-sorted end
-  },
-  uniq = {
-    -- keep-sorted start
-    "marksman",
-    "prettier",
     -- keep-sorted end
   },
   -- keep-sorted end
