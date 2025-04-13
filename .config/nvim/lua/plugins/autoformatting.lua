@@ -43,9 +43,7 @@ return {
 
       formatters = {
         keep_sorted = {
-          command = "keep-sorted",
-          -- This is ignored in many cases :(
-          stdin = false,
+          command = "keep-sorted-wrapper",
           -- Force adding a filename so that keep-sorted works.
           args = {
             "$FILENAME",
