@@ -30,6 +30,7 @@ local tools = {
   },
   python3 = {
     "debugpy",
+    "python-lsp-server",
     "ruff",
   },
   rustc = {
