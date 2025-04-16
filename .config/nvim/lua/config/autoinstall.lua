@@ -18,7 +18,7 @@ local tools = {
     "luacheck",
     -- keep-sorted end
   },
-  mpm = {
+  npm = {
     -- keep-sorted start
     "bash-language-server",
     "jsonlint",
@@ -56,5 +56,8 @@ for installer, tool_list in pairs(tools) do
         vim.cmd(":MasonInstall " .. tool)
       end
     end
+  else
+    vim.print("Installer " .. installer .. " not found, skipping install of "
+      .. table.concat(tool_list, ", "))
   end
 end
