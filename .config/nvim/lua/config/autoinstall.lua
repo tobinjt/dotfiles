@@ -4,13 +4,24 @@
 local tools = {
   -- keep-sorted start block=yes
   -- Use an install tool that always exists, because I want a noisy error if I
-  -- can't install these tools.
+  -- can't install these tools, or they really don't have any installation
+  -- dependencies.
   cat = {
     -- keep-sorted start
     "bash-debug-adapter",
     "lua-language-server",
     "marksman",
+    "phpstan",
+    "shellcheck",
     "vint",
+    -- keep-sorted end
+  },
+  go = {
+    -- keep-sorted start
+    "delve",
+    "golangci-lint",
+    "gopls",
+    "staticcheck",
     -- keep-sorted end
   },
   luarocks = {
@@ -36,6 +47,7 @@ local tools = {
   python3 = {
     -- keep-sorted start
     "debugpy",
+    "mdformat",
     "python-lsp-server",
     "ruff",
     -- keep-sorted end
