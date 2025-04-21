@@ -19,8 +19,9 @@ path_additions=(
   "/opt/homebrew/bin" "/opt/homebrew/sbin"
   # Node modules.
   "${HOME}/tmp/bin/node_modules/bin"
-  # Python tooling in virtualenvs.
-  "${HOME}/tmp/bin/virtualenv/python/bin" "${HOME}/tmp/bin/virtualenv/flexget/bin"
+  # Python tooling in virtualenvs.  flexget must be later in $PATH so that the
+  # python3 binary with commonly used modules is first in $PATH.
+  "${HOME}/tmp/bin/virtualenv/flexget/bin" "${HOME}/tmp/bin/virtualenv/python/bin"
   # Golang.
   "${GOPATH}/bin"
   # Rust.
