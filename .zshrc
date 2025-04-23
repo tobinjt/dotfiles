@@ -127,6 +127,11 @@ function zshaddhistory() {
   return 0
 }
 
+# Experimenting with atuin.sh for history search.
+if type atuin >& /dev/null; then
+  eval "$(atuin init zsh)"
+fi
+
 ### Local stuff
 local_zsh_rc="${HOME}/.zshrc-local"
 if [[ -f "${local_zsh_rc}" ]]; then
