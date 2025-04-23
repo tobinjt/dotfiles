@@ -129,7 +129,7 @@ function zshaddhistory() {
 
 # Experimenting with atuin.sh for history search.
 if type atuin >& /dev/null; then
-  eval "$(atuin init zsh)"
+  eval "$(atuin init --disable-up-arrow zsh)"
 fi
 
 ### Local stuff
