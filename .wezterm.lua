@@ -10,7 +10,6 @@ config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 -- There was also a lot of searching and browsing and testing.
 local fonts = {
   -- keep-sorted start
-  ['Anonymous Pro'] = 14,
   ['Cousine'] = 13,
   ['Fira Code'] = 13,
   ['Hack'] = 13,
