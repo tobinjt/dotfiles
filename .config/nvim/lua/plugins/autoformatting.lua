@@ -37,7 +37,6 @@ return {
       formatters_by_ft = {
         markdown = {
           "mdformat",
-          "prettier",
         },
       },
 

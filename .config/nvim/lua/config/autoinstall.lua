@@ -34,7 +34,6 @@ local tools = {
     "bash-language-server",
     "jsonlint",
     "markdownlint",
-    "prettier",
     "vim-language-server",
     -- keep-sorted end
   },
