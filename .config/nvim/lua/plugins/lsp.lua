@@ -9,20 +9,6 @@ return {
       "mason-lspconfig.nvim",
     },
 
-    keys = {
-      {
-        "<leader>gd",
-        vim.lsp.buf.definition,
-        desc = "Goto Definition",
-      },
-
-      {
-        "<leader>gt",
-        vim.lsp.buf.type_definition,
-        desc = "Goto Type Definition"
-      },
-    },
-
     -- The servers to enable are collected in opts.enabled_servers with the
     -- server options if any.  Config required by cmp-nvim-lsp is added
     -- automatically.
