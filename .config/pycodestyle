@@ -1,2 +1,5 @@
 [pycodestyle]
 max-line-length = 88
+# E111,E114: indentation is not a multiple of 4
+# W503: line break before binary operator
+ignore = E111,E114,W503
