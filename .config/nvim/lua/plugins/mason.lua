@@ -11,7 +11,11 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    opts = {},
+    opts = {
+      -- Automatic enabling is problematic when there are multiple servers for
+      -- one filetype, so disable it.
+      automatic_enable = false,
+    },
     dependencies = {
       "mason.nvim",
     },
