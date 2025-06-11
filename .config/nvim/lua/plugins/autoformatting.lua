@@ -4,7 +4,7 @@
 -- :lua vim.print(require("conform").formatters.mdformat)
 return {
   {
-    'stevearc/conform.nvim',
+    "stevearc/conform.nvim",
     -- Requires Neovim 0.10 or later.
     cond = vim.fn.has("nvim-0.10") == 1,
     opts = {

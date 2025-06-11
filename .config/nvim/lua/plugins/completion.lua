@@ -32,8 +32,8 @@ return {
         -- - K shows documentation window (standard Neovim config, not
         --   configured here).
         -- Copied from `:help cmp-mapping`.
-        ['<CR>'] = function(fallback)
-          local cmp = require('cmp')
+        ["<CR>"] = function(fallback)
+          local cmp = require("cmp")
           if cmp.visible() then
             cmp.confirm()
           else

@@ -83,7 +83,7 @@ return {
         keys = {
           {
             "<leader>dt",
-            function() require('dap-go').debug_test() end,
+            function() require("dap-go").debug_test() end,
             desc = "Debug test"
           },
         },

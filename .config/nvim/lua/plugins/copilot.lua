@@ -1,5 +1,5 @@
 -- Configure keymaps here.  :help copilot-maps
-vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+vim.keymap.set("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
   expr = true,
   replace_keycodes = false
 })
@@ -21,6 +21,6 @@ return {
     },
     -- See Commands section for default commands if you want to lazy load on them
     -- Only enable Copilot on machines I've logged into Copilot from.
-    cond = vim.fn.filereadable(vim.fn.expand('~/.config/github-copilot/apps.json')) == 1,
+    cond = vim.fn.filereadable(vim.fn.expand("~/.config/github-copilot/apps.json")) == 1,
   },
 }

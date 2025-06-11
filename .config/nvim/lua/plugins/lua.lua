@@ -6,7 +6,7 @@ return {
     cond = vim.fn.has("nvim-0.10") == 1,
     opts = {
       -- Force adding all the plugins I have so that type annotations work.
-      library = vim.fn.split(vim.fn.glob('~/.local/share/nvim/lazy/*/lua'), "\n"),
+      library = vim.fn.split(vim.fn.glob("~/.local/share/nvim/lazy/*/lua"), "\n"),
     },
   },
 
@@ -35,7 +35,7 @@ return {
               diagnostics = {
                 -- Get the language server to recognize the `vim` global.
                 globals = {
-                  'vim',
+                  "vim",
                 },
               },
             },
