@@ -118,6 +118,12 @@ if [ -n "${TMUX:-}" ] && [ "${USER}" != "johntobin" ]; then
   tmux rename-window -t "${TMUX_PANE}" "${USER}"
 fi
 
+if [ -f "${HOME}/.config/gemini/api_key" ]; then
+  # Set the Gemini API key if it exists.
+  GEMINI_API_KEY="$(cat "${HOME}/.config/gemini/api_key")"
+  export GEMINI_API_KEY
+fi
+
 # Local interactive stuff
 local_shellrc="${HOME}/.shellrc-local-interactive"
 if [ -f "${local_shellrc}" ]; then
