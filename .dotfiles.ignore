@@ -2,6 +2,7 @@
 
 # Contains secrets that shouldn't be backed up.
 # keep-sorted start
+.config/gemini
 .config/github-copilot
 .config/rclone
 # keep-sorted end
