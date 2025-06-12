@@ -5,6 +5,8 @@ vim.keymap.set("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
 })
 vim.g.copilot_no_tab_map = true
 
+local paths = require("paths")
+
 return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
@@ -21,6 +23,7 @@ return {
     },
     -- See Commands section for default commands if you want to lazy load on them
     -- Only enable Copilot on machines I've logged into Copilot from.
-    cond = vim.fn.filereadable(vim.fn.expand("~/.config/github-copilot/apps.json")) == 1,
+    cond = paths.exists("~/.config/github-copilot/apps.json")
+        and not paths.exists("~/.config/gemini/api_key"),
   },
 }

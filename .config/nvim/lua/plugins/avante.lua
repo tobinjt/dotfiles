@@ -1,9 +1,11 @@
+local paths = require("paths")
+
 return {
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
-    cond = vim.fn.filereadable(vim.fn.expand("~/.config/gemini/api_key")) == 1,
+    cond = paths.exists("~/.config/gemini/api_key"),
     opts = {
       provider = "gemini",
       providers = {
