@@ -3,8 +3,6 @@
 # keep-sorted start
 alias cp="cp -i -p"
 alias grep='grep --color=auto'
-# shellcheck disable=SC2139
-alias lazygit="lazygit --use-config-file ${HOME}/.config/lazygit/config.yml"
 alias mv="mv -i"
 # Homebrew installs pip as pip3, so wrap it.
 # Let Python write bytecode for future speed.
@@ -13,6 +11,19 @@ alias pip="PYTHONDONTWRITEBYTECODE= pip3"
 alias python="python3"
 alias ta='tmux_attach'
 # keep-sorted end
+
+lazygit () {
+  if [[ -n "${TMUX_PANE:-}" ]]; then
+    tmux rename-window -t "${TMUX_PANE}" "lazygit"
+  fi
+  local exit_status=0
+  command lazygit --use-config-file "${HOME}/.config/lazygit/config.yml" \
+    || exit_status="$?"
+  if [[ -n "${TMUX_PANE:-}" ]]; then
+    tmux rename-window -t "${TMUX_PANE}" ""
+  fi
+  return "${exit_status}"
+}
 
 # Function to be run every time my prompt is displayed.
 prompt_command() {
