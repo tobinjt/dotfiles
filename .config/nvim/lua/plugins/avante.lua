@@ -5,7 +5,7 @@ return {
     "yetone/avante.nvim",
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
-    cond = paths.exists("~/.config/gemini/api_key"),
+    cond = paths.exists(paths.gemini_api_key),
     opts = {
       provider = "gemini",
       providers = {

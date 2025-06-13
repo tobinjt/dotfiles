@@ -23,7 +23,8 @@ return {
     },
     -- See Commands section for default commands if you want to lazy load on them
     -- Only enable Copilot on machines I've logged into Copilot from.
-    cond = paths.exists("~/.config/github-copilot/apps.json")
-        and not paths.exists("~/.config/gemini/api_key"),
+    -- Prefer Avante and Gemini if available.
+    cond = paths.exists(paths.copilot_config)
+        and not paths.exists(paths.gemini_api_key),
   },
 }
