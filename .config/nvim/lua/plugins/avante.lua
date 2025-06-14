@@ -24,6 +24,15 @@ return {
       local api_key = vim.fn.readfile(expanded_path)[1]
       vim.fn.setenv("GEMINI_API_KEY", api_key)
       require("avante").setup(opts)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        desc = "Disable folding for Avante windows, it hides the AI responses",
+        group = "johntobin",
+        pattern = "Avante",
+        callback = function(_)
+          vim.opt_local.foldenable = false
+        end,
+      })
     end,
 
     dependencies = {
