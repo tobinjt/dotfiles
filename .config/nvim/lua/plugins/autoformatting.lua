@@ -7,6 +7,9 @@ return {
     "stevearc/conform.nvim",
     -- Requires Neovim 0.10 or later.
     cond = vim.fn.has("nvim-0.10") == 1,
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+
     opts = {
       -- Support for enable/disable autoformat-on-save.
       -- Modified from
