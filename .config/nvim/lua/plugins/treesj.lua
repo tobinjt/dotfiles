@@ -1,6 +1,6 @@
 return {
   'Wansmer/treesj',
-  config = {},
+  config = true,
   keys = {
     '<space>m',
     '<space>j',
