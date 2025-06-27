@@ -15,7 +15,6 @@ local fonts = {
   ['Hack'] = 13,
   ['Inconsolata'] = 14,
   ['Monaspace Argon'] = 13, -- Lighter than other Monaspace fonts.
-  ['PT Mono'] = 13,
   ['Red Hat Mono'] = 13,
   ['Source Code Pro'] = 13,
   -- keep-sorted end
