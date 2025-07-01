@@ -59,7 +59,7 @@ return {
               true,
               client.id,
               ev.buf,
-              { autotrigger = true })
+              { autotrigger = false })
           end
         end,
       })
