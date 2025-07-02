@@ -1,11 +1,6 @@
--- Configure keymaps here.  :help copilot-maps
-vim.keymap.set("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
-  expr = true,
-  replace_keycodes = false
-})
-vim.g.copilot_no_tab_map = true
-
 local paths = require("paths")
+-- Don't remap tab.
+vim.g.copilot_no_tab_map = true
 
 return {
   {
@@ -17,11 +12,21 @@ return {
         branch = "master",
       },
     },
+    lazy = false,
     build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
-      -- See Configuration section for options
     },
-    -- See Commands section for default commands if you want to lazy load on them
+    keys = {
+      -- :help copilot-maps
+      {
+        "<C-J>",
+        'copilot#Accept("\\<CR>")',
+        mode = "i",
+        desc = "accept Copilot suggestion",
+        expr = true,
+        replace_keycodes = false,
+      },
+    },
     -- Only enable Copilot on machines I've logged into Copilot from.
     -- Prefer Avante and Gemini if available.
     cond = paths.exists(paths.copilot_config)
