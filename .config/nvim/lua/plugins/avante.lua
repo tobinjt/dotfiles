@@ -23,7 +23,7 @@ return {
     config = function(_, opts)
       local expanded_path = vim.fn.expand(paths.gemini_api_key)
       local api_key = vim.fn.readfile(expanded_path)[1]
-      vim.fn.setenv("GEMINI_API_KEY", api_key)
+      vim.fn.setenv("AVANTE_GEMINI_API_KEY", api_key)
       require("avante").setup(opts)
 
       vim.api.nvim_create_autocmd("FileType", {
