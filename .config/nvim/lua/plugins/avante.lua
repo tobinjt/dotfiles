@@ -18,8 +18,8 @@ return {
       },
     },
 
-    -- Set the GEMINI_API_KEY environment variable from the file before loading
-    -- the plugin.
+    -- Set the AVANTE_GEMINI_API_KEY environment variable from the file before
+    -- loading the plugin.
     config = function(_, opts)
       local expanded_path = vim.fn.expand(paths.gemini_api_key)
       local api_key = vim.fn.readfile(expanded_path)[1]
