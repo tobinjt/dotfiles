@@ -39,6 +39,7 @@ return {
     cmd = { "ConformInfo" },
 
     opts = {
+      -- log_level = vim.log.levels.DEBUG,
       -- Support for enable/disable autoformat-on-save.
       -- Modified from
       -- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#command-to-toggle-format-on-save
@@ -51,21 +52,15 @@ return {
           -- These options will be passed to conform.format().
           -- Long timeout because large Python files can be slow to format.
           timeout_ms = 5000,
-          lsp_format = "fallback",
+          lsp_format = "first",
         }
       end,
 
-      -- Run keep-sorted for every file type.
-      -- This runs async after write, but it runs so fast that being async
-      -- shouldn't be a problem.
-      format_after_save = {
-        -- These options will be passed to conform.format()
-        formatters = {
+      formatters_by_ft = {
+        -- Run keep-sorted for every file type.
+        ["*"] = {
           "keep_sorted",
         },
-      },
-
-      formatters_by_ft = {
         markdown = {
           "mdformat",
         },
@@ -74,9 +69,9 @@ return {
       formatters = {
         keep_sorted = {
           command = "keep-sorted-wrapper",
-          -- Force adding a filename so that keep-sorted works.
+          stdin = true,
           args = {
-            "$FILENAME",
+            "-",
           },
         },
         mdformat = {
