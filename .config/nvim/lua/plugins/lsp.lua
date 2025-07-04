@@ -2,6 +2,8 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    -- My config requires Neovim 0.11 or later because it uses vim.lsp.config().
+    cond = vim.fn.has("nvim-0.11") == 1,
     -- Dependencies are not necessary in other configs, setting them once is
     -- enough.
     dependencies = {
@@ -14,19 +16,16 @@ return {
     -- automatically.
     -- require("lspconfig").start() doesn't exist so don't call it.
     config = function(_, opts)
-      local lspconfig = require("lspconfig")
-      local cmp_nvim_lsp = require("cmp_nvim_lsp")
-      local capabilities = {
-        capabilities = vim.tbl_deep_extend("force",
-          vim.lsp.protocol.make_client_capabilities(),
-          cmp_nvim_lsp.default_capabilities()
-        ),
-      }
+      local capabilities = vim.tbl_deep_extend("force",
+        vim.lsp.protocol.make_client_capabilities(),
+        require("cmp_nvim_lsp").default_capabilities()
+      )
       for server, server_opts in pairs(opts.enabled_servers) do
         local combined_opts = vim.tbl_deep_extend("force",
           server_opts,
-          capabilities)
-        lspconfig[server].setup(combined_opts)
+          { capabilities = capabilities })
+        vim.lsp.config(server, combined_opts)
+        vim.lsp.enable(server)
       end
 
       -- Configure how diagnostics are displayed.
