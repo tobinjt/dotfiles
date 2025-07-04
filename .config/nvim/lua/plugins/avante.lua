@@ -16,6 +16,14 @@ return {
           model = "gemini-2.5-flash",
         },
       },
+
+      -- This is used as the default provider for auto-suggestions.
+      -- It is very slow - like 10s of seconds sometimes - and it sometimes
+      -- breaks rate-limits, so I have disabled it.
+      -- auto_suggestions_provider = "gemini",
+      -- behaviour = {
+      --   auto_suggestions = true,
+      -- },
     },
 
     -- Set the AVANTE_GEMINI_API_KEY environment variable from the file before
