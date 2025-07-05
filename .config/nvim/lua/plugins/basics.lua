@@ -1,14 +1,18 @@
 return {
   {
     -- Improved status bar.
-    dir = vim.fn.expand("~/.vim/bundle/vim-airline"),
+    "vim-airline/vim-airline",
   },
   {
     -- Makes filename:line-number[:column] work.
-    dir = vim.fn.expand("~/.vim/bundle/vim-fetch"),
+    "wsdjeg/vim-fetch",
   },
   {
     -- Jumps to the last exited location in files.
     "farmergreg/vim-lastplace",
+  },
+  {
+    -- VCS indicators in the signs column.
+    "mhinz/vim-signify",
   },
 }
