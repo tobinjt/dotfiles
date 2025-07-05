@@ -32,5 +32,6 @@
   "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
   "vim-airline": { "branch": "master", "commit": "41c5f54507fd865c8c00fe1f4bb390a59b6894ef" },
   "vim-fetch": { "branch": "master", "commit": "db3fd95eb0cf7e7e9effa1338b286db33e4a36c1" },
-  "vim-lastplace": { "branch": "master", "commit": "e58cb0df716d3c88605ae49db5c4741db8b48aa9" }
+  "vim-lastplace": { "branch": "master", "commit": "e58cb0df716d3c88605ae49db5c4741db8b48aa9" },
+  "vim-signify": { "branch": "master", "commit": "8670143f9e12ed1cd3c9b2c54f345cdd9a4baac3" }
 }
