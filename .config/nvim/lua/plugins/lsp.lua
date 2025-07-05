@@ -4,27 +4,29 @@ return {
     "neovim/nvim-lspconfig",
     -- My config requires Neovim 0.11 or later because it uses vim.lsp.config().
     cond = vim.fn.has("nvim-0.11") == 1,
-    -- Dependencies are not necessary in other configs, setting them once is
-    -- enough.
     dependencies = {
       "cmp-nvim-lsp",
       "mason-lspconfig.nvim",
     },
 
     -- The servers to enable are collected in opts.enabled_servers with the
-    -- server options if any.  Config required by cmp-nvim-lsp is added
-    -- automatically.
-    -- require("lspconfig").start() doesn't exist so don't call it.
+    -- server options if any.  Config required by cmp-nvim-lsp is added to the
+    -- default server.
     config = function(_, opts)
-      local capabilities = vim.tbl_deep_extend("force",
-        vim.lsp.protocol.make_client_capabilities(),
-        require("cmp_nvim_lsp").default_capabilities()
-      )
+      -- Set default capabilities to what Neovim supports plus what completion
+      -- supports.
+      vim.lsp.config('*', {
+        capabilities = vim.tbl_deep_extend("force",
+          vim.lsp.protocol.make_client_capabilities(),
+          require("cmp_nvim_lsp").default_capabilities()
+        ),
+      })
       for server, server_opts in pairs(opts.enabled_servers) do
-        local combined_opts = vim.tbl_deep_extend("force",
-          server_opts,
-          { capabilities = capabilities })
-        vim.lsp.config(server, combined_opts)
+        -- Only configure the server if I have configuration, otherwise the
+        -- defaults should be fine.
+        if next(server_opts) ~= nil then
+          vim.lsp.config(server, server_opts)
+        end
         vim.lsp.enable(server)
       end
 
