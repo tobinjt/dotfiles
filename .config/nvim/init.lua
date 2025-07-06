@@ -21,6 +21,13 @@ require("lazy").setup({
     -- Stop telling me that a package spec was reloaded.
     notify = false,
   },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "matchparen",
+      },
+    },
+  },
 })
 
 -- Highlight column after textwidth.
