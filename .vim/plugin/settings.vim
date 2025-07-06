@@ -66,8 +66,8 @@ set nohidden
 " Track undo information so that I can undo when I reopen a file.
 set undofile
 
-" Move swapfiles to ~/tmp/vim.
-call MoveSwapAndTempAndUndoFilesToTmp()
+" Move tempfiles to ~/tmp/vim.
+call MoveTempFilesToTmp()
 
 " Formatting options.
 " Automatically insert comment leaders after hitting return in Insert mode or

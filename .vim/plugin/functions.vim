@@ -44,34 +44,12 @@ function! StopProfiling()
   profile stop
 endfunction
 
-function! MoveSwapAndTempAndUndoFilesToTmp()
-  " Base directory.
-  let l:_temp_base = expand('~/tmp/vim')
-
-  " Move swapfiles.
-  if !has('nvim')
-    let l:_swap_dir = _temp_base . '/swap'
-    call mkdir(l:_swap_dir, 'p', 0700)
-    " Adding '//' means create the filename from the full path to prevent clashes.
-    let &directory = l:_swap_dir . '//,' . &directory
-    " Don't ever put swap files in the file's directory: it's bad on non-local
-    " filesystems.
-    set directory-=.
-  endif
-
+function! MoveTempFilesToTmp()
   " Move tempfiles.  I'm trying this again because long-lived vim sessions get
   " their temp directory removed sometimes; I don't see anything in
   " /var/log/daily.out, but I *feel* like it's related to updating homebrew
   " packages.
-  let _temp_dir = l:_temp_base . '/tmp'
+  let _temp_dir = expand('~/tmp/vim/tmp')
   call mkdir(l:_temp_dir, 'p', 0700)
   let $TMPDIR = l:_temp_dir
-
-" Save undo history per file.
-  if !has('nvim')
-    let l:_undo_dir = l:_temp_base . '/undo'
-    call mkdir(l:_undo_dir, 'p', 0700)
-    let &undodir = l:_undo_dir . ',' . &undodir
-    set undodir-=.
-  endif
 endfunction
