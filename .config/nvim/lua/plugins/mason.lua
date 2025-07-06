@@ -6,11 +6,11 @@
 -- I have configured dependencies in lsp.lua to do this.
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {},
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     opts = {
       -- Automatic enabling is problematic when there are multiple servers for
       -- one filetype, so disable it.
