@@ -8,7 +8,6 @@ return {
         sidebars = "transparent",
       },
 
-      ---@param highlights Highlights
       ---@param colors ColorScheme
       on_highlights = function(highlights, colors)
         -- ColorColumn: stop setting background colour, change style to italic
