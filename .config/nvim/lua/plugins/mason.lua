@@ -60,6 +60,7 @@ return {
         { "luacheck",             condition = installer_is_available("luarocks"), },
         { "jsonlint",             condition = installer_is_available("npm"), },
         { "markdownlint",         condition = installer_is_available("npm"), },
+        { "bash-debug-adapter",   condition = installer_is_available("npm"), },
         { "bash-language-server", condition = installer_is_available("npm"), },
         { "vim-language-server",  condition = installer_is_available("npm"), },
         { "intelephense",         condition = installer_is_available("php"), },
