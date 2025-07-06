@@ -9,6 +9,10 @@ return {
     "mhinz/vim-signify",
   },
   {
+    -- Set the name of the tmux pane to the filename I'm editing.
+    "tobinjt/TmuxSetWindowName.vim",
+  },
+  {
     -- Improved status bar.
     "vim-airline/vim-airline",
   },

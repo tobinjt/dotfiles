@@ -1,6 +1,5 @@
 # Config TODO
 
-- Make TmuxSetWindowName.vim into a standalone plugin.
 - Migrate autocmds to nvim.
 - Migrate markdown.vim to nvim.
 - How much of php.vim do I need?
