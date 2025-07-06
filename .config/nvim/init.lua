@@ -23,8 +23,6 @@ require("lazy").setup({
   },
 })
 
--- Auto-install tools.
-require("config.autoinstall")
 -- Highlight column after textwidth.
 require("config.colorcolumn")
 
