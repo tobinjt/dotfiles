@@ -13,9 +13,12 @@ main() {
   fi
   # Lazy is very chatty, reduce noise.
   run-if-exists nvim --headless -c "Lazy! restore" -c "qa" > /dev/null
+  # Update TreeSitter parsers.
   run-if-exists nvim --headless -c "TSUpdate" -c "qa" > /dev/null
   # TSUpdate outputs a message without a newline.
   echo
+  # Install or update tools installed using Mason.
+  run-if-exists nvim --headless -c "MasonToolsUpdateSync" -c "qa" > /dev/null
 }
 
 main "$@"

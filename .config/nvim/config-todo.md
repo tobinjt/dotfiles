@@ -1,7 +1,5 @@
 # Config TODO
 
-- Delete Mason packages and let them reinstall periodically because Python
-  upgrades break tools.
 - Make TmuxSetWindowName.vim into a standalone plugin.
 - Migrate autocmds to nvim.
 - Migrate markdown.vim to nvim.
