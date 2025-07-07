@@ -1,10 +1,5 @@
 " Taken from :help tmux-integration
 if !has('gui_running') && &term =~? '^\%(screen\|tmux\)'
-  " Better mouse support, see  :help 'ttymouse'
-  if !has('nvim')
-    set ttymouse=sgr
-  endif
-
   " Enable true colors, see  :help xterm-true-color
   let &termguicolors = v:true
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"

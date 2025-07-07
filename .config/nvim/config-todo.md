@@ -1,8 +1,18 @@
 # Config TODO
 
-- Migrate autocmds to nvim.
-- Migrate markdown.vim to nvim.
-- How much of php.vim do I need?
-- Delete or port rust.vim.
-- Do I need any of syntax.vim?
-- Migrate tmux.vim.
+## Migration
+
+- Migrate autocmds
+- Migrate markdown.vim
+- Migrate php.vim
+- Migrate rust.vim
+- Migrate syntax.vim
+- Migrate tmux.vim
+
+## Fixes and new features
+
+- Check out the matchit plugin.
+- Install setuptools in vint and other Mason tooling.
+  - cd /Users/johntobin/.local/share/nvim/mason/packages/vint/venv/bin/
+  - source ./a
+  - pip install setuptools

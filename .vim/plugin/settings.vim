@@ -54,10 +54,6 @@ set complete-=i
 " Automatically reread a file when it's changed outside vim and not changed
 " inside vim.
 set autoread
-" Don't sync the swap file
-if !has('nvim')
-  set swapsync=
-endif
 " Case-insensitive completion for filenames.
 set wildignorecase
 " Fully unload files when I close them, otherwise they can't be opened in other
@@ -112,15 +108,6 @@ set dictionary+=/usr/share/dict/words
 set completeopt=longest,menu,preview
 
 " Misc stuff, bugfixes.
-" Prevent vim connecting to the X server so that using PuTTY works without
-" Exceed.  This prevents cut and paste between Vim and the X server, but
-" doesn't prevent cut and paste between the terminal and the X server.
-" Selecting text within Vim won't copy it to the X server's clipboard, but
-" selecting text from the terminal will.  You won't notice the difference
-" unless you've got the mouse enabled.
-if !has('nvim')
-  set clipboard=exclude:.*
-endif
 " Don't treat numbers starting with a 0 as octal.
 set nrformats-=octal
 " But do support incrementing single alphabetical characters.
