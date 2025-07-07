@@ -24,7 +24,10 @@ require("lazy").setup({
   performance = {
     rtp = {
       disabled_plugins = {
+        -- I find the bouncing between braces really distracting.
         "matchparen",
+        -- Creates a history file I don't want.
+        "netrwPlugin",
       },
     },
   },
