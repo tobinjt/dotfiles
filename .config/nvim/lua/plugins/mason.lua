@@ -16,7 +16,12 @@ end
 return {
   {
     "mason-org/mason.nvim",
-    opts = {},
+    opts = {
+      -- Prepending means I can't write wrappers, so append.
+      -- Mason's bin dir is in my PATH already, so this should be a no-op, but
+      -- just in case let's append.
+      PATH = "append",
+    },
   },
   {
     "mason-org/mason-lspconfig.nvim",
