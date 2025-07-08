@@ -7,6 +7,9 @@ let g:sh_fold_enabled = 3
 " Add bash specific stuff
 let readline_has_bash = 1
 
+" Run cargo on tests too.
+let g:rust_cargo_check_tests = 1
+
 " Folding in various languages.
 let g:vimsyn_folding = 'af'
 let javaScript_fold = 1
