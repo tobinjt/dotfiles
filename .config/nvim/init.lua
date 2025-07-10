@@ -28,6 +28,18 @@ require("lazy").setup({
         "matchparen",
         -- Creates a history file I don't want.
         "netrwPlugin",
+        -- Plugins I don't use.
+        -- keep-sorted start
+        "editorconfig",
+        "gzip",
+        "man",
+        "rplugin",
+        "spellfile",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+        -- keep-sorted end
       },
     },
   },
