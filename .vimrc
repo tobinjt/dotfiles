@@ -27,36 +27,6 @@ source $VIMRUNTIME/defaults.vim
 "   # The branch in the submodule will look like `(HEAD detached at a53e340)`
 "   # but it appears to work properly.
 
-" Initialise vim-plug.
-call plug#begin('~/.vim/bundle')
-" Add bundles here.
-" keep-sorted start sticky_prefixes="
-" Plugin management.
-Plug 'junegunn/vim-plug'
-" Tab completion.
-Plug 'lifepillar/vim-mucomplete'
-" Solarized colour scheme.
-Plug 'lifepillar/vim-solarized8'
-" Puts VCS info in the signs column.
-Plug 'mhinz/vim-signify'
-" Easy commenting and uncommenting.
-Plug 'tpope/vim-commentary'
-" Improved status bar.
-Plug 'vim-airline/vim-airline'
-" Makes filename:line-number[:column] work.
-Plug 'wsdjeg/vim-fetch'
-" keep-sorted end
-
-" This needs to be done before loading plugins, so that runtimepath can be
-" extended first.
-let b:local_filename=expand('~/.vim/local.vim')
-if filereadable(b:local_filename)
-  exec 'source ' . b:local_filename
-endif
-
-" Finish vim-plug setup.
-call plug#end()
-
 " Plugins have been added to &runtimepath, and next is step 4 in :help startup:
 " loading plugins.  ~/.vim should be the first entry in &runtimepath so that
 " config from ~/.vim/plugin can influence plugins loaded later.
