@@ -1,4 +1,7 @@
 -- Note: some plugin configs also contain LSP config, e.g. lua.lua.
+-- Note: until an LSP request is made, :LspInfo will show "no active clients".
+-- Write the file to trigger autoformatting and attachment.
+-- It sometimes takes 10+ seconds for the client to show up too.
 return {
   {
     "neovim/nvim-lspconfig",
@@ -13,6 +16,9 @@ return {
     -- server options if any.  Config required by cmp-nvim-lsp is added to the
     -- default server.
     config = function(_, opts)
+      -- Enable for debugging.
+      -- vim.lsp.set_log_level(vim.log.levels.DEBUG)
+
       -- Set default capabilities to what Neovim supports plus what completion
       -- supports.
       vim.lsp.config('*', {
