@@ -5,7 +5,6 @@
 - Migrate autocmds
 - Migrate markdown.vim
 - Migrate php.vim
-- Migrate rust.vim
 - Migrate syntax.vim
 - Migrate tmux.vim
 
