@@ -50,8 +50,15 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       --- Optional,
-      "folke/snacks.nvim", -- for input provider snacks
-      "hrsh7th/nvim-cmp",  -- autocompletion for avante commands and mentions
+      {
+        "folke/snacks.nvim", -- for input provider snacks
+        priority = 1000,
+        lazy = false,
+        opts = {
+          picker = { enabled = true },
+        },
+      },
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
       {
         "MeanderingProgrammer/render-markdown.nvim",
         opts = {
