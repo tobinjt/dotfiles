@@ -26,9 +26,3 @@ source $VIMRUNTIME/defaults.vim
 "   $ git diff # Should show a branch line added in .gitmodules
 "   # The branch in the submodule will look like `(HEAD detached at a53e340)`
 "   # but it appears to work properly.
-
-" Plugins have been added to &runtimepath, and next is step 4 in :help startup:
-" loading plugins.  ~/.vim should be the first entry in &runtimepath so that
-" config from ~/.vim/plugin can influence plugins loaded later.
-
-colorscheme solarized8-mine
