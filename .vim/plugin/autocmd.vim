@@ -36,6 +36,8 @@ autocmd!
   " don't like it, so set it back to the default.
   autocmd FileType javascript setlocal foldtext=foldtext()
   autocmd FileType make setlocal shiftwidth=8 tabstop=8
+  " Automatic indentation is awful, disable it.
+  autocmd FileType php setlocal foldtext=foldtext() indentexpr= shiftwidth=4
   " Wider textwidth for compatibility with black.
   autocmd FileType python setlocal textwidth=88
   " This turns on spell checking properly.
