@@ -1,3 +1,19 @@
+-- Airline. Change the status line so it doesn't need symbols missing from some
+-- fonts.
+vim.g.airline_symbols_ascii = 1
+
+-- Signify.
+-- Disable VCS systems I don't use.
+vim.g.signify_skip = {
+  vcs = {
+    allow = {
+      "git",
+      "hg",
+      "perforce",
+    },
+  },
+}
+
 return {
   -- keep-sorted start block=true by_regex=".*"
   {
