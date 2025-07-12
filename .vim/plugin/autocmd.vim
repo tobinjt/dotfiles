@@ -15,7 +15,6 @@ autocmd!
   " .coveragerc used by Python coverage is actually an ini file.
   autocmd BufReadPost,BufNewFile .coveragerc setlocal filetype=dosini
   autocmd BufReadPost,BufNewFile authorized_keys* setlocal textwidth=1000
-  autocmd FileType c,cpp setlocal foldmethod=syntax
   " On BSD systems, the original file provided by crontab(1) must be written to,
   " rather than writing a new file and renaming it.
   autocmd FileType crontab setlocal backupcopy=yes textwidth=1000
@@ -35,7 +34,6 @@ autocmd!
   " Javascript syntax highlighting messes with the way folds are displayed and I
   " don't like it, so set it back to the default.
   autocmd FileType javascript setlocal foldtext=foldtext()
-  autocmd FileType make setlocal shiftwidth=8 tabstop=8
   " Automatic indentation is awful, disable it.
   autocmd FileType php setlocal foldtext=foldtext() indentexpr= shiftwidth=4
   " Wider textwidth for compatibility with black.
