@@ -34,6 +34,16 @@ autocmd!
   " Javascript syntax highlighting messes with the way folds are displayed and I
   " don't like it, so set it back to the default.
   autocmd FileType javascript setlocal foldtext=foldtext()
+  " Set formatlistpat to my setting, overwriting the setting from
+  " vim??/ftplugin/markdown.vim.
+  autocmd FileType markdown call SetFormatlistpat()
+  " Interpret blockquotes (lines starting with '>') as comments, so that line
+  " wrapping doesn't mangle the blockquote markers.
+  autocmd FileType markdown setlocal comments=n:>
+  " Automatically wrap text at textwidth.
+  autocmd FileType markdown setlocal formatoptions+=t formatoptions-=l
+  " Overwrite the default of 4 set by markdown syntax highlighting.
+  autocmd FileType markdown setlocal shiftwidth=2
   " Automatic indentation is awful, disable it.
   autocmd FileType php setlocal foldtext=foldtext() indentexpr= shiftwidth=4
   " Wider textwidth for compatibility with black.
