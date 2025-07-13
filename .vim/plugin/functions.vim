@@ -43,13 +43,3 @@ endfunction
 function! StopProfiling()
   profile stop
 endfunction
-
-function! MoveTempFilesToTmp()
-  " Move tempfiles.  I'm trying this again because long-lived vim sessions get
-  " their temp directory removed sometimes; I don't see anything in
-  " /var/log/daily.out, but I *feel* like it's related to updating homebrew
-  " packages.
-  let _temp_dir = expand('~/tmp/vim/tmp')
-  call mkdir(l:_temp_dir, 'p', 0700)
-  let $TMPDIR = l:_temp_dir
-endfunction
