@@ -6,11 +6,8 @@ set -e -f -u -o pipefail
 
 main() {
   # Stop TmuxSetWindowName loading: it's not useful and it doesn't work properly
-  # when tmux is focused on a different pane.  'set t_u7=' stops '2R' appearing
-  # in my shell input stream with older versions of vim.
+  # when tmux is focused on a different pane.
   vim --cmd 'let g:loaded_TmuxSetWindowName=1' \
-    --cmd 'set t_u7=' \
-    -c ':helptags ALL' \
     -c 'execute "mkspell! " &spellfile' \
     -c ':quit'
 }
