@@ -33,7 +33,7 @@ repos:
       - id: sort-spell-file
         name: Sort vim's spell file.
         language: system
-        files: .vim/spell/en.utf-8.add
+        files: .config/nvim/spell/en.utf-8.add
         pass_filenames: false
         entry: sort -o .config/nvim/spell/en.utf-8.add .config/nvim/spell/en.utf-8.add
       - id: vint
