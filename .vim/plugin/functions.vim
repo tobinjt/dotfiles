@@ -29,12 +29,6 @@ set -e -f -u -o pipefail
   set filetype=sh
 endfunction
 
-" Set formatlistpat to my setting.  Relies on settings.vim setting
-" g:johntobin_formatlistpat.
-function! SetFormatlistpat()
-  let &formatlistpat = g:johntobin_formatlistpat
-endfunction
-
 function! StartProfiling()
   profile start profile.log
   profile file *
