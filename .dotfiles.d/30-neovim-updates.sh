@@ -19,6 +19,9 @@ main() {
   if [[ -d "${treesitter_dir}" ]]; then
     find "${treesitter_dir}" -type f -mtime +1 -delete
   fi
+  run_nvim 'execute "mkspell! " &spellfile'
+  # mkspell outputs a message without a newline.
+  echo
   # Lazy is very chatty, reduce noise.
   run_nvim "Lazy! restore"
   # Update TreeSitter parsers.
