@@ -2,6 +2,10 @@
 
 set -e -f -u -o pipefail
 
+run_nvim() {
+  run-if-exists nvim --headless -c "$@" -c "qa" > /dev/null
+}
+
 # Sync Neovim plugins.
 main() {
   # Clean out treesitter .so files, otherwise they are never updated.
@@ -12,13 +16,13 @@ main() {
     find "${treesitter_dir}" -type f -mtime +1 -delete
   fi
   # Lazy is very chatty, reduce noise.
-  run-if-exists nvim --headless -c "Lazy! restore" -c "qa" > /dev/null
+  run_nvim "Lazy! restore"
   # Update TreeSitter parsers.
-  run-if-exists nvim --headless -c "TSUpdate" -c "qa" > /dev/null
+  run_nvim "TSUpdate"
   # TSUpdate outputs a message without a newline.
   echo
   # Install or update tools installed using Mason.
-  run-if-exists nvim --headless -c "MasonToolsUpdateSync" -c "qa" > /dev/null
+  run_nvim "MasonToolsUpdateSync"
 }
 
 main "$@"
