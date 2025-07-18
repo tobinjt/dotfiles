@@ -71,7 +71,6 @@ return {
         { "intelephense",         condition = installer_is_available("php"), },
         { "php-debug-adapter",    condition = installer_is_available("php"), },
         { "debugpy",              condition = installer_is_available("python3"), },
-        { "mdformat",             condition = installer_is_available("python3"), },
         { "python-lsp-server",    condition = installer_is_available("python3"), },
         { "ruff",                 condition = installer_is_available("python3"), },
         { "codelldb",             condition = installer_is_available("rustc"), },
