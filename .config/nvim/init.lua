@@ -10,7 +10,7 @@ table.unpack = table.unpack or unpack
 
 -- Copied from https://lazy.folke.io/installation
 -- Bootstrap lazy.nvim.
-require("johntobin.lazy")
+require("johntobin.lazy-bootstrap")
 -- https://lazy.folke.io/usage/structuring
 -- Load all the configs defined in lua/plugins/*.lua
 require("lazy").setup({
