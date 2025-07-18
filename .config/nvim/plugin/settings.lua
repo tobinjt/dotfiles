@@ -56,10 +56,9 @@ vim.opt.shiftwidth = 2
 --  * blah blah
 --  2. blah blah
 -- Need to be careful with escaping backslashes in Lua strings.
-vim.opt.formatlistpat = "^\\s*\\([-*]\\|\\d\\+\\.\\)\\s*"
 -- Save this so it can be restored later.
----@diagnostic disable: undefined-field
-vim.g.johntobin_formatlistpat = vim.opt.formatlistpat:get()
+vim.g.johntobin_formatlistpat = "^\\s*\\([-*]\\|\\d\\+\\.\\)\\s*"
+vim.opt.formatlistpat = vim.g.johntobin_formatlistpat
 
 -- Movement through the file.
 -- Make the arrow keys wrap - i.e. hitting left arrow at the start of a

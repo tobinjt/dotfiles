@@ -36,7 +36,7 @@ autocmd!
   autocmd FileType javascript setlocal foldtext=foldtext()
   " Set formatlistpat to my setting, overwriting the setting from
   " vim??/ftplugin/markdown.vim.
-  autocmd FileType markdown call SetFormatlistpat()
+  autocmd FileType markdown let &formatlistpat = g:johntobin_formatlistpat
   " Interpret blockquotes (lines starting with '>') as comments, so that line
   " wrapping doesn't mangle the blockquote markers.
   autocmd FileType markdown setlocal comments=n:>
