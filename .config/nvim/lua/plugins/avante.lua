@@ -1,4 +1,4 @@
-local paths = require("paths")
+local paths = require("johntobin.paths")
 
 return {
   {

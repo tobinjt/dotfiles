@@ -10,7 +10,7 @@ table.unpack = table.unpack or unpack
 
 -- Copied from https://lazy.folke.io/installation
 -- Bootstrap lazy.nvim.
-require("config.lazy")
+require("johntobin.lazy")
 -- https://lazy.folke.io/usage/structuring
 -- Load all the configs defined in lua/plugins/*.lua
 require("lazy").setup({
@@ -46,7 +46,7 @@ require("lazy").setup({
 })
 
 -- Highlight column after textwidth.
-require("config.colorcolumn")
+require("johntobin.colorcolumn")
 
 -- Some config that doesn't really fit elsewhere.
 vim.cmd.colorscheme("solarized-osaka")
@@ -60,4 +60,4 @@ end
 -- Support local config.  If the file doesn't exist this will fail quietly, and
 -- if it does exist the file will be loaded.  All setup needs to be done as part
 -- of loading - we don't call setup() or similar.
-pcall(require, "config.local")
+pcall(require, "johntobin.local")

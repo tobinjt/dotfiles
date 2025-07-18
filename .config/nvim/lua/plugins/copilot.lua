@@ -1,4 +1,4 @@
-local paths = require("paths")
+local paths = require("johntobin.paths")
 -- Don't remap tab.
 vim.g.copilot_no_tab_map = true
 
