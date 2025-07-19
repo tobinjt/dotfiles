@@ -1,5 +1,4 @@
 local M = {
-  copilot_config = "~/.config/github-copilot/apps.json",
   gemini_api_key = "~/.config/gemini/api_key",
 }
 
