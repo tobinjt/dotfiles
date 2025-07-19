@@ -22,7 +22,8 @@ main() {
   run_nvim 'execute "mkspell! " &spellfile'
   # mkspell outputs a message without a newline.
   echo
-  # Lazy is very chatty, reduce noise.
+  # Clean and sync plugins.
+  run_nvim "Lazy! clean"
   run_nvim "Lazy! restore"
   # Update TreeSitter parsers.
   run_nvim "TSUpdate"
