@@ -3,10 +3,14 @@ local paths = require("johntobin.paths")
 return {
   {
     "yetone/avante.nvim",
-    event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     cond = paths.exists(paths.gemini_api_key),
     build = "make",
+    cmd = {
+      "AvanteChat",
+      "AvanteChatNew",
+      "AvanteClear",
+    },
 
     opts = {
       provider = "gemini",
