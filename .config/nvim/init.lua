@@ -8,6 +8,11 @@
 table.unpack = table.unpack or unpack
 -- luacheck: enable 122
 
+-- Set options like `expandtab` as early as possible so that they apply to all
+-- files opened.  Loading this from the plugins directory results in a weird
+-- situation where the *first* file opened has the correct settings, but
+-- subsequent files opened do not.
+require("johntobin.settings")
 -- Copied from https://lazy.folke.io/installation
 -- Bootstrap lazy.nvim.
 require("johntobin.lazy-bootstrap")
