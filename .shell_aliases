@@ -3,6 +3,7 @@
 # keep-sorted start
 alias cp="cp -i -p"
 alias grep='grep --color=auto'
+alias ls='ls --color=auto -F'
 alias mv="mv -i"
 # Homebrew installs pip as pip3, so wrap it.
 # Let Python write bytecode for future speed.
@@ -46,15 +47,6 @@ prompt_command_shell_specific() {
 prompt_command_extras() {
   true
 }
-
-# ls needs different options to enable colour :/
-if command ls --color=always &> /dev/null; then
-  # Linux.
-  ls_options=(--color=auto -F)
-else
-  # OS X.
-  ls_options=(-G -F)
-fi
 
 # keep-sorted start block=yes newline_separated=yes
 # Load .bcrc to have some helper stuff, but only when running interactively.
@@ -100,16 +92,6 @@ diff() {
   else
     # Unquoted so that splitting occurs.
     ${DIFF} "$@"
-  fi
-}
-
-# Only pass extra options to ls when output is to a terminal.
-# Depends on ${ls_options[@]} being set earlier.
-ls() {
-  if [[ -t 1 ]]; then
-    command ls "${ls_options[@]}" "$@"
-  else
-    command ls "$@"
   fi
 }
 
