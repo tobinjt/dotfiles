@@ -17,7 +17,7 @@ return {
       providers = {
         gemini = {
           -- https://ai.google.dev/gemini-api/docs/models
-          model = "gemini-2.5-flash",
+          model = "gemini-2.5-pro",
         },
       },
 
