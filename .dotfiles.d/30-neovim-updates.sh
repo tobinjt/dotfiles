@@ -29,8 +29,6 @@ main() {
   run_nvim "TSUpdate"
   # TSUpdate outputs a message without a newline.
   echo
-  # Install or update tools installed using Mason.
-  run_nvim "MasonToolsUpdateSync"
 }
 
 main "$@"
