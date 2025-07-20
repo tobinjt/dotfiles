@@ -109,6 +109,13 @@ RSYNC_RSH="ssh -o ControlPath=none"
 SHELLCHECK_OPTS="-e SC1090 -e SC1091"
 export DIFF LC_COLLATE LESS PAGER RSYNC_RSH SHELLCHECK_OPTS
 
+# sshd is generally not configured to accept COLORTERM, so fake it based on
+# whether TERM contains color.
+if [ "${TERM}" != "${TERM//color/}" ] && [ -z "${COLORTERM:-}" ]; then
+  COLORTERM="truecolor"
+  export COLORTERM
+fi
+
 if [ -n "${TMUX:-}" ] && [ "${USER}" != "johntobin" ]; then
   # Put the user in the tmux pane title to warn me it's a different user.
   tmux rename-window -t "${TMUX_PANE}" "${USER}"
