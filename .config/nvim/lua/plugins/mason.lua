@@ -36,6 +36,8 @@ return {
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
+    -- Don't install tooling for other users.
+    cond = vim.fn.getenv("USER") == "johntobin",
     dependencies = {
       "mason.nvim",
       -- Configured in lsp.lua.
