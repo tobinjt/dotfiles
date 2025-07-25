@@ -80,3 +80,12 @@ __pycache__
 # Managed by rustup.
 .cargo
 .rustup
+
+# Move Lazy lockfile out of version control.  Lazy frequently updates this and I
+# haven't figured out what triggers it.  I'm fed up running `git restore` to
+# undo this, so let's move it outside of version control.  I've only once needed
+# to roll back a plugin, and that was because of bad configuration on my part.
+# This means that plugins won't get updated by update-dotfiles-and-bin, but
+# that's OK, I'll just need to run update-dotfiles-and-bin-plugins
+# everywhere.
+.config/nvim/lazy-lock.json
