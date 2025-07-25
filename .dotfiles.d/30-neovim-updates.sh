@@ -17,7 +17,7 @@ main() {
   # the next time I run nvim interactively.
   local treesitter_dir="${HOME}/.local/share/nvim/lazy/nvim-treesitter/parser"
   if [[ -d "${treesitter_dir}" ]]; then
-    find "${treesitter_dir}" -type f -mtime +1 -delete
+    find "${treesitter_dir}" -type f -mtime +1 -name '*.so' -delete
   fi
   run_nvim 'execute "mkspell! " &spellfile'
   # mkspell outputs a message without a newline.
