@@ -19,9 +19,6 @@ main() {
   if [[ -d "${treesitter_dir}" ]]; then
     find "${treesitter_dir}" -type f -mtime +1 -name '*.so' -delete
   fi
-  run_nvim 'execute "mkspell! " &spellfile'
-  # mkspell outputs a message without a newline.
-  echo
   # Update TreeSitter parsers.
   run_nvim "TSUpdate"
   # TSUpdate outputs a message without a newline.
