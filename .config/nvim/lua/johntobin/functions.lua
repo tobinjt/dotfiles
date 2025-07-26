@@ -53,4 +53,16 @@ M.StopProfiling = function()
   vim.cmd('profile stop')
 end
 
+M.UpdateSpellfilesIfNecessary = function()
+  local paths = require("johntobin.paths")
+  ---@diagnostic disable-next-line: undefined-field
+  for _, spellfile in ipairs(vim.opt.spellfile:get()) do
+    local splfile = spellfile .. ".spl"
+    if paths.is_file_newer(spellfile, splfile) then
+      local cmd = "mkspell! " .. spellfile
+      vim.cmd(cmd)
+    end
+  end
+end
+
 return M

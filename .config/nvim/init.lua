@@ -23,6 +23,7 @@ require("johntobin.lazy-config")
 require("johntobin.colorcolumn")
 
 -- Some config that doesn't really fit elsewhere.
+require("johntobin.functions").UpdateSpellfilesIfNecessary()
 vim.cmd.colorscheme("solarized-osaka")
 -- Configure folding to use Treesitter.
 vim.opt.foldmethod = "expr"
