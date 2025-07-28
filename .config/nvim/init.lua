@@ -23,7 +23,6 @@ require("johntobin.lazy-config")
 require("johntobin.colorcolumn")
 
 -- Some config that doesn't really fit elsewhere.
-require("johntobin.functions").UpdateSpellfilesIfNecessary()
 vim.cmd.colorscheme("solarized-osaka")
 -- Configure folding to use Treesitter.
 vim.opt.foldmethod = "expr"
@@ -36,3 +35,6 @@ end
 -- if it does exist the file will be loaded.  All setup needs to be done as part
 -- of loading - we don't call setup() or similar.
 pcall(require, "johntobin.local")
+-- Compile spell file *after* local config is loaded so vim.opt.spellfile can be
+-- changed.
+require("johntobin.functions").UpdateSpellfilesIfNecessary()
