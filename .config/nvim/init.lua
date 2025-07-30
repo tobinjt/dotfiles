@@ -35,3 +35,6 @@ end
 -- if it does exist the file will be loaded.  All setup needs to be done as part
 -- of loading - we don't call setup() or similar.
 pcall(require, "johntobin.local")
+-- Compile spell file *after* local config is loaded so vim.opt.spellfile can be
+-- changed.
+require("johntobin.functions").UpdateSpellfilesIfNecessary()

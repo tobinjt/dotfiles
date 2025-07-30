@@ -13,22 +13,17 @@ run_nvim() {
 # Sync Neovim plugins.
 main() {
   # Clean out treesitter .so files, otherwise they are never updated.
-  # TODO: figure out how to compile the deleted libraries, otherwise it happens
-  # the next time I run nvim interactively.
+  #
+  # I used to run :TSUpdate here, but it fails sometimes, so I stopped.  That
+  # means that they will be compiled the next time I run nvim interactively, but
+  # that's acceptable if not perfect.
+  #
+  # Note to self: this should be the last action so that it doesn't cause
+  # problems for other nvim invocations.
   local treesitter_dir="${HOME}/.local/share/nvim/lazy/nvim-treesitter/parser"
   if [[ -d "${treesitter_dir}" ]]; then
-    find "${treesitter_dir}" -type f -mtime +1 -delete
+    find "${treesitter_dir}" -type f -mtime +1 -name '*.so' -delete
   fi
-  run_nvim 'execute "mkspell! " &spellfile'
-  # mkspell outputs a message without a newline.
-  echo
-  # Clean and sync plugins.
-  run_nvim "Lazy! clean"
-  run_nvim "Lazy! restore"
-  # Update TreeSitter parsers.
-  run_nvim "TSUpdate"
-  # TSUpdate outputs a message without a newline.
-  echo
 }
 
 main "$@"
