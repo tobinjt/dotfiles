@@ -19,6 +19,7 @@ trillion = thousand * billion
 seconds = 60
 hour = 60 * seconds
 day = 24 * hour
+week = 7 * day
 year = 365 * day
 
 # Some functions.
