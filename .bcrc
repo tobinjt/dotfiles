@@ -16,8 +16,8 @@ million = thousand * thousand
 billion = thousand * million
 trillion = thousand * billion
 
-seconds = 60
-hour = 60 * seconds
+minute = 60
+hour = 60 * minute
 day = 24 * hour
 week = 7 * day
 year = 365 * day
