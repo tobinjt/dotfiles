@@ -82,8 +82,9 @@ return {
         "mfussenegger/nvim-dap-python",
         lazy = true,
         config = function()
-          local python = vim.fn.expand("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
-          require("dap-python").setup(python)
+          -- debugpy is installed in my standard Python virtualenv so that it's
+          -- available with all the other modules.
+          require("dap-python").setup("python3")
         end,
         -- Consider the mappings at
         -- https://github.com/mfussenegger/nvim-dap-python?tab=readme-ov-file#mappings

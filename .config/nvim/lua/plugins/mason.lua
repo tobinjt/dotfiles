@@ -59,6 +59,8 @@ return {
         "vint",
         -- keep-sorted end
         -- Install these if the installer is available, skip if not.
+        -- Note: I install debugpy separately so that other modules are
+        -- available with it.
         -- keep-sorted start by_regex=['installer_is_available."(\w+)"', '"(\w+)"']
         { "delve",                condition = installer_is_available("go"), },
         { "golangci-lint",        condition = installer_is_available("go"), },
@@ -72,7 +74,6 @@ return {
         { "vim-language-server",  condition = installer_is_available("npm"), },
         { "intelephense",         condition = installer_is_available("php"), },
         { "php-debug-adapter",    condition = installer_is_available("php"), },
-        { "debugpy",              condition = installer_is_available("python3"), },
         { "python-lsp-server",    condition = installer_is_available("python3"), },
         { "ruff",                 condition = installer_is_available("python3"), },
         { "codelldb",             condition = installer_is_available("rustc"), },
