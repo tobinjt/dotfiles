@@ -1,0 +1,7 @@
+{
+  // Only warn about duplicate headings when they're in the same section, not
+  // across multiple sections.
+  "no-duplicate-heading": {
+    "siblings_only": true
+  }
+}
