@@ -35,7 +35,6 @@ M.PopulateSH = function()
     '',
     'set -e -f -u -o pipefail',
     '',
-    '.'
   })
   vim.fn.cursor(vim.fn.line('$'), 0)
   vim.opt.filetype = 'sh'
