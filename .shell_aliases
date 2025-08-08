@@ -13,6 +13,19 @@ alias python="python3"
 alias ta='tmux_attach'
 # keep-sorted end
 
+gemini () {
+  if [[ -n "${TMUX_PANE:-}" ]]; then
+    tmux rename-window -t "${TMUX_PANE}" "gemini"
+  fi
+  local exit_status=0
+  GEMINI_API_KEY="$(< "${HOME}/.config/gemini/api_key")" \
+    command gemini || exit_status="$?"
+  if [[ -n "${TMUX_PANE:-}" ]]; then
+    tmux rename-window -t "${TMUX_PANE}" ""
+  fi
+  return "${exit_status}"
+}
+
 lazygit () {
   if [[ -n "${TMUX_PANE:-}" ]]; then
     tmux rename-window -t "${TMUX_PANE}" "lazygit"
