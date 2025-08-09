@@ -158,3 +158,31 @@ reformat your final code output using the `black` command-line tool.
   to read the code from standard input.
 - **Output**: Your final response should only contain the `black`-formatted
   code. Do not show the code before formatting.
+
+## Use `foo | None` for optional types
+
+When you write or modify Python code, you must use the `| None` syntax for
+optional types, as specified in PEP 604. You must not use `typing.Optional`.
+
+This rule applies to all Python code you generate, including function
+signatures, variable annotations, and class attributes.
+
+### Example
+
+**Correct (Do this):**
+
+```python
+def find_user(username: str) -> dict | None:
+    # ... implementation ...
+    return None
+```
+
+**Incorrect (Don't do this):**
+
+```python
+from typing import Optional
+
+def find_user(username: str) -> Optional[dict]:
+    # ... implementation ...
+    return None
+```
