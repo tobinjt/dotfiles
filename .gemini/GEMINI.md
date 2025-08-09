@@ -146,3 +146,15 @@ def initialize_app():
     data = load_initial_data()
     # ... more code
 ```
+
+## Format all Python code with `black`
+
+When you are asked to write, modify, or generate Python code, you must always
+reformat your final code output using the `black` command-line tool.
+
+- **Trigger**: Any request that results in Python code as the primary output.
+- **Action**: Pipe the generated Python code to the `black` formatter.
+- **Command**: Assume `black` is installed in the user's `PATH`. Use `black -`
+  to read the code from standard input.
+- **Output**: Your final response should only contain the `black`-formatted
+  code. Do not show the code before formatting.
