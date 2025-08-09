@@ -186,3 +186,58 @@ def find_user(username: str) -> Optional[dict]:
     # ... implementation ...
     return None
 ```
+
+## Docstrings are required
+
+When you write or modify Python code, you must ensure that every function,
+method, or generator that is not part of a test suite has a docstring. This
+docstring must, at a minimum, document the function's arguments, return values,
+and any exceptions that may be raised by the function.
+
+This rule applies to all non-test functions, regardless of their visibility
+(public or private).
+
+______________________________________________________________________
+
+### Example: Correct
+
+This function has a docstring that clearly explains what the function does and
+what its arguments are.
+
+```python
+def connect_to_database(hostname: str, port: int) -> Connection:
+    """Establishes a connection to the database.
+
+    Args:
+        hostname: The hostname or IP address of the database server.
+        port: The port number to connect to.
+
+    Returns:
+        A database connection object.
+    """
+    # ... implementation ...
+```
+
+______________________________________________________________________
+
+### Example: Incorrect (Missing Docstring)
+
+This function is missing a docstring entirely.
+
+```python
+def connect_to_database(hostname: str, port: int) -> Connection:
+    # ... implementation ...
+```
+
+______________________________________________________________________
+
+### Example: Incorrect (Incomplete Docstring)
+
+This docstring is incomplete because it does not document the function's
+arguments.
+
+```python
+def connect_to_database(hostname: str, port: int) -> Connection:
+    """Establishes a connection to the database."""
+    # ... implementation ...
+```
