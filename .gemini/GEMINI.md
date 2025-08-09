@@ -241,3 +241,66 @@ def connect_to_database(hostname: str, port: int) -> Connection:
     """Establishes a connection to the database."""
     # ... implementation ...
 ```
+
+## Tests must use the `unittest` framework
+
+When you are asked to write Python test code, you **must** use the built-in
+`unittest` framework. Your tests should be written as methods within a class
+that inherits from `unittest.TestCase`.
+
+You **must** use the assertion methods provided by `unittest.TestCase` (e.g.,
+`self.assertEqual()`, `self.assertTrue()`, `self.assertRaises()`) to check for
+expected outcomes. Do not use the standard `assert` statement for test
+assertions.
+
+______________________________________________________________________
+
+### Example: Correct
+
+This example correctly uses the `unittest` module and the `self.assertEqual()`
+assertion method.
+
+```python
+import unittest
+
+def add(a, b):
+    return a + b
+
+class TestMathFunctions(unittest.TestCase):
+
+    def test_add_integers(self):
+        """
+        Tests that the add function correctly sums two integers.
+        """
+        self.assertEqual(add(1, 2), 3)
+
+    def test_add_strings(self):
+        """
+        Tests that the add function correctly concatenates two strings.
+        """
+        self.assertEqual(add('a', 'b'), 'ab')
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+______________________________________________________________________
+
+### Example: Incorrect
+
+This example is incorrect because it uses a plain `assert` statement instead of
+a `unittest` assertion method. While this might work with other test runners
+like `pytest`, your instructions are to use the `unittest` style exclusively.
+
+```python
+# Incorrect: Do not use plain assert statements.
+import unittest
+
+def add(a, b):
+    return a + b
+
+class TestMathFunctions(unittest.TestCase):
+
+    def test_add_integers(self):
+        assert add(1, 2) == 3
+```
