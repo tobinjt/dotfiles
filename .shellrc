@@ -83,10 +83,12 @@ fi
 
 ## Python.
 MYPY_CACHE_DIR="${HOME}/tmp/generated/mypy_cache"
+PYTHONPYCACHEPREFIX="${HOME}/tmp/generated/__pycache__"
 PYTHONDONTWRITEBYTECODE="No .pyc files please"
 # Set breakpoint() in Python to call pudb; untested.
 PYTHONBREAKPOINT="pudb.set_trace"
-export MYPY_CACHE_DIR PYTHONDONTWRITEBYTECODE PYTHONBREAKPOINT
+export MYPY_CACHE_DIR PYTHONPYCACHEPREFIX PYTHONDONTWRITEBYTECODE
+export PYTHONBREAKPOINT
 
 ## Homebrew.
 # Don't install from source if fetching the bottle fails.

@@ -7,8 +7,8 @@ alias ls='ls --color=auto -F'
 alias mv="mv -i"
 # Homebrew installs pip as pip3, so wrap it.
 # Let Python write bytecode for future speed.
-alias pip3="PYTHONDONTWRITEBYTECODE= pip3"
-alias pip="PYTHONDONTWRITEBYTECODE= pip3"
+alias pip3="PYTHONPYCACHEPREFIX= PYTHONDONTWRITEBYTECODE= pip3"
+alias pip="PYTHONPYCACHEPREFIX= PYTHONDONTWRITEBYTECODE= pip3"
 alias python="python3"
 alias ta='tmux_attach'
 # keep-sorted end
