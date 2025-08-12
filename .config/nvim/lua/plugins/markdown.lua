@@ -7,5 +7,11 @@ return {
     ft = {
       "markdown",
     },
+    opts = {
+      code = {
+        -- Stop showing a white bar at the top of code blocks.
+        language_border = " ",
+      },
+    }
   },
 }
