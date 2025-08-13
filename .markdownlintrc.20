@@ -1,7 +1,8 @@
-{
+  // See https://github.com/igorshubovych/markdownlint-cli
+  // See https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.jsonc
+
   // Only warn about duplicate headings when they're in the same section, not
   // across multiple sections.
   "no-duplicate-heading": {
     "siblings_only": true
   }
-}
