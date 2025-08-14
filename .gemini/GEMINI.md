@@ -5,6 +5,8 @@
 When writing Python code, especially for unit tests that use the `unittest.mock`
 library, you **must** use `mock.patch.object` instead of `mock.patch`.
 
+______________________________________________________________________
+
 ### Example
 
 Here is a clear illustration of the correct and incorrect approach.
@@ -24,6 +26,8 @@ def test_some_feature():
         my_project.services.run_feature()
         mock_api_call.assert_called_once()
 ```
+
+______________________________________________________________________
 
 #### ❌ Incorrect Usage: mock.patch
 
@@ -46,6 +50,8 @@ def test_some_feature():
 When writing Python unit tests, you **must** use `mock.create_autospec` to
 create mock objects. Do **not** use `mock.MagicMock` or `mock.Mock` directly.
 
+______________________________________________________________________
+
 ### Example
 
 Consider a simple class we want to test against.
@@ -57,6 +63,8 @@ class ApiClient:
         # ... logic to call an external API
         return {"id": user_id, "name": "Jane Doe"}
 ```
+
+______________________________________________________________________
 
 #### ✅ Correct Usage: mock.create_autospec
 
@@ -81,6 +89,8 @@ def test_user_retrieval():
 
     mock_client.get_user_data.assert_called_once_with(user_id=123)
 ```
+
+______________________________________________________________________
 
 #### ❌ Incorrect Usage: mock.MagicMock
 
@@ -109,6 +119,8 @@ def test_user_retrieval_brittle():
 When writing Python code, you **must** import entire modules rather than
 specific classes or functions from within those modules.
 
+______________________________________________________________________
+
 ### Example
 
 Here is a clear illustration of the correct and incorrect approach.
@@ -128,6 +140,8 @@ def initialize_app():
     data = my_app.utils.load_initial_data()
     # ... more code
 ```
+
+______________________________________________________________________
 
 #### ❌ Incorrect Usage: from my_app.database import DatabaseConnection
 
@@ -167,6 +181,8 @@ optional types, as specified in PEP 604. You must not use `typing.Optional`.
 This rule applies to all Python code you generate, including function
 signatures, variable annotations, and class attributes.
 
+______________________________________________________________________
+
 ### Example
 
 **Correct (Do this):**
@@ -176,6 +192,8 @@ def find_user(username: str) -> dict | None:
     # ... implementation ...
     return None
 ```
+
+______________________________________________________________________
 
 **Incorrect (Don't do this):**
 
