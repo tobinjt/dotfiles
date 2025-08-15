@@ -304,3 +304,50 @@ class TestMathFunctions(unittest.TestCase):
     def test_add_integers(self):
         assert add(1, 2) == 3
 ```
+
+## Use dataclasses rather than dicts
+
+When you are writing Python code, you **must** use `dataclasses` to represent
+structured data. You **must not** use dictionaries (`dict`) for this purpose.
+
+Using `dataclasses` provides type safety and makes code easier to read and
+maintain.
+
+______________________________________________________________________
+
+### Example: Correct
+
+This example correctly uses a `dataclass` to represent a user, making the code's
+intent clear and type-safe.
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class User:
+    id: int
+    username: str
+    is_active: bool
+
+def fetch_user(user_id: int) -> User | None:
+    # In a real scenario, this would fetch from a database.
+    if user_id == 1:
+        return User(id=1, username="testuser", is_active=True)
+    return None
+```
+
+______________________________________________________________________
+
+### Example: Incorrect
+
+This example is incorrect because it uses a dictionary to represent the user.
+This approach is less clear and lacks the type safety provided by `dataclasses`.
+
+```python
+# Incorrect: Do not use dictionaries for structured data in code.
+
+def fetch_user_dict(user_id: int) -> dict | None:
+    if user_id == 1:
+        return {"id": 1, "username": "testuser", "is_active": True}
+    return None
+```
