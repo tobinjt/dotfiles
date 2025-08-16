@@ -6,42 +6,8 @@ local config = wezterm.config_builder()
 config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 
 -- Font configuration.
--- https://www.codingfont.com/ was helpful in choosing these.
--- There was also a lot of searching and browsing and testing.
-local fonts = {
-  -- keep-sorted start
-  ['Cousine'] = 13,
-  ['Fira Code'] = 13,
-  ['Hack'] = 13,
-  ['Inconsolata'] = 14,
-  ['Monaspace Argon'] = 13, -- Lighter than other Monaspace fonts.
-  ['Red Hat Mono'] = 13,
-  ['Source Code Pro'] = 13,
-  -- keep-sorted end
-}
-
-local font_keys = {}
-for k in pairs(fonts) do
-  table.insert(font_keys, k)
-end
-local chosen_font = font_keys[math.random(#font_keys)]
-config.font = wezterm.font(chosen_font)
-config.font_size = fonts[chosen_font]
--- Change rows and columns rather than changing window size when changing font
--- size.
-config.adjust_window_size_when_changing_font_size = false
--- Add font name and size to status bar.
-wezterm.on("update-right-status", function(window)
-  local font = window:effective_config().font.font[1].family
-  local size = window:effective_config().font_size
-  local status = wezterm.format({
-    "ResetAttributes",
-    { Background = { Color = "#666666" } },
-    { Foreground = { Color = "White" } },
-    { Text = string.format(" %s %spt  ", font, size) },
-  })
-  window:set_right_status(status)
-end)
+config.font = wezterm.font('Inconsolata')
+config.font_size = 14
 
 -- Colour scheme.
 -- Copied manually from iTerm2's Solarized theme.
