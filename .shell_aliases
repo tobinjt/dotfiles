@@ -19,7 +19,8 @@ gemini () {
   fi
   local exit_status=0
   GEMINI_API_KEY="$(< "${HOME}/.config/gemini/api_key")" \
-    command gemini || exit_status="$?"
+    command gemini "$@" \
+    || exit_status="$?"
   if [[ -n "${TMUX_PANE:-}" ]]; then
     tmux rename-window -t "${TMUX_PANE}" ""
   fi
@@ -31,7 +32,7 @@ lazygit () {
     tmux rename-window -t "${TMUX_PANE}" "lazygit"
   fi
   local exit_status=0
-  command lazygit --use-config-file "${HOME}/.config/lazygit/config.yml" \
+  command lazygit --use-config-file "${HOME}/.config/lazygit/config.yml" "$@" \
     || exit_status="$?"
   if [[ -n "${TMUX_PANE:-}" ]]; then
     tmux rename-window -t "${TMUX_PANE}" ""
