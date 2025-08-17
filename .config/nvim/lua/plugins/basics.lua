@@ -25,6 +25,11 @@ return {
     "mhinz/vim-signify",
   },
   {
+    -- Fancy icons.  Needs a font supporting those icons, typically nerdfont.
+    "nvim-tree/nvim-web-devicons",
+    opts = {},
+  },
+  {
     -- Set the name of the tmux pane to the filename I'm editing.
     "tobinjt/TmuxSetWindowName.vim",
   },
