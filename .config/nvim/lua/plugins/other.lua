@@ -44,20 +44,25 @@ return {
       },
     },
     opts = {
+      -- CPP has multiple matches for foo.cc: foo.h and foo_test.cc.  Disable
+      -- remembering the selection so that we choose each time.
+      rememberBuffers = false,
+
       mappings = {
         "golang",
         "rust",
+        -- keep-sorted start block=yes
         {
-          context = "Python go to source file",
-          pattern = "(.*)_test.py$",
-          target = "%1.py",
+          context = "CPP go to header file",
+          pattern = function(filename)
+            return dont_match_test_files(filename, "cc")
+          end,
+          target = "%1.h",
         },
         {
-          context = "Python go to test file",
-          pattern = function(filename)
-            return dont_match_test_files(filename, "py")
-          end,
-          target = "%1_test.py",
+          context = "CPP go to source file",
+          pattern = "(.*).h$",
+          target = "%1.cc",
         },
         {
           context = "CPP go to source file",
@@ -71,6 +76,19 @@ return {
           end,
           target = "%1_test.cc",
         },
+        {
+          context = "Python go to source file",
+          pattern = "(.*)_test.py$",
+          target = "%1.py",
+        },
+        {
+          context = "Python go to test file",
+          pattern = function(filename)
+            return dont_match_test_files(filename, "py")
+          end,
+          target = "%1_test.py",
+        },
+        -- keep-sorted end
       },
     },
   },
