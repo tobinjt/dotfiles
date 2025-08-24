@@ -13,31 +13,28 @@ alias python="python3"
 alias ta='tmux_attach'
 # keep-sorted end
 
-gemini () {
+rename-window-while-command-runs() {
+  local window_name="$1"
+  shift
   if [[ -n "${TMUX_PANE:-}" ]]; then
-    tmux rename-window -t "${TMUX_PANE}" "gemini"
+    tmux rename-window -t "${TMUX_PANE}" "${window_name}"
   fi
   local exit_status=0
-  GEMINI_API_KEY="$(< "${HOME}/.config/gemini/api_key")" \
-    command gemini "$@" \
-    || exit_status="$?"
+  "$@" || exit_status="$?"
   if [[ -n "${TMUX_PANE:-}" ]]; then
     tmux rename-window -t "${TMUX_PANE}" ""
   fi
   return "${exit_status}"
 }
 
+gemini () {
+  GEMINI_API_KEY="$(< "${HOME}/.config/gemini/api_key")" \
+    rename-window-while-command-runs gemini command gemini "$@"
+}
+
 lazygit () {
-  if [[ -n "${TMUX_PANE:-}" ]]; then
-    tmux rename-window -t "${TMUX_PANE}" "lazygit"
-  fi
-  local exit_status=0
-  command lazygit --use-config-file "${HOME}/.config/lazygit/config.yml" "$@" \
-    || exit_status="$?"
-  if [[ -n "${TMUX_PANE:-}" ]]; then
-    tmux rename-window -t "${TMUX_PANE}" ""
-  fi
-  return "${exit_status}"
+  rename-window-while-command-runs lazygit \
+    command lazygit --use-config-file "${HOME}/.config/lazygit/config.yml" "$@"
 }
 
 # Function to be run every time my prompt is displayed.
