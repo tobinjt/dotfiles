@@ -17,6 +17,15 @@ vim.g.signify_skip = {
 return {
   -- keep-sorted start block=true by_regex=".*"
   {
+    "echasnovski/mini.indentscope",
+    version = false,
+    opts = {
+      options = {
+        -- indent_at_cursor = false,
+      }
+    },
+  },
+  {
     -- Jumps to the last exited location in files.
     "farmergreg/vim-lastplace",
   },
