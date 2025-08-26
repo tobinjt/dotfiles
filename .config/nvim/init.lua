@@ -24,6 +24,29 @@ require("johntobin.colorcolumn")
 
 -- Some config that doesn't really fit elsewhere.
 vim.cmd.colorscheme("solarized-osaka")
+local testing_colorschemes = {
+  -- keep-sorted start
+  "NeoSolarized",
+  "adwaita",
+  "bamboo",
+  "citruszest",
+  "cyberdream",
+  "flow",
+  "kanagawa-paper",
+  "mellow",
+  "modus",
+  "moonfly",
+  "neofusion",
+  "nightfly",
+  "obscure",
+  "one_monokai",
+  "slack",
+  -- keep-sorted end
+}
+math.randomseed()
+local index = math.random(1, #testing_colorschemes)
+vim.cmd.colorscheme(testing_colorschemes[index])
+
 -- Configure folding to use Treesitter.
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
