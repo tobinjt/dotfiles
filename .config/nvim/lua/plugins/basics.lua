@@ -34,6 +34,14 @@ return {
     "mhinz/vim-signify",
   },
   {
+    -- Finding various things, I need to experiment.
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    },
+  },
+  {
     -- Fancy icons.  Needs a font supporting those icons, typically nerdfont.
     "nvim-tree/nvim-web-devicons",
     opts = {},
