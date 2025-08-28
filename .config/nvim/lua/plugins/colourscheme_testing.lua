@@ -5,7 +5,6 @@ return {
   { "bluz71/vim-moonfly-colors",      name = "moonfly" },
   { "bluz71/vim-nightfly-colors",     name = "nightfly" },
   { "cpea2506/one_monokai.nvim",      opts = {} },
-  { "diegoulloao/neofusion.nvim",     opts = {} },
   { "folke/tokyonight.nvim",          opts = {} },
   { "killitar/obscure.nvim",          opts = {} },
   { "miikanissi/modus-themes.nvim",   opts = {} },

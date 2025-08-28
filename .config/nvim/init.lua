@@ -36,7 +36,6 @@ local testing_colorschemes = {
   "kanagawa-paper",
   "modus",
   "moonfly",
-  "neofusion",
   "nightfly",
   "obscure",
   "one_monokai",
