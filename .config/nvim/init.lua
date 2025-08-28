@@ -33,7 +33,6 @@ local testing_colorschemes = {
   "bamboo",
   "citruszest",
   "cyberdream",
-  "flow",
   "kanagawa-paper",
   "modus",
   "moonfly",

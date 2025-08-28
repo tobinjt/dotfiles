@@ -1,6 +1,5 @@
 return {
   -- keep-sorted start
-  { "0xstepit/flow.nvim",             opts = {} },
   { "Mofiqul/adwaita.nvim", },
   { "Tsuzat/NeoSolarized.nvim",       opts = {} },
   { "bluz71/vim-moonfly-colors",      name = "moonfly" },
