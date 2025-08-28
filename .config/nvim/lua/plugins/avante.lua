@@ -1,5 +1,17 @@
 local paths = require("johntobin.paths")
 
+-- Create but do not clear the augroup rather than relying on it being created
+-- elsewhere.
+vim.api.nvim_create_augroup("johntobin", { clear = false })
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Disable folding for Avante windows, it hides the AI responses",
+  group = "johntobin",
+  pattern = "Avante",
+  callback = function(_)
+    vim.opt_local.foldenable = false
+  end,
+})
+
 return {
   {
     "yetone/avante.nvim",
@@ -29,19 +41,6 @@ return {
       --   auto_suggestions = true,
       -- },
     },
-
-    config = function(_, opts)
-      require("avante").setup(opts)
-
-      vim.api.nvim_create_autocmd("FileType", {
-        desc = "Disable folding for Avante windows, it hides the AI responses",
-        group = "johntobin",
-        pattern = "Avante",
-        callback = function(_)
-          vim.opt_local.foldenable = false
-        end,
-      })
-    end,
 
     dependencies = {
       -- Required.
