@@ -10,7 +10,6 @@ return {
   { "miikanissi/modus-themes.nvim",   opts = {} },
   { "ntk148v/slack.nvim",             opts = {} },
   { "ribru17/bamboo.nvim",            opts = {} },
-  { "scottmckendry/cyberdream.nvim",  opts = {} },
   { "thesimonho/kanagawa-paper.nvim", opts = {} },
   { "zootedb0t/citruszest.nvim",      opts = {} },
   -- keep-sorted end

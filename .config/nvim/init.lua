@@ -32,7 +32,6 @@ local testing_colorschemes = {
   "adwaita",
   "bamboo",
   "citruszest",
-  "cyberdream",
   "kanagawa-paper",
   "modus",
   "moonfly",
