@@ -4,7 +4,7 @@ return {
   {
     "yetone/avante.nvim",
     version = false, -- Never set this value to "*"! Never!
-    cond = paths.exists(paths.gemini_api_key),
+    cond = paths.exists(paths.gemini_api_key_path),
     build = "make",
     cmd = {
       "AvanteChat",
@@ -30,12 +30,7 @@ return {
       -- },
     },
 
-    -- Set the AVANTE_GEMINI_API_KEY environment variable from the file before
-    -- loading the plugin.
     config = function(_, opts)
-      local expanded_path = vim.fn.expand(paths.gemini_api_key)
-      local api_key = vim.fn.readfile(expanded_path)[1]
-      vim.fn.setenv("AVANTE_GEMINI_API_KEY", api_key)
       require("avante").setup(opts)
 
       vim.api.nvim_create_autocmd("FileType", {

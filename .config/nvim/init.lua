@@ -13,6 +13,8 @@ table.unpack = table.unpack or unpack
 -- situation where the *first* file opened has the correct settings, but
 -- subsequent files opened do not.
 require("johntobin.settings")
+-- Settings that are required before loading plugins.
+require("johntobin.paths").load_gemini_api_key()
 -- Copied from https://lazy.folke.io/installation
 -- Bootstrap lazy.nvim.
 require("johntobin.lazy-bootstrap")
