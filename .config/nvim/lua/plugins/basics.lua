@@ -14,15 +14,19 @@ vim.g.signify_skip = {
   },
 }
 
+-- Disable indentscope by default.
+vim.g.miniindentscope_disable = true
+
 return {
   -- keep-sorted start block=true by_regex=".*"
   {
     "echasnovski/mini.indentscope",
     version = false,
     opts = {
-      options = {
-        -- indent_at_cursor = false,
-      }
+      draw = {
+        -- Copied from MiniIndentscope.gen_animation.none().
+        animation = function() return 0 end,
+      },
     },
   },
   {
