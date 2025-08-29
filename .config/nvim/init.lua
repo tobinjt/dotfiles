@@ -36,7 +36,6 @@ local testing_colorschemes = {
   "modus",
   "moonfly",
   "nightfly",
-  "obscure",
   "one_monokai",
   "slack",
   -- keep-sorted end
