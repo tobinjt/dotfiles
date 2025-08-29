@@ -1,10 +1,22 @@
 local paths = require("johntobin.paths")
 
+-- Create but do not clear the augroup rather than relying on it being created
+-- elsewhere.
+vim.api.nvim_create_augroup("johntobin", { clear = false })
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Disable folding for Avante windows, it hides the AI responses",
+  group = "johntobin",
+  pattern = "Avante",
+  callback = function(_)
+    vim.opt_local.foldenable = false
+  end,
+})
+
 return {
   {
     "yetone/avante.nvim",
     version = false, -- Never set this value to "*"! Never!
-    cond = paths.exists(paths.gemini_api_key),
+    cond = paths.exists(paths.gemini_api_key_path),
     build = "make",
     cmd = {
       "AvanteChat",
@@ -20,33 +32,7 @@ return {
           model = "gemini-2.5-pro",
         },
       },
-
-      -- This is used as the default provider for auto-suggestions.
-      -- It is very slow - like 10s of seconds sometimes - and it sometimes
-      -- breaks rate-limits, so I have disabled it.
-      -- auto_suggestions_provider = "gemini",
-      -- behaviour = {
-      --   auto_suggestions = true,
-      -- },
     },
-
-    -- Set the AVANTE_GEMINI_API_KEY environment variable from the file before
-    -- loading the plugin.
-    config = function(_, opts)
-      local expanded_path = vim.fn.expand(paths.gemini_api_key)
-      local api_key = vim.fn.readfile(expanded_path)[1]
-      vim.fn.setenv("AVANTE_GEMINI_API_KEY", api_key)
-      require("avante").setup(opts)
-
-      vim.api.nvim_create_autocmd("FileType", {
-        desc = "Disable folding for Avante windows, it hides the AI responses",
-        group = "johntobin",
-        pattern = "Avante",
-        callback = function(_)
-          vim.opt_local.foldenable = false
-        end,
-      })
-    end,
 
     dependencies = {
       -- Required.

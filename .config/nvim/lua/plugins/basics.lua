@@ -14,15 +14,19 @@ vim.g.signify_skip = {
   },
 }
 
+-- Disable indentscope by default.
+vim.g.miniindentscope_disable = true
+
 return {
   -- keep-sorted start block=true by_regex=".*"
   {
     "echasnovski/mini.indentscope",
     version = false,
     opts = {
-      options = {
-        -- indent_at_cursor = false,
-      }
+      draw = {
+        -- Copied from MiniIndentscope.gen_animation.none().
+        animation = function() return 0 end,
+      },
     },
   },
   {
@@ -32,6 +36,14 @@ return {
   {
     -- VCS indicators in the signs column.
     "mhinz/vim-signify",
+  },
+  {
+    -- Finding various things, I need to experiment.
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    },
   },
   {
     -- Fancy icons.  Needs a font supporting those icons, typically nerdfont.

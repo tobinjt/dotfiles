@@ -1,5 +1,5 @@
 local M = {
-  gemini_api_key = "~/.config/gemini/api_key",
+  gemini_api_key_path = "~/.config/gemini/api_key",
 }
 
 -- Expands a given path and checks whether it exists.
@@ -19,6 +19,18 @@ function M.is_file_newer(file1, file2)
   local mtime1 = vim.fn.getftime(file1)
   local mtime2 = vim.fn.getftime(file2)
   return mtime1 > mtime2
+end
+
+--- If the file containing the Gemini API key exists: read the file, set the
+--- environment variable GEMINI_API_KEY, and store the api key in
+--- M.gemini_api_key.
+function M.load_gemini_api_key()
+  if not M.exists(M.gemini_api_key_path) then
+    return
+  end
+  local expanded_path = vim.fn.expand(M.gemini_api_key_path)
+  M.gemini_api_key = vim.fn.readfile(expanded_path)[1]
+  vim.fn.setenv("GEMINI_API_KEY", M.gemini_api_key)
 end
 
 return M
