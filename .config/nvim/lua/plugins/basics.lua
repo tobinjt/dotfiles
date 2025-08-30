@@ -20,7 +20,15 @@ vim.g.miniindentscope_disable = true
 return {
   -- keep-sorted start block=true by_regex=".*"
   {
-    "echasnovski/mini.indentscope",
+    -- Jumps to the last exited location in files.
+    "farmergreg/vim-lastplace",
+  },
+  {
+    -- VCS indicators in the signs column.
+    "mhinz/vim-signify",
+  },
+  {
+    "nvim-mini/mini.indentscope",
     version = false,
     opts = {
       draw = {
@@ -28,14 +36,6 @@ return {
         animation = function() return 0 end,
       },
     },
-  },
-  {
-    -- Jumps to the last exited location in files.
-    "farmergreg/vim-lastplace",
-  },
-  {
-    -- VCS indicators in the signs column.
-    "mhinz/vim-signify",
   },
   {
     -- Finding various things, I need to experiment.
