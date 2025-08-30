@@ -28,16 +28,6 @@ return {
     "mhinz/vim-signify",
   },
   {
-    "nvim-mini/mini.indentscope",
-    version = false,
-    opts = {
-      draw = {
-        -- Copied from MiniIndentscope.gen_animation.none().
-        animation = function() return 0 end,
-      },
-    },
-  },
-  {
     -- Finding various things, I need to experiment.
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
@@ -49,6 +39,23 @@ return {
     -- Fancy icons.  Needs a font supporting those icons, typically nerdfont.
     "nvim-tree/nvim-web-devicons",
     opts = {},
+  },
+  {
+    "shellRaining/hlchunk.nvim",
+    cmd = {
+      "DisableHLChunk",
+      "DisableHLIndent",
+      "EnableHLChunk",
+      "EnableHLIndent",
+    },
+    opts = {
+      chunk = {
+        enable = true,
+      },
+      indent = {
+        enable = true,
+      }
+    },
   },
   {
     -- Set the name of the tmux pane to the filename I'm editing.
