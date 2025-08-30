@@ -1,5 +1,8 @@
+local paths = require("johntobin.paths")
+
 return {
   "milanglacier/minuet-ai.nvim",
+  cond = paths.exists(paths.gemini_api_key_path),
   dependencies = {
     "nvim-lua/plenary.nvim"
   },
