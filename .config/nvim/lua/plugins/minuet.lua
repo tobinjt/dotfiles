@@ -11,6 +11,8 @@ return {
     -- recommended over gemini-2.5-flash for better speed but comparable
     -- results.
     provider = "gemini",
+    -- Don't trigger so fast.
+    throttle = 5 * 1000,
     -- minuet-ai.nvim-virtual-text - the defaults do nothing.
     virtualtext = {
       auto_trigger_ft = {
