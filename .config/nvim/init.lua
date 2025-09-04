@@ -33,7 +33,6 @@ local testing_colorschemes = {
   "bamboo",
   "citruszest",
   "modus",
-  "moonfly",
   "nightfly",
   -- keep-sorted end
 }
