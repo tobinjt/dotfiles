@@ -35,7 +35,6 @@ local testing_colorschemes = {
   "modus",
   "moonfly",
   "nightfly",
-  "slack",
   -- keep-sorted end
 }
 math.randomseed()
