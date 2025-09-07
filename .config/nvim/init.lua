@@ -33,6 +33,7 @@ local testing_colorschemes = {
   "citruszest",
   "modus",
   "nightfly",
+  "tokyonight-night",
   -- keep-sorted end
 }
 math.randomseed()
