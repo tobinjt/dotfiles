@@ -31,7 +31,6 @@ local testing_colorschemes = {
   "NeoSolarized",
   "bamboo",
   "citruszest",
-  "modus",
   "nightfly",
   "tokyonight-night",
   -- keep-sorted end
