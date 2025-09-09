@@ -14,9 +14,6 @@ vim.g.signify_skip = {
   },
 }
 
--- Disable indentscope by default.
-vim.g.miniindentscope_disable = true
-
 return {
   -- keep-sorted start block=true by_regex=".*"
   {
