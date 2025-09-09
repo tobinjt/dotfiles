@@ -32,6 +32,7 @@ local testing_colorschemes = {
   "bamboo",
   "citruszest",
   "nightfly",
+  "solarized-osaka",
   "tokyonight-night",
   -- keep-sorted end
 }
