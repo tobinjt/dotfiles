@@ -1,7 +1,3 @@
--- Airline. Change the status line so it doesn't need symbols missing from some
--- fonts.
-vim.g.airline_symbols_ascii = 1
-
 -- Signify.
 -- Disable VCS systems I don't use.
 vim.g.signify_skip = {
@@ -23,6 +19,14 @@ return {
   {
     -- VCS indicators in the signs column.
     "mhinz/vim-signify",
+  },
+  {
+    -- Improved status bar.
+    "nvim-lualine/lualine.nvim",
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    opts = {},
   },
   {
     -- Finding various things, I need to experiment.
@@ -57,10 +61,6 @@ return {
   {
     -- Set the name of the tmux pane to the filename I'm editing.
     "tobinjt/TmuxSetWindowName.vim",
-  },
-  {
-    -- Improved status bar.
-    "vim-airline/vim-airline",
   },
   {
     -- Makes filename:line-number[:column] work.
