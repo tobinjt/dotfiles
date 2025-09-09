@@ -47,6 +47,7 @@ return {
     },
     opts = {
       -- Wait 24 hours between installation checks.
+      -- Delete ~/.local/share/nvim/mason-tool-installer-debounce
       debounce_hours = 24,
       ensure_installed = {
         -- Always want these installed.
@@ -74,6 +75,7 @@ return {
         { "vim-language-server",  condition = installer_is_available("npm"), },
         { "intelephense",         condition = installer_is_available("php"), },
         { "php-debug-adapter",    condition = installer_is_available("php"), },
+        { "basedpyright",         condition = installer_is_available("python3"), },
         { "python-lsp-server",    condition = installer_is_available("python3"), },
         { "ruff",                 condition = installer_is_available("python3"), },
         { "codelldb",             condition = installer_is_available("rustc"), },

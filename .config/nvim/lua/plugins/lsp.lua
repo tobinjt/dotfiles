@@ -71,11 +71,11 @@ return {
     opts = {
       enabled_servers = {
         -- keep-sorted start
+        basedpyright = {},
         bashls = {},
         gopls = {},
         -- Used for PHP.
         intelephense = {},
-        pylsp = {},
         ruff = {},
         vimls = {},
         -- keep-sorted end
