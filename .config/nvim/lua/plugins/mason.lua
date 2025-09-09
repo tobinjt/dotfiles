@@ -46,6 +46,7 @@ return {
       "jay-babu/mason-nvim-dap.nvim",
     },
     opts = {
+      auto_update = true,
       -- Wait 24 hours between installation checks.
       -- Delete ~/.local/share/nvim/mason-tool-installer-debounce
       debounce_hours = 24,
