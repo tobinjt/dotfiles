@@ -12,7 +12,7 @@ return {
     -- results.
     provider = "gemini",
     -- Don't trigger so fast.
-    throttle = 5 * 1000,
+    throttle = 3 * 1000,
     -- minuet-ai.nvim-virtual-text - the defaults do nothing.
     virtualtext = {
       auto_trigger_ft = {
