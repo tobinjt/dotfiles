@@ -29,6 +29,11 @@ return {
 
     keys = {
       {
+        "<leader>xc",
+        "<cmd>Trouble cascade toggle<cr>",
+        desc = "Diagnostics cascade (Trouble)"
+      },
+      {
         "<leader>xx",
         "<cmd>Trouble diagnostics toggle<cr>",
         desc = "Diagnostics (Trouble)"
