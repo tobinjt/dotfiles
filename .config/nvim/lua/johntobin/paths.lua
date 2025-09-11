@@ -33,4 +33,12 @@ function M.load_gemini_api_key()
   vim.fn.setenv("GEMINI_API_KEY", M.gemini_api_key)
 end
 
+-- This function returns a function to check whether installer is available.
+-- It will be used in the config for mason-tool-installer.
+function M.installer_is_available_function(installer)
+  return function()
+    return vim.fn.executable(installer) == 1
+  end
+end
+
 return M
