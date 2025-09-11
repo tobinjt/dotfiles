@@ -5,13 +5,7 @@
 -- - configure LSP servers.
 -- I have configured dependencies in lsp.lua to do this.
 
--- This function returns a function to check whether installer is available.
--- It will be used in the config for mason-tool-installer.
-local installer_is_available = function(installer)
-  return function()
-    return vim.fn.executable(installer) == 1
-  end
-end
+local paths = require("johntobin.paths")
 
 return {
   {
@@ -53,7 +47,6 @@ return {
       ensure_installed = {
         -- Always want these installed.
         -- keep-sorted start
-        "bash-debug-adapter",
         "lua-language-server",
         "marksman",
         "phpstan",
@@ -63,23 +56,23 @@ return {
         -- Install these if the installer is available, skip if not.
         -- Note: I install debugpy separately so that other modules are
         -- available with it.
-        -- keep-sorted start by_regex=['installer_is_available."(\w+)"', '"(\w+)"']
-        { "delve",                condition = installer_is_available("go"), },
-        { "golangci-lint",        condition = installer_is_available("go"), },
-        { "gopls",                condition = installer_is_available("go"), },
-        { "staticcheck",          condition = installer_is_available("go"), },
-        { "luacheck",             condition = installer_is_available("luarocks"), },
-        { "jsonlint",             condition = installer_is_available("npm"), },
-        { "markdownlint",         condition = installer_is_available("npm"), },
-        { "bash-debug-adapter",   condition = installer_is_available("npm"), },
-        { "bash-language-server", condition = installer_is_available("npm"), },
-        { "vim-language-server",  condition = installer_is_available("npm"), },
-        { "intelephense",         condition = installer_is_available("php"), },
-        { "php-debug-adapter",    condition = installer_is_available("php"), },
-        { "basedpyright",         condition = installer_is_available("python3"), },
-        { "python-lsp-server",    condition = installer_is_available("python3"), },
-        { "ruff",                 condition = installer_is_available("python3"), },
-        { "codelldb",             condition = installer_is_available("rustc"), },
+        -- keep-sorted start by_regex=['paths.installer_is_available_function."(\w+)"', '"(\w+)"']
+        { "delve",                condition = paths.installer_is_available_function("go"), },
+        { "golangci-lint",        condition = paths.installer_is_available_function("go"), },
+        { "gopls",                condition = paths.installer_is_available_function("go"), },
+        { "staticcheck",          condition = paths.installer_is_available_function("go"), },
+        { "luacheck",             condition = paths.installer_is_available_function("luarocks"), },
+        { "jsonlint",             condition = paths.installer_is_available_function("npm"), },
+        { "markdownlint",         condition = paths.installer_is_available_function("npm"), },
+        { "bash-debug-adapter",   condition = paths.installer_is_available_function("npm"), },
+        { "bash-language-server", condition = paths.installer_is_available_function("npm"), },
+        { "vim-language-server",  condition = paths.installer_is_available_function("npm"), },
+        { "intelephense",         condition = paths.installer_is_available_function("php"), },
+        { "php-debug-adapter",    condition = paths.installer_is_available_function("php"), },
+        { "basedpyright",         condition = paths.installer_is_available_function("python3"), },
+        { "python-lsp-server",    condition = paths.installer_is_available_function("python3"), },
+        { "ruff",                 condition = paths.installer_is_available_function("python3"), },
+        { "codelldb",             condition = paths.installer_is_available_function("rustc"), },
         -- keep-sorted end
       },
     },
