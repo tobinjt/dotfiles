@@ -66,7 +66,7 @@ return {
 
       formatters = {
         keep_sorted = {
-          command = "keep-sorted-wrapper",
+          command = "keep-sorted",
           stdin = true,
           args = {
             "-",
