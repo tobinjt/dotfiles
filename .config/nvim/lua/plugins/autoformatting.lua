@@ -30,6 +30,22 @@ vim.api.nvim_create_user_command("FormatEnable",
     desc = "Re-enable autoformat-on-save",
   })
 
+-- Only enable keep-sorted when it's available.
+local make_formatters_by_ft = function()
+  local formatters_by_ft = {
+    markdown = {
+      "mdformat",
+    },
+  }
+  if vim.fn.executable("keep-sorted") == 1 then
+    -- Run keep-sorted for every file type.
+    formatters_by_ft["*"] = {
+      "keep_sorted",
+    }
+  end
+  return formatters_by_ft
+end
+
 return {
   {
     "stevearc/conform.nvim",
@@ -54,15 +70,7 @@ return {
         }
       end,
 
-      formatters_by_ft = {
-        -- Run keep-sorted for every file type.
-        ["*"] = {
-          "keep_sorted",
-        },
-        markdown = {
-          "mdformat",
-        },
-      },
+      formatters_by_ft = make_formatters_by_ft(),
 
       formatters = {
         keep_sorted = {
