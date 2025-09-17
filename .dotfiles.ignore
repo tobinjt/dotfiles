@@ -42,21 +42,15 @@
 .Xauthority
 .cabal
 .clasprc.json
-.config/StardewValley
 .config/Transmission Remote GUI
 .config/composer
 .config/configstore
 .config/go
-.config/iterm2
 .config/procps
 .config/pudb/saved-breakpoints-*
 .gemini/installation_id
 .gemini/settings.json
 .gemini/tmp
-.offlineimap
-# Next two files are used by XQuartz.
-.rnd
-.serverauth.*
 .sudo_as_admin_successful
 # keep-sorted end
 
