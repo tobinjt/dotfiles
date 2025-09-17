@@ -1,0 +1,2 @@
+# Magic directory backed by Google Drive.
+--exclude CloudStorage
