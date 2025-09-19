@@ -2,6 +2,30 @@
 -- Note: until an LSP request is made, :LspInfo will show "no active clients".
 -- Write the file to trigger autoformatting and attachment.
 -- It sometimes takes 10+ seconds for the client to show up too.
+
+-- Only enable a server if it's installed.
+local make_enabled_servers = function()
+  local servers = {
+    -- keep-sorted start
+    { name = "basedpyright", opts = {}, executable = "basedpyright" },
+    { name = "bashls",       opts = {}, executable = "bash-language-server" },
+    { name = "gopls",        opts = {}, executable = "gopls" },
+    -- Used for PHP.
+    { name = "intelephense", opts = {}, executable = "intelephense" },
+    { name = "ruff",         opts = {}, executable = "ruff" },
+    { name = "vimls",        opts = {}, executable = "vim-language-server" },
+    -- keep-sorted end
+  }
+  local enabled_servers = {}
+  for _, server in ipairs(servers) do
+    if vim.fn.executable(server.executable) == 1 then
+      enabled_servers[server.name] = server.opts
+    end
+  end
+
+  return enabled_servers
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -69,17 +93,7 @@ return {
     end,
 
     opts = {
-      enabled_servers = {
-        -- keep-sorted start
-        basedpyright = {},
-        bashls = {},
-        gopls = {},
-        -- Used for PHP.
-        intelephense = {},
-        ruff = {},
-        vimls = {},
-        -- keep-sorted end
-      },
+      enabled_servers = make_enabled_servers(),
     }
   },
 }
