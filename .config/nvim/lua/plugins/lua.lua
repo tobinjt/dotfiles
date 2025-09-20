@@ -17,6 +17,11 @@ return {
       lint.linters.luacheck.args = {
         "--globals",
         "vim",
+        "--std",
+        "+lua51",
+        "--std",
+        -- Might not be needed, based on `luacheck --help`?
+        "+busted",
         table.unpack(lint.linters.luacheck.args),
       }
       opts.linters_by_ft = opts.linters_by_ft or {}
