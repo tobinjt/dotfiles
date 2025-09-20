@@ -32,6 +32,12 @@ return {
 
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      -- Definitions for busted functions so LuaLS recognises them.  Doesn't add
+      -- anything to Neovim.  Will be added to runtimepath, but shouldn't cause
+      -- any issues.
+      "LuaCATS/busted",
+    },
     opts = {
       enabled_servers = {
         lua_ls = {
@@ -41,6 +47,11 @@ return {
                 -- Get the language server to recognize the `vim` global.
                 globals = {
                   "vim",
+                },
+              },
+              workspace = {
+                userThirdParty = {
+                  vim.fn.expand("~/.local/share/nvim/lazy/busted"),
                 },
               },
             },
