@@ -1,3 +1,25 @@
+-- Only enable ruff if the executable exists.  I'll need to generalise this if I
+-- do it for more linters.
+local make_linters_by_ft = function()
+  local linters = {
+    -- keep-sorted start
+    awk = { "awk" },
+    go = { "golangcilint" },
+    javascript = { "eslint" },
+    lua = { "luacheck" },
+    markdown = { "markdownlint" },
+    php = { "phpstan" },
+    rust = { "clippy" },
+    sh = { "shellcheck" },
+    vim = { "vint" },
+    -- keep-sorted end
+  }
+  if vim.fn.executable("ruff") == 1 then
+    linters["python"] = { "ruff" }
+  end
+  return linters
+end
+
 return {
   {
     "mfussenegger/nvim-lint",
@@ -21,20 +43,7 @@ return {
     end,
 
     opts = {
-      linters_by_ft = {
-        -- keep-sorted start
-        awk = { "awk" },
-        go = { "golangcilint" },
-        javascript = { "eslint" },
-        lua = { "luacheck" },
-        markdown = { "markdownlint" },
-        php = { "phpstan" },
-        python = { "ruff" },
-        rust = { "clippy" },
-        sh = { "shellcheck" },
-        vim = { "vint" },
-        -- keep-sorted end
-      },
+      linters_by_ft = make_linters_by_ft(),
     }
   }
 }
