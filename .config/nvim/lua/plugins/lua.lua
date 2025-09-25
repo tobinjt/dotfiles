@@ -1,16 +1,5 @@
 return {
   {
-    "folke/lazydev.nvim",
-    ft = "lua",
-    -- Requires Neovim 0.10 or later.
-    cond = vim.fn.has("nvim-0.10") == 1,
-    opts = {
-      -- Force adding all the plugins I have so that type annotations work.
-      library = vim.fn.split(vim.fn.glob("~/.local/share/nvim/lazy/*/lua"), "\n"),
-    },
-  },
-
-  {
     "mfussenegger/nvim-lint",
     opts = function(_, opts)
       local lint = require("lint")
@@ -50,6 +39,7 @@ return {
                 },
               },
               workspace = {
+                library = vim.fn.split(vim.fn.glob("~/.local/share/nvim/lazy/*/lua"), "\n"),
                 userThirdParty = {
                   vim.fn.expand("~/.local/share/nvim/lazy/busted"),
                 },
