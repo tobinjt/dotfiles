@@ -9,6 +9,10 @@ config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 config.font = wezterm.font('Inconsolata')
 config.font_size = 14
 
+-- Initial window size, set to the size of my personal laptop.
+config.initial_rows = 59
+config.initial_cols = 210
+
 -- Colour scheme.
 -- Copied manually from iTerm2's Solarized theme.
 config.colors = {
