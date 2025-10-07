@@ -15,6 +15,11 @@
 # to the latter, so it doesn't include this by default.
 fpath+=("/opt/homebrew/share/zsh/site-functions")
 
+# Enable caching.
+mkdir -p "${HOME}/tmp/generated/zsh-cache"
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "${HOME}/tmp/generated/zsh-cache"
+
 ### Completion settings from setup wizard.
 # Note: added -u to compinit because my user owns homebrew but other users need
 # to use it, and compinit complains about security without -u.  I thought about
