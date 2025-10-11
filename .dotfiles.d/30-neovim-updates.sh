@@ -2,15 +2,6 @@
 
 set -e -f -u -o pipefail
 
-run_nvim() {
-  # Stop TmuxSetWindowName loading: it's not useful and it doesn't work properly
-  # when tmux is focused on a different pane.
-  run-if-exists nvim --headless \
-    --cmd 'let g:loaded_TmuxSetWindowName=1' \
-    -c "$@" -c "qa" > /dev/null
-}
-
-# Sync Neovim plugins.
 main() {
   # Clean out treesitter .so files, otherwise they are never updated.
   #
