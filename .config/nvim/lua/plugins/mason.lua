@@ -70,7 +70,6 @@ return {
         { "intelephense",         condition = paths.installer_is_available_function("php"), },
         { "php-debug-adapter",    condition = paths.installer_is_available_function("php"), },
         { "basedpyright",         condition = paths.installer_is_available_function("python3"), },
-        { "python-lsp-server",    condition = paths.installer_is_available_function("python3"), },
         { "ruff",                 condition = paths.installer_is_available_function("python3"), },
         { "codelldb",             condition = paths.installer_is_available_function("rustc"), },
         -- keep-sorted end
