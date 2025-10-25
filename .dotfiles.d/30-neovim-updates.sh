@@ -9,12 +9,17 @@ main() {
   # problems for other nvim invocations.
   local treesitter_dir="${HOME}/.local/share/nvim/lazy/nvim-treesitter/parser"
   if [[ -d "${treesitter_dir}" ]]; then
+    local pre post
+    pre="$(find "${treesitter_dir}" -type f -name '*.so' -print)"
     find "${treesitter_dir}" -type f -mtime +1 -name '*.so' -delete
+    post="$(find "${treesitter_dir}" -type f -name '*.so' -print)"
+    if [[ "${post}" != "${pre}" ]]; then
+      # TSUpdateSync doesn't block nvim exiting, so sleep for 10 seconds to give
+      # it time to download and install.  10 seconds worked in testing and
+      # didn't feel too long.
+      run-nvim-command ":TSUpdateSync" -c "sleep 10"
+    fi
   fi
-  # TSUpdateSync doesn't block nvim exiting, so sleep for 10 seconds to give it
-  # time to download and install.  10 seconds worked in testing and didn't feel
-  # too long.
-  run-nvim-command ":TSUpdateSync" -c "sleep 10"
 }
 
 main "$@"
