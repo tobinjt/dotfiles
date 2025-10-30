@@ -1,4 +1,6 @@
 -- Docs at https://github.com/mfussenegger/nvim-dap-python are useful.
+local paths = require("johntobin.paths")
+
 return {
   -- keep-sorted start block=yes
 
@@ -94,6 +96,7 @@ return {
       {
         "mfussenegger/nvim-dap-python",
         lazy = true,
+        cond = paths.installer_is_available_function("luarocks")(),
         config = function()
           -- debugpy is installed in my standard Python virtualenv so that it's
           -- available with all the other modules.

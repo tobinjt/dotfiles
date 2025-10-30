@@ -1,6 +1,9 @@
+local paths = require("johntobin.paths")
+
 return {
   {
     "mfussenegger/nvim-lint",
+    cond = paths.installer_is_available_function("luacheck")(),
     opts = function(_, opts)
       local lint = require("lint")
       lint.linters.luacheck.args = {
