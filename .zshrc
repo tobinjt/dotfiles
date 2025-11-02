@@ -14,6 +14,8 @@
 # I'm using MacOS Zsh rather than Homebrew Zsh because I don't see any advantage
 # to the latter, so it doesn't include this by default.
 fpath+=("/opt/homebrew/share/zsh/site-functions")
+# Also include OrbStack completions.
+fpath+=("/Applications/OrbStack.app/Contents/Resources/completions/zsh")
 
 # Enable caching.
 mkdir -p "${HOME}/tmp/generated/zsh-cache"

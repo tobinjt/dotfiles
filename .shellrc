@@ -28,6 +28,8 @@ path_additions=(
   "${HOME}/.cargo/bin"
   # Wezterm.
   "/Applications/WezTerm.app/Contents/MacOS"
+  # OrbStack binaries.
+  "${HOME}/.orbstack/bin"
   # AppImage of Neovim for Debian which has an older version packaged.
   "${HOME}/tmp/bin/nvim/nvim/usr/bin"
   # Neovim on MacOS without Homebrew.
