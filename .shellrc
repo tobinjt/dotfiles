@@ -123,6 +123,10 @@ if [ -n "${TMUX:-}" ] && [ "${USER}" != "johntobin" ]; then
   tmux rename-window -t "${TMUX_PANE}" "${USER}"
 fi
 
+if type mise >& /dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
 if type zoxide >& /dev/null; then
   eval "$(zoxide init zsh)"
 fi
