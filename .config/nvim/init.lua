@@ -30,7 +30,6 @@ local testing_colorschemes = {
   -- keep-sorted start
   "NeoSolarized",
   "bamboo",
-  "citruszest",
   "solarized-osaka",
   "tokyonight-night",
   -- keep-sorted end
