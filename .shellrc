@@ -37,7 +37,7 @@ path_additions=(
   # Tools installed by Neovim's Mason.
   "${HOME}/.local/share/nvim/mason/bin"
   # Manual install of lazygit.
-  "${HOME}/tmp/bin/lazygit"
+  "${HOME}/tmp/bin/lazygit/bin"
   "${HOME}/bin"
 )
 for path_addition in "${path_additions[@]}"; do
