@@ -51,6 +51,8 @@
 .gemini/installation_id
 .gemini/settings.json
 .gemini/tmp
+# Seems to be where newer versions of SSH put agent files?
+.ssh/agent
 .sudo_as_admin_successful
 # keep-sorted end
 

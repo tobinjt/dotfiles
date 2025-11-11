@@ -17,7 +17,9 @@ main() {
       # TSUpdateSync doesn't block nvim exiting, so sleep for 10 seconds to give
       # it time to download and install.  10 seconds worked in testing and
       # didn't feel too long.
-      run-nvim-command ":TSUpdateSync" -c "sleep 10"
+      if type nvim >& /dev/null; then
+        run-nvim-command ":TSUpdateSync" -c "sleep 10"
+      fi
     fi
   fi
 }
