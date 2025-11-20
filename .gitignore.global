@@ -1,3 +1,4 @@
+*.profraw
 *.pyc
 *.swp
 .DS_Store
