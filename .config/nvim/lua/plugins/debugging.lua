@@ -38,13 +38,11 @@ return {
       {
         "igorlfs/nvim-dap-view",
         -- Alternative UI.  https://igorlfs.github.io/nvim-dap-view/keymaps
+        -- Load with :DapViewOpen
+        -- Use g? in windows to see keymaps.
         ---@module 'dap-view'
         ---@type dapview.Config
-        opts = {
-          -- Automatically toggle dap-view windows when starting/stopping a
-          -- session by pressing continue.
-          auto_toggle = true,
-        },
+        opts = {},
       },
     }
   },
