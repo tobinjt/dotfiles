@@ -52,6 +52,7 @@ M.StopProfiling = function()
   vim.cmd('profile stop')
 end
 
+-- Update any spell files where the source is newer than the generated file.
 M.UpdateSpellfilesIfNecessary = function()
   local paths = require("johntobin.paths")
   ---@diagnostic disable-next-line: undefined-field
@@ -61,6 +62,23 @@ M.UpdateSpellfilesIfNecessary = function()
       local cmd = "mkspell! " .. spellfile
       vim.cmd(cmd)
     end
+  end
+end
+
+-- Run a command, with args, if it exists. Warn if it doesn't exist.
+M.RunCommandIfExists = function(command_name, ...)
+  if vim.fn.exists(":" .. command_name) == 2 then
+    local args = { ... }
+    if #args > 0 then
+      -- Join the command and all arguments with spaces
+      local full_command = command_name .. " " .. table.concat(args, " ")
+      vim.cmd(full_command)
+    else
+      -- Run command without args
+      vim.cmd(command_name)
+    end
+  else
+    io.stderr:write("Command '" .. command_name .. "' not found.\n")
   end
 end
 
