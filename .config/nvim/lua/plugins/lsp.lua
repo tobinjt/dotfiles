@@ -67,17 +67,23 @@ return {
       -- https://gpanders.com/blog/whats-new-in-neovim-0-11/#builtin-auto-completion
       -- LSP autocompletion.
       vim.api.nvim_create_autocmd("LspAttach", {
-        callback = function(ev)
-          local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
           if client == nil then
             return
           end
           if client:supports_method("textDocument/completion") then
+            -- Enable ^X-^O completion.
             vim.lsp.completion.enable(
               true,
               client.id,
-              ev.buf,
-              { autotrigger = false })
+              args.buf,
+              -- Enable LSP completion autotrigger on specific characters.
+              { autotrigger = true })
+            vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+          end
+          if client:supports_method("textDocument/signatureHelp") then
+            vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
           end
         end,
       })

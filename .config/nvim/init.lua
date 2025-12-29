@@ -21,6 +21,8 @@ require("johntobin.lazy-bootstrap")
 -- Load all the configs defined in lua/plugins/*.lua
 require("johntobin.lazy-config")
 
+-- Configure completion.
+require("johntobin.completion")
 -- Highlight column after textwidth.
 require("johntobin.colorcolumn")
 
