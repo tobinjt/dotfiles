@@ -1,5 +1,10 @@
 -- 1. Define the "Smart Tab" logic
 local function smart_buffer_complete()
+  -- If the completion menu is ALREADY visible, move to the next item
+  if vim.fn.pumvisible() ~= 0 then
+    return vim.api.nvim_replace_termcodes('<C-n>', true, true, true)
+  end
+
   local col = vim.fn.col('.') - 1
   local line = vim.fn.getline('.')
 
@@ -13,12 +18,23 @@ local function smart_buffer_complete()
   end
 end
 
--- 2. Map <Tab> to the smart function
+-- 2. Smart Shift+Tab (LSP Complete + Previous Item)
+local function smart_shift_tab_complete()
+  -- If the completion menu is ALREADY visible, move to the previous item
+  if vim.fn.pumvisible() ~= 0 then
+    return vim.api.nvim_replace_termcodes('<C-p>', true, true, true)
+  end
+
+  -- Trigger LSP Omni Completion
+  -- <C-x><C-o> is the native key for "Omni completion" (LSP)
+  return vim.api.nvim_replace_termcodes('<C-x><C-o>', true, true, true)
+end
+
+-- 2. Map <Tab> to completion or next menu item.
 vim.keymap.set('i', '<Tab>', smart_buffer_complete, { expr = true })
 
--- 3. Map <S-Tab> (Shift+Tab) to LSP Completion
--- <C-x><C-o> is the native key for "Omni completion" (LSP)
-vim.keymap.set('i', '<S-Tab>', '<C-x><C-o>')
+-- 3. Map <S-Tab> (Shift+Tab) to LSP Completion or previous menu item.
+vim.keymap.set('i', '<S-Tab>', smart_shift_tab_complete, { expr = true })
 
 -- Configure completion options for a better UI experience
 vim.opt.completeopt = {
