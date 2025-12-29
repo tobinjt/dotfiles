@@ -72,8 +72,6 @@ vim.opt.mouse = ""
 -- Completion settings
 -- Dictionary file to read - Linux/*BSD, Solaris.
 vim.opt.dictionary:append("/usr/share/dict/words")
--- Fill in the longest common prefix first, then show a menu.
-vim.opt.completeopt = "longest,menu,preview"
 
 -- Input.
 -- Support incrementing single alphabetical characters.

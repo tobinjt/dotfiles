@@ -20,5 +20,13 @@ vim.keymap.set('i', '<Tab>', smart_buffer_complete, { expr = true })
 -- <C-x><C-o> is the native key for "Omni completion" (LSP)
 vim.keymap.set('i', '<S-Tab>', '<C-x><C-o>')
 
--- (Optional) Configure completion options for a better UI experience
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+-- Configure completion options for a better UI experience
+vim.opt.completeopt = {
+  -- TODO: I haven't tested fuzzy much.
+  'fuzzy',    -- enable fuzzy-matching for better matching experience.
+  'longest',  -- auto-insert the longest common prefix of matches.
+  'menu',     -- display a completion menu.
+  'menuone',  -- display the menu even when there is only one match.
+  'noselect', -- do not automatically select the first item
+  'preview',  -- show extra info about the currently selected match.
+}
