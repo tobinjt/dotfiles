@@ -32,7 +32,6 @@ return {
     -- My config requires Neovim 0.11 or later because it uses vim.lsp.config().
     cond = vim.fn.has("nvim-0.11") == 1,
     dependencies = {
-      "cmp-nvim-lsp",
       "mason-lspconfig.nvim",
     },
 
@@ -43,14 +42,6 @@ return {
       -- Enable for debugging.
       -- vim.lsp.set_log_level(vim.log.levels.DEBUG)
 
-      -- Set default capabilities to what Neovim supports plus what completion
-      -- supports.
-      vim.lsp.config('*', {
-        capabilities = vim.tbl_deep_extend("force",
-          vim.lsp.protocol.make_client_capabilities(),
-          require("cmp_nvim_lsp").default_capabilities()
-        ),
-      })
       for server, server_opts in pairs(opts.enabled_servers) do
         -- Only configure the server if I have configuration, otherwise the
         -- defaults should be fine.
