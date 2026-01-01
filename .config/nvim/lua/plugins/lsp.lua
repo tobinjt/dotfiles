@@ -32,6 +32,7 @@ return {
     -- My config requires Neovim 0.11 or later because it uses vim.lsp.config().
     cond = vim.fn.has("nvim-0.11") == 1,
     dependencies = {
+      "folke/neoconf.nvim",
       "mason-lspconfig.nvim",
     },
 
