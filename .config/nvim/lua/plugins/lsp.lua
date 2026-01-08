@@ -7,19 +7,19 @@
 local make_enabled_servers = function()
   local servers = {
     -- keep-sorted start
-    { name = "basedpyright", opts = {}, executable = "basedpyright" },
-    { name = "bashls",       opts = {}, executable = "bash-language-server" },
-    { name = "gopls",        opts = {}, executable = "gopls" },
+    { name = "basedpyright", server_opts = {}, executable = "basedpyright" },
+    { name = "bashls",       server_opts = {}, executable = "bash-language-server" },
+    { name = "gopls",        server_opts = {}, executable = "gopls" },
     -- Used for PHP.
-    { name = "intelephense", opts = {}, executable = "intelephense" },
-    { name = "ruff",         opts = {}, executable = "ruff" },
-    { name = "vimls",        opts = {}, executable = "vim-language-server" },
+    { name = "intelephense", server_opts = {}, executable = "intelephense" },
+    { name = "ruff",         server_opts = {}, executable = "ruff" },
+    { name = "vimls",        server_opts = {}, executable = "vim-language-server" },
     -- keep-sorted end
   }
   local enabled_servers = {}
   for _, server in ipairs(servers) do
     if vim.fn.executable(server.executable) == 1 then
-      enabled_servers[server.name] = server.opts
+      enabled_servers[server.name] = server.server_opts
     end
   end
 
