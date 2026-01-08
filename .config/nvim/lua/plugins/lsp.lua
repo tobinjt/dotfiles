@@ -7,13 +7,13 @@
 local make_enabled_servers = function()
   local servers = {
     -- keep-sorted start
-    { name = "basedpyright", server_opts = {}, executable = "basedpyright" },
-    { name = "bashls",       server_opts = {}, executable = "bash-language-server" },
-    { name = "gopls",        server_opts = {}, executable = "gopls" },
+    { name = "basedpyright", server_opts = nil, executable = "basedpyright" },
+    { name = "bashls",       server_opts = nil, executable = "bash-language-server" },
+    { name = "gopls",        server_opts = nil, executable = "gopls" },
     -- Used for PHP.
-    { name = "intelephense", server_opts = {}, executable = "intelephense" },
-    { name = "ruff",         server_opts = {}, executable = "ruff" },
-    { name = "vimls",        server_opts = {}, executable = "vim-language-server" },
+    { name = "intelephense", server_opts = nil, executable = "intelephense" },
+    { name = "ruff",         server_opts = nil, executable = "ruff" },
+    { name = "vimls",        server_opts = nil, executable = "vim-language-server" },
     -- keep-sorted end
   }
   local enabled_servers = {}
@@ -46,7 +46,7 @@ return {
       for server, server_opts in pairs(opts.enabled_servers) do
         -- Only configure the server if I have configuration, otherwise the
         -- defaults should be fine.
-        if next(server_opts) ~= nil then
+        if server_opts ~= nil then
           vim.lsp.config(server, server_opts)
         end
         vim.lsp.enable(server)
