@@ -47,7 +47,7 @@ local make_enabled_servers = function()
   local enabled_servers = {}
   for _, server in ipairs(servers) do
     if vim.fn.executable(server.executable) == 1 then
-      enabled_servers[server.name] = server.server_opts
+      enabled_servers[server.name] = server
     end
   end
 
@@ -74,8 +74,8 @@ return {
       for server, server_opts in pairs(opts.enabled_servers) do
         -- Only configure the server if I have configuration, otherwise the
         -- defaults should be fine.
-        if server_opts ~= nil then
-          vim.lsp.config(server, server_opts)
+        if server_opts.server_opts ~= nil then
+          vim.lsp.config(server, server_opts.server_opts)
         end
         vim.lsp.enable(server)
       end
