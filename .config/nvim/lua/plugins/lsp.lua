@@ -6,15 +6,43 @@
 -- Only enable a server if it's installed.
 local make_enabled_servers = function()
   local servers = {
-    -- keep-sorted start
-    { name = "basedpyright", server_opts = nil, executable = "basedpyright" },
-    { name = "bashls",       server_opts = nil, executable = "bash-language-server" },
-    { name = "gopls",        server_opts = nil, executable = "gopls" },
+    {
+      name = "basedpyright",
+      config_opts = { inlay_hint = true },
+      server_opts = nil,
+      executable = "basedpyright",
+    },
+    {
+      name = "bashls",
+      config_opts = { inlay_hint = true },
+      server_opts = nil,
+      executable = "bash-language-server",
+    },
+    {
+      name = "gopls",
+      config_opts = { inlay_hint = true },
+      server_opts = nil,
+      executable = "gopls",
+    },
     -- Used for PHP.
-    { name = "intelephense", server_opts = nil, executable = "intelephense" },
-    { name = "ruff",         server_opts = nil, executable = "ruff" },
-    { name = "vimls",        server_opts = nil, executable = "vim-language-server" },
-    -- keep-sorted end
+    {
+      name = "intelephense",
+      config_opts = { inlay_hint = true },
+      server_opts = nil,
+      executable = "intelephense",
+    },
+    {
+      name = "ruff",
+      config_opts = { inlay_hint = true },
+      server_opts = nil,
+      executable = "ruff",
+    },
+    {
+      name = "vimls",
+      config_opts = { inlay_hint = true },
+      server_opts = nil,
+      executable = "vim-language-server",
+    },
   }
   local enabled_servers = {}
   for _, server in ipairs(servers) do
@@ -83,7 +111,8 @@ return {
               { autotrigger = true })
             vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
           end
-          if client:supports_method("textDocument/signatureHelp") then
+          local config_opts = opts.enabled_servers[client.name].config_opts
+          if config_opts.inlay_hint and client:supports_method("textDocument/signatureHelp") then
             vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
           end
         end,
