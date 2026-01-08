@@ -111,9 +111,19 @@ return {
               { autotrigger = true })
             vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
           end
-          local config_opts = opts.enabled_servers[client.name].config_opts
-          if config_opts.inlay_hint and client:supports_method("textDocument/signatureHelp") then
-            vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+          if client:supports_method("textDocument/signatureHelp") then
+            local config_opts = opts.enabled_servers[client.name].config_opts
+            local enable = false
+            if config_opts.inlay_hint then
+              enable = true
+            end
+            if vim.list_contains(config_opts.inlay_hint_filetypes or {},
+                  vim.bo[args.buf].filetype) then
+              enable = true
+            end
+            if enable then
+              vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+            end
           end
         end,
       })
