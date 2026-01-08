@@ -48,6 +48,7 @@
 .config/go
 .config/procps
 .config/pudb/saved-breakpoints-*
+.gemini/antigravity
 .gemini/installation_id
 .gemini/settings.json
 .gemini/tmp
