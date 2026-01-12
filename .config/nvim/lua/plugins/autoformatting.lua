@@ -29,6 +29,22 @@ vim.api.nvim_create_user_command("FormatEnable",
   {
     desc = "Re-enable autoformat-on-save",
   })
+vim.api.nvim_create_user_command("FormatStatus",
+  function()
+    if vim.g.disable_autoformat then
+      vim.print("Autoformat globally disabled")
+    else
+      vim.print("Autoformat globally enabled")
+    end
+    if vim.b.disable_autoformat then
+      vim.print("Autoformat buffer disabled")
+    else
+      vim.print("Autoformat buffer enabled")
+    end
+  end,
+  {
+    desc = "Display status of autoformat-on-save",
+  })
 
 -- Only enable keep-sorted when it's available.
 local make_formatters_by_ft = function()
