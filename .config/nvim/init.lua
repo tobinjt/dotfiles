@@ -27,6 +27,8 @@ require("johntobin.colorcolumn")
 require("johntobin.commands")
 -- Configure completion.
 require("johntobin.completion")
+-- Format comments with internal formatting, use LSP for everything else.
+require("johntobin.formatting")
 
 -- Some config that doesn't really fit elsewhere.
 vim.cmd.colorscheme("solarized-osaka")
