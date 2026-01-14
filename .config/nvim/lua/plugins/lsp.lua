@@ -112,8 +112,11 @@ return {
             vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
           end
           if client:supports_method("textDocument/signatureHelp") then
-            local config_opts = opts.enabled_servers[client.name].config_opts
             local enable = false
+            -- Rust doesn't have any config, and I don't feel the need to add
+            -- it, so support lack of config gracefully.
+            local config = (opts.enabled_servers[client.name] or {})
+            local config_opts = config.config_opts or { inlay_hint = true }
             if config_opts.inlay_hint then
               enable = true
             end
