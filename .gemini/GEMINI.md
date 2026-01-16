@@ -166,12 +166,12 @@ def initialize_app():
 When you are asked to write, modify, or generate Python code, you must always
 reformat your final code output using the `black` command-line tool.
 
-- **Trigger**: Any request that results in Python code as the primary output.
-- **Action**: Pipe the generated Python code to the `black` formatter.
-- **Command**: Assume `black` is installed in the user's `PATH`. Use `black -`
-  to read the code from standard input.
-- **Output**: Your final response should only contain the `black`-formatted
-  code. Do not show the code before formatting.
+-   **Trigger**: Any request that results in Python code as the primary output.
+-   **Action**: Pipe the generated Python code to the `black` formatter.
+-   **Command**: Assume `black` is installed in the user's `PATH`. Use `black -`
+    to read the code from standard input.
+-   **Output**: Your final response should only contain the `black`-formatted
+    code. Do not show the code before formatting.
 
 ## Use `foo | None` for optional types
 
@@ -369,3 +369,57 @@ def fetch_user_dict(user_id: int) -> dict | None:
         return {"id": 1, "username": "testuser", "is_active": True}
     return None
 ```
+
+--------------------------------------------------------------------------------
+
+## Python Typing Conventions
+
+You are instructed to follow modern Python type hinting standards (PEP 585 and
+PEP 604) for all code generation and refactoring tasks.
+
+### 1. Built-in Collections (PEP 585)
+
+When writing type signatures, you must use built-in collection types instead of
+their counterparts from the `typing` module.
+
+Deprecated / Old Style   | Required Modern Style
+:----------------------- | :--------------------
+`typing.List` / `List`   | `list`
+`typing.Dict` / `Dict`   | `dict`
+`typing.Tuple` / `Tuple` | `tuple`
+`typing.Set` / `Set`     | `set`
+
+### 2. Union and Optional Types (PEP 604)
+
+Use the bitwise OR operator (`|`) for unions and optional types. Do not import
+`Union` or `Optional` from the `typing` module.
+
+Old Style         | Required Modern Style
+:---------------- | :--------------------
+`Union[int, str]` | `int | str`
+`Optional[str]`   | `str | None`
+
+### Code Examples
+
+**Incorrect:**
+
+```python
+from typing import List, Dict, Union, Optional
+
+def get_user(id: Union[int, str]) -> Optional[Dict[str, str]]: ...
+    ...
+```
+
+**Correct:**
+
+```python
+def get_user(id: int | str) -> dict[str, str] | None:
+    ...
+```
+
+~~~
+
+### Context
+
+Standardize on Python 3.10+ syntax. *Do not ever* use `typing` module imports
+for these features.
