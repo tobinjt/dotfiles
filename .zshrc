@@ -53,6 +53,10 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
+# Custom completions.
+# This generates completions based on running `run-everywhere --help`!
+compdef _gnu_generic run-everywhere
+
 ### Configuration from reading zshoptions(1).
 # Configure cd.
 setopt auto_pushd pushd_ignore_dups pushd_silent
