@@ -69,7 +69,7 @@ return {
     cmd = { "ConformInfo" },
 
     opts = {
-      -- log_level = vim.log.levels.DEBUG,
+      log_level = vim.log.levels.DEBUG,
       -- Support for enable/disable autoformat-on-save.
       -- Modified from
       -- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#command-to-toggle-format-on-save
