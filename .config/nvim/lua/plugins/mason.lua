@@ -45,6 +45,10 @@ return {
       -- Delete ~/.local/share/nvim/mason-tool-installer-debounce
       debounce_hours = 24,
       ensure_installed = {
+        -- TODO: can I move this to a separate file and generate config for
+        -- lint.lua and lsp.lua from it?
+        -- NOTE: linters need to be enabled in lint.lua, and LSP servers need to
+        -- be enabled in lsp.lua.
         -- Always want these installed.
         -- keep-sorted start
         "lua-language-server",

@@ -6,6 +6,7 @@ local make_linters_by_ft = function()
     awk = { "awk" },
     go = { "golangcilint" },
     javascript = { "eslint" },
+    json = { "jsonlint" },
     lua = { "luacheck" },
     markdown = { "markdownlint" },
     php = { "phpstan" },
