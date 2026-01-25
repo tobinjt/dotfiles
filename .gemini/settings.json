@@ -1,0 +1,24 @@
+{
+  "security": {
+    "auth": {
+      "selectedType": "gemini-api-key"
+    },
+    "enablePermanentToolApproval": true,
+    "disableYoloMode": true,
+    "folderTrust": {
+      "enabled": true
+    }
+  },
+  "general": {
+    "previewFeatures": true,
+    "enablePromptCompletion": true
+  },
+  "ui": {
+    "footer": {
+      "hideContextPercentage": false
+    }
+  },
+  "tools": {
+    "autoAccept": true
+  }
+}

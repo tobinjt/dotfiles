@@ -59,7 +59,6 @@
 .gem
 .gemini/antigravity
 .gemini/installation_id
-.gemini/settings.json
 .gemini/tmp
 .lldb
 .local
