@@ -108,7 +108,7 @@ return {
               client.id,
               args.buf,
               -- Enable LSP completion autotrigger on specific characters.
-              { autotrigger = true })
+              { autotrigger = false })
             vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
           end
           if client:supports_method("textDocument/signatureHelp") then
