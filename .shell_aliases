@@ -28,6 +28,23 @@ rename-window-while-command-runs() {
 }
 
 gemini () {
+  local gemini_dir="${HOME}/.gemini"
+  if [[ ! -e "${gemini_dir}" ]]; then
+    ln -s "${HOME}/src/dotfiles/.gemini" "${gemini_dir}"
+  fi
+  if [[ ! -L "${gemini_dir}" ]]; then
+    echo "${HOME}/.gemini must be a symlink" >&2
+    return 1
+  fi
+  local gemini_tmp_dir="${gemini_dir}/tmp"
+  local redirected_tmp_dir="${HOME}/tmp/generated/gemini-tmp"
+  if [[ ! -d "${redirected_tmp_dir}" ]]; then
+    mkdir -p "${redirected_tmp_dir}"
+  fi
+  if [[ ! -L "${gemini_tmp_dir}" ]]; then
+    rm -rf "${gemini_tmp_dir}"
+    ln -s "${redirected_tmp_dir}" "${gemini_tmp_dir}"
+  fi
   GEMINI_API_KEY="$(< "${HOME}/.config/gemini/api_key")" \
     rename-window-while-command-runs gemini command gemini "$@"
 }

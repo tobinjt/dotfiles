@@ -57,9 +57,7 @@
 .dlv
 .docker
 .gem
-.gemini/antigravity
-.gemini/installation_id
-.gemini/tmp
+.gemini
 .lldb
 .local
 .mypy_cache
