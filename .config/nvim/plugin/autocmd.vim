@@ -5,7 +5,7 @@ autocmd!
 
   " keep-sorted start sticky_prefixes="
 
-  autocmd BufReadPost,BufNewFile *.json setlocal filetype=javascript
+  autocmd BufReadPost,BufNewFile *.json setlocal filetype=json
   autocmd BufReadPost,BufNewFile *.tt2 setlocal filetype=tt2
   " Set filetype=sshconfig for all ssh config snippets.
   autocmd BufReadPost,BufNewFile */.ssh/config* setlocal filetype=sshconfig

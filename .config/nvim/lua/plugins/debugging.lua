@@ -33,6 +33,21 @@ return {
         function() require("dap").terminate() end,
         desc = "Terminate"
       },
+      -- Consider the mappings at
+      -- https://github.com/mfussenegger/nvim-dap-python?tab=readme-ov-file#mappings
+      {
+        "<leader>dt",
+        function()
+          if vim.bo[0].filetype == "go" then
+            require("dap-go").debug_test()
+          elseif vim.bo[0].filetype == "python" then
+            require("dap-python").test_method()
+          else
+            vim.print("No test support for " .. vim.bo[0].filetype)
+          end
+        end,
+        desc = "Debug the test method above the cursor"
+      },
     },
     dependencies = {
       {
@@ -83,13 +98,6 @@ return {
         dependencies = {
           "mfussenegger/nvim-dap",
         },
-        keys = {
-          {
-            "<leader>dt",
-            function() require("dap-go").debug_test() end,
-            desc = "Debug test"
-          },
-        },
       },
       {
         "mfussenegger/nvim-dap-python",
@@ -100,8 +108,6 @@ return {
           -- available with all the other modules.
           require("dap-python").setup("python3")
         end,
-        -- Consider the mappings at
-        -- https://github.com/mfussenegger/nvim-dap-python?tab=readme-ov-file#mappings
         dependencies = {
           "mfussenegger/nvim-dap",
         },

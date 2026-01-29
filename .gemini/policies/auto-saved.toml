@@ -1,0 +1,23 @@
+[[rule]]
+toolName = "run_shell_command"
+decision = "allow"
+priority = 100
+commandPrefix = [ "pytest" ]
+
+[[rule]]
+toolName = "run_shell_command"
+decision = "allow"
+priority = 100
+commandPrefix = [ "black" ]
+
+[[rule]]
+toolName = "run_shell_command"
+decision = "allow"
+priority = 100
+commandPrefix = [ "grep" ]
+
+[[rule]]
+toolName = "run_shell_command"
+decision = "allow"
+priority = 100
+commandPrefix = [ "mypy" ]
