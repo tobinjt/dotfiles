@@ -118,9 +118,14 @@ if [ "${TERM}" != "${TERM//color/}" ] && [ -z "${COLORTERM:-}" ]; then
   export COLORTERM
 fi
 
-if [ -n "${TMUX:-}" ] && [ "${USER}" != "johntobin" ]; then
-  # Put the user in the tmux pane title to warn me it's a different user.
-  tmux rename-window -t "${TMUX_PANE}" "${USER}"
+if [ -n "${TMUX:-}" ]; then
+  if [ "${USER}" != "johntobin" ]; then
+    # Put the user in the tmux pane title to warn me it's a different user.
+    tmux rename-window -t "${TMUX_PANE}" "${USER}"
+  fi
+  # Clear the pane_title tmux sets by default, the hostname isn't useful. Gemini
+  # and possibly other tools will set pane_title.
+  printf "\033]2;\003"
 fi
 
 if type mise >& /dev/null; then
