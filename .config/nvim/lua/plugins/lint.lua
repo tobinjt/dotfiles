@@ -12,7 +12,6 @@ local make_linters_by_ft = function()
     php = { "phpstan" },
     rust = { "clippy" },
     sh = { "shellcheck" },
-    vim = { "vint" },
     -- keep-sorted end
   }
   if vim.fn.executable("ruff") == 1 then

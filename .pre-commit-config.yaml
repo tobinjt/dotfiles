@@ -42,11 +42,6 @@ repos:
         files: .config/nvim/spell/en.utf-8.add
         pass_filenames: false
         entry: sort -o .config/nvim/spell/en.utf-8.add .config/nvim/spell/en.utf-8.add
-      - id: vint
-        name: Run `vint` if it's installed
-        language: system
-        types: [vim]
-        entry: run-if-exists vint
       # keep-sorted end
   - repo: meta
     hooks:

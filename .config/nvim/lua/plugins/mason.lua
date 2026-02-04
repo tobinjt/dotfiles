@@ -55,7 +55,6 @@ return {
         "marksman",
         "phpstan",
         "shellcheck",
-        "vint",
         -- keep-sorted end
         -- Install these if the installer is available, skip if not.
         -- Note: I install debugpy separately so that other modules are
