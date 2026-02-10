@@ -26,18 +26,23 @@ end
 
 -- Functions to do magic things when you start editing a new file.
 M.PopulateSH = function()
-  -- Don't execute this function a second time.
-  if vim.fn.line('$') ~= 1 or vim.fn.getline('$') ~= '' then
-    return
-  end
-  vim.api.nvim_buf_set_lines(0, 0, 0, false, {
-    '#!/bin/bash',
-    '',
-    'set -e -f -u -o pipefail',
-    '',
-  })
-  vim.fn.cursor(vim.fn.line('$'), 0)
-  vim.opt.filetype = 'sh'
+  local lines = {
+    "#!/bin/bash",
+    "",
+    "set -e -f -u -o pipefail",
+    "",
+    "main() {",
+    "    ",
+    "}",
+    "",
+    "main \"$@\"",
+  }
+
+  -- Set the lines in the current buffer (0)
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+
+  -- Move the cursor to inside the main function.
+  vim.api.nvim_win_set_cursor(0, { 6, 4 })
 end
 
 -- Start profiling.

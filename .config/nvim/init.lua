@@ -21,6 +21,8 @@ require("johntobin.lazy-bootstrap")
 -- Load all the configs defined in lua/plugins/*.lua
 require("johntobin.lazy-config")
 
+-- Set up automcds.
+require("johntobin.autocmds")
 -- Highlight column after textwidth.
 require("johntobin.colorcolumn")
 -- Configure commands.
