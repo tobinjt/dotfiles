@@ -29,6 +29,7 @@ offsite
 onsite
 plugin
 plugins
+presubmit
 rclone
 readonly
 recurse
