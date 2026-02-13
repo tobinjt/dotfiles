@@ -49,12 +49,12 @@ return {
         -- lint.lua and lsp.lua from it?
         -- NOTE: linters need to be enabled in lint.lua, and LSP servers need to
         -- be enabled in lsp.lua.
-        -- Always want these installed.
+        -- Always want these installed, except on the imac.
         -- keep-sorted start
-        "lua-language-server",
-        "marksman",
-        "phpstan",
-        "shellcheck",
+        { "lua-language-server",  condition = paths.not_exists_function("/usr/local/Cellar"), },
+        { "marksman",             condition = paths.not_exists_function("/usr/local/Cellar"), },
+        { "phpstan",              condition = paths.not_exists_function("/usr/local/Cellar"), },
+        { "shellcheck",           condition = paths.not_exists_function("/usr/local/Cellar"), },
         -- keep-sorted end
         -- Install these if the installer is available, skip if not.
         -- Note: I install debugpy separately so that other modules are

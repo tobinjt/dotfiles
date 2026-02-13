@@ -10,6 +10,14 @@ function M.exists(path)
   return (vim.fn.filereadable(expanded) == 1) or (vim.fn.isdirectory(expanded) == 1)
 end
 
+-- This function returns a function to check whether a path doesn't exist.
+-- It will be used in the config for mason-tool-installer.
+function M.not_exists_function(path)
+  return function()
+    return not M.exists(path)
+  end
+end
+
 --- Checks if file1 is newer than file2.
 -- @param file1 (string) Path to the first file.
 -- @param file2 (string) Path to the second file.
