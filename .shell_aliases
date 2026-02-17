@@ -89,7 +89,7 @@ bc() {
 # 'cd dirname/filename' will strip filename and cd to dirname.
 cd() {
   # Try running cd with the arguments and see what happens.
-  if cd_or_zoxide "$@" 2> /dev/null; then
+  if builtin cd "$@" 2> /dev/null; then
     return
   fi
   if [[ "$#" -gt 1 ]]; then
@@ -105,16 +105,8 @@ cd() {
     printf "cd: %s: No such file or directory\\n" "${orig_dest}" >&2
     return 1
   fi
-  cd_or_zoxide "${dest}"
-}
-
-# Use zoxide if available, cd otherwise.  Intended to be used by `cd()`.
-cd_or_zoxide() {
-  if type zoxide >& /dev/null; then
-    z "$@" || return 1
-  else
-    builtin cd "$@" || return 1
-  fi
+  # shellcheck disable=SC2164
+  builtin cd "${dest}"
 }
 
 countsort() {
