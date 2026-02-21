@@ -35,7 +35,7 @@ repos:
         name: Run `shellcheck`
         language: system
         types: [shell]
-        entry: shellcheck
+        entry: shellcheck -e SC1090 -e SC1091
       - id: sort-spell-file
         name: Sort vim's spell file.
         language: system
@@ -48,7 +48,7 @@ repos:
       - id: check-hooks-apply
       - id: check-useless-excludes
   - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: v4.3.0
+    rev: v4.4.0
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]
