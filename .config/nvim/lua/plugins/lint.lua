@@ -1,7 +1,5 @@
--- Only enable ruff if the executable exists.  I'll need to generalise this if I
--- do it for more linters.
 local make_linters_by_ft = function()
-  local linters = {
+  local potential_linters = {
     -- keep-sorted start
     awk = { "awk" },
     go = { "golangcilint" },
@@ -10,12 +8,25 @@ local make_linters_by_ft = function()
     lua = { "luacheck" },
     markdown = { "markdownlint" },
     php = { "phpstan" },
+    python = { "ruff" },
     rust = { "clippy" },
     sh = { "shellcheck" },
     -- keep-sorted end
   }
-  if vim.fn.executable("ruff") == 1 then
-    linters["python"] = { "ruff" }
+
+  local linters = {}
+  for ft, linter_list in pairs(potential_linters) do
+    local enabled = {}
+    for _, linter in ipairs(linter_list) do
+      if vim.fn.executable(linter) == 1 then
+        table.insert(enabled, linter)
+      end
+    end
+    if #enabled > 0 then
+      linters[ft] = enabled
+    else
+      linters[ft] = { "no_op" }
+    end
   end
   return linters
 end
@@ -31,6 +42,15 @@ return {
         "force",
         lint.linters_by_ft,
         opts.linters_by_ft)
+
+      lint.linters.no_op = {
+        name = 'no_op',
+        cmd = 'true',
+        append_fname = true,
+        -- Thre won't be anything to parse but this is required, so use a simple
+        -- built-in parser.
+        parser = require("lint.parser").from_errorformat("%f:%l: %m", {}),
+      }
 
       -- Run lint after every write.
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
