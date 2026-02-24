@@ -9,13 +9,13 @@ repos:
       - id: check-vcs-permalinks
       - id: end-of-file-fixer
       - id: trailing-whitespace
-  - repo: https://github.com/google/keep-sorted
-    rev: v0.7.1
-    hooks:
-      - id: keep-sorted
   - repo: local
     hooks:
       # keep-sorted start
+      - id: keep-sorted
+        name: Run `keep-sorted`
+        language: system
+        entry: keep-sorted
       - id: luac
         name: Run `luac` if it's installed
         language: system
