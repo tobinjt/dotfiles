@@ -27,10 +27,10 @@ repos:
         types: [lua]
         entry: run-if-exists luacheck --globals vim table.unpack --codes --ranges
       - id: markdownlint
-        name: Run `markdownlint`
+        name: Run `markdownlint` if it's installed
         language: system
         types: [markdown]
-        entry: markdownlint
+        entry: run-if-exists markdownlint
       - id: shellcheck
         name: Run `shellcheck`
         language: system
