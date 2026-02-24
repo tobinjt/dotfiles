@@ -21,3 +21,19 @@ toolName = "run_shell_command"
 decision = "allow"
 priority = 100
 commandPrefix = [ "mypy" ]
+
+[[rule]]
+toolName = "run_shell_command"
+decision = "allow"
+priority = 100
+commandPrefix = [ "mkdir" ]
+
+[[rule]]
+toolName = "write_file"
+decision = "allow"
+priority = 100
+
+[[rule]]
+toolName = "replace"
+decision = "allow"
+priority = 100
