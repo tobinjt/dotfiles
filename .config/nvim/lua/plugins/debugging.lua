@@ -49,17 +49,6 @@ return {
         desc = "Debug the test method above the cursor"
       },
     },
-    dependencies = {
-      {
-        "igorlfs/nvim-dap-view",
-        -- Alternative UI.  https://igorlfs.github.io/nvim-dap-view/keymaps
-        -- Load with :DapViewOpen
-        -- Use g? in windows to see keymaps.
-        ---@module 'dap-view'
-        ---@type dapview.Config
-        opts = {},
-      },
-    }
   },
   {
     "rcarriga/nvim-dap-ui",
