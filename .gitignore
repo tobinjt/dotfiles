@@ -1,2 +1,5 @@
+.gemini/history/
 .gemini/installation_id
+.gemini/mcp-oauth-tokens-v2.json
+.gemini/projects.json
 .gemini/tmp
