@@ -38,8 +38,6 @@ vim.keymap.set('i', '<S-Tab>', smart_shift_tab_complete, { expr = true })
 
 -- Configure completion options for a better UI experience
 vim.opt.completeopt = {
-  -- TODO: I haven't tested fuzzy much.
-  'fuzzy',    -- enable fuzzy-matching for better matching experience.
   'longest',  -- auto-insert the longest common prefix of matches.
   'menu',     -- display a completion menu.
   'menuone',  -- display the menu even when there is only one match.
