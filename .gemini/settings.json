@@ -11,7 +11,12 @@
   },
   "general": {
     "previewFeatures": true,
-    "enablePromptCompletion": true
+    "enablePromptCompletion": true,
+    "sessionRetention": {
+      "enabled": true,
+      "maxAge": "30d",
+      "warningAcknowledged": true
+    }
   },
   "ui": {
     "footer": {
