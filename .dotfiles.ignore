@@ -3,7 +3,7 @@
 # Contains secrets that shouldn't be backed up.
 # keep-sorted start
 .config/exercism
-.config/gemini/api_key*
+.config/gemini
 .config/rclone
 # keep-sorted end
 
