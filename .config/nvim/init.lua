@@ -37,7 +37,6 @@ vim.cmd.colorscheme("solarized-osaka")
 local testing_colorschemes = {
   -- keep-sorted start
   "NeoSolarized",
-  "bamboo",
   "solarized-osaka",
   "tokyonight-night",
   -- keep-sorted end
