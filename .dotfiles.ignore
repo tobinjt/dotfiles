@@ -50,6 +50,7 @@
 .config/composer
 .config/configstore
 .config/go
+.config/jj/repos
 .config/procps
 .config/pudb/saved-breakpoints-*
 .cups
