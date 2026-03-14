@@ -15,7 +15,7 @@ repos:
       - id: keep-sorted
         name: Run `keep-sorted`
         language: system
-        entry: keep-sorted
+        entry: run-if-exists keep-sorted
       - id: luac
         name: Run `luac` if it's installed
         language: system
