@@ -3,40 +3,7 @@
 -- Write the file to trigger autoformatting and attachment.
 -- It sometimes takes 10+ seconds for the client to show up too.
 
--- Only enable a server if it's installed.
-local make_enabled_servers = function()
-  local servers = {
-    {
-      name = "basedpyright",
-      executable = "basedpyright",
-    },
-    {
-      name = "bashls",
-      executable = "bash-language-server",
-    },
-    {
-      name = "gopls",
-      executable = "gopls",
-    },
-    -- Used for PHP.
-    {
-      name = "intelephense",
-      executable = "intelephense",
-    },
-    {
-      name = "ruff",
-      executable = "ruff",
-    },
-  }
-  local enabled_servers = {}
-  for _, server in ipairs(servers) do
-    if vim.fn.executable(server.executable) == 1 then
-      enabled_servers[server.name] = server
-    end
-  end
-
-  return enabled_servers
-end
+local tools = require("johntobin.tools")
 
 return {
   {
@@ -117,7 +84,7 @@ return {
     end,
 
     opts = {
-      enabled_servers = make_enabled_servers(),
+      enabled_servers = tools.make_lsp_enabled_servers(),
     }
   },
 }
