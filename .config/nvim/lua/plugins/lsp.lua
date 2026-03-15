@@ -8,28 +8,23 @@ local make_enabled_servers = function()
   local servers = {
     {
       name = "basedpyright",
-      server_opts = nil,
       executable = "basedpyright",
     },
     {
       name = "bashls",
-      server_opts = nil,
       executable = "bash-language-server",
     },
     {
       name = "gopls",
-      server_opts = nil,
       executable = "gopls",
     },
     -- Used for PHP.
     {
       name = "intelephense",
-      server_opts = nil,
       executable = "intelephense",
     },
     {
       name = "ruff",
-      server_opts = nil,
       executable = "ruff",
     },
   }
