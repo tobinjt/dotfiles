@@ -33,9 +33,6 @@ return {
     opts = {
       enabled_servers = {
         lua_ls = {
-          config_opts = {
-            inlay_hint = true,
-          },
           server_opts = {
             root_markers = {
               -- This is copied from nvim-lspconfig/lsp/lua_ls.lua and extended

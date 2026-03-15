@@ -8,32 +8,27 @@ local make_enabled_servers = function()
   local servers = {
     {
       name = "basedpyright",
-      config_opts = { inlay_hint = true },
       server_opts = nil,
       executable = "basedpyright",
     },
     {
       name = "bashls",
-      config_opts = { inlay_hint = true },
       server_opts = nil,
       executable = "bash-language-server",
     },
     {
       name = "gopls",
-      config_opts = { inlay_hint = true },
       server_opts = nil,
       executable = "gopls",
     },
     -- Used for PHP.
     {
       name = "intelephense",
-      config_opts = { inlay_hint = true },
       server_opts = nil,
       executable = "intelephense",
     },
     {
       name = "ruff",
-      config_opts = { inlay_hint = true },
       server_opts = nil,
       executable = "ruff",
     },
