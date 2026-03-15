@@ -1,5 +1,4 @@
 -- Fold options are required for ufo to work
-vim.o.foldcolumn = '1' -- This is optional.
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
