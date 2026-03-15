@@ -37,12 +37,6 @@ local make_enabled_servers = function()
       server_opts = nil,
       executable = "ruff",
     },
-    {
-      name = "vimls",
-      config_opts = { inlay_hint = true },
-      server_opts = nil,
-      executable = "vim-language-server",
-    },
   }
   local enabled_servers = {}
   for _, server in ipairs(servers) do

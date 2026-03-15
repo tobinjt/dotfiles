@@ -69,7 +69,6 @@ return {
         { "markdownlint",         condition = paths.installer_is_available_function("npm"), },
         { "bash-debug-adapter",   condition = paths.installer_is_available_function("npm"), },
         { "bash-language-server", condition = paths.installer_is_available_function("npm"), },
-        { "vim-language-server",  condition = paths.installer_is_available_function("npm"), },
         { "intelephense",         condition = paths.installer_is_available_function("php"), },
         { "php-debug-adapter",    condition = paths.installer_is_available_function("php"), },
         { "basedpyright",         condition = paths.installer_is_available_function("python3"), },
