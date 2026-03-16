@@ -5,7 +5,7 @@
 -- - configure LSP servers.
 -- I have configured dependencies in lsp.lua to do this.
 
-local paths = require("johntobin.paths")
+local tools = require("johntobin.tools")
 
 return {
   {
@@ -44,38 +44,7 @@ return {
       -- Wait 24 hours between installation checks.
       -- Delete ~/.local/share/nvim/mason-tool-installer-debounce
       debounce_hours = 24,
-      ensure_installed = {
-        -- TODO: can I move this to a separate file and generate config for
-        -- lint.lua and lsp.lua from it?
-        -- NOTE: linters need to be enabled in lint.lua, and LSP servers need to
-        -- be enabled in lsp.lua.
-        -- Always want these installed, except on the imac.
-        -- keep-sorted start
-        { "lua-language-server",  condition = paths.not_exists_function("/usr/local/Cellar"), },
-        { "marksman",             condition = paths.not_exists_function("/usr/local/Cellar"), },
-        { "phpstan",              condition = paths.not_exists_function("/usr/local/Cellar"), },
-        { "shellcheck",           condition = paths.not_exists_function("/usr/local/Cellar"), },
-        -- keep-sorted end
-        -- Install these if the installer is available, skip if not.
-        -- Note: I install debugpy separately so that other modules are
-        -- available with it.
-        -- keep-sorted start by_regex=['paths.installer_is_available_function."(\w+)"', '"(\w+)"']
-        { "delve",                condition = paths.installer_is_available_function("go"), },
-        { "golangci-lint",        condition = paths.installer_is_available_function("go"), },
-        { "gopls",                condition = paths.installer_is_available_function("go"), },
-        { "staticcheck",          condition = paths.installer_is_available_function("go"), },
-        { "luacheck",             condition = paths.installer_is_available_function("luarocks"), },
-        { "jsonlint",             condition = paths.installer_is_available_function("npm"), },
-        { "markdownlint",         condition = paths.installer_is_available_function("npm"), },
-        { "bash-debug-adapter",   condition = paths.installer_is_available_function("npm"), },
-        { "bash-language-server", condition = paths.installer_is_available_function("npm"), },
-        { "intelephense",         condition = paths.installer_is_available_function("php"), },
-        { "php-debug-adapter",    condition = paths.installer_is_available_function("php"), },
-        { "basedpyright",         condition = paths.installer_is_available_function("python3"), },
-        { "ruff",                 condition = paths.installer_is_available_function("python3"), },
-        { "codelldb",             condition = paths.installer_is_available_function("rustc"), },
-        -- keep-sorted end
-      },
+      ensure_installed = tools.make_mason_package_install_list(),
     },
   },
 }

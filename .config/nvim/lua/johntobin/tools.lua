@@ -1,3 +1,5 @@
+local paths = require("johntobin.paths")
+
 local M = {}
 
 M.tools = {
@@ -113,7 +115,18 @@ M.get_as_list = function(tbl, key)
   return {}
 end
 
--- Returns a list of LSP servers whose executables are installed.
+--- Returns true if a program isn't specified or it's specified and executable.
+--- @param program string?: the name of the program to check
+--- @return boolean: True if the program is executable (or not specified), false
+---                         otherwise.
+M.check_executable = function(program)
+  if program == nil or program == "" then
+    return true
+  end
+  return vim.fn.executable(program) == 1
+end
+
+--- Returns a list of LSP servers whose executables are installed.
 M.make_lsp_enabled_servers = function()
   local enabled_servers = {}
   for _, tool_config in ipairs(M.tools) do
@@ -133,9 +146,30 @@ M.make_lsp_enabled_servers = function()
     end
   end
 
+  table.sort(enabled_servers)
   return enabled_servers
 end
 
+--- Returns a list of Mason packages with installers available.
+M.make_mason_package_install_list = function()
+  local packages_to_install = {}
+  for _, tool_config in ipairs(M.tools) do
+    if M.check_executable(tool_config.compiler)
+        and M.check_executable(tool_config.installer)
+        -- TODO: remove when the imac is decomissioned.
+        and paths.not_exists_function("/usr/local/Cellar")
+    then
+      for _, package in ipairs(M.get_as_list(tool_config, 'mason_package')) do
+        table.insert(packages_to_install, { package })
+      end
+    end
+  end
+
+  table.sort(packages_to_install, function(a, b) return a[1] < b[1] end)
+  return packages_to_install
+end
+
+--- Returns a list of Treesitter parsers to install.
 M.make_treesitter_parsers_to_install = function()
   local parsers = {}
   for _, tool_config in ipairs(M.tools) do
