@@ -1,3 +1,5 @@
+local tools = require("johntobin.tools")
+
 return {
   -- Syntax highlighting and more.
   {
@@ -14,27 +16,7 @@ return {
 
     opts = {
       -- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
-      ensure_installed = {
-        -- keep-sorted start
-        "awk",
-        "bash",
-        "css",
-        "gitcommit",
-        "go",
-        "html",
-        "lua",
-        "luadoc",
-        "markdown",
-        "markdown_inline",
-        "php",
-        "printf",
-        "python",
-        "regex",
-        "rust",
-        "vim",
-        "vimdoc",
-        -- keep-sorted end
-      },
+      ensure_installed = tools.make_treesitter_parsers_to_install(),
       highlight = {
         enable = true,
       },

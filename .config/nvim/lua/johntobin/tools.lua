@@ -136,4 +136,25 @@ M.make_lsp_enabled_servers = function()
   return enabled_servers
 end
 
+M.make_treesitter_parsers_to_install = function()
+  local parsers = {}
+  for _, tool_config in ipairs(M.tools) do
+    local install = true
+    if tool_config.parser == nil then
+      install = false
+    end
+    if install and tool_config.compiler ~= nil then
+      if vim.fn.executable(tool_config.compiler) == 0 then
+        install = false
+      end
+    end
+    if install then
+      table.insert(parsers, tool_config.parser)
+    end
+  end
+
+  table.sort(parsers)
+  return parsers
+end
+
 return M
