@@ -3,3 +3,6 @@
 [user]
 name = "John Tobin"
 email = "johntobin@johntobin.ie"
+
+[ui]
+default-command = "log"
