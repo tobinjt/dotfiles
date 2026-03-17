@@ -220,7 +220,7 @@ M.make_mason_package_install_list = function()
     if M.check_executable(tool_config.compiler)
         and M.check_executable(tool_config.mason_installer)
         -- TODO: remove when the imac is decomissioned.
-        and paths.not_exists_function("/usr/local/Cellar")
+        and not paths.exists("/usr/local/Cellar")
     then
       for _, package in ipairs(M.get_as_list(tool_config, 'mason_package')) do
         table.insert(packages_to_install, { package })
