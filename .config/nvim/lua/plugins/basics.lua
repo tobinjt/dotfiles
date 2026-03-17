@@ -21,6 +21,16 @@ return {
     "mhinz/vim-signify",
   },
   {
+    -- Automatically sets up LSP, so lsp.lua doesn't include rust.
+    -- Makes debugging work seamlessly.
+    "mrcjkb/rustaceanvim",
+    version = "^5", -- Recommended by module.
+    ft = "rust",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
+  },
+  {
     -- Improved status bar.
     "nvim-lualine/lualine.nvim",
     dependencies = {
@@ -42,6 +52,7 @@ return {
     opts = {},
   },
   {
+    -- Draws lines to indicate where indented blocks begin and end.
     "shellRaining/hlchunk.nvim",
     cmd = {
       "DisableHLChunk",
@@ -59,12 +70,32 @@ return {
     },
   },
   {
+    "stevearc/aerial.nvim",
+    config = true,
+    cmd = {
+      "AerialOpen",
+      "AerialToggle",
+    },
+  },
+  {
     -- Set the name of the tmux pane to the filename I'm editing.
     "tobinjt/TmuxSetWindowName.vim",
   },
   {
     -- Makes filename:line-number[:column] work.
     "wsdjeg/vim-fetch",
+  },
+  {
+    'Wansmer/treesj',
+    config = true,
+    keys = {
+      '<space>m',
+      '<space>j',
+      '<space>s',
+    },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
   },
   -- keep-sorted end
 }
