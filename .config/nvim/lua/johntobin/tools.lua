@@ -3,74 +3,88 @@ local paths = require("johntobin.paths")
 local M = {}
 
 M.tools = {
-  -- keep-sorted start block=true
+  -- keep-sorted start block=true by_regex=filetype.*|mason_installer.*|mason_package.*
+  {
+    filetype = "awk",
+    linter = "awk",
+    parser = "awk",
+  },
   {
     compiler = "go",
+    filetype = "go",
     linter = { "golangcilint", "staticcheck" },
+    linter_executable = { "golangci-lint", "staticcheck" },
     lsp_server = "gopls",
+    mason_installer = "go",
     mason_package = { "delve", "golangci-lint", "gopls", "staticcheck" },
     parser = "go",
   },
   {
+    filetype = "javascript",
+    linter = "eslint",
+  },
+  {
+    filetype = "json",
+    linter = "jsonlint",
+    mason_installer = "npm",
+    mason_package = "jsonlint",
+  },
+  {
+    filetype = "lua",
+    linter = "luacheck",
+    mason_installer = "luarocks",
+    mason_package = "luacheck",
+    parser = "luadoc",
+  },
+  {
+    filetype = "markdown",
+    linter = "markdownlint",
+    mason_installer = "npm",
+    mason_package = "marksman",
+    parser = "markdown",
+  },
+  {
     compiler = "php",
+    filetype = "php",
     linter = "phpstan",
     lsp_server = "intelephense",
+    mason_installer = "php",
     mason_package = { "intelephense", "php-debug-adapter", "phpstan", },
     parser = "php",
   },
   {
     compiler = "python3",
+    filetype = "python",
     linter = "ruff",
     lsp_server = { "basedpyright", "ruff" },
+    mason_installer = "python3",
     mason_package = { "basedpyright", "ruff", },
     parser = "python",
   },
   {
     compiler = "rustc",
+    filetype = "rust",
     linter = "clippy",
+    linter_executable = "cargo-clippy",
+    mason_installer = "rustc",
     mason_package = "codelldb",
     parser = "rust",
   },
   {
-    installer = "luarocks",
-    mason_package = "luacheck",
-  },
-  {
-    installer = "npm",
-    linter = "jsonlint",
-  },
-  {
-    installer = "npm",
-    linter = "markdownlint",
-  },
-  {
-    installer = "npm",
-    lsp_server = "bashls",
-    lsp_executable = "bash-language-server",
-    mason_package = { "bash-debug-adapter", "bash-language-server" },
-  },
-  {
-    linter = "eslint",
-  },
-  {
-    linter = "jsonlint",
-  },
-  {
-    linter = "markdownlint",
-    mason_package = "marksman",
-    parser = "markdown",
-  },
-  {
+    filetype = "sh",
     linter = "shellcheck",
     mason_package = "shellcheck",
     parser = "bash",
   },
   {
-    mason_package = "lua-language-server",
-    parser = "lua",
+    lsp_server = "bashls",
+    lsp_executable = "bash-language-server",
+    mason_installer = "npm",
+    mason_package = { "bash-debug-adapter", "bash-language-server" },
   },
   {
-    parser = "awk",
+    mason_package = "lua-language-server",
+    parser = "lua",
   },
   {
     parser = "css",
