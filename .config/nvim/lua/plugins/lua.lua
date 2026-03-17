@@ -1,27 +1,4 @@
-local paths = require("johntobin.paths")
-
 return {
-  {
-    "mfussenegger/nvim-lint",
-    cond = paths.installer_is_available_function("luacheck")(),
-    opts = function(_, opts)
-      local lint = require("lint")
-      lint.linters.luacheck.args = {
-        "--globals",
-        "vim",
-        "--std",
-        "+lua51",
-        "--std",
-        -- Might not be needed, based on `luacheck --help`?
-        "+busted",
-        table.unpack(lint.linters.luacheck.args),
-      }
-      opts.linters_by_ft = opts.linters_by_ft or {}
-      opts.linters_by_ft["lua"] = { "luacheck" }
-      return opts
-    end
-  },
-
   {
     "neovim/nvim-lspconfig",
     dependencies = {
