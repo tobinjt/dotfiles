@@ -110,14 +110,17 @@ M.tools = {
   -- keep-sorted end
 }
 
---- Normalizes a table value into a list
---- @param tbl table: The table to search in
---- @param key string: The key to look up
+--- Normalizes a table value into a list.
+--- @param tbl table: The table to search in.
+--- @param key string: The key to look up.
+--- @param default? table: The default to return if the key isn't found or is
+--- nil.
 --- @return table: A list of values (empty, single-item, or the original table)
-M.get_as_list = function(tbl, key)
+M.get_as_list = function(tbl, key, default)
+  default = default or {}
   local val = tbl[key]
   if val == nil then
-    return {}
+    return default
   end
   if type(val) == "table" then
     return val
@@ -125,8 +128,8 @@ M.get_as_list = function(tbl, key)
   if type(val) == "string" then
     return { val }
   end
-  -- Returns empty if the key exists but is an unexpected type
-  return {}
+  -- Returns default if the key exists but is an unexpected type.
+  return default
 end
 
 --- Returns true if a program isn't specified or it's specified and executable.
@@ -144,28 +147,34 @@ end
 M.make_linters_by_ft = function()
   local linters = {}
   for _, tool_config in ipairs(M.tools) do
-    if tool_config.linter ~= nil and tool_config.filetype == nil then
-      vim.notify("Linter is " .. tool_config.linter .. " but filetype is nil",
-        vim.log.levels.WARN)
+    if tool_config.filetype == nil then
+      if tool_config.linter ~= nil then
+        vim.notify("Linter is " .. tool_config.linter .. " but filetype is nil",
+          vim.log.levels.WARN)
+      end
+      goto continue
     end
 
-    if tool_config.filetype ~= nil then
-      if linters[tool_config.filetype] == nil then
-        linters[tool_config.filetype] = {}
-      end
-      if M.check_executable(tool_config.compiler) then
-        local linter_names = M.get_as_list(tool_config, 'linter')
-        local linter_executables = M.get_as_list(tool_config, 'linter_executable')
-        if #linter_executables == 0 then
-          linter_executables = linter_names
-        end
-        for i, linter in ipairs(linter_names) do
-          if vim.fn.executable(linter_executables[i]) == 1 then
-            table.insert(linters[tool_config.filetype], linter)
-          end
-        end
+    if linters[tool_config.filetype] == nil then
+      linters[tool_config.filetype] = {}
+    end
+    if not M.check_executable(tool_config.compiler) then
+      goto continue
+    end
+
+    local linter_names = M.get_as_list(tool_config, 'linter')
+    local linter_executables = M.get_as_list(
+      tool_config,
+      'linter_executable',
+      linter_names
+    )
+    for i, linter in ipairs(linter_names) do
+      if vim.fn.executable(linter_executables[i]) == 1 then
+        table.insert(linters[tool_config.filetype], linter)
       end
     end
+
+    ::continue::
   end
 
   for key, value in pairs(linters) do
@@ -184,10 +193,11 @@ M.make_lsp_enabled_servers = function()
   local enabled_servers = {}
   for _, tool_config in ipairs(M.tools) do
     local lsp_servers = M.get_as_list(tool_config, 'lsp_server')
-    local lsp_executables = M.get_as_list(tool_config, 'lsp_executable')
-    if #lsp_executables == 0 then
-      lsp_executables = lsp_servers
-    end
+    local lsp_executables = M.get_as_list(
+      tool_config,
+      'lsp_executable',
+      lsp_servers
+    )
     for i, lsp_server in ipairs(lsp_servers) do
       local lsp_executable = lsp_executables[i]
       if vim.fn.executable(lsp_executable) == 1 then
@@ -226,18 +236,16 @@ end
 M.make_treesitter_parsers_to_install = function()
   local parsers = {}
   for _, tool_config in ipairs(M.tools) do
-    local install = true
     if tool_config.parser == nil then
-      install = false
+      goto continue
     end
-    if install and tool_config.compiler ~= nil then
-      if vim.fn.executable(tool_config.compiler) == 0 then
-        install = false
-      end
+    if tool_config.compiler ~= nil and
+        vim.fn.executable(tool_config.compiler) == 0 then
+      goto continue
     end
-    if install then
-      table.insert(parsers, tool_config.parser)
-    end
+    table.insert(parsers, tool_config.parser)
+
+    ::continue::
   end
 
   table.sort(parsers)
