@@ -58,7 +58,6 @@ return {
               true,
               client.id,
               args.buf,
-              -- Enable LSP completion autotrigger on specific characters.
               { autotrigger = false })
             vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
           end

@@ -20,7 +20,6 @@ return {
         "python",
       },
       -- <A-A> is Option-A, <A-a> is Option-a.
-      -- TODO: should I change the keymappings?
       keymap = {
         -- accept whole completion
         accept = "<A-A>",

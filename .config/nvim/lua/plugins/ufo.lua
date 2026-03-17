@@ -36,7 +36,6 @@ return {
   opts = {
     provider_selector = function(_, _, _)
       return { 'lsp', 'indent' }
-      -- return { 'treesitter', 'indent' }
     end
   }
 }

@@ -9,10 +9,7 @@ return {
     -- treesitter.config.setup(opts).
     -- https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation#lazynvim
     -- documents all this.
-
     main = "nvim-treesitter.configs",
-    -- Rebuild parsers when the plugin is updated.
-    build = ':TSUpdate',
 
     opts = {
       -- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
