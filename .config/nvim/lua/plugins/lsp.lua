@@ -13,6 +13,10 @@ return {
     dependencies = {
       "folke/neoconf.nvim",
       "mason-lspconfig.nvim",
+      -- Definitions for busted functions so LuaLS recognises them.  Doesn't add
+      -- anything to Neovim.  Will be added to runtimepath, but shouldn't cause
+      -- any issues.
+      "LuaCATS/busted",
     },
 
     -- The servers to enable are collected in opts.enabled_servers with the

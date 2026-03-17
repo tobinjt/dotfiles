@@ -83,6 +83,47 @@ M.tools = {
     mason_package = { "bash-debug-adapter", "bash-language-server" },
   },
   {
+    lsp_server = "lua_ls",
+    lsp_executable = "lua-language-server",
+    lsp_options = {
+      root_markers = {
+        -- This is copied from nvim-lspconfig/lsp/lua_ls.lua and extended with
+        -- .exercism so that when working on Exercism exercises I only load the
+        -- current exercise not the entire set. I would prefer to load the base
+        -- list from nvim-lspconfig, but that means either I require that module
+        -- which will break bootstrapping, or I make this opts a function and
+        -- multiple opts functions can be tricky to manage.
+        --
+        -- keep-sorted start
+        ".exercism",
+        ".luacheckrc",
+        ".luarc.json",
+        ".luarc.jsonc",
+        ".stylua.toml",
+        "selene.toml",
+        "selene.yml",
+        "stylua.toml",
+        -- keep-sorted end
+        -- Keep .git to the end because the others are more specific.
+        ".git",
+      },
+      settings = {
+        Lua = {
+          diagnostics = {
+            -- Get the language server to recognize the `vim` global.
+            globals = {
+              "vim",
+            },
+          },
+          workspace = {
+            library = vim.fn.split(vim.fn.glob("~/.local/share/nvim/lazy/*/lua"), "\n"),
+            userThirdParty = {
+              vim.fn.expand("~/.local/share/nvim/lazy/busted"),
+            },
+          },
+        },
+      },
+    },
     mason_package = "lua-language-server",
     parser = "lua",
   },
@@ -204,6 +245,7 @@ M.make_lsp_enabled_servers = function()
         enabled_servers[lsp_server] = {
           name = lsp_server,
           executable = lsp_executable,
+          server_opts = tool_config.lsp_options,
         }
       end
     end
