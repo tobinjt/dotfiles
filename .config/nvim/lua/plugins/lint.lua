@@ -1,35 +1,4 @@
-local make_linters_by_ft = function()
-  local potential_linters = {
-    -- keep-sorted start
-    awk = { "awk" },
-    go = { "golangcilint" },
-    javascript = { "eslint" },
-    json = { "jsonlint" },
-    lua = { "luacheck" },
-    markdown = { "markdownlint" },
-    php = { "phpstan" },
-    python = { "ruff" },
-    rust = { "clippy" },
-    sh = { "shellcheck" },
-    -- keep-sorted end
-  }
-
-  local linters = {}
-  for ft, linter_list in pairs(potential_linters) do
-    local enabled = {}
-    for _, linter in ipairs(linter_list) do
-      if vim.fn.executable(linter) == 1 then
-        table.insert(enabled, linter)
-      end
-    end
-    if #enabled > 0 then
-      linters[ft] = enabled
-    else
-      linters[ft] = { "no_op" }
-    end
-  end
-  return linters
-end
+local tools = require("johntobin.tools")
 
 return {
   {
@@ -63,7 +32,7 @@ return {
     end,
 
     opts = {
-      linters_by_ft = make_linters_by_ft(),
+      linters_by_ft = tools.make_linters_by_ft(),
     }
   }
 }

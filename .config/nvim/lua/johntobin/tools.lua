@@ -140,6 +140,45 @@ M.check_executable = function(program)
   return vim.fn.executable(program) == 1
 end
 
+--- Returns a table of installed linters by filetype.
+M.make_linters_by_ft = function()
+  local linters = {}
+  for _, tool_config in ipairs(M.tools) do
+    if tool_config.linter ~= nil and tool_config.filetype == nil then
+      vim.notify("Linter is " .. tool_config.linter .. " but filetype is nil",
+        vim.log.levels.WARN)
+    end
+
+    if tool_config.filetype ~= nil then
+      if linters[tool_config.filetype] == nil then
+        linters[tool_config.filetype] = {}
+      end
+      if M.check_executable(tool_config.compiler) then
+        local linter_names = M.get_as_list(tool_config, 'linter')
+        local linter_executables = M.get_as_list(tool_config, 'linter_executable')
+        if #linter_executables == 0 then
+          linter_executables = linter_names
+        end
+        for i, linter in ipairs(linter_names) do
+          if vim.fn.executable(linter_executables[i]) == 1 then
+            table.insert(linters[tool_config.filetype], linter)
+          end
+        end
+      end
+    end
+  end
+
+  for key, value in pairs(linters) do
+    if #value == 0 then
+      -- This is a custom linter I defined in lint.lua.
+      linters[key] = { "no_op" }
+    end
+  end
+
+  table.sort(linters)
+  return linters
+end
+
 --- Returns a list of LSP servers whose executables are installed.
 M.make_lsp_enabled_servers = function()
   local enabled_servers = {}
@@ -164,12 +203,12 @@ M.make_lsp_enabled_servers = function()
   return enabled_servers
 end
 
---- Returns a list of Mason packages with installers available.
+--- Returns a list of Mason packages with mason_installers available.
 M.make_mason_package_install_list = function()
   local packages_to_install = {}
   for _, tool_config in ipairs(M.tools) do
     if M.check_executable(tool_config.compiler)
-        and M.check_executable(tool_config.installer)
+        and M.check_executable(tool_config.mason_installer)
         -- TODO: remove when the imac is decomissioned.
         and paths.not_exists_function("/usr/local/Cellar")
     then
