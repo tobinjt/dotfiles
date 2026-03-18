@@ -35,6 +35,10 @@ return {
         vim.lsp.enable(server)
       end
 
+      -- Disable LSP servers I don't want in work. This is easier than
+      -- overriding make_lsp_enabled_servers().
+      vim.lsp.enable(opts.disabled_servers, false)
+
       -- Configure how diagnostics are displayed.
       vim.diagnostic.config(
         {
@@ -88,6 +92,8 @@ return {
 
     opts = {
       enabled_servers = tools.make_lsp_enabled_servers(),
+      -- A way to disble servers in work.
+      disabled_servers = {},
     }
   },
 }
