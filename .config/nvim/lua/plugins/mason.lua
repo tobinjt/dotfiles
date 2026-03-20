@@ -5,6 +5,7 @@
 -- - configure LSP servers.
 -- I have configured dependencies in lsp.lua to do this.
 
+local paths = require("johntobin.paths")
 local tools = require("johntobin.tools")
 
 return {
@@ -31,7 +32,9 @@ return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     -- Don't install tooling for other users.
-    cond = vim.fn.getenv("USER") == "johntobin",
+    cond = vim.fn.getenv("USER") == "johntobin"
+        -- TODO: remove when the imac is decomissioned.
+        and not paths.exists("/usr/local/Cellar"),
     dependencies = {
       "mason.nvim",
       -- Configured in lsp.lua.
