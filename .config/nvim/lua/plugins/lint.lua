@@ -12,6 +12,7 @@ return {
         lint.linters_by_ft,
         opts.linters_by_ft)
 
+      -- When modifying this remember to modify .pre-commit-config.yaml too.
       lint.linters.luacheck.args = {
         "--globals",
         "vim",

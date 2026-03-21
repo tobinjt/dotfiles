@@ -25,7 +25,9 @@ repos:
         name: Run `luacheck` if it's installed
         language: system
         types: [lua]
-        entry: run-if-exists luacheck --globals vim table.unpack --codes --ranges
+        # Ideally this would use the same args as
+        # .config/nvim/lua/plugins/lint.lua does.
+        entry: run-if-exists luacheck --globals vim table.unpack --std +lua51 --std +busted --codes --ranges
       - id: markdownlint
         name: Run `markdownlint` if it's installed
         language: system
@@ -42,6 +44,11 @@ repos:
         files: .config/nvim/spell/en.utf-8.add
         pass_filenames: false
         entry: sort -o .config/nvim/spell/en.utf-8.add .config/nvim/spell/en.utf-8.add
+      - id: tools-test
+        name: Run tests for tools.lua
+        language: system
+        entry: ./.config/nvim/lua/johntobin/tools_test.sh
+        files: .config/nvim/lua/johntobin/tools*
       # keep-sorted end
   - repo: meta
     hooks:
