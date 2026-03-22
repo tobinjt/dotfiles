@@ -39,6 +39,7 @@ robosheep
 rsync
 src
 stdin
+stdout
 struct
 submodule
 submodules
