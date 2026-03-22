@@ -37,3 +37,9 @@ priority = 100
 toolName = "replace"
 decision = "allow"
 priority = 100
+
+[[rule]]
+decision = "allow"
+priority = 950
+toolName = "run_shell_command"
+commandPrefix = [ "ls" ]
