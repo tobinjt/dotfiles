@@ -135,9 +135,6 @@ M.tools = {
     parser = "html",
   },
   {
-    parser = "luadoc",
-  },
-  {
     parser = "markdown_inline",
   },
   {
