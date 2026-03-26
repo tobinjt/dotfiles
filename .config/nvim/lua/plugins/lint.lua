@@ -12,6 +12,20 @@ return {
         lint.linters_by_ft,
         opts.linters_by_ft)
 
+      -- Remove disabled linters.
+      for ft, disabled in pairs(opts.disabled_linters_by_ft) do
+        lint.linters_by_ft[ft] = vim.tbl_filter(function(linter)
+          return not vim.tbl_contains(disabled, linter)
+        end, lint.linters_by_ft[ft])
+      end
+
+      -- Ensure that no_op is used for filetypes that don't have any linters.
+      for ft, linters in pairs(lint.linters_by_ft) do
+        if #linters == 0 then
+          lint.linters_by_ft[ft] = { "no_op" }
+        end
+      end
+
       -- When modifying this remember to modify .pre-commit-config.yaml too.
       lint.linters.luacheck.args = {
         "--globals",
@@ -45,6 +59,7 @@ return {
 
     opts = {
       linters_by_ft = tools.make_linters_by_ft(),
+      disabled_linters_by_ft = {},
     }
   }
 }

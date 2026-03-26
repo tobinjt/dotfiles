@@ -103,9 +103,9 @@ describe("johntobin.tools", function()
     it("returns correct linters based on executables", function()
       local linters = tools.make_linters_by_ft()
       assert.are.same({
-        custom = { "no_op" },
+        custom = {},
         go = { "golangcilint" },
-        python = { "no_op" }
+        python = {}
       }, linters)
     end)
   end)

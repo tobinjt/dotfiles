@@ -213,13 +213,6 @@ M.make_linters_by_ft = function()
     ::continue::
   end
 
-  for key, value in pairs(linters) do
-    if #value == 0 then
-      -- This is a custom linter I defined in lint.lua.
-      linters[key] = { "no_op" }
-    end
-  end
-
   table.sort(linters)
   return linters
 end
