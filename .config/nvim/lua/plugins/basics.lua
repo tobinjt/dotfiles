@@ -1,3 +1,5 @@
+local tools = require("johntobin.tools")
+
 -- Signify: disable VCS systems I don't use.
 vim.g.signify_skip = {
   vcs = {
@@ -41,6 +43,20 @@ return {
     -- Fancy icons.  Needs a font supporting those icons, typically nerdfont.
     "nvim-tree/nvim-web-devicons",
     opts = {},
+  },
+  {
+    -- Syntax highlighting and more.
+    "nvim-treesitter/nvim-treesitter",
+    main = "nvim-treesitter.configs",
+    opts = {
+      ensure_installed = tools.make_treesitter_parsers_to_install(),
+      highlight = {
+        enable = true,
+      },
+      indent = {
+        enable = true,
+      },
+    },
   },
   {
     -- Draws lines to indicate where indented blocks begin and end.
