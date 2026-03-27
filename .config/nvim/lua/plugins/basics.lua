@@ -39,14 +39,6 @@ return {
     opts = {},
   },
   {
-    -- Finding various things, I need to experiment.
-    "nvim-telescope/telescope.nvim",
-    version = '*',
-    dependencies = {
-      'nvim-lua/plenary.nvim'
-    },
-  },
-  {
     -- Fancy icons.  Needs a font supporting those icons, typically nerdfont.
     "nvim-tree/nvim-web-devicons",
     opts = {},
