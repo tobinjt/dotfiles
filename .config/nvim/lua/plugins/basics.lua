@@ -41,7 +41,7 @@ return {
   {
     -- Finding various things, I need to experiment.
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
+    version = '*',
     dependencies = {
       'nvim-lua/plenary.nvim'
     },
