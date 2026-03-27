@@ -1,5 +1,4 @@
--- Signify.
--- Disable VCS systems I don't use.
+-- Signify: disable VCS systems I don't use.
 vim.g.signify_skip = {
   vcs = {
     allow = {
@@ -62,6 +61,7 @@ return {
     },
   },
   {
+    -- A code outline window for skimming and quick navigation.
     "stevearc/aerial.nvim",
     config = true,
     cmd = {
@@ -78,6 +78,8 @@ return {
     "wsdjeg/vim-fetch",
   },
   {
+    -- Splitting/joining blocks of code like arrays, hashes, statements,
+    -- objects, dictionaries, etc.
     'Wansmer/treesj',
     config = true,
     keys = {

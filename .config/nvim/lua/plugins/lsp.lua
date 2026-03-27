@@ -1,4 +1,3 @@
--- Note: some plugin configs also contain LSP config, e.g. lua.lua.
 -- Note: until an LSP request is made, :LspInfo will show "no active clients".
 -- Write the file to trigger autoformatting and attachment.
 -- It sometimes takes 10+ seconds for the client to show up too.
@@ -12,7 +11,7 @@ return {
     cond = vim.fn.has("nvim-0.11") == 1,
     dependencies = {
       "folke/neoconf.nvim",
-      "mason-lspconfig.nvim",
+      "mason-org/mason-lspconfig.nvim",
       -- Definitions for busted functions so LuaLS recognises them.  Doesn't add
       -- anything to Neovim.  Will be added to runtimepath, but shouldn't cause
       -- any issues.
@@ -69,10 +68,9 @@ return {
               { autotrigger = false })
             vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
           end
+
           if client:supports_method("textDocument/signatureHelp") then
             local enable = false
-            -- Rust doesn't have any config, and I don't feel the need to add
-            -- it, so support lack of config gracefully.
             local config = (opts.enabled_servers[client.name] or {})
             local config_opts = config.config_opts or { inlay_hint = true }
             if config_opts.inlay_hint then

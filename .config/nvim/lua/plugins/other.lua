@@ -1,3 +1,5 @@
+-- Open alternative files for the current buffer.
+
 --- Returns the filename without the suffix if it is not a test file.
 --
 -- This function is used to implement custom pattern matchers for the other.nvim

@@ -1,9 +1,4 @@
 -- Automatic installation and configuration of LSP servers, linters, and more.
--- Required setup order from :h mason-lspconfig-quickstart:
--- - mason
--- - mason-lspconfig
--- - configure LSP servers.
--- I have configured dependencies in lsp.lua to do this.
 
 local paths = require("johntobin.paths")
 local tools = require("johntobin.tools")
@@ -26,7 +21,7 @@ return {
       automatic_enable = false,
     },
     dependencies = {
-      "mason.nvim",
+      "mason-org/mason.nvim",
     },
   },
   {
@@ -36,9 +31,9 @@ return {
         -- TODO: remove when the imac is decomissioned.
         and not paths.exists("/usr/local/Cellar"),
     dependencies = {
-      "mason.nvim",
+      "mason-org/mason.nvim",
       -- Configured in lsp.lua.
-      "mason-lspconfig.nvim",
+      "mason-org/mason-lspconfig.nvim",
       -- Configured in debugging.lua.
       "jay-babu/mason-nvim-dap.nvim",
     },

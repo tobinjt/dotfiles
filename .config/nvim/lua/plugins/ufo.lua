@@ -1,3 +1,5 @@
+-- Make folding more predictable, in particular stop folds closing unexpectedly.
+
 -- Fold options are required for ufo to work
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
