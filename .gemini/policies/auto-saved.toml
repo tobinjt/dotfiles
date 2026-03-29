@@ -19,7 +19,7 @@ commandPrefix = [
 toolName = "run_shell_command"
 decision = "allow"
 priority = 950
-commandPrefix = ["ls"]
+commandPrefix = ["cargo", "ls"]
 
 [[rule]]
 toolName = "write_file"
