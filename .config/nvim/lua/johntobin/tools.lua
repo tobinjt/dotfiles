@@ -38,7 +38,7 @@ M.tools = {
     filetype = "markdown",
     linter = "markdownlint",
     mason_installer = "npm",
-    mason_package = "marksman",
+    mason_package = "markdownlint",
     parser = "markdown",
   },
   {
