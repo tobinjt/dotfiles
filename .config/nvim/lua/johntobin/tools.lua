@@ -108,9 +108,19 @@ M.tools = {
       settings = {
         Lua = {
           diagnostics = {
-            -- Get the language server to recognize the `vim` global.
+            -- Get the language server to recognize the `vim` global and busted
+            -- functions.
             globals = {
+              -- keep-sorted start
+              "after_each",
+              "before_each",
+              "describe",
+              "it",
+              "pending",
+              "setup",
+              "teardown",
               "vim",
+              -- keep-sorted end
             },
           },
           workspace = {
