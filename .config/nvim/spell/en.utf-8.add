@@ -43,6 +43,7 @@ stdout
 struct
 submodule
 submodules
+symlink
 timestamp
 vimrc
 virtualenv
