@@ -36,8 +36,13 @@ return {
   },
 
   opts = {
-    provider_selector = function(_, _, _)
-      return { 'lsp', 'indent' }
+    -- https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
+    -- Use treesitter for Markdown, LSP for everything else.
+    provider_selector = function(_, filetype, _)
+      if filetype == 'markdown' then
+        return { 'treesitter', 'indent', }
+      end
+      return { 'lsp', 'indent', }
     end
   }
 }
