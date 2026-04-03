@@ -13,6 +13,7 @@
   unpushed-commits-diffs = diff @{u}..
 [push]
   default = current
+  followTags = true
 [diff]
   colorMoved = true
   colorMovedWS = allow-indentation-change
