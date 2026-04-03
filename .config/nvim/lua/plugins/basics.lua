@@ -88,6 +88,7 @@ return {
   {
     -- Set the name of the tmux pane to the filename I'm editing.
     "tobinjt/TmuxSetWindowName.vim",
+    opts = {},
   },
   {
     -- Makes filename:line-number[:column] work.
