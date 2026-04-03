@@ -145,6 +145,9 @@ M.tools = {
     parser = "html",
   },
   {
+    parser = "jjdescription",
+  },
+  {
     parser = "markdown_inline",
   },
   {
