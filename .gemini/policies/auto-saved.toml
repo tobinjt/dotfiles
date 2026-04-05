@@ -13,7 +13,15 @@ commandPrefix = [ "black", "grep", "mkdir", "mypy", "pytest" ]
 toolName = "run_shell_command"
 decision = "allow"
 priority = 950
-commandPrefix = [ "basedpyright", "cargo", "cat", "ls", "pytest", "ruff" ]
+commandPrefix = [
+  "basedpyright",
+  "cargo",
+  "cat",
+  "env",
+  "ls",
+  "pytest",
+  "ruff",
+]
 
 [[rule]]
 toolName = "write_file"

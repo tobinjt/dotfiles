@@ -12,6 +12,11 @@ repos:
   - repo: local
     hooks:
       # keep-sorted start
+      - id: cleanup_gemini_policies
+        name: Clean up Gemini policies before checking in
+        language: system
+        files: .gemini/policies/auto-saved.toml
+        entry: cleanup_gemini_policies
       - id: keep-sorted
         name: Run `keep-sorted`
         language: system
