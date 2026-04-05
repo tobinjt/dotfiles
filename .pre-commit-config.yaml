@@ -28,11 +28,6 @@ repos:
         # Ideally this would use the same args as
         # .config/nvim/lua/plugins/lint.lua does.
         entry: run-if-exists luacheck --globals vim table.unpack --std +lua51 --std +busted --codes --ranges
-      - id: markdownlint
-        name: Run `markdownlint` if it's installed
-        language: system
-        types: [markdown]
-        entry: run-if-exists markdownlint
       - id: shellcheck
         name: Run `shellcheck`
         language: system
