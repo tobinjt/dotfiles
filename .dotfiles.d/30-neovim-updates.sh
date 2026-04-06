@@ -14,11 +14,11 @@ main() {
     find "${treesitter_dir}" -type f -mtime +1 -name '*.so' -delete
     post="$(find "${treesitter_dir}" -type f -name '*.so' -print)"
     if [[ "${post}" != "${pre}" ]]; then
-      # TSUpdateSync doesn't block nvim exiting, so sleep for 10 seconds to give
-      # it time to download and install.  10 seconds worked in testing and
-      # didn't feel too long.
+      # TSUpdate doesn't block nvim exiting, so sleep for 10 seconds to give it
+      # time to download and install.  10 seconds worked in testing and didn't
+      # feel too long.
       if type nvim >& /dev/null; then
-        run-nvim-command ":TSUpdateSync" -c "sleep 10"
+        run-nvim-command ":TSUpdate" -c "sleep 10"
       fi
     fi
   fi
