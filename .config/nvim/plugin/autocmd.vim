@@ -15,7 +15,6 @@ autocmd!
   " .coveragerc used by Python coverage is actually an ini file.
   autocmd BufReadPost,BufNewFile .coveragerc setlocal filetype=dosini
   autocmd BufReadPost,BufNewFile authorized_keys* setlocal textwidth=1000
-  autocmd BufReadPost,BufNewFile ~/bin/python/*.template setlocal filetype=yaml
   " On BSD systems, the original file provided by crontab(1) must be written to,
   " rather than writing a new file and renaming it.
   autocmd FileType crontab setlocal backupcopy=yes textwidth=1000
