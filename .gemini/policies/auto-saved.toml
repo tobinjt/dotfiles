@@ -18,9 +18,16 @@ commandPrefix = [
   "cargo",
   "cat",
   "env",
+  "go test",
+  "go tool cover",
+  "goimports",
+  "golangci-lint",
+  "grep",
   "ls",
+  "pre-commit",
   "pytest",
   "ruff",
+  "touch",
 ]
 
 [[rule]]
