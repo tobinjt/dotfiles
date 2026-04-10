@@ -32,7 +32,7 @@ M.PopulateSH = function()
     "set -e -f -u -o pipefail",
     "",
     "main() {",
-    "    ",
+    "  ",
     "}",
     "",
     "main \"$@\"",
