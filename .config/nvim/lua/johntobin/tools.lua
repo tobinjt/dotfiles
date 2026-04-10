@@ -1,13 +1,34 @@
 local M = {}
 
 M.tools = {
-  -- keep-sorted start block=true by_regex=filetype.*|mason_installer.*|mason_package.*
+  -- keep-sorted start block=true by_regex=".*"
   {
+    -- keep-sorted start block=true
     filetype = "awk",
     linter = "awk",
     parser = "awk",
+    -- keep-sorted end
   },
   {
+    -- keep-sorted start block=true
+    lsp_executable = "bash-language-server",
+    lsp_server = "bashls",
+    mason_installer = "npm",
+    mason_package = { "bash-debug-adapter", "bash-language-server" },
+    -- keep-sorted end
+  },
+  {
+    -- keep-sorted start block=true
+    parser = "css",
+    -- keep-sorted end
+  },
+  {
+    -- keep-sorted start block=true
+    parser = "gitcommit",
+    -- keep-sorted end
+  },
+  {
+    -- keep-sorted start block=true
     compiler = "go",
     filetype = "go",
     linter = { "golangcilint", "staticcheck" },
@@ -16,72 +37,43 @@ M.tools = {
     mason_installer = "go",
     mason_package = { "delve", "golangci-lint", "gopls", "staticcheck" },
     parser = "go",
+    -- keep-sorted end
   },
   {
+    -- keep-sorted start block=true
+    parser = "html",
+    -- keep-sorted end
+  },
+  {
+    -- keep-sorted start block=true
     filetype = "javascript",
     linter = "eslint",
+    -- keep-sorted end
   },
   {
+    -- keep-sorted start block=true
+    parser = "jjdescription",
+    -- keep-sorted end
+  },
+  {
+    -- keep-sorted start block=true
     filetype = "json",
     linter = "jsonlint",
     mason_installer = "npm",
     mason_package = "jsonlint",
+    -- keep-sorted end
   },
   {
+    -- keep-sorted start block=true
     filetype = "lua",
     linter = "luacheck",
     mason_installer = "luarocks",
     mason_package = "luacheck",
     parser = "luadoc",
+    -- keep-sorted end
   },
   {
-    filetype = "markdown",
-    linter = "markdownlint",
-    mason_installer = "npm",
-    mason_package = "markdownlint",
-    parser = "markdown",
-  },
-  {
-    compiler = "php",
-    filetype = "php",
-    linter = "phpstan",
-    lsp_server = "intelephense",
-    mason_installer = "php",
-    mason_package = { "intelephense", "php-debug-adapter", "phpstan", },
-    parser = "php",
-  },
-  {
-    compiler = "python3",
-    filetype = "python",
-    linter = "ruff",
-    lsp_server = { "basedpyright", "ruff" },
-    mason_installer = "python3",
-    mason_package = { "basedpyright", "ruff", },
-    parser = "python",
-  },
-  {
-    compiler = "rustc",
-    filetype = "rust",
-    linter = "clippy",
-    linter_executable = "cargo-clippy",
-    mason_installer = "rustc",
-    mason_package = "codelldb",
-    parser = "rust",
-  },
-  {
-    filetype = "sh",
-    linter = "shellcheck",
-    mason_package = "shellcheck",
-    parser = "bash",
-  },
-  {
-    lsp_server = "bashls",
-    lsp_executable = "bash-language-server",
-    mason_installer = "npm",
-    mason_package = { "bash-debug-adapter", "bash-language-server" },
-  },
-  {
-    lsp_server = "lua_ls",
+    -- keep-sorted start block=true
     lsp_executable = "lua-language-server",
     lsp_options = {
       root_markers = {
@@ -132,29 +124,75 @@ M.tools = {
         },
       },
     },
+    lsp_server = "lua_ls",
     mason_package = "lua-language-server",
     parser = "lua",
+    -- keep-sorted end
   },
   {
-    parser = "css",
+    -- keep-sorted start block=true
+    filetype = "markdown",
+    linter = "markdownlint",
+    mason_installer = "npm",
+    mason_package = "markdownlint",
+    parser = "markdown",
+    -- keep-sorted end
   },
   {
-    parser = "gitcommit",
-  },
-  {
-    parser = "html",
-  },
-  {
-    parser = "jjdescription",
-  },
-  {
+    -- keep-sorted start block=true
     parser = "markdown_inline",
+    -- keep-sorted end
   },
   {
+    -- keep-sorted start block=true
+    compiler = "php",
+    filetype = "php",
+    linter = "phpstan",
+    lsp_server = "intelephense",
+    mason_installer = "php",
+    mason_package = { "intelephense", "php-debug-adapter", "phpstan", },
+    parser = "php",
+    -- keep-sorted end
+  },
+  {
+    -- keep-sorted start block=true
     parser = "printf",
+    -- keep-sorted end
   },
   {
+    -- keep-sorted start block=true
+    compiler = "python3",
+    filetype = "python",
+    linter = "ruff",
+    lsp_server = { "basedpyright", "ruff" },
+    mason_installer = "python3",
+    mason_package = { "basedpyright", "ruff", },
+    parser = "python",
+    -- keep-sorted end
+  },
+  {
+    -- keep-sorted start block=true
     parser = "regex",
+    -- keep-sorted end
+  },
+  {
+    -- keep-sorted start block=true
+    compiler = "rustc",
+    filetype = "rust",
+    linter = "clippy",
+    linter_executable = "cargo-clippy",
+    mason_installer = "rustc",
+    mason_package = "codelldb",
+    parser = "rust",
+    -- keep-sorted end
+  },
+  {
+    -- keep-sorted start block=true
+    filetype = "sh",
+    linter = "shellcheck",
+    mason_package = "shellcheck",
+    parser = "bash",
+    -- keep-sorted end
   },
   -- keep-sorted end
 }
