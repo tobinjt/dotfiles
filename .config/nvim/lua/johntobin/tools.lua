@@ -116,7 +116,10 @@ M.tools = {
             },
           },
           workspace = {
-            library = vim.fn.split(vim.fn.glob("~/.local/share/nvim/lazy/*/lua"), "\n"),
+            library = vim.list_extend(
+              vim.fn.split(vim.fn.glob("~/.local/share/nvim/lazy/*/lua"), "\n"),
+              { vim.env.VIMRUNTIME }
+            ),
             userThirdParty = {
               vim.fn.expand("~/.local/share/nvim/lazy/busted"),
             },
