@@ -194,6 +194,12 @@ M.tools = {
     parser = "bash",
     -- keep-sorted end
   },
+  {
+    -- keep-sorted start block=true
+    filetype = "yaml",
+    linter = "zizmor",
+    -- keep-sorted end
+  },
   -- keep-sorted end
 }
 
