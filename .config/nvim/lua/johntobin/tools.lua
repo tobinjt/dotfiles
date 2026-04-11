@@ -67,13 +67,6 @@ M.tools = {
     -- keep-sorted start block=true
     filetype = "lua",
     linter = "luacheck",
-    mason_installer = "luarocks",
-    mason_package = "luacheck",
-    parser = "luadoc",
-    -- keep-sorted end
-  },
-  {
-    -- keep-sorted start block=true
     lsp_executable = "lua-language-server",
     lsp_options = {
       root_markers = {
@@ -130,6 +123,11 @@ M.tools = {
     lsp_server = "lua_ls",
     mason_package = "lua-language-server",
     parser = "lua",
+    -- keep-sorted end
+  },
+  {
+    -- keep-sorted start block=true
+    parser = "luadoc",
     -- keep-sorted end
   },
   {
