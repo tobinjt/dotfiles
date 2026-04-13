@@ -22,6 +22,10 @@ main() {
       fi
     fi
   fi
+
+  # Update plugins managed by Lazy.
+  run-nvim-command 'Lazy! clean'
+  run-nvim-command 'Lazy! update' > /dev/null
 }
 
 main "$@"
