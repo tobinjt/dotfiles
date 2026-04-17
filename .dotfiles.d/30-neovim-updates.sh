@@ -3,29 +3,13 @@
 set -e -f -u -o pipefail
 
 main() {
-  # Clean out treesitter .so files, otherwise they are never updated.
-  #
-  # Note to self: this should be the last action so that it doesn't cause
-  # problems for other nvim invocations.
-  local treesitter_dir="${HOME}/.local/share/nvim/lazy/nvim-treesitter/parser"
-  if [[ -d "${treesitter_dir}" ]]; then
-    local pre post
-    pre="$(find "${treesitter_dir}" -type f -name '*.so' -print)"
-    find "${treesitter_dir}" -type f -mtime +1 -name '*.so' -delete
-    post="$(find "${treesitter_dir}" -type f -name '*.so' -print)"
-    if [[ "${post}" != "${pre}" ]]; then
-      # TSUpdate doesn't block nvim exiting, so sleep for 10 seconds to give it
-      # time to download and install.  10 seconds worked in testing and didn't
-      # feel too long.
-      if type nvim >& /dev/null; then
-        run-nvim-command ":TSUpdate" -c "sleep 10"
-      fi
-    fi
-  fi
-
   # Update plugins managed by Lazy.
   run-nvim-command 'Lazy! clean'
   run-nvim-command 'Lazy! update' > /dev/null
+  # Install and update Treesitter parsers.
+  run-nvim-command \
+    'lua require("johntobin.functions").InstallAndUpdateTreesitterParsers()' \
+    > /dev/null
 }
 
 main "$@"

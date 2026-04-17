@@ -1,5 +1,3 @@
-local tools = require("johntobin.tools")
-
 -- Signify: disable VCS systems I don't use.
 vim.g.signify_skip = {
   vcs = {
@@ -48,7 +46,6 @@ return {
     -- Syntax highlighting and more.
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = tools.make_treesitter_parsers_to_install(),
       highlight = {
         enable = true,
       },

@@ -112,4 +112,13 @@ M.ToggleInlayHints = function()
     vim.log.levels.INFO)
 end
 
+M.InstallAndUpdateTreesitterParsers = function()
+  local tools = require("johntobin.tools")
+  local treesitter = require("nvim-treesitter")
+
+  local parsers = tools.make_treesitter_parsers_to_install()
+  treesitter.install(parsers, { summary = true }):wait(60 * 1000)
+  treesitter.update(parsers, { summary = true }):wait(60 * 1000)
+end
+
 return M
