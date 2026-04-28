@@ -14,15 +14,21 @@ alias ta='tmux_attach'
 # keep-sorted end
 
 rename-window-while-command-runs() {
-  local window_name="$1"
+  local window_name="$1" orig_window_name combined_window_name
   shift
   if [[ -n "${TMUX_PANE:-}" ]]; then
-    tmux rename-window -t "${TMUX_PANE}" "${window_name}"
+    orig_window_name="$(tmux display-message -t "${TMUX_PANE}" -p "#W")"
+    if [[ -n "${orig_window_name}" ]]; then
+      combined_window_name="${orig_window_name} ${window_name}"
+    else
+      combined_window_name="${window_name}"
+    fi
+    tmux rename-window -t "${TMUX_PANE}" "${combined_window_name}"
   fi
   local exit_status=0
   "$@" || exit_status="$?"
   if [[ -n "${TMUX_PANE:-}" ]]; then
-    tmux rename-window -t "${TMUX_PANE}" ""
+    tmux rename-window -t "${TMUX_PANE}" "${orig_window_name}"
   fi
   return "${exit_status}"
 }
