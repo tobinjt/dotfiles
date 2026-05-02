@@ -31,6 +31,7 @@ onsite
 plugin
 plugins
 presubmit
+probers
 rclone
 readonly
 recurse
