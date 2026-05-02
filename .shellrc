@@ -36,6 +36,8 @@ path_additions=(
   "${HOME}/.local/share/nvim/mason/bin"
   # Manual install of lazygit.
   "${HOME}/tmp/bin/lazygit/bin"
+  # Probers that I moved out of bin.
+  "${HOME}/src/hosting-probers"
   "${HOME}/bin"
 )
 for path_addition in "${path_additions[@]}"; do
