@@ -1,4 +1,10 @@
 [[rule]]
+toolName = "enter_plan_mode"
+decision = "allow"
+priority = 950
+modes = [ "autoEdit", "default", "yolo" ]
+
+[[rule]]
 toolName = "replace"
 decision = "allow"
 priority = 100
