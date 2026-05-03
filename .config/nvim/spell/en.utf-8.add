@@ -43,6 +43,7 @@ src
 stdin
 stdout
 struct
+subdirectory
 submodule
 submodules
 symlink
