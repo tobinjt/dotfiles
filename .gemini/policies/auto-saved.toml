@@ -8,17 +8,20 @@ modes = [ "autoEdit", "default", "yolo" ]
 toolName = "replace"
 decision = "allow"
 priority = 100
+modes = [ "autoEdit", "default", "yolo" ]
 
 [[rule]]
 toolName = "run_shell_command"
 decision = "allow"
 priority = 100
+modes = [ "autoEdit", "default", "yolo" ]
 commandPrefix = [ "black", "grep", "mkdir", "mypy", "pytest" ]
 
 [[rule]]
 toolName = "run_shell_command"
 decision = "allow"
 priority = 950
+modes = [ "autoEdit", "default", "yolo" ]
 commandPrefix = [
   "basedpyright",
   "cargo",
@@ -40,3 +43,4 @@ commandPrefix = [
 toolName = "write_file"
 decision = "allow"
 priority = 100
+modes = [ "autoEdit", "default", "yolo" ]
