@@ -18,9 +18,10 @@
   colorMoved = true
   colorMovedWS = allow-indentation-change
   noprefix = true
+  tool = nvimdiff
 [pull]
   rebase = false
-[diff]
-    tool = nvimdiff
+[difftool]
+	prompt = false
 [difftool "nvimdiff"]
-    cmd = nvim -d "$LOCAL" "$REMOTE"
+  cmd = nvim -d "$LOCAL" "$REMOTE"
