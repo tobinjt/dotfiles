@@ -79,6 +79,10 @@ setopt interactivecomments
 setopt nonotify
 
 ### Configure keybindings; simplified version of ~/.inputrc.
+# Bind ^G to editing the command line.
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^G' edit-command-line
 # This makes space expand stuff so you can see what !$, !:0 etc. are.
 bindkey " " magic-space
 # Mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving.
