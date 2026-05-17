@@ -30,6 +30,7 @@ offsite
 onsite
 plugin
 plugins
+pre
 presubmit
 probers
 rclone
