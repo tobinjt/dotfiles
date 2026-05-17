@@ -40,6 +40,14 @@ commandPrefix = [
 ]
 
 [[rule]]
+toolName = "run_shell_command"
+decision = "allow"
+priority = 950
+modes = [ "autoEdit", "default", "yolo" ]
+allowRedirection = true
+commandPrefix = [ "basedpyright", "black", "mv", "ruff" ]
+
+[[rule]]
 toolName = "write_file"
 decision = "allow"
 priority = 100
