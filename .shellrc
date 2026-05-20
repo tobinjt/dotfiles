@@ -26,6 +26,8 @@ path_additions=(
   "${GOPATH}/bin"
   # Rust.
   "${HOME}/.cargo/bin"
+  # Antigravity, maybe more.
+  "${HOME}/.local/bin"
   # Wezterm.
   "/Applications/WezTerm.app/Contents/MacOS"
   # AppImage of Neovim for Debian which has an older version packaged.
