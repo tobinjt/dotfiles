@@ -33,7 +33,7 @@ rename-window-while-command-runs() {
   return "${exit_status}"
 }
 
-gemini () {
+gemini() {
   local gemini_dir="${HOME}/.gemini"
   if [[ ! -e "${gemini_dir}" ]]; then
     ln -s "${HOME}/src/dotfiles/.gemini" "${gemini_dir}"
@@ -55,7 +55,12 @@ gemini () {
     rename-window-while-command-runs gemini command gemini "$@"
 }
 
-lazygit () {
+agy() {
+  rename-window-while-command-runs agy \
+    command agy "$@"
+}
+
+lazygit() {
   rename-window-while-command-runs lazygit \
     command lazygit --use-config-file "${HOME}/.config/lazygit/config.yml" "$@"
 }
