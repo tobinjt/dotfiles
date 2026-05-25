@@ -1,29 +1,29 @@
 {
-  "security": {
-    "auth": {
-      "selectedType": "gemini-api-key"
-    },
-    "enablePermanentToolApproval": true,
-    "disableYoloMode": true,
-    "folderTrust": {
-      "enabled": true
-    }
-  },
   "general": {
-    "previewFeatures": true,
     "enablePromptCompletion": true,
+    "previewFeatures": true,
     "sessionRetention": {
       "enabled": true,
       "maxAge": "30d",
       "warningAcknowledged": true
     }
   },
-  "ui": {
-    "footer": {
-      "hideContextPercentage": false
+  "security": {
+    "auth": {
+      "selectedType": "gemini-api-key"
+    },
+    "disableYoloMode": true,
+    "enablePermanentToolApproval": true,
+    "folderTrust": {
+      "enabled": true
     }
   },
   "tools": {
     "autoAccept": true
+  },
+  "ui": {
+    "footer": {
+      "hideContextPercentage": false
+    }
   }
 }
