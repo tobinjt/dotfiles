@@ -14,81 +14,12 @@ alias ta='tmux_attach'
 alias vim="use nvim instead!"
 # keep-sorted end
 
-rename-window-while-command-runs() {
-  local window_name="$1" orig_window_name combined_window_name
-  shift
-  if [[ -n "${TMUX_PANE:-}" ]]; then
-    orig_window_name="$(tmux display-message -t "${TMUX_PANE}" -p "#W")"
-    if [[ -n "${orig_window_name}" ]]; then
-      combined_window_name="${orig_window_name} ${window_name}"
-    else
-      combined_window_name="${window_name}"
-    fi
-    tmux rename-window -t "${TMUX_PANE}" "${combined_window_name}"
-  fi
-  local exit_status=0
-  "$@" || exit_status="$?"
-  if [[ -n "${TMUX_PANE:-}" ]]; then
-    tmux rename-window -t "${TMUX_PANE}" "${orig_window_name}"
-  fi
-  return "${exit_status}"
-}
-
-gemini() {
-  local gemini_dir="${HOME}/.gemini"
-  if [[ ! -e "${gemini_dir}" ]]; then
-    ln -s "${HOME}/src/dotfiles/.gemini" "${gemini_dir}"
-  fi
-  if [[ ! -L "${gemini_dir}" ]]; then
-    echo "${HOME}/.gemini must be a symlink" >&2
-    return 1
-  fi
-  local gemini_tmp_dir="${gemini_dir}/tmp"
-  local redirected_tmp_dir="${HOME}/tmp/generated/gemini-tmp"
-  if [[ ! -d "${redirected_tmp_dir}" ]]; then
-    mkdir -p "${redirected_tmp_dir}"
-  fi
-  if [[ ! -L "${gemini_tmp_dir}" ]]; then
-    rm -rf "${gemini_tmp_dir}"
-    ln -s "${redirected_tmp_dir}" "${gemini_tmp_dir}"
-  fi
-  GEMINI_API_KEY="$(< "${HOME}/.config/gemini/api_key")" \
-    rename-window-while-command-runs gemini command gemini "$@"
-}
-
+# keep-sorted start block=yes newline_separated=yes
 agy() {
   rename-window-while-command-runs agy \
     command agy "$@"
 }
 
-lazygit() {
-  rename-window-while-command-runs lazygit \
-    command lazygit --use-config-file "${HOME}/.config/lazygit/config.yml" "$@"
-}
-
-# Function to be run every time my prompt is displayed.
-prompt_command() {
-  exit_status="$?"
-  # Exit status 146/148 happens when you suspend something.
-  case "${exit_status}" in
-    0|146|148)
-      :
-      ;;
-    *)
-      printf "\\033[01;31mExit status: %s\\033[0m\\n" "${exit_status}"
-      ;;
-  esac
-  prompt_command_shell_specific
-  prompt_command_extras
-}
-prompt_command_shell_specific() {
-  true
-}
-prompt_command_extras() {
-  true
-}
-
-# keep-sorted start block=yes newline_separated=yes
 # Load .bcrc to have some helper stuff, but only when running interactively.
 bc() {
   if [ -t 0 ] && [ "$#" -eq 0 ]; then
@@ -133,6 +64,75 @@ diff() {
     # Unquoted so that splitting occurs.
     ${DIFF} "$@"
   fi
+}
+
+gemini() {
+  local gemini_dir="${HOME}/.gemini"
+  if [[ ! -e "${gemini_dir}" ]]; then
+    ln -s "${HOME}/src/dotfiles/.gemini" "${gemini_dir}"
+  fi
+  if [[ ! -L "${gemini_dir}" ]]; then
+    echo "${HOME}/.gemini must be a symlink" >&2
+    return 1
+  fi
+  local gemini_tmp_dir="${gemini_dir}/tmp"
+  local redirected_tmp_dir="${HOME}/tmp/generated/gemini-tmp"
+  if [[ ! -d "${redirected_tmp_dir}" ]]; then
+    mkdir -p "${redirected_tmp_dir}"
+  fi
+  if [[ ! -L "${gemini_tmp_dir}" ]]; then
+    rm -rf "${gemini_tmp_dir}"
+    ln -s "${redirected_tmp_dir}" "${gemini_tmp_dir}"
+  fi
+  GEMINI_API_KEY="$(< "${HOME}/.config/gemini/api_key")" \
+    rename-window-while-command-runs gemini command gemini "$@"
+}
+
+lazygit() {
+  rename-window-while-command-runs lazygit \
+    command lazygit --use-config-file "${HOME}/.config/lazygit/config.yml" "$@"
+}
+
+# Function to be run every time my prompt is displayed.
+prompt_command() {
+  exit_status="$?"
+  # Exit status 146/148 happens when you suspend something.
+  case "${exit_status}" in
+    0|146|148)
+      :
+      ;;
+    *)
+      printf "\\033[01;31mExit status: %s\\033[0m\\n" "${exit_status}"
+      ;;
+  esac
+  prompt_command_shell_specific
+  prompt_command_extras
+}
+prompt_command_shell_specific() {
+  true
+}
+prompt_command_extras() {
+  true
+}
+
+rename-window-while-command-runs() {
+  local window_name="$1" orig_window_name combined_window_name
+  shift
+  if [[ -n "${TMUX_PANE:-}" ]]; then
+    orig_window_name="$(tmux display-message -t "${TMUX_PANE}" -p "#W")"
+    if [[ -n "${orig_window_name}" ]]; then
+      combined_window_name="${orig_window_name} ${window_name}"
+    else
+      combined_window_name="${window_name}"
+    fi
+    tmux rename-window -t "${TMUX_PANE}" "${combined_window_name}"
+  fi
+  local exit_status=0
+  "$@" || exit_status="$?"
+  if [[ -n "${TMUX_PANE:-}" ]]; then
+    tmux rename-window -t "${TMUX_PANE}" "${orig_window_name}"
+  fi
+  return "${exit_status}"
 }
 
 # Wrap rg so that in a dotfiles directory it searches hidden files but skips
