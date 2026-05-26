@@ -11,6 +11,7 @@ alias pip3="PYTHONPYCACHEPREFIX= PYTHONDONTWRITEBYTECODE= pip3"
 alias pip="PYTHONPYCACHEPREFIX= PYTHONDONTWRITEBYTECODE= pip3"
 alias python="python3"
 alias ta='tmux_attach'
+alias vim="use nvim instead!"
 # keep-sorted end
 
 rename-window-while-command-runs() {
