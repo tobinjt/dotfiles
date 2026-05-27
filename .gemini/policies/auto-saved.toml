@@ -36,7 +36,8 @@ commandPrefix = [
   "pre-commit",
   "pytest",
   "ruff",
-  "touch"
+  "touch",
+  "zizmor"
 ]
 
 [[rule]]
