@@ -141,6 +141,20 @@ M.tools = {
   },
   {
     -- keep-sorted start block=true
+    filetype = "markdown",
+    linter = "vale",
+    mason_package = "vale",
+    -- keep-sorted end
+  },
+  {
+    -- keep-sorted start block=true
+    filetype = "markdown",
+    lsp_server = "vale-ls",
+    mason_package = "vale-ls",
+    -- keep-sorted end
+  },
+  {
+    -- keep-sorted start block=true
     parser = "markdown_inline",
     -- keep-sorted end
   },
