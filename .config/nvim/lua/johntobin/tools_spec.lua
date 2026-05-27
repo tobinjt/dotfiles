@@ -155,4 +155,23 @@ describe("johntobin.tools", function()
       assert.are.same({ "go", "lua" }, parsers)
     end)
   end)
+
+  describe("debug", function()
+    it("calls make functions and prints results", function()
+      local print_called = false
+      local old_print = vim.print
+      vim.print = function(results)
+        print_called = true
+        assert.is_table(results)
+        assert.is_table(results.linters_by_ft)
+        assert.is_table(results.lsp_enabled_servers)
+        assert.is_table(results.mason_package_install_list)
+        assert.is_table(results.treesitter_parsers_to_install)
+      end
+
+      tools.debug()
+      vim.print = old_print
+      assert.is_true(print_called)
+    end)
+  end)
 end)

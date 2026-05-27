@@ -338,4 +338,15 @@ M.make_treesitter_parsers_to_install = function()
   return parsers
 end
 
+--- Debugging function that displays the results of each of the `make_*` functions.
+M.debug = function()
+  local results = {
+    linters_by_ft = M.make_linters_by_ft(),
+    lsp_enabled_servers = M.make_lsp_enabled_servers(),
+    mason_package_install_list = M.make_mason_package_install_list(),
+    treesitter_parsers_to_install = M.make_treesitter_parsers_to_install(),
+  }
+  vim.print(results)
+end
+
 return M
