@@ -111,11 +111,14 @@ LC_COLLATE="C"
 # commands because they clear the screen (copied from git).
 LESS="iMdRWFX"
 PAGER="less"
+# Cache compiled crates rather than discarding them.
+RUSTC_WRAPPER="sccache"
 # Don't create or use a shared connection for rsync.
 RSYNC_RSH="ssh -o ControlPath=none"
 # Disable shellcheck warnings about not checking sourced files.
 SHELLCHECK_OPTS="-e SC1090 -e SC1091"
-export DIFF JJ_CONFIG LC_COLLATE LESS PAGER RSYNC_RSH SHELLCHECK_OPTS
+export DIFF JJ_CONFIG LC_COLLATE LESS PAGER RUSTC_WRAPPER RSYNC_RSH
+export SHELLCHECK_OPTS
 
 # sshd is generally not configured to accept COLORTERM, so fake it based on
 # whether TERM contains color.
