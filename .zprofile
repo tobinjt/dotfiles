@@ -4,3 +4,7 @@
 # checks succeed.
 #
 # Run for login shells.
+
+# Pull in my settings again so that they override system settings as necessary,
+# in particular on Mac OS where /etc/zprofile overwrites $PATH.
+. "${HOME}/.shellrc"
