@@ -26,17 +26,6 @@ repos:
     - id: fix-byte-order-marker
     - id: mixed-line-ending
   # managed-by-populate-pre-commit end: hooks.yaml
-  # managed-by-populate-pre-commit start: json.yaml
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
-    hooks:
-    - id: check-json
-      exclude: ^\.vscode/settings\.json$
-    - id: pretty-format-json
-      exclude: ^\.vscode/settings\.json$
-      args:
-      - --autofix
-  # managed-by-populate-pre-commit end: json.yaml
   # managed-by-populate-pre-commit start: keep-sorted.yaml
   - repo: https://github.com/google/keep-sorted
     rev: v0.8.0
@@ -83,11 +72,6 @@ repos:
   - repo: local
     hooks:
       # keep-sorted start
-      - id: cleanup_gemini_policies
-        name: Clean up Gemini policies before checking in
-        language: system
-        files: .gemini/policies/auto-saved.toml
-        entry: cleanup_gemini_policies
       - id: luac
         name: Run `luac` if it's installed
         language: system

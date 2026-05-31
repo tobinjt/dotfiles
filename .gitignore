@@ -1,12 +1,2 @@
 # keep-sorted start
-.antigravitycli/
-.gemini/antigravity*
-.gemini/config/.migrated
-.gemini/config/mcp_config.json
-.gemini/config/projects/
-.gemini/history/
-.gemini/installation_id
-.gemini/mcp-oauth-tokens-v2.json
-.gemini/projects.json
-.gemini/tmp
 # keep-sorted end
