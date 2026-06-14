@@ -16,8 +16,12 @@ alias vim="echo use nvim instead!"
 
 # keep-sorted start block=yes newline_separated=yes
 agy() {
-  rename-window-while-command-runs agy \
+  rename-window-while-command-runs antigravity \
     command agy "$@"
+}
+
+antigravity() {
+  agy "$@"
 }
 
 # Load .bcrc to have some helper stuff, but only when running interactively.
