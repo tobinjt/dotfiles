@@ -117,8 +117,10 @@ RUSTC_WRAPPER="sccache"
 RSYNC_RSH="ssh -o ControlPath=none"
 # Disable shellcheck warnings about not checking sourced files.
 SHELLCHECK_OPTS="-e SC1090 -e SC1091"
+# Find vale config in ~/.config rather than ~/Library/Application Support/vale.
+VALE_CONFIG_PATH="${HOME}/.config/vale/.vale.ini"
 export DIFF JJ_CONFIG LC_COLLATE LESS PAGER RUSTC_WRAPPER RSYNC_RSH
-export SHELLCHECK_OPTS
+export SHELLCHECK_OPTS VALE_CONFIG_PATH
 
 # sshd is generally not configured to accept COLORTERM, so fake it based on
 # whether TERM contains color.
