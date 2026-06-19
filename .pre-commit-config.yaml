@@ -89,7 +89,7 @@ repos:
         language: system
         files: .config/nvim/spell/en.utf-8.add
         pass_filenames: false
-        entry: sort -o .config/nvim/spell/en.utf-8.add .config/nvim/spell/en.utf-8.add
+        entry: sort -u -o .config/nvim/spell/en.utf-8.add .config/nvim/spell/en.utf-8.add
       - id: tools-test
         name: Run tests for tools.lua
         language: system

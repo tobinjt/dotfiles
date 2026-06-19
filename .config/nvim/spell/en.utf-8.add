@@ -15,8 +15,10 @@ SRE
 VCS
 Wordpress
 YAML
+Zsh
 config
 configs
+cron
 dotfiles
 filehandle
 filehandles
@@ -25,6 +27,7 @@ hostname
 johntobin
 linter
 linters
+lockfile
 neovim
 nvim
 offsite
@@ -51,6 +54,7 @@ submodule
 submodules
 symlink
 timestamp
+tmux
 vimrc
 virtualenv
 wp
