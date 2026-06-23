@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Shell-neutral environment variables needed for interactive shells.
+
+## Python.
+MYPY_CACHE_DIR="${HOME}/tmp/generated/mypy_cache"
+PYTHONPYCACHEPREFIX="${HOME}/tmp/generated/__pycache__"
+PYTHONDONTWRITEBYTECODE="No .pyc files please"
+# Set breakpoint() in Python to call pudb; untested.
+PYTHONBREAKPOINT="pudb.set_trace"
+export MYPY_CACHE_DIR PYTHONPYCACHEPREFIX PYTHONDONTWRITEBYTECODE
+export PYTHONBREAKPOINT
+
+## Homebrew.
+# Don't install from source if fetching the bottle fails.
+HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
+export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK
+
+DIFF="git --no-pager diff --no-index"
+# Use separate jj configs for home and work.
+JJ_CONFIG="${HOME}/.config/jj/home.toml"
+# Sort filenames as I expect them to be sorted, regardless of locale.
+LC_COLLATE="C"
+# smart case matching; long prompt; suppress dumb terminal error messages;
+# allow ANSI colour escape sequences; highlight the first new line when
+# moving through the file; exit immediately if the contents can be displayed on
+# a single screen; do not send terminal initialisation and deinitialisation
+# commands because they clear the screen (copied from git).
+LESS="iMdRWFX"
+PAGER="less"
+# Cache compiled crates rather than discarding them.
+RUSTC_WRAPPER="sccache"
+# Don't create or use a shared connection for rsync.
+RSYNC_RSH="ssh -o ControlPath=none"
+# Disable shellcheck warnings about not checking sourced files.
+SHELLCHECK_OPTS="-e SC1090 -e SC1091"
+# Find vale config in ~/.config rather than ~/Library/Application Support/vale.
+VALE_CONFIG_PATH="${HOME}/.config/vale/.vale.ini"
+export DIFF JJ_CONFIG LC_COLLATE LESS PAGER RUSTC_WRAPPER RSYNC_RSH
+export SHELLCHECK_OPTS VALE_CONFIG_PATH
+
+# sshd is generally not configured to accept COLORTERM, so fake it based on
+# whether TERM contains color.
+if [ "${TERM}" != "${TERM//color/}" ] && [ -z "${COLORTERM:-}" ]; then
+  COLORTERM="truecolor"
+  export COLORTERM
+fi
+
+if [ -n "${TMUX:-}" ]; then
+  if [ "${USER}" != "johntobin" ]; then
+    # Put the user in the tmux pane title to warn me it's a different user.
+    tmux rename-window -t "${TMUX_PANE}" "${USER}"
+  fi
+  # Clear the pane_title tmux sets by default, the hostname isn't useful. Gemini
+  # and possibly other tools will set pane_title.
+  printf "\033]2;\003"
+fi
+
+if type mise >& /dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
+# Local interactive stuff
+local_shellrc="${HOME}/.shellrc-local-interactive"
+if [ -f "${local_shellrc}" ]; then
+  . "${local_shellrc}"
+fi
