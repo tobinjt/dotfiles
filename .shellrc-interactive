@@ -56,10 +56,6 @@ if [ -n "${TMUX:-}" ]; then
   printf "\033]2;\003"
 fi
 
-if type mise >& /dev/null; then
-  eval "$(mise activate zsh)"
-fi
-
 # Local interactive stuff
 local_shellrc="${HOME}/.shellrc-local-interactive"
 if [ -f "${local_shellrc}" ]; then
