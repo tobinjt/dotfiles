@@ -39,6 +39,7 @@ plugins
 pre
 presubmit
 probers
+pyrefly
 rclone
 readonly
 recurse
