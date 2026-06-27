@@ -70,11 +70,6 @@ diff() {
   fi
 }
 
-gemini() {
-  GEMINI_API_KEY="$(< "${HOME}/.config/gemini/api_key")" \
-    rename-window-while-command-runs gemini command gemini "$@"
-}
-
 lazygit() {
   rename-window-while-command-runs lazygit \
     command lazygit --use-config-file "${HOME}/.config/lazygit/config.yml" "$@"
