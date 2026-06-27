@@ -124,9 +124,6 @@ PS1="${PS1}${_prompt_nl}What is thy bidding? "
 export PS1
 
 ### Misc config.
-# Set up prompt_command.
-# shellcheck disable=SC2034
-precmd_functions=(prompt_command)
 # Do not add fg to history.  zsh doesn't have a way to completely remove it from
 # history, it will be there immediately afterwards but will disappear after
 # running any other command.

@@ -75,24 +75,6 @@ lazygit() {
     command lazygit --use-config-file "${HOME}/.config/lazygit/config.yml" "$@"
 }
 
-# Function to be run every time my prompt is displayed.
-prompt_command() {
-  exit_status="$?"
-  # Exit status 146/148 happens when you suspend something.
-  case "${exit_status}" in
-    0|146|148)
-      :
-      ;;
-    *)
-      printf "\\033[01;31mExit status: %s\\033[0m\\n" "${exit_status}"
-      ;;
-  esac
-  prompt_command_extras
-}
-prompt_command_extras() {
-  true
-}
-
 rename-window-while-command-runs() {
   tmux_title_push "$1"
   shift

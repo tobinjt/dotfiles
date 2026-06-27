@@ -19,9 +19,6 @@ fi
 # Shell-neutral aliases.
 . "${HOME}/.shell_aliases"
 
-PROMPT_COMMAND=prompt_command
-export PROMPT_COMMAND
-
 # PS1 is overwritten by /etc/bash.bashrc.
 if [ "${USER}" != "johntobin" ]; then
   # Highlight other users in my prompt as a warning.
