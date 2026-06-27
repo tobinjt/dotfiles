@@ -145,6 +145,33 @@ if type atuin >& /dev/null; then
   eval "$(atuin init --disable-up-arrow zsh)"
 fi
 
+# Set tmux window title.
+if [ -n "${TMUX:-}" ]; then
+  # Possibly unnecessary optimisation to avoid running tmux every time I cd.
+  _set_tmux_window_name() {
+    local name="$1"
+    print -Pn "\ek${name}\e\\"
+  }
+
+  # Clear the pane_title tmux sets by default, the hostname isn't useful. Gemini
+  # and possibly other tools will set pane_title.
+  printf "\033]2;\003"
+
+  # Set the window name when starting a new tmux window.
+  set_tmux_window_name_to_current_directory() {
+    if [ "${USER}" != "johntobin" ]; then
+      # Put the user in the tmux pane title to warn me it's a different user.
+      _set_tmux_window_name "${USER} ${PWD:t}"
+    else
+      _set_tmux_window_name "${PWD:t}"
+    fi
+  }
+  autoload -Uz add-zsh-hook
+  add-zsh-hook chpwd set_tmux_window_name_to_current_directory
+  set_tmux_window_name_to_current_directory
+fi
+
+
 ### Local stuff
 local_zsh_rc="${HOME}/.zshrc-local"
 if [[ -f "${local_zsh_rc}" ]]; then
