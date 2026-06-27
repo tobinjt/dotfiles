@@ -102,6 +102,12 @@ scp() {
   command scp -o ControlMaster=no "$@"
 }
 
+ssh() {
+  local window_title
+  window_title="$(extract_ssh ssh "$@")"
+  rename-window-while-command-runs "ssh ${window_title}" command ssh "$@"
+}
+
 top() {
   local -a top_args
   # top on Mac OS X does not sort by CPU by default; fix that.
