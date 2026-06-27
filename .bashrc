@@ -19,10 +19,6 @@ fi
 # Shell-neutral aliases.
 . "${HOME}/.shell_aliases"
 
-prompt_command_shell_specific() {
-  # Write new history lines.
-  history -a
-}
 PROMPT_COMMAND=prompt_command
 export PROMPT_COMMAND
 

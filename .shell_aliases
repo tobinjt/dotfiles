@@ -87,11 +87,7 @@ prompt_command() {
       printf "\\033[01;31mExit status: %s\\033[0m\\n" "${exit_status}"
       ;;
   esac
-  prompt_command_shell_specific
   prompt_command_extras
-}
-prompt_command_shell_specific() {
-  true
 }
 prompt_command_extras() {
   true
