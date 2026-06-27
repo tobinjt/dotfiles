@@ -94,22 +94,11 @@ prompt_command_extras() {
 }
 
 rename-window-while-command-runs() {
-  local window_name="$1" orig_window_name combined_window_name
+  tmux_title_push "$1"
   shift
-  if [[ -n "${TMUX_PANE:-}" ]]; then
-    orig_window_name="$(tmux display-message -t "${TMUX_PANE}" -p "#W")"
-    if [[ -n "${orig_window_name}" ]]; then
-      combined_window_name="${orig_window_name} ${window_name}"
-    else
-      combined_window_name="${window_name}"
-    fi
-    tmux rename-window -t "${TMUX_PANE}" "${combined_window_name}"
-  fi
   local exit_status=0
   "$@" || exit_status="$?"
-  if [[ -n "${TMUX_PANE:-}" ]]; then
-    tmux rename-window -t "${TMUX_PANE}" "${orig_window_name}"
-  fi
+  tmux_title_pop
   return "${exit_status}"
 }
 

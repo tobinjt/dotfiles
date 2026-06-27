@@ -146,31 +146,44 @@ if type atuin >& /dev/null; then
 fi
 
 # Set tmux window title.
-if [ -n "${TMUX:-}" ]; then
-  # Possibly unnecessary optimisation to avoid running tmux every time I cd.
-  _set_tmux_window_name() {
-    local name="$1"
-    print -Pn "\ek${name}\e\\"
-  }
+typeset -g -a tmux_title_stack
 
-  # Clear the pane_title tmux sets by default, the hostname isn't useful. Gemini
-  # and possibly other tools will set pane_title.
-  printf "\033]2;\003"
-
-  # Set the window name when starting a new tmux window.
-  set_tmux_window_name_to_current_directory() {
-    if [ "${USER}" != "johntobin" ]; then
-      # Put the user in the tmux pane title to warn me it's a different user.
-      _set_tmux_window_name "${USER} ${PWD:t}"
-    else
-      _set_tmux_window_name "${PWD:t}"
+# Perform the update, using the current directory as the first component.
+_update_tmux_window_title() {
+    if [[ -z "$TMUX" ]]; then
+      return 0
     fi
-  }
-  autoload -Uz add-zsh-hook
-  add-zsh-hook chpwd set_tmux_window_name_to_current_directory
-  set_tmux_window_name_to_current_directory
+    tmux_title_stack[1]="${PWD:t}"
+    # shellcheck disable=SC2296
+    local full_title="${(j: | :)tmux_title_stack}"
+    tmux rename-window -t "${TMUX_PANE}" "${full_title}"
+}
+
+# Push a new segment onto the stack.
+tmux_title_push() {
+    tmux_title_stack+=("$*")
+    _update_tmux_window_title
+}
+
+# Pop the last segment off the stack.
+tmux_title_pop() {
+    if (( "${#tmux_title_stack}" == 0 )); then
+      return 0
+    fi
+    tmux_title_stack[-1]=()
+    _update_tmux_window_title
+}
+
+if [[ "${USER}" != "johntobin" ]]; then
+  tmux_title_push "${USER}"
 fi
 
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd _update_tmux_window_title
+_update_tmux_window_title
+# Clear the pane_title tmux sets by default, the hostname isn't useful.
+# Some tools will set pane_title.
+printf "\033]2;\003"
 
 ### Local stuff
 local_zsh_rc="${HOME}/.zshrc-local"
