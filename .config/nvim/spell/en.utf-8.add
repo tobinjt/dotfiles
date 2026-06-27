@@ -10,6 +10,7 @@ LSP
 MacOS
 Neovim
 PHPLint
+Reimplement
 SEAI
 SRE
 TrueNAS
@@ -45,6 +46,7 @@ rclone
 readonly
 recurse
 recursing
+reimplement
 restic
 robosheep
 rsync
