@@ -6,3 +6,7 @@ vim.api.nvim_create_user_command('ToggleInlayHints', functions.ToggleInlayHints,
 
 vim.api.nvim_create_user_command('ToolsDebug', tools.debug,
   { desc = "Display results of tool configuration functions" })
+
+vim.api.nvim_create_user_command("AutoSyncToTrueNAS",
+  functions.AutoSyncToTrueNAS,
+  { desc = "Automatically rsync the current file to my TrueNAS server" })

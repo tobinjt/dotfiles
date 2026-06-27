@@ -121,4 +121,35 @@ M.InstallAndUpdateTreesitterParsers = function()
   treesitter.update(parsers, { summary = true }):wait(60 * 1000)
 end
 
+M.AutoSyncToTrueNAS = function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  -- Define a unique augroup so we don't accidentally duplicate handlers
+  local group = vim.api.nvim_create_augroup(
+    "AutoSyncToTrueNAS_" .. bufnr,
+    { clear = true })
+
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    buffer = bufnr, -- Hard-binds this autocmd exclusively to the active buffer
+    group = group,
+    callback = function()
+      local command = {
+        "rsync",
+        "-az",
+        vim.fn.expand("~/src/home-server/server-bin/"),
+        "truenas:server-bin/",
+      }
+      vim.system(command,
+        {
+          on_exit = function(_, code)
+            if code ~= 0 then
+              vim.notify("TrueNAS sync failed", vim.log.levels.ERROR)
+            end
+          end,
+        })
+    end,
+  })
+
+  vim.notify("TrueNAS auto-sync enabled", vim.log.levels.INFO)
+end
+
 return M
