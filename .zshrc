@@ -145,12 +145,17 @@ fi
 # Set tmux window title.
 typeset -g -a tmux_title_stack
 
+# Hook for overriding the directory to display.
+_get_directory_for_tmux_window_title() {
+  echo "${PWD:t}"
+}
+
 # Perform the update, using the current directory as the first component.
 _update_tmux_window_title() {
     if [[ -z "$TMUX" ]]; then
       return 0
     fi
-    tmux_title_stack[1]="${PWD:t}"
+    tmux_title_stack[1]="$(_get_directory_for_tmux_window_title)"
     # shellcheck disable=SC2296
     local full_title="${(j: | :)tmux_title_stack}"
     tmux rename-window -t "${TMUX_PANE}" "${full_title}"
