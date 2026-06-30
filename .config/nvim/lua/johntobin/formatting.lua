@@ -1,4 +1,33 @@
 -- Format comments with internal formatting, use LSP for everything else.
+local function is_cursor_in_comment_treesitter()
+  -- Fetch the standard highlight query for this filetype
+  local query = vim.treesitter.query.get(vim.bo.filetype, "highlights")
+  if not query then
+    vim.notify("vim.treesitter.query.get failed", vim.log.levels.DEBUG)
+    return false
+  end
+  local parser = vim.treesitter.get_parser()
+  if parser == nil then
+    vim.notify("vim.treesitter.get_parser failed", vim.log.levels.DEBUG)
+    return
+  end
+
+  local root = parser:parse()[1]:root()
+  local buf = vim.api.nvim_get_current_buf()
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  -- The row positioning is weird: this *looks* like it's checking two rows, but
+  -- it's not.
+  local row = cursor[1] - 1
+  for id, _ in query:iter_captures(root, buf, row, row + 1) do
+    if query.captures[id]:lower():match("comment") then
+      vim.notify("this is a comment", vim.log.levels.DEBUG)
+      return true
+    end
+  end
+  vim.notify("this is NOT a comment", vim.log.levels.DEBUG)
+  return false
+end
+
 local function smart_comment_format_syntax()
   local line = vim.fn.line('.')
   -- The first character in the line is often not a comment, so check the last
@@ -18,16 +47,9 @@ local function smart_comment_format_syntax()
 end
 
 local function smart_comment_format_treesitter()
-  -- List of node types to treat as comments
-  local comment_types = { "comment", "line_comment", "block_comment" }
-  -- Check if current node or its parent is a comment
-  local cur = vim.treesitter.get_node()
-  while cur do
-    if vim.tbl_contains(comment_types, cur:type()) then
-      -- Return 1 to tell Neovim to use internal formatting.
-      return 1
-    end
-    cur = cur:parent()
+  if is_cursor_in_comment_treesitter() then
+    -- Return 1 to tell Neovim to use internal formatting.
+    return 1
   end
   -- Fall back to LSP formatting
   return vim.lsp.formatexpr()
@@ -40,6 +62,7 @@ local function smart_comment_format()
     return smart_comment_format_syntax()
   end
 end
+
 
 -- Apply this to buffers when LSP attaches
 vim.api.nvim_create_autocmd("LspAttach", {
