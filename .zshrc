@@ -144,6 +144,8 @@ fi
 
 # Set tmux window title.
 typeset -g -a tmux_title_stack
+# This prevents the first item pushed from being overwritten by the directory.
+tmux_title_stack[1]="placeholder for directory"
 
 # Hook for overriding the directory to display.
 _get_directory_for_tmux_window_title() {
