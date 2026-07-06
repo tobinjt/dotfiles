@@ -152,28 +152,28 @@ _get_directory_for_tmux_window_title() {
 
 # Perform the update, using the current directory as the first component.
 _update_tmux_window_title() {
-    if [[ -z "$TMUX" ]]; then
-      return 0
-    fi
-    tmux_title_stack[1]="$(_get_directory_for_tmux_window_title)"
-    # shellcheck disable=SC2296
-    local full_title="${(j: | :)tmux_title_stack}"
-    tmux rename-window -t "${TMUX_PANE}" "${full_title}"
+  if [[ -z "$TMUX" ]]; then
+    return 0
+  fi
+  tmux_title_stack[1]="$(_get_directory_for_tmux_window_title)"
+  # shellcheck disable=SC2296
+  local full_title="${(j: | :)tmux_title_stack}"
+  tmux rename-window -t "${TMUX_PANE}" "${full_title}"
 }
 
 # Push a new segment onto the stack.
 tmux_title_push() {
-    tmux_title_stack+=("$*")
-    _update_tmux_window_title
+  tmux_title_stack+=("$*")
+  _update_tmux_window_title
 }
 
 # Pop the last segment off the stack.
 tmux_title_pop() {
-    if (( "${#tmux_title_stack}" == 0 )); then
-      return 0
-    fi
-    tmux_title_stack[-1]=()
-    _update_tmux_window_title
+  if (( "${#tmux_title_stack}" == 0 )); then
+    return 0
+  fi
+  tmux_title_stack[-1]=()
+  _update_tmux_window_title
 }
 
 if [[ "${USER}" != "johntobin" ]]; then
