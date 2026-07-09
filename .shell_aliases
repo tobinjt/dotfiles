@@ -15,6 +15,13 @@ alias vim="echo use nvim instead!"
 # keep-sorted end
 
 # keep-sorted start block=yes newline_separated=yes
+# The helper function is so that I can wrap ssh differently in work.
+_ssh_set_window_title() {
+  local window_title
+  window_title="$(extract_ssh ssh "$@")"
+  rename-window-while-command-runs "ssh ${window_title}" command ssh "$@"
+}
+
 agy() {
   rename-window-while-command-runs antigravity \
     command agy "$@"
@@ -103,9 +110,7 @@ scp() {
 }
 
 ssh() {
-  local window_title
-  window_title="$(extract_ssh ssh "$@")"
-  rename-window-while-command-runs "ssh ${window_title}" command ssh "$@"
+  _ssh_set_window_title "$@"
 }
 
 top() {
