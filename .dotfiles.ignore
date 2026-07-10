@@ -66,6 +66,7 @@
 .pytest_cache
 # Seems to be where newer versions of SSH put agent files?
 .ssh/agent
+.ssh/control
 .sudo_as_admin_successful
 .vscode
 .zcompcache
