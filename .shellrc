@@ -59,10 +59,10 @@ else
 fi
 export EDITOR GOPATH PATH
 
-# Make a tmp dir if necessary.
-if [ ! -d "${HOME}/tmp" ]; then
-  mkdir -m 0700 "${HOME}/tmp"
-fi
+# Create some necessary directories.
+# shellcheck disable=SC2174
+mkdir -m 0700 -p "${HOME}/tmp" \
+  "${HOME}/.ssh" "${HOME}/.ssh/agent" "${HOME}/.ssh/control"
 
 # Umask is here so that it's set when scp(1)ing.
 umask 022
