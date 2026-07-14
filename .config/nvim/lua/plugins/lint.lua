@@ -49,10 +49,23 @@ return {
 
       -- Wrap the zizmor linter so that it only triggers for specific files.
       local orig_zizmor = lint.linters.zizmor
+      -- Keep an accessible copy for debugging.
+      lint.linters.orig_zizmor = orig_zizmor
       -- Run with stricter checks when linting so I can make improvements.
       -- Some warnings aren't configurable and so pre-commits use a looser set
       -- of checks to not block commits.
       table.insert(orig_zizmor.args, "--persona=auditor")
+      -- Remove "-" so it doesn't try to read from stdin.
+      for i = #orig_zizmor.args, 1, -1 do
+        if orig_zizmor.args[i] == "-" then
+          table.remove(orig_zizmor.args, i)
+        end
+      end
+      -- Reconfigure to use the filename so that zizmor finds configuration in
+      -- zizmor.yml
+      orig_zizmor.stdin = false
+      orig_zizmor.append_fname = true
+
       lint.linters.zizmor = function()
         local fname = vim.api.nvim_buf_get_name(0)
         if fname:match("%.github/workflows/") then
