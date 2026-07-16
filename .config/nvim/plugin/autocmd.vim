@@ -41,7 +41,7 @@ autocmd!
   " wrapping doesn't mangle the blockquote markers.
   autocmd FileType markdown setlocal comments=n:>
   " Automatically wrap text at textwidth.
-  autocmd FileType markdown setlocal formatoptions+=t formatoptions-=l
+  autocmd FileType markdown setlocal formatoptions+=at formatoptions-=cl
   " Overwrite the default of 4 set by markdown syntax highlighting.
   autocmd FileType markdown setlocal shiftwidth=2
   " Automatic indentation is awful, disable it.
