@@ -61,6 +61,7 @@ submodules
 symlink
 timestamp
 tmux
+venv
 vimrc
 virtualenv
 wp
