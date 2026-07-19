@@ -1,10 +1,19 @@
-*.profraw
-*.pyc
+# Golang
+__debug_bin
+
+# MacOS
 .DS_Store
-.cache
+
+# Python
+*.pyc
 .coverage
 .mypy_cache
 .pyre
 .pytest_cache
-__debug_bin
 coverage
+
+# Rust
+*.profraw
+
+# Unknown
+.cache
