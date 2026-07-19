@@ -1,16 +1,10 @@
 *.profraw
 *.pyc
-*.swp
 .DS_Store
 .cache
 .coverage
-.mutmut-cache
 .mypy_cache
-.php_cs.cache
-.phpunit.result.cache
 .pyre
 .pytest_cache
 __debug_bin
-blib
 coverage
-pm_to_blib
