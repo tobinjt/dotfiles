@@ -41,7 +41,7 @@ path_additions=(
   "${HOME}/tmp/bin/tree-sitter"
   # Probers that I moved out of bin.
   "${HOME}/src/hosting-probers"
-  "${HOME}/bin"
+  "${HOME}/src/bin"
 )
 for path_addition in "${path_additions[@]}"; do
   if [ -d "${path_addition}" ]; then
