@@ -78,10 +78,22 @@ diff() {
 }
 
 lazygit() {
-  rename-window-while-command-runs lazygit \
+  rename-directory-while-command-runs lazygit \
     command lazygit --use-config-file "${HOME}/.config/lazygit/config.yml" "$@"
 }
 
+# Renames the directory portion of the tmux window title.
+rename-directory-while-command-runs() {
+  tmux_title_set_directory_portion "$1"
+  tmux_title_update
+  shift
+  local exit_status=0
+  "$@" || exit_status="$?"
+  tmux_title_hook
+  return "${exit_status}"
+}
+
+# Appends to the tmux window title.
 rename-window-while-command-runs() {
   tmux_title_push "$1"
   shift
