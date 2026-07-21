@@ -152,21 +152,29 @@ _get_directory_for_tmux_window_title() {
   echo "${PWD:t}"
 }
 
+tmux_title_set_directory_portion() {
+  tmux_title_stack[1]="$1"
+}
+
 # Perform the update, using the current directory as the first component.
-_update_tmux_window_title() {
+tmux_title_update() {
   if [[ -z "$TMUX" ]]; then
     return 0
   fi
-  tmux_title_stack[1]="$(_get_directory_for_tmux_window_title)"
   # shellcheck disable=SC2296
   local full_title="${(j: | :)tmux_title_stack}"
   tmux rename-window -t "${TMUX_PANE}" "${full_title}"
 }
 
+tmux_title_hook() {
+  tmux_title_set_directory_portion "$(_get_directory_for_tmux_window_title)"
+  tmux_title_update
+}
+
 # Push a new segment onto the stack.
 tmux_title_push() {
   tmux_title_stack+=("$*")
-  _update_tmux_window_title
+  tmux_title_update
 }
 
 # Pop the last segment off the stack.
@@ -175,7 +183,7 @@ tmux_title_pop() {
     return 0
   fi
   tmux_title_stack[-1]=()
-  _update_tmux_window_title
+  tmux_title_update
 }
 
 if [[ "${USER}" != "johntobin" ]]; then
@@ -183,8 +191,8 @@ if [[ "${USER}" != "johntobin" ]]; then
 fi
 
 autoload -Uz add-zsh-hook
-add-zsh-hook chpwd _update_tmux_window_title
-_update_tmux_window_title
+add-zsh-hook chpwd tmux_title_hook
+tmux_title_hook
 # Clear the pane_title tmux sets by default, the hostname isn't useful.
 # Some tools will set pane_title.
 printf "\033]2;\003"
