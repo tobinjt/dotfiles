@@ -152,4 +152,13 @@ M.AutoSyncToTrueNAS = function()
   vim.notify("TrueNAS auto-sync enabled", vim.log.levels.INFO)
 end
 
+-- Map :Qa to :qa.
+M.Qa = function(opts)
+  if opts.bang then
+    vim.cmd('qa!')
+  else
+    vim.cmd('qa')
+  end
+end
+
 return M
