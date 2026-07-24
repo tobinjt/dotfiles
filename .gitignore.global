@@ -15,6 +15,7 @@ coverage.html
 .mypy_cache
 .pyre
 .pytest_cache
+.venv
 coverage
 
 # Rust
