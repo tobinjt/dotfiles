@@ -1,0 +1,18 @@
+# keep-sorted start
+*.crdownload
+.Trash/
+.bundle/
+.cache/
+.cargo/
+.gem/
+.gemini/
+.local/bin/
+.local/share/nvim
+.npm/
+.rustup/
+Applications/
+Library/
+Movies/
+Music/
+tmp/
+# keep-sorted end

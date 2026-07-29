@@ -1,0 +1,66 @@
+# Debugging the config:
+# - resticprofile default.show
+# - resticprofile truenas.show
+# - resticprofile rsync-net.show
+# - resticprofile all.show
+
+# Debugging a command:
+# - resticprofile --dry-run all.backup
+
+# Debugging a backup:
+# - resticprofile all.backup --dry-run
+#   Note: you can append restic flags *but* some aren't passed through; run
+#   resticprofile with --dry-run to check that the restic command actually has
+#   all the flags.
+
+# Backup failed with `Fatal: repository does not exist`? There's a high chance
+# that the hostname reported by MacOS has changed, e.g. from `mac.lan` to
+# `Johns-MacBook-Air-2022.local`. sftp restic-backups-to-truenas, check if the
+# directory exists, and `ln -s old new` if not.
+
+# Backup:
+# - resticprofile all.backup
+
+# Initial setup:
+# - ssh-keygen -t rsa -b 4096 -o -N '' -q \
+#     -f "${HOME}/.ssh/keys/restic-backups-to-truenas" \
+#     -C "restic-backups-to-truenas"
+# - ssh-keygen -t rsa -b 4096 -o -N '' -q \
+#     -f "${HOME}/.ssh/keys/restic-backups-to-rsync-net" \
+#     -C "restic-backups-to-rsync-net"
+# - Add to authorized_keys: command="internal-sftp",restrict,no-port-forwarding,no-x11-forwarding,no-agent-forwarding PUBLIC KEY
+# - ssh config configures the identity file.
+# - resticprofile generate --random-key \
+#     > ${HOME}/.config/backups/restic-password
+# - resticprofile all.init
+
+[default]
+  password-file = "{{ .Env.HOME }}/.config/backups/restic-password"
+
+  [default.backup]
+    source = ["{{ .Env.HOME }}"]
+    exclude-caches = true
+    one-file-system = true
+    # schedule = "hourly"
+    # schedule-after-network-online = true
+    exclude-file = [
+        "{{ .Env.HOME }}/.gitignore.global",
+        "{{ .Env.HOME }}/.config/backups/excludes",
+    ]
+
+  [default.retention]
+    keep-last = 5
+    keep-daily = 7
+    keep-weekly = 4
+    keep-monthly = 12
+
+[truenas]
+inherit = "default"
+repository = "sftp:restic-backups-to-truenas:restic/{{ .Env.USER }}-{{ .Hostname }}"
+
+[rsync-net]
+inherit = "default"
+repository = "sftp:restic-backups-to-rsync-net:restic/${USER}-${HOSTNAME}"
+
+[groups]
+all = ["truenas", "rsync-net"]

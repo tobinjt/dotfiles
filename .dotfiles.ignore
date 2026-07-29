@@ -2,6 +2,7 @@
 
 # Contains secrets that shouldn't be backed up.
 # keep-sorted start
+.config/backups/restic-password
 .config/exercism
 .config/gemini
 .config/rclone
