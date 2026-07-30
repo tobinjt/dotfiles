@@ -125,6 +125,11 @@ ssh() {
   _ssh_set_window_title "$@"
 }
 
+sudo() {
+  rename-directory-while-command-runs sudo \
+    command sudo "$@"
+}
+
 top() {
   local -a top_args
   # top on Mac OS X does not sort by CPU by default; fix that.
