@@ -33,6 +33,10 @@
 # - resticprofile generate --random-key \
 #     > ${HOME}/.config/backups/restic-password
 # - resticprofile all.init
+# - Check what would be transferred:
+#   - Get the restic command by running:
+#     resticprofile --dry-run truenas-hosting.backup
+#   - Add `--dry-run -vv` to the command.
 
 [default]
   password-file = "{{ .Env.HOME }}/.config/backups/restic-password"
@@ -61,6 +65,16 @@ repository = "sftp:restic-backups-to-truenas:restic/{{ .Env.USER }}-{{ .Hostname
 [rsync-net]
 inherit = "default"
 repository = "sftp:restic-backups-to-rsync-net:restic/${USER}-${HOSTNAME}"
+
+[truenas-hosting]
+inherit = "truenas"
+  [truenas-hosting.backup]
+    source = ["{{ .Env.HOME }}", "/var/www/sites"]
+
+[rsync-net-hosting]
+inherit = "rsync-net"
+  [rsync-net-hosting.backup]
+    source = ["{{ .Env.HOME }}", "/var/www/sites"]
 
 [groups]
 all = ["truenas", "rsync-net"]

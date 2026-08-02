@@ -68,6 +68,7 @@
 # Seems to be where newer versions of SSH put agent files?
 .ssh/agent
 .ssh/control
+.ssh/known_hosts.old
 .sudo_as_admin_successful
 .vscode
 .zcompcache
@@ -79,6 +80,7 @@ __pycache__
 # keep-sorted start
 .ssh/authorized_keys
 .ssh/config
+.ssh/keys
 .ssh/known_hosts
 .ssh/rsync-net
 .ssh/rsync-net_restic

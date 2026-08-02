@@ -6,8 +6,10 @@
 .cargo/
 .gem/
 .gemini/
+.git/objects/
 .local/bin/
-.local/share/nvim
+.local/share/nvim/
+.local/share/virtualenv/
 .npm/
 .rustup/
 Applications/
