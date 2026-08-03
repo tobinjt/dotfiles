@@ -2,13 +2,12 @@
 # - resticprofile default.show
 # - resticprofile truenas.show
 # - resticprofile rsync-net.show
-# - resticprofile all.show
 
 # Debugging a command:
-# - resticprofile --dry-run all.backup
+# - resticprofile --dry-run truenas.backup
 
 # Debugging a backup:
-# - resticprofile all.backup --dry-run
+# - resticprofile truenas.backup --dry-run
 #   Note: you can append restic flags *but* some aren't passed through; run
 #   resticprofile with --dry-run to check that the restic command actually has
 #   all the flags.
@@ -19,7 +18,7 @@
 # directory exists, and `ln -s old new` if not.
 
 # Backup:
-# - resticprofile all.backup
+# - resticprofile truenas.backup
 
 # Initial setup:
 # - ssh-keygen -t rsa -b 4096 -o -N '' -q \
@@ -32,7 +31,8 @@
 # - ssh config configures the identity file.
 # - resticprofile generate --random-key \
 #     > ${HOME}/.config/backups/restic-password
-# - resticprofile all.init
+# - resticprofile truenas.init
+# - resticprofile rsync-net.init
 # - Check what would be transferred:
 #   - Get the restic command by running:
 #     resticprofile --dry-run truenas-hosting.backup
@@ -75,6 +75,3 @@ inherit = "truenas"
 inherit = "rsync-net"
   [rsync-net-hosting.backup]
     source = ["{{ .Env.HOME }}", "/var/www/sites"]
-
-[groups]
-all = ["truenas", "rsync-net"]
