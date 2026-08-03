@@ -64,7 +64,7 @@ repository = "sftp:restic-backups-to-truenas:restic/{{ .Env.USER }}-{{ .Hostname
 
 [rsync-net]
 inherit = "default"
-repository = "sftp:restic-backups-to-rsync-net:restic/${USER}-${HOSTNAME}"
+repository = "sftp:restic-backups-to-rsync-net:restic/{{ .Env.USER }}-{{ .Hostname }}"
 
 [truenas-hosting]
 inherit = "truenas"
