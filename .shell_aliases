@@ -138,6 +138,11 @@ top() {
   fi
   TOP="$((${LINES:-24} - 7))" command top "${top_args[@]}" "$@"
 }
+
+update-everything() {
+  rename-directory-while-command-runs update-everything \
+    command update-everything "$@"
+}
 # keep-sorted end
 
 # Local stuff
