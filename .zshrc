@@ -54,6 +54,7 @@ bindkey -e
 # Custom completions.
 # This generates completions based on running `run-everywhere --help`!
 compdef _gnu_generic run-everywhere
+compdef _gnu_generic wrap-command
 
 ### Configuration from reading zshoptions(1).
 # Configure cd.
