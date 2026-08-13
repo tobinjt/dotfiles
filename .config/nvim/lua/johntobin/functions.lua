@@ -161,4 +161,29 @@ M.Qa = function(opts)
   end
 end
 
+-- Helper to check if cursor is in a code block
+M.in_markdown_code_block = function()
+  -- 1. Check legacy/standard Vim syntax groups
+  local line = vim.fn.line('.')
+  local col = vim.fn.col('.')
+  local syn = vim.fn.synIDattr(vim.fn.synID(line, col, 1), "name")
+  if syn:match("[Mm]arkdownCode") then
+    return true
+  end
+
+  -- 2. Check Tree-sitter
+  local get_node = vim.treesitter.get_node
+  if get_node then
+    local node = get_node()
+    while node do
+      local node_type = node:type()
+      if node_type == 'fenced_code_block' or node_type == 'code_block' then
+        return true
+      end
+      node = node:parent()
+    end
+  end
+  return false
+end
+
 return M
