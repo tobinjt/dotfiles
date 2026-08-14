@@ -6,10 +6,8 @@ local config = wezterm.config_builder()
 config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 
 -- Font configuration.
-config.font = wezterm.font_with_fallback({
-  'Inconsolata Nerd Font',
-  'Inconsolata',
-})
+config.font = wezterm.font('Inconsolata')
+config.font = wezterm.font('Inconsolata Nerd Font')
 config.font_size = 14
 
 -- Initial window size, set to the size of my personal laptop.
