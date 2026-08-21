@@ -43,10 +43,9 @@
 
   [default.backup]
     source = ["{{ .Env.HOME }}"]
-    exclude-caches = true
     one-file-system = true
-    # schedule = "hourly"
-    # schedule-after-network-online = true
+    exclude-caches = true
+    exclude-larger-than = "1G"
     exclude-file = [
         "{{ .Env.HOME }}/.gitignore.global",
         "{{ .Env.HOME }}/.config/backups/excludes",
