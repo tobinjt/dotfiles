@@ -66,7 +66,7 @@ M.tools = {
   {
     -- keep-sorted start block=true
     filetype = "lua",
-    linter = "luacheck",
+    -- linter = "luacheck",
     lsp_executable = "lua-language-server",
     lsp_options = {
       root_markers = {
