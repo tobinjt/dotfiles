@@ -5,6 +5,7 @@ autocmd!
 
   " keep-sorted start sticky_prefixes="
 
+  autocmd BufReadPost */jetski-prompt-*.txt setlocal filetype=markdown
   autocmd BufReadPost,BufNewFile *.json setlocal filetype=json
   autocmd BufReadPost,BufNewFile *.tt2 setlocal filetype=tt2
   " Set filetype=sshconfig for all ssh config snippets.
