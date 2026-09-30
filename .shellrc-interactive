@@ -17,10 +17,13 @@ HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK
 
 DIFF="git --no-pager diff --no-index"
+export DIFF
 # Use separate jj configs for home and work.
 JJ_CONFIG="${HOME}/.config/jj/home.toml"
+export JJ_CONFIG
 # Sort filenames as I expect them to be sorted, regardless of locale.
 LC_COLLATE="C"
+export LC_COLLATE
 # smart case matching; long prompt; suppress dumb terminal error messages;
 # allow ANSI colour escape sequences; highlight the first new line when
 # moving through the file; exit immediately if the contents can be displayed on
@@ -28,19 +31,23 @@ LC_COLLATE="C"
 # commands because they clear the screen (copied from git).
 LESS="iMdRWFX"
 PAGER="less"
+export LESS PAGER
 # Required by the `mmdc` tool for checking Mermaid diagrams embedded in Markdown
 # files.
 PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+export PUPPETEER_EXECUTABLE_PATH
 # Cache compiled crates rather than discarding them.
 RUSTC_WRAPPER="sccache"
+export RUSTC_WRAPPER
 # Don't create or use a shared connection for rsync.
 RSYNC_RSH="ssh -o ControlPath=none"
+export RSYNC_RSH
 # Disable shellcheck warnings about not checking sourced files.
 SHELLCHECK_OPTS="-e SC1090 -e SC1091"
+export SHELLCHECK_OPTS
 # Find vale config in ~/.config rather than ~/Library/Application Support/vale.
 VALE_CONFIG_PATH="${HOME}/.config/vale/.vale.ini"
-export DIFF JJ_CONFIG LC_COLLATE LESS PAGER PUPPETEER_EXECUTABLE_PATH
-export RUSTC_WRAPPER RSYNC_RSH SHELLCHECK_OPTS VALE_CONFIG_PATH
+export VALE_CONFIG_PATH
 
 # sshd is generally not configured to accept COLORTERM, so fake it based on
 # whether TERM contains color.
