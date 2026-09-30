@@ -28,6 +28,9 @@ LC_COLLATE="C"
 # commands because they clear the screen (copied from git).
 LESS="iMdRWFX"
 PAGER="less"
+# Required by the `mmdc` tool for checking Mermaid diagrams embedded in Markdown
+# files.
+PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 # Cache compiled crates rather than discarding them.
 RUSTC_WRAPPER="sccache"
 # Don't create or use a shared connection for rsync.
@@ -36,8 +39,8 @@ RSYNC_RSH="ssh -o ControlPath=none"
 SHELLCHECK_OPTS="-e SC1090 -e SC1091"
 # Find vale config in ~/.config rather than ~/Library/Application Support/vale.
 VALE_CONFIG_PATH="${HOME}/.config/vale/.vale.ini"
-export DIFF JJ_CONFIG LC_COLLATE LESS PAGER RUSTC_WRAPPER RSYNC_RSH
-export SHELLCHECK_OPTS VALE_CONFIG_PATH
+export DIFF JJ_CONFIG LC_COLLATE LESS PAGER PUPPETEER_EXECUTABLE_PATH
+export RUSTC_WRAPPER RSYNC_RSH SHELLCHECK_OPTS VALE_CONFIG_PATH
 
 # sshd is generally not configured to accept COLORTERM, so fake it based on
 # whether TERM contains color.
