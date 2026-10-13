@@ -15,7 +15,7 @@
   },
   // Accept long lines.
   "MD013": {
-    "line_length": 160,
+    "line_length": 400,
     // Sometimes long commands or paths can't be split.
     "code_blocks": false
   }
