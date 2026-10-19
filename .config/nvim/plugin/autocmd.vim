@@ -40,7 +40,8 @@ autocmd!
   autocmd FileType markdown let &formatlistpat = g:johntobin_formatlistpat
   " Interpret blockquotes (lines starting with '>') as comments, so that line
   " wrapping doesn't mangle the blockquote markers.
-  autocmd FileType markdown setlocal comments=n:>
+  " Similarly recognise lists are blocks to fix wrapping problems.
+  autocmd FileType markdown setlocal comments=n:>,fb:*,fb:-,fb:+,
   " Automatically wrap text at textwidth.
   autocmd FileType markdown setlocal formatoptions+=at formatoptions-=cl
   " Overwrite the default of 4 set by markdown syntax highlighting.
