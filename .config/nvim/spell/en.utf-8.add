@@ -23,6 +23,8 @@ Zsh
 config
 configs
 cron
+docstring
+docstrings
 dotfiles
 filehandle
 filehandles
@@ -33,6 +35,7 @@ johntobin
 linter
 linters
 lockfile
+namespace
 neovim
 nvim
 offsite
@@ -62,6 +65,7 @@ submodules
 symlink
 timestamp
 tmux
+unittest
 venv
 vimrc
 virtualenv
