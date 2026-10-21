@@ -26,12 +26,34 @@ repos:
     - id: fix-byte-order-marker
     - id: mixed-line-ending
   # managed-by-populate-pre-commit end: hooks.yaml
+  # managed-by-populate-pre-commit start: json.yaml
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+    - id: check-json
+      exclude: ^\.vscode/settings\.json|package-lock\.json$
+    - id: pretty-format-json
+      exclude: ^\.vscode/settings\.json|package-lock\.json$
+      args:
+      - --autofix
+  # managed-by-populate-pre-commit end: json.yaml
   # managed-by-populate-pre-commit start: keep-sorted.yaml
   - repo: https://github.com/google/keep-sorted
     rev: v0.10.0
     hooks:
     - id: keep-sorted
   # managed-by-populate-pre-commit end: keep-sorted.yaml
+  # managed-by-populate-pre-commit start: markdownlint.yaml
+  - repo: local
+    hooks:
+    - id: markdownlint
+      name: Run `markdownlint`
+      language: system
+      types:
+      - markdown
+      exclude: CODE_OF_CONDUCT.md
+      entry: markdownlint
+  # managed-by-populate-pre-commit end: markdownlint.yaml
   # managed-by-populate-pre-commit start: meta.yaml
   - repo: meta
     hooks:
