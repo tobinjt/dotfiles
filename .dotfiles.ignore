@@ -4,7 +4,6 @@
 # keep-sorted start
 .config/backups/restic-password
 .config/exercism
-.config/gemini
 .config/rclone
 # keep-sorted end
 
@@ -41,13 +40,10 @@
 # keep-sorted start
 .Trash
 .Xauthority
-.antigravity
 .bundle
-.cabal
 .cache
 .clasprc.json
 .composer
-.config/Transmission Remote GUI
 .config/composer
 .config/configstore
 .config/go
