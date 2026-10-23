@@ -76,6 +76,10 @@
 .gemini/antigravity-cli/log
 .gemini/antigravity-cli/presence
 .gemini/antigravity-cli/updater
+.gemini/config/.migrated
+.gemini/config/mcp_config.json
+.gemini/config/projects
+.gemini/config/projects/default-cli-project.json
 .lldb
 .local
 .mypy_cache
