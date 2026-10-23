@@ -3,7 +3,6 @@
   "model": "Gemini 4 Argon (High)",
   "permissions": {
     "allow": [
-      "command(keep-sorted start)",
       "command(/opt/homebrew/bin/mmdc)",
       "command(basedpyright)",
       "command(black)",
@@ -17,6 +16,7 @@
       "command(cargo test)",
       "command(cargo-untested-regions)",
       "command(cat)",
+      "command(curl)",
       "command(diff)",
       "command(git diff)",
       "command(git grep)",
@@ -56,8 +56,7 @@
       "read_url(screwfix.com)",
       "read_url(screwfix.ie)",
       "read_url(shop4electrical.co.uk)",
-      "read_url(wesco.ie)",
-      "command(keep-sorted end)"
+      "read_url(wesco.ie)"
     ]
   },
   "trustedWorkspaces": [
