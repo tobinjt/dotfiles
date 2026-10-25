@@ -16,6 +16,7 @@
       "command(cargo test)",
       "command(cargo-untested-regions)",
       "command(cat)",
+      "command(check_urls)",
       "command(curl)",
       "command(diff)",
       "command(git diff)",
