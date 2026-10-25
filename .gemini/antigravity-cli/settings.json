@@ -1,8 +1,11 @@
 {
   "colorScheme": "solarized dark",
-  "model": "Gemini 4 Argon (High)",
+  "model": "Gemini 3.8 Flash (High)",
   "permissions": {
     "allow": [
+      "command(/Users/johntobin/.local/share/nvim/mason/bin/markdownlint)",
+      "command(/Users/johntobin/src/bin/markdown_to_html)",
+      "command(/Users/johntobin/src/bin/python/check_urls.py)",
       "command(/opt/homebrew/bin/mmdc)",
       "command(basedpyright)",
       "command(black)",
@@ -35,6 +38,8 @@
       "command(markdown)",
       "command(markdown_to_html)",
       "command(markdownlint)",
+      "command(mdformat)",
+      "command(mmdc)",
       "command(mypy)",
       "command(pre-commit)",
       "command(pyrefly)",
@@ -64,6 +69,7 @@
     "/Users/johntobin/src/GooglePhotosTakeoutHelper",
     "/Users/johntobin/src/TmuxSetWindowName.vim",
     "/Users/johntobin/src/bin",
+    "/Users/johntobin/src/bin/python",
     "/Users/johntobin/src/dotfiles",
     "/Users/johntobin/src/financial-planning",
     "/Users/johntobin/src/home-server",
