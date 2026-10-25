@@ -80,6 +80,8 @@
 .gemini/config/mcp_config.json
 .gemini/config/projects
 .gemini/config/projects/default-cli-project.json
+.gemini/sandbox
+.gemini/sandbox/profiles
 .lldb
 .local
 .mypy_cache
