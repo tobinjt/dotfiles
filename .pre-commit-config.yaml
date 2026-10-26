@@ -62,7 +62,7 @@ repos:
       language: system
       types:
       - markdown
-      exclude: CODE_OF_CONDUCT.md
+      exclude: ^(CODE_OF_CONDUCT\.md|README\.md)$
       entry: mdformat
   # managed-by-populate-pre-commit end: mdformat.yaml
   # managed-by-populate-pre-commit start: meta.yaml
