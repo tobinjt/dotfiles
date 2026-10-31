@@ -13,3 +13,9 @@
   superseded, or out of stock. If a supplier has retired an item or replaced a
   SKU, locate the active replacement code or provide a verified in-stock trade
   alternative.
+
+## File Inspection Rules
+
+- Do NOT run `sed` to extract or view file contents.
+- For line ranges or partial reads, use `head`, `tail`, or `head | tail`.
+- Prefer built-in file reading tools over terminal commands whenever possible.
