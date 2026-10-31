@@ -111,6 +111,9 @@ bindkey ^U backward-kill-line  # Default kill-whole-line.
 
 ### Pull in aliases from shell-neutral files.
 . "${HOME}/.shell_aliases"
+if [[ -f "${HOME}/.zsh_aliases" ]]; then
+  . "${HOME}/.zsh_aliases"
+fi
 
 ### Set environment variables.
 if [[ "${USER}" != "johntobin" ]]; then
@@ -187,12 +190,31 @@ tmux_title_pop() {
   tmux_title_update
 }
 
+# Clean up any lingering stack entries or directory overrides if a command was aborted.
+tmux_title_precmd() {
+  local expected_size=1
+  if [[ "${USER}" != "johntobin" ]]; then
+    expected_size=2
+  fi
+
+  local current_dir
+  current_dir="$(_get_directory_for_tmux_window_title)"
+  if (( ${#tmux_title_stack} > expected_size )) || [[ "${tmux_title_stack[1]}" != "${current_dir}" ]]; then
+    if (( ${#tmux_title_stack} > expected_size )); then
+      # shellcheck disable=SC2296
+      tmux_title_stack=("${(@)tmux_title_stack[1,expected_size]}")
+    fi
+    tmux_title_hook
+  fi
+}
+
 if [[ "${USER}" != "johntobin" ]]; then
   tmux_title_push "${USER}"
 fi
 
 autoload -Uz add-zsh-hook
 add-zsh-hook chpwd tmux_title_hook
+add-zsh-hook precmd tmux_title_precmd
 tmux_title_hook
 # Clear the pane_title tmux sets by default, the hostname isn't useful.
 # Some tools will set pane_title.

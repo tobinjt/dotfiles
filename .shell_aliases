@@ -82,27 +82,6 @@ lazygit() {
     command lazygit --use-config-file "${HOME}/.config/lazygit/config.yml" "$@"
 }
 
-# Renames the directory portion of the tmux window title.
-rename-directory-while-command-runs() {
-  tmux_title_set_directory_portion "$1"
-  tmux_title_update
-  shift
-  local exit_status=0
-  "$@" || exit_status="$?"
-  tmux_title_hook
-  return "${exit_status}"
-}
-
-# Appends to the tmux window title.
-rename-window-while-command-runs() {
-  tmux_title_push "$1"
-  shift
-  local exit_status=0
-  "$@" || exit_status="$?"
-  tmux_title_pop
-  return "${exit_status}"
-}
-
 # Wrap rg so that in a dotfiles directory it searches hidden files but skips
 # .git directories.
 rg() {
