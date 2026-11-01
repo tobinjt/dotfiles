@@ -18,4 +18,7 @@
     "line_length": 1000,
     // Sometimes long commands or paths can't be split.
     "code_blocks": false
+  },
+  "MD033": {
+    "allowed_elements": ["br"]
   }
