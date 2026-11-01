@@ -27,9 +27,7 @@ return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     -- Don't install tooling for other users.
-    cond = vim.fn.getenv("USER") == "johntobin"
-        -- TODO: remove when the imac is decomissioned.
-        and not paths.exists("/usr/local/Cellar"),
+    cond = vim.fn.getenv("USER") == "johntobin",
     dependencies = {
       "mason-org/mason.nvim",
       -- Configured in lsp.lua.
