@@ -3,6 +3,7 @@
   "model": "Gemini 3.8 Flash (High)",
   "permissions": {
     "allow": [
+      "command(./populate_pre_commit.py)",
       "command(/Users/johntobin/.local/share/nvim/mason/bin/basedpyright)",
       "command(/Users/johntobin/.local/share/nvim/mason/bin/markdownlint)",
       "command(/Users/johntobin/.local/share/nvim/mason/bin/ruff)",
