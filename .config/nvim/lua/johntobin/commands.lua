@@ -14,3 +14,12 @@ vim.api.nvim_create_user_command("AutoSyncToTrueNAS",
 vim.api.nvim_create_user_command('Qa',
   functions.Qa,
   { desc = "Map :Qa to :qa", bang = true })
+
+vim.api.nvim_create_user_command("ToggleMarkdownFormatoptionsDebug", function()
+  vim.g.debug_markdown_formatoptions = not vim.g.debug_markdown_formatoptions
+  vim.notify(
+    "Markdown formatoptions debug "
+    .. (vim.g.debug_markdown_formatoptions and "enabled" or "disabled"),
+    vim.log.levels.INFO
+  )
+end, { desc = "Toggle debug logging for Markdown formatoptions" })

@@ -20,13 +20,24 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Toggle formatoptions dynamically in Markdown code blocks
+vim.g.debug_markdown_formatoptions = false
+
 vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
   group = "johntobin",
   pattern = "*.md",
   callback = function()
     if functions.in_markdown_code_block() then
+      if vim.g.debug_markdown_formatoptions then
+        vim.notify("In markdown code block, removing 'a' from formatoptions",
+          vim.log.levels.DEBUG)
+      end
       vim.opt_local.formatoptions:remove('a')
     else
+      if vim.g.debug_markdown_formatoptions then
+        vim.notify(
+          "Not in markdown code block, appending 'a' to formatoptions",
+          vim.log.levels.DEBUG)
+      end
       vim.opt_local.formatoptions:append('a')
     end
   end,
