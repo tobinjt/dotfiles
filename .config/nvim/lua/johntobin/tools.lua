@@ -181,7 +181,7 @@ M.tools = {
     linter = { "pyrefly", "ruff" },
     lsp_server = { "basedpyright", "pyrefly", "ruff" },
     mason_installer = "python3",
-    mason_package = { "basedpyright", "pyrefly", "ruff", },
+    mason_package = { "basedpyright", "black", "debugpy", "mypy", "pyrefly", "ruff", },
     parser = "python",
     -- keep-sorted end
   },
