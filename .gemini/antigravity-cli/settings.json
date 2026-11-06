@@ -19,8 +19,6 @@
       "command(/Users/johntobin/src/bin/check_urls)",
       "command(/Users/johntobin/src/bin/markdown_to_html)",
       "command(/Users/johntobin/src/bin/python/check_urls.py)",
-      "command(/Users/johntobin/tmp/bin/virtualenv/python/bin/black)",
-      "command(/Users/johntobin/tmp/bin/virtualenv/python/bin/mdformat)",
       "command(/opt/homebrew/bin/mmdc)",
       "command(basedpyright)",
       "command(black)",

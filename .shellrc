@@ -18,8 +18,6 @@ path_additions=(
   "/opt/homebrew/bin" "/opt/homebrew/sbin"
   # Node modules.
   "${HOME}/tmp/bin/node_modules/bin"
-  # Python tooling in virtualenvs.
-  "${HOME}/tmp/bin/virtualenv/python/bin"
   # Golang.
   "${GOPATH}/bin"
   # Rust.

@@ -90,8 +90,6 @@ return {
         "mfussenegger/nvim-dap-python",
         lazy = true,
         config = function()
-          -- debugpy is installed in my standard Python virtualenv so that it's
-          -- available with all the other modules.
           require("dap-python").setup("python3")
         end,
         dependencies = {
