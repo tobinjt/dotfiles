@@ -19,6 +19,7 @@
 # There might be one in each repo but there can only be one destination file.
 # keep-sorted start
 .dotfiles.ignore
+.github
 .pre-commit-config.yaml
 # keep-sorted end
 
