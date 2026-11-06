@@ -17,13 +17,25 @@ priorities:
 # managed-by-populate-pre-commit end: header
 
 repos:
+  # managed-by-populate-pre-commit start: actionlint.yaml
+  - repo: local
+    hooks:
+    - id: actionlint
+      name: Run `actionlint`
+      priority: linter
+      language: system
+      types:
+      - yaml
+      exclude: dependabot.yml|.*.yaml$
+      entry: actionlint
+  # managed-by-populate-pre-commit end: actionlint.yaml
   # managed-by-populate-pre-commit start: always_enabled.yaml
   - repo: meta
     hooks:
     - id: check-hooks-apply
       priority: linter
   - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
     - id: conventional-pre-commit
       priority: linter
