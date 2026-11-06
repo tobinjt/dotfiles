@@ -16,6 +16,35 @@ return {
     "farmergreg/vim-lastplace",
   },
   {
+    -- Open a file explorer with <leader>e.
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      explorer = {
+        enabled = true,
+        -- your custom explorer settings here
+      },
+      picker = {
+        sources = {
+          explorer = {
+            -- layout or filter options
+          },
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>e",
+        function()
+          Snacks.explorer()
+        end,
+        desc = "File Explorer",
+      },
+    },
+  },
+  {
     -- VCS indicators in the signs column.
     "mhinz/vim-signify",
   },
