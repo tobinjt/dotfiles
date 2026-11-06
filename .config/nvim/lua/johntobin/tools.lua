@@ -178,20 +178,10 @@ M.tools = {
     -- keep-sorted start block=true
     compiler = "python3",
     filetype = "python",
-    linter = "pyrefly",
-    lsp_server = "pyrefly",
+    linter = { "pyrefly", "ruff" },
+    lsp_server = { "basedpyright", "pyrefly", "ruff" },
     mason_installer = "python3",
-    mason_package = "pyrefly",
-    -- keep-sorted end
-  },
-  {
-    -- keep-sorted start block=true
-    compiler = "python3",
-    filetype = "python",
-    linter = "ruff",
-    lsp_server = { "basedpyright", "ruff" },
-    mason_installer = "python3",
-    mason_package = { "basedpyright", "ruff", },
+    mason_package = { "basedpyright", "pyrefly", "ruff", },
     parser = "python",
     -- keep-sorted end
   },
