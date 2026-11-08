@@ -32,10 +32,6 @@ export LC_COLLATE
 LESS="iMdRWFX"
 PAGER="less"
 export LESS PAGER
-# Required by the `mmdc` tool for checking Mermaid diagrams embedded in Markdown
-# files.
-PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-export PUPPETEER_EXECUTABLE_PATH
 # Cache compiled crates rather than discarding them.
 RUSTC_WRAPPER="sccache"
 export RUSTC_WRAPPER

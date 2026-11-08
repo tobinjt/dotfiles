@@ -57,6 +57,10 @@ else
   EDITOR="vim"
 fi
 export EDITOR
+# Required by the `mmdc` tool for checking Mermaid diagrams embedded in Markdown
+# files.
+PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+export PUPPETEER_EXECUTABLE_PATH
 
 # Create some necessary directories.
 # shellcheck disable=SC2174
