@@ -64,7 +64,7 @@
 .gemini/antigravity-cli/builtin
 .gemini/antigravity-cli/cache
 .gemini/antigravity-cli/cli.log
-.gemini/antigravity-cli/conversation_summaries.db
+.gemini/antigravity-cli/conversation_summaries.*
 .gemini/antigravity-cli/conversations
 .gemini/antigravity-cli/crashes
 .gemini/antigravity-cli/history.jsonl
