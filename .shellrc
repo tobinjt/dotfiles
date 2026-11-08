@@ -5,6 +5,7 @@
 
 # Where Go should install stuff.  Set here so that it can be used in $PATH.
 GOPATH="${HOME}/tmp/bin/go"
+export GOPATH
 # Set up $PATH.  Each directory that exists will be *prepended* to $PATH, so put
 # more specific directories last.
 path_additions=(
@@ -45,6 +46,7 @@ for path_addition in "${path_additions[@]}"; do
     PATH="${path_addition}:${PATH}"
   fi
 done
+export PATH
 
 # EDITOR is set here so that it's correct when running non-interactively, e.g.
 # when sshing in to run update-dotfiles-and-bin, which runs git pull, which
@@ -54,7 +56,7 @@ if type nvim >& /dev/null; then
 else
   EDITOR="vim"
 fi
-export EDITOR GOPATH PATH
+export EDITOR
 
 # Create some necessary directories.
 # shellcheck disable=SC2174
