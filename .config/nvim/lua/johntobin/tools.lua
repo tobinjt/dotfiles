@@ -212,7 +212,8 @@ M.tools = {
   {
     -- keep-sorted start block=true
     filetype = "yaml",
-    linter = "zizmor",
+    linter = { "actionlint", "zizmor", },
+    mason_package = "actionlint",
     -- keep-sorted end
   },
   -- keep-sorted end
