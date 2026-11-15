@@ -108,6 +108,19 @@ describe("johntobin.tools", function()
         python = {}
       }, linters)
     end)
+
+    it("logs reasons when linters are unavailable", function()
+      table.insert(tools.tools, {
+        linter = "orphan",
+      })
+      local logs = {}
+      tools.make_linters_by_ft(logs)
+      assert.are.same({
+        "Linter 'staticcheck' (filetype 'go') unavailable: executable 'staticcheck' is not executable",
+        "Linter 'ruff' (filetype 'python') unavailable: compiler 'python3' is not executable",
+        "Linter 'orphan' unavailable: filetype is nil",
+      }, logs)
+    end)
   end)
 
   describe("make_lsp_enabled_servers", function()
@@ -119,6 +132,14 @@ describe("johntobin.tools", function()
           name = "bashls"
         }
       }, servers)
+    end)
+
+    it("logs reasons when LSP servers are unavailable", function()
+      local logs = {}
+      tools.make_lsp_enabled_servers(logs)
+      assert.are.same({
+        "LSP server 'gopls' unavailable: executable 'gopls' is not executable",
+      }, logs)
     end)
   end)
 
@@ -133,6 +154,20 @@ describe("johntobin.tools", function()
         { "gopls" },
         { "staticcheck" }
       }, packages)
+    end)
+
+    it("logs reasons when mason packages are unavailable", function()
+      table.insert(tools.tools, {
+        compiler = "python3",
+        mason_installer = "pip",
+        mason_package = { "black", "ruff" },
+      })
+      local logs = {}
+      tools.make_mason_package_install_list(logs)
+      assert.are.same({
+        "Mason package 'black' unavailable: compiler 'python3' is not executable and mason_installer 'pip' is not executable",
+        "Mason package 'ruff' unavailable: compiler 'python3' is not executable and mason_installer 'pip' is not executable",
+      }, logs)
     end)
   end)
 
@@ -151,13 +186,17 @@ describe("johntobin.tools", function()
           parser = "lua",
         }
       }
-      local parsers = tools.make_treesitter_parsers_to_install()
+      local logs = {}
+      local parsers = tools.make_treesitter_parsers_to_install(logs)
       assert.are.same({ "go", "lua" }, parsers)
+      assert.are.same({
+        "Treesitter parser 'python' unavailable: compiler 'python3' is not executable",
+      }, logs)
     end)
   end)
 
   describe("debug", function()
-    it("calls make functions and prints results", function()
+    it("calls make functions and prints results including unavailability logs", function()
       local print_called = false
       local old_print = vim.print
       vim.print = function(results)
@@ -167,6 +206,11 @@ describe("johntobin.tools", function()
         assert.is_table(results.lsp_enabled_servers)
         assert.is_table(results.mason_package_install_list)
         assert.is_table(results.treesitter_parsers_to_install)
+        assert.are.same({
+          "Linter 'staticcheck' (filetype 'go') unavailable: executable 'staticcheck' is not executable",
+          "Linter 'ruff' (filetype 'python') unavailable: compiler 'python3' is not executable",
+          "LSP server 'gopls' unavailable: executable 'gopls' is not executable",
+        }, results.logs)
       end
 
       tools.debug()

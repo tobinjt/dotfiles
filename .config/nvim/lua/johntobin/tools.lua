@@ -252,14 +252,31 @@ M.check_executable = function(program)
   return vim.fn.executable(program) == 1
 end
 
+--- Appends a formatted message to logs if a log table is provided.
+--- @param logs table?: Optional list to append log messages to.
+--- @param fmt string: Format string (or literal message if no extra args).
+local function append_log(logs, fmt, ...)
+  if logs ~= nil then
+    local msg = select("#", ...) > 0 and string.format(fmt, ...) or fmt
+    table.insert(logs, msg)
+  end
+end
+
 --- Returns a table of installed linters by filetype.
-M.make_linters_by_ft = function()
+--- @param logs table?: Optional list to append unavailability log messages to.
+--- @return table<string, string[]>
+M.make_linters_by_ft = function(logs)
   local linters = {}
   for _, tool_config in ipairs(M.tools) do
+    local linter_names = M.get_as_list(tool_config, 'linter')
+
     if tool_config.filetype == nil then
-      if tool_config.linter ~= nil then
-        vim.notify("Linter is " .. tool_config.linter .. " but filetype is nil",
+      if #linter_names > 0 then
+        vim.notify("Linter is " .. table.concat(linter_names, ", ") .. " but filetype is nil",
           vim.log.levels.WARN)
+        for _, linter in ipairs(linter_names) do
+          append_log(logs, "Linter '%s' unavailable: filetype is nil", linter)
+        end
       end
       goto continue
     end
@@ -268,18 +285,35 @@ M.make_linters_by_ft = function()
       linters[tool_config.filetype] = {}
     end
     if not M.check_executable(tool_config.compiler) then
+      for _, linter in ipairs(linter_names) do
+        append_log(
+          logs,
+          "Linter '%s' (filetype '%s') unavailable: compiler '%s' is not executable",
+          linter,
+          tool_config.filetype,
+          tool_config.compiler
+        )
+      end
       goto continue
     end
 
-    local linter_names = M.get_as_list(tool_config, 'linter')
     local linter_executables = M.get_as_list(
       tool_config,
       'linter_executable',
       linter_names
     )
     for i, linter in ipairs(linter_names) do
-      if vim.fn.executable(linter_executables[i]) == 1 then
+      local linter_executable = linter_executables[i]
+      if linter_executable ~= nil and linter_executable ~= "" and vim.fn.executable(linter_executable) == 1 then
         table.insert(linters[tool_config.filetype], linter)
+      else
+        append_log(
+          logs,
+          "Linter '%s' (filetype '%s') unavailable: executable '%s' is not executable",
+          linter,
+          tool_config.filetype,
+          tostring(linter_executable)
+        )
       end
     end
 
@@ -291,7 +325,9 @@ M.make_linters_by_ft = function()
 end
 
 --- Returns a list of LSP servers whose executables are installed.
-M.make_lsp_enabled_servers = function()
+--- @param logs table?: Optional list to append unavailability log messages to.
+--- @return table<string, table>
+M.make_lsp_enabled_servers = function(logs)
   local enabled_servers = {}
   for _, tool_config in ipairs(M.tools) do
     local lsp_servers = M.get_as_list(tool_config, 'lsp_server')
@@ -302,12 +338,19 @@ M.make_lsp_enabled_servers = function()
     )
     for i, lsp_server in ipairs(lsp_servers) do
       local lsp_executable = lsp_executables[i]
-      if vim.fn.executable(lsp_executable) == 1 then
+      if lsp_executable ~= nil and lsp_executable ~= "" and vim.fn.executable(lsp_executable) == 1 then
         enabled_servers[lsp_server] = {
           name = lsp_server,
           executable = lsp_executable,
           server_opts = tool_config.lsp_options,
         }
+      else
+        append_log(
+          logs,
+          "LSP server '%s' unavailable: executable '%s' is not executable",
+          lsp_server,
+          tostring(lsp_executable)
+        )
       end
     end
   end
@@ -317,14 +360,36 @@ M.make_lsp_enabled_servers = function()
 end
 
 --- Returns a list of Mason packages with mason_installers available.
-M.make_mason_package_install_list = function()
+--- @param logs table?: Optional list to append unavailability log messages to.
+--- @return table[]
+M.make_mason_package_install_list = function(logs)
   local packages_to_install = {}
   for _, tool_config in ipairs(M.tools) do
-    if M.check_executable(tool_config.compiler)
-        and M.check_executable(tool_config.mason_installer)
-    then
-      for _, package in ipairs(M.get_as_list(tool_config, 'mason_package')) do
-        table.insert(packages_to_install, { package })
+    local mason_packages = M.get_as_list(tool_config, 'mason_package')
+    if #mason_packages > 0 then
+      local compiler_ok = M.check_executable(tool_config.compiler)
+      local installer_ok = M.check_executable(tool_config.mason_installer)
+      if compiler_ok and installer_ok then
+        for _, package in ipairs(mason_packages) do
+          table.insert(packages_to_install, { package })
+        end
+      else
+        local reasons = {}
+        if not compiler_ok then
+          table.insert(reasons, string.format("compiler '%s' is not executable", tool_config.compiler))
+        end
+        if not installer_ok then
+          table.insert(reasons, string.format("mason_installer '%s' is not executable", tool_config.mason_installer))
+        end
+        local reason_str = table.concat(reasons, " and ")
+        for _, package in ipairs(mason_packages) do
+          append_log(
+            logs,
+            "Mason package '%s' unavailable: %s",
+            package,
+            reason_str
+          )
+        end
       end
     end
   end
@@ -334,14 +399,21 @@ M.make_mason_package_install_list = function()
 end
 
 --- Returns a list of Treesitter parsers to install.
-M.make_treesitter_parsers_to_install = function()
+--- @param logs table?: Optional list to append unavailability log messages to.
+--- @return string[]
+M.make_treesitter_parsers_to_install = function(logs)
   local parsers = {}
   for _, tool_config in ipairs(M.tools) do
     if tool_config.parser == nil then
       goto continue
     end
-    if tool_config.compiler ~= nil and
-        vim.fn.executable(tool_config.compiler) == 0 then
+    if not M.check_executable(tool_config.compiler) then
+      append_log(
+        logs,
+        "Treesitter parser '%s' unavailable: compiler '%s' is not executable",
+        tool_config.parser,
+        tool_config.compiler
+      )
       goto continue
     end
     table.insert(parsers, tool_config.parser)
@@ -355,11 +427,13 @@ end
 
 --- Debugging function that displays the results of each of the `make_*` functions.
 M.debug = function()
+  local logs = {}
   local results = {
-    linters_by_ft = M.make_linters_by_ft(),
-    lsp_enabled_servers = M.make_lsp_enabled_servers(),
-    mason_package_install_list = M.make_mason_package_install_list(),
-    treesitter_parsers_to_install = M.make_treesitter_parsers_to_install(),
+    linters_by_ft = M.make_linters_by_ft(logs),
+    lsp_enabled_servers = M.make_lsp_enabled_servers(logs),
+    mason_package_install_list = M.make_mason_package_install_list(logs),
+    treesitter_parsers_to_install = M.make_treesitter_parsers_to_install(logs),
+    logs = logs,
   }
   vim.print(results)
 end
