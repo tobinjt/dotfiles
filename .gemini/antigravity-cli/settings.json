@@ -123,6 +123,7 @@
     "/Users/johntobin/src/bin",
     "/Users/johntobin/src/bin/python",
     "/Users/johntobin/src/dotfiles",
+    "/Users/johntobin/src/dotfiles/.config/nvim/lua/johntobin",
     "/Users/johntobin/src/financial-planning",
     "/Users/johntobin/src/home-server",
     "/Users/johntobin/src/hosting-probers",
