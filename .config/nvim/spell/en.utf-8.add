@@ -63,6 +63,7 @@ reimplement
 restic
 robosheep
 rsync
+shellcheck
 src
 stdin
 stdout
