@@ -75,6 +75,7 @@
 .gemini/antigravity-cli/knowledge
 .gemini/antigravity-cli/last_check.timestamp
 .gemini/antigravity-cli/log
+.gemini/antigravity-cli/persistent_terminals
 .gemini/antigravity-cli/presence
 .gemini/antigravity-cli/updater
 .gemini/config/.migrated
