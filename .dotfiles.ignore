@@ -120,9 +120,22 @@ __pycache__
 # Automatically created on hosting.
 .cloud-locale-test.skip
 
-# Managed by rustup.
-.cargo
+# Managed by cargo or rustup.
+# keep-sorted start
+.cargo/.crates.toml
+.cargo/.crates2.json
+.cargo/.global-cache
+.cargo/.package-cache
+.cargo/.package-cache-mutate
+.cargo/advisory-db
+.cargo/advisory-db..lock
+.cargo/binstall
+.cargo/credentials.toml
+.cargo/env
+.cargo/env.tcsh
+.cargo/registry
 .rustup
+# keep-sorted end
 
 # Move Lazy lockfile out of version control.  Lazy frequently updates this and I
 # haven't figured out what triggers it.  I'm fed up running `git restore` to
