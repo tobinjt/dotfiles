@@ -19,3 +19,10 @@ vim.api.nvim_create_user_command("ToggleMarkdownFormatoptionsDebug", function()
     vim.log.levels.INFO
   )
 end, { desc = "Toggle debug logging for Markdown formatoptions" })
+
+vim.keymap.set("n", "<leader>oi", function()
+  vim.lsp.buf.code_action({
+    context = { only = { "source.organizeImports" } },
+    apply = true,
+  })
+end, { desc = "Organize Imports" })
